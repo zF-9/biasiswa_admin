@@ -10,6 +10,8 @@
     };
   });
 
+  //cuba try test create query utk tu <li> baru
+
   // Close any open menu accordions when window is resized below 768px
   $(window).resize(function() {
     if ($(window).width() < 768) {
@@ -45,5 +47,8 @@
     }, 1000, 'easeInOutExpo');
     e.preventDefault();
   });
+
+
+
 
 })(jQuery); // End of use strict

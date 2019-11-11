@@ -6,7 +6,8 @@
 
   <title>SB Admin 2 - Blank</title>
 
-  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <!--<script href="{{ asset('vendor/jquery/jquery-1.11.3.js') }}"></script>-->
+  <script href="{{ asset('vendor/jquery/jquery-3.3.1.js') }}"></script>
 
   <!-- Custom fonts for this template-->
   <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css" />
@@ -17,6 +18,6 @@
   <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet" type="text/css" />
 
   <!-- Bootstrap core JavaScript-->
-  <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
-  <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script href="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+  <script href="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
