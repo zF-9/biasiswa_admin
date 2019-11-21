@@ -16,13 +16,37 @@ Route::get('/', function () {
 });
 
 Route::get('/datatable', function () {
-    return view('table');
+    //return view('datatable');
+    $penerima_biasiswa = DB::table('applicants')->get();
+
+    return view('datatable', ['penerima_biasiswa' => $penerima_biasiswa]);    
 });
 
-Route::get('/login', function () {
+Route::get('/login', function () { 
     return view('login');
 });
 
 Route::get('/register', function() {
 	return view('register');
 });
+
+Route::get('/permohonan_baru','ApplicantController@apply');
+Route::post('/permohonan_baru', 'ApplicantController@store');
+
+Route::get('/dashboard', function() {
+	return view('admin_dashboard');
+});
+
+Route::get('/form', function() {
+	return view('form');
+});
+
+Route::get('/profile', function() {
+	return view('profilepage');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
