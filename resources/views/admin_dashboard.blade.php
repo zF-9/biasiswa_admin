@@ -206,6 +206,8 @@
                   <div class="progress">
                     <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
+                  <hr>
+                  change variable di <code>inline css</code> ja append value dari database directly.                  
                 </div>
               </div>
 
@@ -265,6 +267,19 @@
 
             <div class="col-lg-6 mb-4">
 
+              <!-- Bar Chart -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
+                </div>
+                <div class="card-body">
+                  <div class="chart-bar">
+                    <canvas id="myBarChart"></canvas>
+                  </div>
+                  <hr>
+                  change variable dekat<code>/jschart-bar.js</code> javascript style ya'll.
+                </div>
+              </div>
               <!-- Illustrations 
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -279,6 +294,13 @@
                 </div>
               </div>-->
 
+            </div>
+            <!-- illustrations card -->
+
+          </div>
+
+
+
               <!-- Approach -->
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -289,11 +311,6 @@
                   <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
                 </div>
               </div>
-
-            </div>
-            <!-- illustrations card -->
-
-          </div>
 
         </div>
         <!-- /.container-fluid -->

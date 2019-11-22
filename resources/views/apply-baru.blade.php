@@ -7,104 +7,118 @@
 
 <div class="row">
   <div class="col-xl-12 col-lg-12">
+
+    <!--<div class="container">-->
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+      <div class="col-xl-10 col-lg-12 col-md-12">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+              <div class="col-lg-7">
+                <div class="p-5">
+                  <div class="text-center">
+                    <h1 class="h4 text-gray-900 mb-4">BORANG PERMOHONAN</h1>
+                  </div>
+                  <!--<form class="user">-->
+                  <form class="user" method="post" action="/permohonan_baru" enctype="multipart/form-data" autocomplete="off">
+                  {{ csrf_field() }}
+
+                    <div class="form-group">
+                      <input name="nama" type="text" class="form-control form-control-user" id="InputNama" aria-describedby="emailHelp" placeholder="Nama Pemohon">
+                    </div>
+                    <div class="form-group">
+                      <input name="email" type="text" class="form-control form-control-user" id="InputEmail" placeholder="Alamat Email">
+                    </div>
+                    <div class="form-group">
+                      <input name="nokp" type="text" class="form-control form-control-user" id="InputKp" placeholder="Nombor Kad Pengenalan">
+                    </div>
+                    <div class="form-group">
+                      <input name="jabatan" type="text" class="form-control form-control-user" id="InputJabatan" placeholder="Nama Agensi/Jabatan">
+                    </div>
+                    <div class="form-group">
+                      <input name="jawatan" type="text" class="form-control form-control-user" id="InputJawatan" placeholder="Jawatan">
+                    </div>
+                    <div class="form-group">
+                      <input name="bidang" type="text" class="form-control form-control-user" id="InputBidang" placeholder="Bidang Dalam Jawatan">
+                    </div>
+                    <div class="form-group">
+                      <input name="Gred" type="text" class="form-control form-control-user" id="InputGred" placeholder="Gred">
+                    </div>
+                    <div class="form-group">
+                      <input name="pengajian" type="text" class="form-control form-control-user" id="Input" placeholder="Pengajian Yang Dipohon">
+                    </div>
+
+                    <!--<div class="form-group form-control-user">
+                      <label>Selects</label>
+                        <select class="form-control" placeholder="Pilih la yang mana satu">
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                          <option>5</option>
+                        </select>
+                    </div>-->
+
+                    <div class="form-group">
+                      <input name="universiti" type="text" class="form-control form-control-user" id="InputUni" placeholder="Nama Universiti">
+                    </div>
+                    <div class="form-group">
+                      <input name="akademik" type="text" class="form-control form-control-user" id="InputAkademik" placeholder="Kelulusan Akademik">
+                    </div>
+                    <div class="form-group">
+                      <input name="telno" type="text" class="form-control form-control-user" id="InputFon" placeholder="Nombor Telefon">
+                    </div>
+                    <div class="form-group">
+                      <input name="tarikhlantik" type="text" class="form-control form-control-user date" id="InputTlantik" placeholder="Tarikh Perlantikan">
+                    </div>
+                    <!--<div class="form-group">
+                      <input name="bidang" type="text" class="form-control form-control-user" id="InputBidang" placeholder="Bidang">
+                    </div>-->
+                    <!--<a href="index.html" class="btn btn-primary btn-user btn-block">
+                      Login
+                    </a>-->
+                    <div class="text-right">
+                      <button type="submit" class="btn btn-primary btn-user btn-block">{{ __('Save') }}</button>
+                    </div>
+                  </form>
+                  <hr>
+                  <div class="text-center">
+                    <a class="small" href="forgot-password.html">Forgot Password?</a>
+                  </div>
+                  <div class="text-center">
+                    <a class="small" href="register.html">Create an Account!</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-xl-12 col-lg-12">
     <div class="card shadow mb-8">
     <!-- Card Header - Dropdown -->
-    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+    <div class="card-header py-6 d-flex flex-row align-items-center justify-content-between" style="margin-bottom: 10px;">
     <h6 class="m-0 font-weight-bold text-primary">Borang Permohonan</h6>
     </div>
 
-    <form method="post" action="/permohonan_baru" enctype="multipart/form-data" autocomplete="off">
+    <form class="user" method="post" action="/muatnaik" enctype="multipart/form-data" autocomplete="off">
     {{ csrf_field() }}
 
-    <div class="row">
-      <div class="col-sm-12 col-md-9" style="align:center">
-        <div id="dataTable_filter" class="dataTables_filter">
-          <label>Nama:
-              <input type="search" class="form-control form-control-lg" placeholder="" aria-controls="dataTable" value="{{ old('name', auth()->user()->name) }}">
-          </label>
-        </div>
-      </div>
-
-      <div class="col-sm-12 col-md-9" style="align:center">
-        <div id="dataTable_filter" class="dataTables_filter">
-          <label>Email:
-              <input type="search" class="form-control form-control-lg" placeholder="" aria-controls="dataTable" value="{{ old('email', auth()->user()->email) }}">
-          </label>
-        </div>
-      </div> 
-    </div> 
-
-    <div class="col-sm-12 col-md-9" style="align:center">
-      <div id="dataTable_filter" class="dataTables_filter">
-        <label>No Kad Pengenalan:
-            <input type="search" class="form-control form-control-lg" placeholder="" aria-controls="dataTable">
-        </label>
-      </div>
-    </div>     
-
-    <div class="col-sm-12 col-md-9" style="align:center">
-      <div id="dataTable_filter" class="dataTables_filter">
-        <label>Jabatan:
-            <input name="jabatan" type="search" class="form-control form-control-lg" placeholder="" aria-controls="dataTable">
-        </label>
-      </div>
-    </div>   
-
-    <div class="col-sm-12 col-md-9" style="align:center">
-      <div id="dataTable_filter" class="dataTables_filter">
-        <label>Gred:
-            <input name="jabatan" type="search" class="form-control form-control-lg" placeholder="" aria-controls="dataTable">
-        </label>
-      </div>
-    </div>
-
-    <div class="col-sm-12 col-md-9" style="align:center">
-      <div id="dataTable_filter" class="dataTables_filter">
-        <label>Jawatan:
-            <input name="jabatan" type="search" class="form-control form-control-lg" placeholder="" aria-controls="dataTable">
-        </label>
-      </div>
-    </div>
-
-    <div class="col-sm-12 col-md-9" style="align:center">
-      <div id="dataTable_filter" class="dataTables_filter">
-        <label>Bidang:
-            <input name="jabatan" type="search" class="form-control form-control-lg" placeholder="" aria-controls="dataTable">
-        </label>
-      </div>
-    </div>    
-
-    <div class="col-sm-12 col-md-9" style="align:center">
-      <div id="dataTable_filter" class="dataTables_filter">
-        <label>Nama Universiti:
-            <input name="jabatan" type="search" class="form-control form-control-lg" placeholder="" aria-controls="dataTable">
-        </label>
-      </div>
-    </div>
-
-    <div class="col-sm-12 col-md-9" style="align:center">
-      <div id="dataTable_filter" class="dataTables_filter">
-        <label>Kelulusan Akademik:
-            <input name="jabatan" type="search" class="form-control form-control-lg" placeholder="" aria-controls="dataTable">
-        </label>
-      </div>
-    </div>
-
-    <div class="col-sm-12 col-md-9" style="align:center">
-      <div id="dataTable_filter" class="dataTables_filter">
-        <label>Nombor Telefon:
-            <input name="jabatan" type="search" class="form-control form-control-lg" placeholder="" aria-controls="dataTable">
-        </label>
-      </div>
-    </div>
-
-    <div class="col-sm-12 col-md-9" style="align:center">
-      <div id="dataTable_filter" class="dataTables_filter">
-        <label>Tarikh Perlantikan:
-            <input name="jabatan" type="search" class="form-control form-control-lg" placeholder="" aria-controls="dataTable">
-        </label>
-      </div>
-    </div>
+  <!--</div>-->
 
     <div class="col-sm-12 col-md-9" style="align:center">
         <div class="form-group">

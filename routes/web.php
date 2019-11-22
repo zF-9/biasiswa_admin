@@ -33,6 +33,9 @@ Route::get('/register', function() {
 Route::get('/permohonan_baru','ApplicantController@apply');
 Route::post('/permohonan_baru', 'ApplicantController@store');
 
+Route::get('/muatnaik','ApplicantController@apply');
+Route::post('/muatnaik', 'ApplicantController@upload');
+
 Route::get('/dashboard', function() {
 	return view('admin_dashboard');
 });
@@ -42,7 +45,14 @@ Route::get('/form', function() {
 });
 
 Route::get('/profile', function() {
-	return view('profilepage');
+	//fetch semua yang ada dlm table 'applicants' 
+    $penerima_biasiswa = DB::table('applicants')->get();
+    //to fetch specific row dri table (where -> arguement yg paling last tu yg kena query dari database ):
+    //$penerima_biasiswa = Applicant::find($applicant->id);
+;
+    return view('profilepage', ['penerima_biasiswa' => $penerima_biasiswa]);    
+
+	//return view('profilepage');
 });
 
 Auth::routes();

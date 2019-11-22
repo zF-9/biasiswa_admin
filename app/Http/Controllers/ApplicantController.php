@@ -21,19 +21,27 @@ class ApplicantController extends Controller
         $applicant->universiti = request('universiti');
         $applicant->telno = request('telno');
         $applicant->akademik = request('akademik');
+        $applicant->Gred = request('Gred');
+        $applicant->pengajian = request('pengajian');
         //ini aku x berapa sure
         //$applicant->perlantikan = request(DateTime::createFromFormat('m/d/Y',perlantikan););
         $applicant->tarikhlantik = request('tarikhlantik');
-        $applicant->tawaran = request()->file('tawaran')->store('public/uploadocs');
-        $applicant->surakuan = request()->file('surakuan')->store('public/uploadocs');
-
         $applicant->save();
-        //return view('/datatable');
+        return view('profilepage');
+    }
+
+    public function upload() {
+        $applicant_data = new applicant; 
+
+        $applicant_data->tawaran = request()->file('tawaran')->store('public/uploadocs');
+        $applicant_data->surakuan = request()->file('surakuan')->store('public/uploadocs');
+
+         $applicant_data->save();
     }
 
     public function apply()
     {
-        return view('apply-new');
+        return view('apply-baru');
     }
 
     /**

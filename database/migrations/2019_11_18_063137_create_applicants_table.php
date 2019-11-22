@@ -21,12 +21,12 @@ class CreateApplicantsTable extends Migration
             $table->string('nokp');
             $table->string('jabatan');
             $table->string('jawatan');
+            $table->string('Gred');
             $table->string('bidang');
             $table->string('universiti');
             $table->string('akademik');
             $table->string('telno');
             $table->string('tarikhlantik');
-            $table->string('Gred');
             $table->string('pengajian');
 
             //added lps permohonan

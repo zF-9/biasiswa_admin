@@ -35,6 +35,12 @@
   </div>
  <!-- Logout Modal-->
 
+    <script type="text/javascript">
+      $('.date').datepicker({  
+        format: 'dd-mm-yyyy'
+      });  
+    </script> 
+
 
   <!-- Bootstrap core JavaScript-->
   <script src="{{ asset ('vendor/jquery/jquery.min.js')}}"></script>
@@ -50,8 +56,9 @@
   <script src="{{ asset ('vendor/chart.js/Chart.min.js')}}"></script>
 
   <!-- Page level custom scripts -->
-  <script src="{{ asset ('js/demo/chart-area-demo.js')}}"></script>
-  <script src="{{ asset ('js/demo/chart-pie-demo.js')}}"></script>
+  <script src="{{ asset ('js/chart-area.js')}}"></script>
+  <script src="{{ asset ('js/chart-pie.js')}}"></script>
+  <script src="{{ asset ('js/chart-bar.js') }}"></script>
 
   
  
