@@ -31,17 +31,24 @@ class ApplicantController extends Controller
     }
 
     public function upload() {
-        $applicant_data = new applicant; 
+        //$applicant_data = new applicant; 
+        //auth()->user()->update($request->all());
 
         $applicant_data->tawaran = request()->file('tawaran')->store('public/uploadocs');
         $applicant_data->surakuan = request()->file('surakuan')->store('public/uploadocs');
 
          $applicant_data->save();
+         return view('profilepage');
     }
 
     public function apply()
     {
-        return view('apply-baru');
+        return view('borang');
+    }
+
+    public function upload_doc() 
+    {
+        return view('muatnaik');
     }
 
     /**

@@ -33,7 +33,7 @@ Route::get('/register', function() {
 Route::get('/permohonan_baru','ApplicantController@apply');
 Route::post('/permohonan_baru', 'ApplicantController@store');
 
-Route::get('/muatnaik','ApplicantController@apply');
+Route::get('/muatnaik','ApplicantController@upload_doc');
 Route::post('/muatnaik', 'ApplicantController@upload');
 
 Route::get('/dashboard', function() {

@@ -41,6 +41,24 @@
       });  
     </script> 
 
+    <script type="text/javascript">
+       $(function () {
+          $('#InputKp').keydown(function (e) {
+            var key = e.charCode || e.keyCode || 0;
+            $text = $(this); 
+            if (key !== 8 && key !== 9) {
+              if ($text.val().length === 6) {
+                $text.val($text.val() + '-');
+              }
+              if ($text.val().length === 9) {
+                $text.val($text.val() + '-');
+              }
+            }
+            return (key == 8 || key == 9 || key == 46 || (key >= 48 && key <= 57) || (key >= 96 && key <= 105));
+          })
+        });
+    </script>
+
 
   <!-- Bootstrap core JavaScript-->
   <script src="{{ asset ('vendor/jquery/jquery.min.js')}}"></script>
@@ -59,6 +77,17 @@
   <script src="{{ asset ('js/chart-area.js')}}"></script>
   <script src="{{ asset ('js/chart-pie.js')}}"></script>
   <script src="{{ asset ('js/chart-bar.js') }}"></script>
+
+
+    <!-- Page level plugins -->
+  <script src="{{ asset ('vendor/datatables/jquery.dataTables.min.js')}}"></script>
+  <script src="{{ asset ('vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="{{ asset ('js/datatables.js')}}"></script>
+
+
+
 
   
  
