@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layout.main_User')
 @section('content')
 
 <div class="row justify-content-center">
@@ -78,17 +78,18 @@
                     <!--<a href="index.html" class="btn btn-primary btn-user btn-block">
                       Login
                     </a>-->
+                    <hr>
                     <div class="text-right">
                       <button type="submit" class="btn btn-primary btn-user btn-block">{{ __('Save') }}</button>
                     </div>
                   </form>
                   <hr>
-                  <div class="text-center">
+                  <!--<div class="text-center">
                     <a class="small" href="forgot-password.html">Forgot Password?</a>
                   </div>
                   <div class="text-center">
                     <a class="small" href="register.html">Create an Account!</a>
-                  </div>
+                  </div>-->
                 </div>
               </div>
             </div>

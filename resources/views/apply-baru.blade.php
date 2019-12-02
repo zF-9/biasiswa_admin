@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layout.main_User')
 
 @section('content')
 
@@ -88,10 +88,10 @@
                   </form>
                   <hr>
                   <div class="text-center">
-                    <a class="small" href="forgot-password.html">Forgot Password?</a>
+                    <a class="small" href="">Profile Page</a>
                   </div>
                   <div class="text-center">
-                    <a class="small" href="register.html">Create an Account!</a>
+                    <a class="small" href="">Update Borang Permohonan</a>
                   </div>
                 </div>
               </div>

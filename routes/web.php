@@ -10,6 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\User;
+use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Hash;
 
 Route::get('/', function () {
     return view('welcome');
@@ -36,12 +39,20 @@ Route::post('/permohonan_baru', 'ApplicantController@store');
 Route::get('/muatnaik','ApplicantController@upload_doc');
 Route::post('/muatnaik', 'ApplicantController@upload');
 
-Route::get('/dashboard', function() {
-	return view('admin_dashboard');
+Route::get('/dashboard_admin', function() {
+	return view('dashboard_admin');
+});
+
+Route::get('/dashboard_user', function() {
+    return view('dashboard_user');
 });
 
 Route::get('/form', function() {
 	return view('form');
+});
+
+Route::get('/404', function() {
+    return view('404');
 });
 
 Route::get('/profile', function() {
@@ -59,4 +70,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//route to validate if the user is admin or bukan 
+Route::get('/dashboard', 'HomeController@Admin')->middleware('AdminMiddleware');
 

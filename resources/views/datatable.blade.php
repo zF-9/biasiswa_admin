@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layout.main_Admin')
 
 @section('content')
 
@@ -22,8 +22,8 @@
                       <th>Id</th>
                       <th>Nama</th>
                       <th>email</th> 
-                      <th>Time Created</th>
-                      <th>Time Updated</th>
+                      <th>No. Kad Pengenalan</th>
+                      <th>Jabatan</th>
                     </tr>
                   </thead>
                   <tfoot>
@@ -31,9 +31,8 @@
                       <th>Id</th>
                       <th>Nama</th>
                       <th>email</th> 
-                      <th>Time Created</th> 
-                      <th>Time Updated</th>
-
+                      <th>No. Kad Pengenalan</th>
+                      <th>Jabatan</th>
                     </tr>
                   </tfoot>
                   <tbody>
