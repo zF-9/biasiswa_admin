@@ -1,4 +1,4 @@
-@extends('layout.main_User')
+@extends('layout.Admin.main_Admin')
 @section('content')
   <!-- Page Wrapper -->
   <div id="wrapper">

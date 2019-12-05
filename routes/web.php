@@ -22,7 +22,7 @@ Route::get('/datatable', function () {
     //return view('datatable');
     $penerima_biasiswa = DB::table('applicants')->get();
 
-    return view('datatable', ['penerima_biasiswa' => $penerima_biasiswa]);    
+    return view('Admin.datatable', ['penerima_biasiswa' => $penerima_biasiswa]);    
 });
 
 Route::get('/login', function () { 
@@ -44,7 +44,7 @@ Route::get('/dashboard_admin', function() {
 });
 
 Route::get('/dashboard_user', function() {
-    return view('dashboard_user');
+    return view('User.dashboard_user');
 });
 
 Route::get('/form', function() {
@@ -60,8 +60,7 @@ Route::get('/profile', function() {
     $penerima_biasiswa = DB::table('applicants')->get();
     //to fetch specific row dri table (where -> arguement yg paling last tu yg kena query dari database ):
     //$penerima_biasiswa = Applicant::find($applicant->id);
-;
-    return view('profilepage', ['penerima_biasiswa' => $penerima_biasiswa]);    
+    return view('/profilepage', ['penerima_biasiswa' => $penerima_biasiswa]);    
 
 	//return view('profilepage');
 });
@@ -72,4 +71,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //route to validate if the user is admin or bukan 
 Route::get('/dashboard', 'HomeController@Admin')->middleware('AdminMiddleware');
+
+
+//route to validate if the profile page takes Admin || User 
+Route::get('/profilepage', 'HomeController@AdminProfile')->middleware('ProfileMiddleware');
 

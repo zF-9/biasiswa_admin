@@ -29,10 +29,10 @@
                   {{ csrf_field() }}
 
                     <div class="form-group">
-                      <input name="nama" type="text" class="form-control form-control-user" id="InputNama" aria-describedby="emailHelp" placeholder="Nama Pemohon">
+                      <input name="nama" type="text" class="form-control form-control-user" id="InputNama" aria-describedby="emailHelp" value="{jhadfbldsfuhasdf" placeholder="Nama Pemohon">
                     </div>
                     <div class="form-group">
-                      <input name="email" type="text" class="form-control form-control-user" id="InputEmail" placeholder="Alamat Email">
+                      <input name="email" type="text" class="form-control form-control-user" id="InputEmail" value="{ auth()->user()->email }}" placeholder="Alamat Email">
                     </div>
                     <div class="form-group">
                       <input name="nokp" type="text" class="form-control form-control-user" id="InputKp" maxlength="14" placeholder="Nombor Kad Pengenalan: xxxxxx-xx-xxxx">

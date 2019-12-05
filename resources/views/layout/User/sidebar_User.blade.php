@@ -29,7 +29,7 @@
 
       <li class="nav-item">
         <a class="nav-link" href="/permohonan_baru">
-          <i class="fas fa-fw fa-chart-area"></i>
+          <i class="fas fa-fw glyphicon glyphicon-folder-close"></i>
           <span>Borang Permohonan</span></a>
       </li>
 

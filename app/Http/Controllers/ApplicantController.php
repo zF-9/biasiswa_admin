@@ -27,7 +27,8 @@ class ApplicantController extends Controller
         //$applicant->perlantikan = request(DateTime::createFromFormat('m/d/Y',perlantikan););
         $applicant->tarikhlantik = request('tarikhlantik');
         $applicant->save();
-        return view('profilepage');
+        //return view('/profile');
+        return Route::redirect('/profile');
     }
 
     public function upload() {
@@ -38,12 +39,12 @@ class ApplicantController extends Controller
         $applicant_data->surakuan = request()->file('surakuan')->store('public/uploadocs');
 
          $applicant_data->save();
-         return view('profilepage');
+         return view('/profile');
     }
 
     public function apply()
     {
-        return view('borang');
+        return view('User.borang');
     }
 
     public function upload_doc() 

@@ -28,7 +28,12 @@ class HomeController extends Controller
 
     public function Admin()
     {
-        return view('dashboard_admin');
+        return view('Admin.dashboard_admin');
     }  
+
+    public function AdminProfile()
+    {
+        return view('Admin.ProfilepageAdmin');
+    } 
 
 }

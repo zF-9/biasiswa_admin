@@ -51,10 +51,6 @@
                             <div class="h5 mt-4">
                                 <i class="ni business_briefcase-24 mr-2"></i>{{ __('Solution Manager - Creative Tim Officer') }}
                             </div>
-                            <div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2"></i>
-                                {{  }}
-                            </div>
                             <div>
                                 <i class="ni education_hat mr-2"></i>{{ __('University of Computer Science') }}
                             </div>

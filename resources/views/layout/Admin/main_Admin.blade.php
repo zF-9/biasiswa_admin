@@ -12,7 +12,7 @@
   <!-- Page Wrapper -->
   <div id="wrapper">
 
-    @include('layout.sidebar_User')
+    @include('layout.Admin.sidebar_Admin')
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
