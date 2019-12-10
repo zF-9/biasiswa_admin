@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\applicant;
+use App\upDocuments;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 
 class ApplicantController extends Controller
 {
@@ -13,33 +15,62 @@ class ApplicantController extends Controller
         $applicant = new applicant; 
         
         $applicant->nama = request('nama');
-        $applicant->email = request('email');
         $applicant->nokp = request('nokp');
-        $applicant->jabatan = request('jabatan');
-        $applicant->jawatan = request('jawatan');
-        $applicant->bidang = request('bidang');
-        $applicant->universiti = request('universiti');
+        $applicant->trkhlahir = request('trkhlahir');
+        $applicant->umur = request('umur');
+        $applicant->tarafkahwin = request('tarafkahwin');
         $applicant->telno = request('telno');
-        $applicant->akademik = request('akademik');
+        $applicant->telnoPej = request('telnoPej');
+        $applicant->alamat = request('alamat');
+        $applicant->email = request('email');
+        $applicant->jabatan = request('jabatan');
+        $applicant->tarikhlantik = request('tarikhlantik');
+        $applicant->tberkhidmat = request('tberkhidmat');
+        $applicant->jawatan = request('jawatan');
         $applicant->Gred = request('Gred');
-        $applicant->pengajian = request('pengajian');
+        $applicant->TarafLantik = request('TarafLantik');
+        $applicant->GredPangku = request('GredPangku');
+        $applicant->Tsahjwtn = request('Tsahjwtn');
+        $applicant->JwtnPangku = request('JwtnPangku');
+        $applicant->trkhMula = request('trkhMula');
+        $applicant->trkhTamat = request('trkhTamat');
+        $applicant->Tahun1LPPT = request('Tahun1LPPT');
+        $applicant->Tahun2LPPT = request('Tahun2LPPT');
+        $applicant->Tahun3LPPT = request('Tahun3LPPT');
+
+        //cara add user_id static method punya way 
+        $applicant->user_id = auth()->user()->id;
+
         //ini aku x berapa sure
         //$applicant->perlantikan = request(DateTime::createFromFormat('m/d/Y',perlantikan););
-        $applicant->tarikhlantik = request('tarikhlantik');
         $applicant->save();
         //return view('/profile');
-        return Route::redirect('/profile');
+        return Redirect()->route('profile');
     }
 
     public function upload() {
         //$applicant_data = new applicant; 
         //auth()->user()->update($request->all());
+        $applicant_data = new upDocuments;
+
+        $applicant_data->startStudy = request('startStudy');
+        $applicant_data->EndStudy = request('EndStudy');
+        $applicant_data->AkademikLvl = request('AkademikLvl');
+        $applicant_data->AkademikInfo = request('AkademikInfo');
+        $applicant_data->AppliedKursus = request('AppliedKursus');
+        $applicant_data->Uni_name = request('Uni_name');
+        $applicant_data->tmpt_study = request('tmpt_study');
 
         $applicant_data->tawaran = request()->file('tawaran')->store('public/uploadocs');
         $applicant_data->surakuan = request()->file('surakuan')->store('public/uploadocs');
 
-         $applicant_data->save();
-         return view('/profile');
+        //cara add user_id static method punya way 
+        $applicant_data->applicant_id = auth()->user()->id;
+        //use the above as -> profile pic utk user to create stu lagi column 
+        //where users boleh upload pic
+
+        $applicant_data->save();
+        return Redirect()->route('profile');
     }
 
     public function apply()
@@ -49,7 +80,7 @@ class ApplicantController extends Controller
 
     public function upload_doc() 
     {
-        return view('muatnaik');
+        return view('User.muatnaik');
     }
 
     /**

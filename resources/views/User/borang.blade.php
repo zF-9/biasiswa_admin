@@ -86,7 +86,8 @@
                   <div class="form-group col-lg-12">
                     <div class="form-group">
                       <label>Alamat Rumah Semasa</label>
-                      <input name="alamat" type="text" class="form-control form-control-user" id="InputAlamat" placeholder="Alamat">
+                      <input name="alamat" type="text" class="form-control form-control-user" id="InputAlamat" placeholder="Alamat_1">
+                      <input name="alamat" type="text" class="form-control form-control-user" id="InputAlamat" placeholder="Alamat_2">
                     </div>
                   </div>
                 </div>
@@ -99,13 +100,6 @@
                     </div>
                   </div>
                 </div>
-
-                <div class="row">
-                  <div class="form-group col-lg-6">
-
-
-                  </div>
-                </div> <!-- copy this pattern row -->
 
                 <div class="row">
                   <div class="form-group col-lg-4">
@@ -150,23 +144,76 @@
                   </div>
                 </div>
 
-
-
+                <div class="row">
+                  <div class="form-group col-lg-6">
                     <div class="form-group">
-                      <label>Jabatan/Agensi</label>
-                      <input  type="text" class="form-control form-control-user" id="InputJabatan" placeholder="Nama Agensi/Jabatan">
+                      <label>Taraf Perlantikan</label>
+                      <input  name="TarafLantik" type="text" class="form-control form-control-user" id="InputJabatan" placeholder="Taraf Perlantikan">
                     </div>
-
+                  </div>
+                  <div class="form-group col-lg-6">
                     <div class="form-group">
-                      <input name="bidang" type="text" class="form-control form-control-user" id="InputBidang" placeholder="Bidang Dalam Jawatan">
+                      <label>Gred Dipangku</label>
+                      <input  name="GredPangku" type="text" class="form-control form-control-user" id="InputJabatan" placeholder="Gred Dipangku">
                     </div>
+                </div>
+              </div>
 
+                <div class="row">
+                  <div class="form-group col-lg-6">
                     <div class="form-group">
-                      <input name="pengajian" type="text" class="form-control form-control-user" id="Input" placeholder="Pengajian Yang Dipohon">
+                      <label>Tarikh Pengesahan Jawatan</label>
+                      <input  name="Tsahjwtn" type="text" class="form-control form-control-user date" id="InputTsahjwtn" placeholder="Tarikh Pengesahan Jawatan">
                     </div>
-
-
+                  </div>
+                  <div class="form-group col-lg-6">
                     <div class="form-group">
+                      <label>Jawatan Dipangku (*Jika Ada)</label>
+                      <input name="JwtnPangku" type="text" class="form-control form-control-user" id="InputJabatan" placeholder="Jawatan Dipangku">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="form-group col-lg-6">
+                    <div class="form-group">
+                      <label>Tarikh Mula</label>
+                      <input name="trkhMula" type="text" class="form-control form-control-user tlahir date" id="InputMula" maxlength="10" placeholder="Tarikh Mula: xx-xx-xxxx">
+                    </div> 
+                  </div> 
+                  <div class="form-group col-lg-6">
+                    <div class="form-group">
+                      <label>Tarikh Tamat</label>
+                      <input name="trkhTamat" type="text" class="form-control form-control-user tlahir date" id="InputTamat" maxlength="10" placeholder="Tarikh Tamat: xx-xx-xxxx">
+                    </div> 
+                  </div> 
+                </div>
+
+                <div class="row">
+                  <h4>Laporan Penilaian Prestasi Tahunan</h4>
+                </div>
+                  <div class="row">
+                  <div class="form-group col-lg-4">
+                    <div class="form-group">
+                      <div id="year_1"></div>
+                      <input name="Tahun1LPPT" type="text" class="form-control form-control-user" id="InputT1" placeholder="">
+                    </div>
+                  </div> 
+                  <div class="form-group col-lg-4">
+                    <div class="form-group">
+                      <label id="year_2"></label>
+                      <input name="Tahun2LPPT" type="text" class="form-control form-control-user" id="InputT2" placeholder="">
+                    </div>
+                  </div>                  
+                  <div class="form-group col-lg-4">
+                    <div class="form-group">
+                      <label id="year_3"></label>
+                      <input name="Tahun3LPPT" type="text" class="form-control form-control-user" id="InputT3" placeholder="">
+                    </div>
+                  </div>  
+                </div>
+
+                    <!--<div class="form-group">
                       <input name="universiti" type="text" class="form-control form-control-user" id="InputUni" placeholder="Nama Universiti">
                     </div>
                     <div class="form-group">
@@ -179,7 +226,18 @@
 
                     <div class="form-group">
                       <input name="tarikhsahjwtn" type="text" class="form-control form-control-user date" id="InputTsahjwtn" placeholder="Tarikh Pengesahan Jawatan">
-                    </div>
+                    </div>-->
+                    
+
+                    <!-- copy this pattern row -->
+                    <div class="row">
+                      <div class="form-group col-lg-6">
+
+
+                      </div>
+                    </div> 
+                    <!-- copy this pattern row -->
+
 
 
                     <!--<div class="form-group">

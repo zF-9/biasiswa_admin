@@ -36,4 +36,17 @@ class HomeController extends Controller
         return view('Admin.ProfilepageAdmin');
     } 
 
+    public function UploadPic() {
+        $id = Auth::User()->id;
+
+        $user = DB::table('users')->where('id', '=', $id)->first();
+        if ($user === null) {
+           // user doesn't exist
+            alert('user does not exit');
+        }   
+        else {
+            $user->profilepic = request()->file('profilepic')->store('public/uploadProfilePic');
+        }     
+    }
+
 }

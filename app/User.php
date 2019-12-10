@@ -36,4 +36,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function applicant() {
+        return $this->hasOne(applicant::class);
+        return $this->hasOne(upDocuments::class);
+        //re-evaluate syntax yang ini
+    }
 }

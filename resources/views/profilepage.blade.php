@@ -41,7 +41,9 @@
                                 </div>-->
                             </div>
                         </div>
-                        <div class="text-center">
+
+
+                        <div class="text-center" id="profile_permohonan">
                             <h3>
                                 {{ auth()->user()->name }}<span class="font-weight-light"></span>
                             </h3>
@@ -53,7 +55,19 @@
                             </div>
                             <div class="h5 mt-4">
                                 <i class="ni business_briefcase-24 mr-2"></i>
-                                {{  }}
+                                {{ $user_profile -> nokp }}
+                            </div>
+                            <div class="h5 mt-4">
+                                <i class="ni business_briefcase-24 mr-2"></i>
+                                {{ $user_profile -> umur }}
+                            </div>
+                            <div class="h5 mt-4">
+                                <i class="ni business_briefcase-24 mr-2"></i>
+                                {{ $user_profile -> telno }}
+                            </div>
+                            <div class="h5 mt-4">
+                                <i class="ni business_briefcase-24 mr-2"></i>
+                                {{ $user_profile -> telnoPej }}
                             </div>
                             <div>
                                 <i class="ni education_hat mr-2"></i>{{ __('University of Computer Science') }}

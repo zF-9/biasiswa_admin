@@ -1,0 +1,35 @@
+//MAKLUMAT PEGAWAI
+nama
+nokp
+trkhlahir
+umur
+tarafkahwin
+telno
+telnoPej
+alamat
+email
+jabatan
+tarikhlantik
+tberkhidmat
+jawatan
+Gred
+TarafLantik
+GredPangku
+Tsahjwtn
+JwtnPangku
+trkhMula
+trkhTamat
+Tahun1LPPT
+Tahun2LPPT
+Tahun3LPPT
+
+//MAKLUMAT PENGAJIAN
+startStudy
+EndStudy
+AkademikLvl
+AkademikInfo
+AppliedKursus
+Uni_name
+tmpt_study
+tawaran
+surakuan

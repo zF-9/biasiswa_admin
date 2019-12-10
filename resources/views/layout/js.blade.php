@@ -83,21 +83,25 @@
         }
       });
     });
+
   </script>
 
-    <script type="text/javascript">
+  <script type="text/javascript">
         var ageLantik = "";
-        $('#InputTlantik').datepicker({
-            onSelect: function(value, ui) {
+        $('.Tlantik').datepicker({
+            onSelect: function(ui) {
                 var today = new Date();
+                alert(today);
                 ageLantik = today.getFullYear() - ui.selectedYear;
-                alert(ageLantik);
+                $('.inputKhidmat').val(ageLantik);
+                //alert(ageLantik);
+                
             },
             autoclose: true,
             changeMonth: true,
             changeYear: true
         });
-    </script>
+  </script>
 
   <script type="text/javascript">
     $(function(){
@@ -128,6 +132,7 @@
     });
   </script>
 
+
     <script type="text/javascript">
        $(function () {
           $('#InputKp').keydown(function (e) {
@@ -145,6 +150,55 @@
           })
         });
     </script>
+
+    <script type="text/javascript">
+      /*window.onload = function() {
+        document.getElementById('uploadstatw').style.display = 'none';
+      };*/
+
+      function togglediv(id) {
+        var div = document.getElementById(id);
+        div.style.display = div.style.display == "none" ? "block" : "none";
+      } 
+    </script>
+
+    <script type="text/javascript">
+      $(document).ready(function () {
+
+      });
+    </script>
+
+    <script>
+      function consecutiveYear() {
+        var d = new Date();
+        var x = d.getFullYear();
+        var y = d.getFullYear() - 1;
+        var z = d.getFullYear() - 2;
+        document.getElementById("year_1").innerHTML = x;
+        document.getElementById("year_2").innerHTML = y;
+        document.getElementById("year_3").innerHTML = z;
+      }
+    </script>
+
+    <script>
+      function test2load() {
+        alert("oioi");
+      }
+    </script>
+
+    <script type="text/javascript">
+      if($profile == 0) {
+        document.getElementById("profile_permohonan").style.display = "none";
+      }
+      else {
+        document.getElementById("profile_permohonan").style.display = "block";
+      }
+   </script>
+
+  <body onload="consecutiveYear();">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 
   <!-- Bootstrap core JavaScript-->
   <script src="{{ asset ('vendor/jquery/jquery.min.js')}}"></script>
@@ -173,9 +227,6 @@
   <script src="{{ asset ('js/datatables.js')}}"></script>
 
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 
 
 

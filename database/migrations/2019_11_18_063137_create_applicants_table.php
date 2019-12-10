@@ -17,33 +17,45 @@ class CreateApplicantsTable extends Migration
         {
             $table->increments('id');
             $table->string('nama');
-            $table->string('email');
             $table->string('nokp');
+            $table->string('trkhlahir');
+            $table->string('umur');
+            $table->string('tarafkahwin');
+            $table->string('telno');
+            $table->string('telnoPej');
+            $table->string('alamat');
+            $table->string('email');
             $table->string('jabatan');
+            $table->string('tarikhlantik');
+            $table->string('tberkhidmat'); 
             $table->string('jawatan');
             $table->string('Gred');
-            $table->string('bidang');
-            $table->string('universiti');
-            $table->string('akademik');
-            $table->string('telno');
-            $table->string('tarikhlantik');
-            $table->string('pengajian');
-
-            //added lps permohonan
-            $table->string('tawaran')->nullable();
-            $table->string('surakuan')->nullable();
-            $table->string('Yuran')->nullable();
-            $table->string('Elaun')->nullable();
-            $table->string('Result')->nullable();
-            $table->string('TarikhStart')->nullable();
-            $table->string('TarikhEnd')->nullable();
+            $table->string('TarafLantik');
+            $table->string('GredPangku');
+            $table->string('Tsahjwtn');
+            $table->string('JwtnPangku')->nullable();
+            $table->string('trkhMula');
+            $table->string('trkhTamat');
+            $table->string('Tahun1LPPT');
+            $table->string('Tahun2LPPT');
+            $table->string('Tahun3LPPT');
+            //$table->integer('user_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('user_id')->index();
+            //$table->foreign('user_id')->references('id')->on('users');
+            $table->timestamps();
 
             //checklist
             //Nama - Jawatan - Gred - Nama Agensi - Mod Pengajian - Tarikh(Start/End) - Yuran 
             // Yuran - Elaun Sara Diri - Laporan Prestasi (later dlm reporting)
 
-            $table->timestamps();
+            //link applicant(ppermohonan) dari User punya table
+            //$table->unsignedBigInteger('user_id')->index();
         });
+
+        Schema::table('applicants', function(Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
+        }); 
+
     }
 
     /**
