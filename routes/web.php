@@ -26,8 +26,11 @@ Route::get('/', function () {
 Route::get('/datatable', function () {
     //return view('datatable');
     $penerima_biasiswa = DB::table('applicants')->get();
+    $data_student = DB::table('up_documents')->get();
 
-    return view('Admin.datatable', ['penerima_biasiswa' => $penerima_biasiswa]);    
+    return view('Admin.datatable', ['penerima_biasiswa' => $penerima_biasiswa, 'data_student' => $data_student]); 
+
+
 });
 
 Route::get('/login', function () { 
@@ -61,16 +64,6 @@ Route::get('/404', function() {
 });
 
 Route::get('/profile', function() {
-	//fetch semua yang ada dlm table 'applicants' 
-    //$penerima_biasiswa = DB::table('users')->get();
-    //to fetch specific row dri table (where -> arguement yg paling last tu yg kena query dari database ):
-    //$penerima_biasiswa = Applicant::find($applicant->id);
-    //$applicant = \App\applicant::get();
-    //return view('/profilepage', ['applicant' => $applicant]);   
-
-    //$user_profile = User::find('user_id', '=', 'id')->applicant;
-    //$link = auth()->user()->id();
-    //$user_profile = User::get();
     $id = Auth::User()->id;
 
     $user_profile = DB::table('applicants')->where('user_id', '=', $id)->first();
@@ -80,11 +73,6 @@ Route::get('/profile', function() {
         //return view('dashboard')->withStatus(__('User belum bikin lagi permohonan'));
         return Redirect::back()->withErrors(['User belum bikin lagi permohonan kali','']);
     }
-
-    //if($user_profile){
-        //dd($user_profile);
-    //    return view('/404');
-    //}
  
     else {
         return view('profilepage', ['user_profile' => $user_profile]);          
@@ -92,12 +80,16 @@ Route::get('/profile', function() {
         
 })->name('profile');
 
+Route::get('/cubatrytest', 'ApplicantController@testing');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 //route to validate if the user is admin or bukan 
 Route::get('/dashboard', 'HomeController@Admin')->middleware('AdminMiddleware');
+
+
 
 
 

@@ -46,6 +46,7 @@
                   <div class="chart-pie pt-4 pb-2">
                     <canvas id="myPieChart"></canvas>
                   </div>
+                  
                   <div class="mt-4 text-center small">
                     <span class="mr-2">
                       <i class="fas fa-circle text-primary"></i> Direct
@@ -57,6 +58,7 @@
                       <i class="fas fa-circle text-info"></i> Referral
                     </span>
                   </div>
+
                 </div>
               </div>
             </div>
@@ -100,9 +102,15 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
-                    </div>
+                      @foreach($data_pemohon as $key => $data)
+                      @if ($loop->first) <!-- logic: when it reaches last punya iteration baru dia display -->
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                        Bilangan Pemohon
+                      </div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $loop -> count }}</div>
+                      @endif
+                      @endforeach
+                      </div>
                     <div class="col-auto">
                       <i class="fas fa-calendar fa-2x text-gray-300"></i>
                     </div>

@@ -37,14 +37,17 @@
                   </tfoot>
                   <tbody>
 
+                    <!-- Best practice: parse data dari controller; loop both tables mcm di bwh ni -->
                     @foreach($penerima_biasiswa as $key => $data)
+                     @foreach($data_student as $key => $user_data)
                     <tr>
                       <td>{{ $data -> id }}</td>
                       <td>{{ $data -> nama }}</td>
                       <td>{{ $data -> email }}</td>
                       <td>{{ $data -> nokp }}</td>
-                      <td>{{ $data -> jabatan }}</td>
+                      <td>{{ $user_data -> AkademikLvl }}</td>
                     </tr>    
+                     @endforeach
                     @endforeach                
 
                   </tbody>
