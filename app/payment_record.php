@@ -8,7 +8,7 @@ class payment_record extends Model
 {
 	protected $fillable = [];
     //link dari applicant punya database
-    public function payment_INFO() {
+    public function payment() {
     	return $this->belongsTo(User::class);
     }
 }
