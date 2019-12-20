@@ -19,13 +19,12 @@ class CreatePaymentRecordsTable extends Migration
             $table->string('No_baucer');
             $table->string('Amount');
             $table->string('jenis_pymnt');
-
+            $table->unsignedBigInteger('payment_id')->index();
             $table->timestamps();
-            $table->unsignedBigInteger('payment_ID')->index();
         });
 
-        Scheme::table('payment_records', function (Blueprint $table) {
-            $table->foreign('payment_ID')->references('id')->on('users');
+        Schema::table('payment_records', function (Blueprint $table) {
+            $table->foreign('payment_id')->references('id')->on('users');
         });
     }
 

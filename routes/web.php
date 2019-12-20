@@ -8,8 +8,9 @@
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
-|
+|ü
 */
+//test test test
 use App\User;
 use App\applicant;
 use App\Http\Requests\UserRequest;
@@ -33,6 +34,32 @@ Route::get('/datatable', function () {
 
 });
 
+Route::get('/Userpayment_rec', function () {
+    $id = Auth::User()->id;
+
+    $user_record = DB::table('payment_records')->where('payment_id', '=', $id)->first();   
+    
+    if($user_record == null) {
+        return Redirect()->route('user-dashboard')->withErrors(['User belum kena approve lagi']);
+    }
+    else {
+        //route to record pembayaran
+        $payments = DB::table('payment_records')->get();
+
+        return view('User.userPymnt_record', ['payment' => $payments]);          
+    }
+  
+});
+
+Route::get('/payment_rec', function () {
+    //route to record pembayaran
+    $payments = DB::table('payment_records')->get();
+
+    return view('Admin.record_pmbyrn', ['payment' => $payments]);    
+});
+
+Route::post('update_pyrec', 'ApplicantController@update_payment');
+
 Route::get('/login', function () { 
     return view('login');
 });
@@ -48,11 +75,11 @@ Route::get('/muatnaik','ApplicantController@upload_doc');
 Route::post('/muatnaik', 'ApplicantController@upload');
 
 Route::get('/dashboard_admin', function() {
-	return view('dashboard_admin');
+	return view('dashboard_admin')->name('admin-dashboard');
 });
 
 Route::get('/dashboard_user', function() {
-    return view('User.dashboard_user');
+    return view('User.dashboard_user')->name('user-dashboard');
 });
 
 Route::get('/form', function() {
