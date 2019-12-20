@@ -37,7 +37,7 @@ Route::get('/Userpayment_rec', function () {
     $user_record = DB::table('payment_records')->where('payment_id', '=', $id)->first();   
     
     if($user_record == null) {
-        return Redirect->route('user-dashboard')->withErrors(['User belum kena approve lagi','']);
+        return Redirect()->route('user-dashboard')->withErrors(['User belum kena approve lagi']);
     }
     else {
         //route to record pembayaran
