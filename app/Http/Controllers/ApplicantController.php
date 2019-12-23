@@ -6,6 +6,7 @@ use App\applicant;
 use App\upDocuments;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Auth;
 
 class ApplicantController extends Controller
 {
@@ -97,6 +98,42 @@ class ApplicantController extends Controller
     public function upload_doc() 
     {
         return view('User.muatnaik');
+    }
+
+    //public function attend(Request $request) {
+    public function testing() {
+
+            /*$id_pelatih = request('p_id');
+            
+            list_name::find($id_pelatih)->update([
+                //example: '<NamaColumn dlm database>' => request('input_name');
+                //'jam'=>request('p_masa'),
+                //'attend'=>request('p_attend') ? true : false
+            ]);
+            return Redirect()->route('registration'); //re-route p mana2 route_name*/
+            $user = Auth::User();
+            dd($user);
+
+    }
+
+    public function update_avatar(Request $request){
+
+        $request->validate([
+            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $user = Auth::user();
+
+        $avatarName = $user->id.'_avatar'.time().'.'.request()->avatar->getClientOriginalExtension();
+
+        $request->avatar->storeAs('avatars',$avatarName);
+
+        $user->avatar = $avatarName;
+        $user->save();
+
+        return back()
+            ->with('success','You have successfully upload image.');
+
     }
 
     /**

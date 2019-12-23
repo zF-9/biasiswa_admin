@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,12 +24,15 @@ class HomeController extends Controller
      */
     public function index()
     {
+
         return view('home'); //originally:home
     }
 
     public function Admin()
     {
-        return view('Admin.dashboard_admin');
+        $data_pemohon = DB::table('applicants')->get();
+        //return view('Admin.dashboard_admin');
+        return view('Admin.dashboard_admin', ['data_pemohon' => $data_pemohon]); 
     }  
 
     public function AdminProfile()
