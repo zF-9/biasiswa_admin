@@ -36,41 +36,6 @@
                     </tr>
                   </tfoot>
                   <tbody>
-                  <form class="user" method="post" action="/update_pyrec" enctype="multipart/form-data" autocomplete="off">
-                  {{ csrf_field() }}
-                    <tr>
-                      <td>
-                        <div class="form-group">
-                          <!--<label>Tarikh Pembayaran</label>-->
-                          <input name="date" type="text" class="form-control form-control-user date" id="Inputdate" maxlength="14">
-                        </div>
-                      </td>
-                      <td>
-                        <div class="form-group">
-                          <!--<label>Nombor Baucer</label>-->
-                          <input name="baucer_no" type="text" class="form-control form-control-user" id="InputBaucer" maxlength="14">
-                        </div>                        
-                      </td>
-                      <td>
-                        <div class="form-group">
-                          <!--<label>Jumlah Pembayaran</label>-->
-                          <input name="jumlah" type="text" class="form-control form-control-user" id="InputSum" maxlength="14">
-                        </div>                          
-                      </td>
-                      <td>
-                        <div class="form-group">
-                          <!--<label>Jenis Pembayaran</label>-->
-                          <input name="perkara" type="text" class="form-control form-control-user" id="InputJenis" maxlength="14">
-                          <hr>
-                          <div class="text-right">
-                            <button type="submit" class="btn btn-success btn-user btn-block">{{ __('Save') }}
-                            </button>
-                          </div>
-                        </div>                          
-                      </td>
-                    </tr>
-                  </form>
-
                     @foreach($payment as $key => $data)
                     <tr>
                       <td>{{ $data -> date_pymnt }}</td>
@@ -79,7 +44,6 @@
                       <td>{{ $data -> Jenis_pymnt }}</td>
                     </tr>    
                     @endforeach                
-
                   </tbody>
                 </table>
               </div>

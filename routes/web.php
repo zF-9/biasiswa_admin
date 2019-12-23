@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -30,8 +30,10 @@ Route::get('/datatable', function () {
 
     return view('Admin.datatable', ['penerima_biasiswa' => $penerima_biasiswa]);    
 });
+//Route::get('/datatable', '<NewController>@MethodName');
 
 Route::get('/Userpayment_rec', function () {
+    //check org yg tgh login:now()
     $id = Auth::User()->id;
 
     $user_record = DB::table('payment_records')->where('payment_id', '=', $id)->first();   
@@ -47,6 +49,7 @@ Route::get('/Userpayment_rec', function () {
     }
   
 });
+//Route::get('/Userpayment_rec', '<NewController>@MethodName');
 
 Route::get('/payment_rec', function () {
     //route to record pembayaran
@@ -54,6 +57,7 @@ Route::get('/payment_rec', function () {
 
     return view('Admin.record_pmbyrn', ['payment' => $payments]);    
 });
+//Route::get('/payment_rec', '<NewController>@MethodName');
 
 Route::post('update_pyrec', 'ApplicantController@update_payment');
 
@@ -72,11 +76,11 @@ Route::get('/muatnaik','ApplicantController@upload_doc');
 Route::post('/muatnaik', 'ApplicantController@upload');
 
 Route::get('/dashboard_admin', function() {
-	return view('dashboard_admin')->name('admin-dashboard');
+	return view('dashboard_admin');
 });
 
 Route::get('/dashboard_user', function() {
-    return view('User.dashboard_user')->name('user-dashboard');
+    return view('User.dashboard_user');
 });
 
 Route::get('/form', function() {
@@ -118,6 +122,20 @@ Route::get('/profile', function() {
     }
         
 })->name('profile');
+//Route::get('/profile', '<NewController>@MethodName');
+
+Route::get('/admndboard', function() {
+    $penerima_biasiswa = DB::table('applicants')->get();
+
+    $deg_p = DB::table('applicants')->where('AkademikLvl', '=', 'Sarjana Muda')->get();
+    $mstr_p = DB::table('applicants')->where('AkademikLvl', '=', 'Sarjana')->get();
+    $phd_p = DB::table('applicants')->where('AkademikLvl', '=', 'Doktor Falsafah')->get();
+
+    //so, everything yg load d admin dashboard perlu kena parse di Method yg ini
+
+    return view('Admin.datatable', ['penerima_biasiswa' => $penerima_biasiswa, 'degree' => $deg_p, 'master' => $mstr_p, 'phd' => $phd_p]);    
+});
+
 
 Auth::routes();
 
@@ -125,6 +143,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //route to validate if the user is admin or bukan 
 Route::get('/dashboard', 'HomeController@Admin')->middleware('AdminMiddleware');
-
-
 

@@ -1,0 +1,77 @@
+[33mcommit 0fec00412ad4dfb0c3a4a8bc950618ee1ee016e6[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: zewl9F <kewlzewl.kz@gmail.com>
+Date:   Fri Dec 20 08:42:22 2019 +0800
+
+    fix (route) return query string; added new column for applicant
+
+[33mcommit 5cc83a8ee7cab5a2453244ac06e48223d2ce38b1[m
+Author: zewl9F <kewlzewl.kz@gmail.com>
+Date:   Thu Dec 19 16:50:49 2019 +0800
+
+    fix payment record model; added payment record for user; fix controller and routing
+
+[33mcommit 5013d577cfff128d31c8ce75d3101665d13edd66[m
+Author: kewl8zewl <kewlzewl.kz@gmail.com>
+Date:   Tue Dec 17 15:48:11 2019 +0800
+
+    edit test from windows
+
+[33mcommit bcc0412115763926dccd6426de4043d6c741b21a[m
+Author: zewl9F <kewlzewl.kz@gmail.com>
+Date:   Tue Dec 10 16:46:27 2019 +0800
+
+    added new table + model for payment record
+
+[33mcommit ecfaefebdb2020959e3483edba74ddab9985ab6a[m
+Author: zewl9F <kewlzewl.kz@gmail.com>
+Date:   Tue Dec 10 15:49:05 2019 +0800
+
+    added table relationship; added model + new migration; fix profile page; fix routing; added borang permohonan & upload document
+
+[33mcommit d70953809f821b06fe83414bef38b84dde860158[m
+Author: zewl9F <kewlzewl.kz@gmail.com>
+Date:   Thu Dec 5 16:38:28 2019 +0800
+
+    re-fixed user/admin dashboard middleware; added auto calculate javascript function
+
+[33mcommit c8d326925a5797ad9aad548bf2df0974b21e0284[m
+Author: zewl9F <kewlzewl.kz@gmail.com>
+Date:   Mon Dec 2 15:56:10 2019 +0800
+
+    added middleware for Admin/User; separate Admin/User dashboard
+
+[33mcommit 326d4bb1fe4f0e7067d0d2d4367d7a9ab4a88493[m
+Author: zewl9F <kewlzewl.kz@gmail.com>
+Date:   Sun Nov 24 21:02:12 2019 +0800
+
+    fix datatable blade templating; fix apply/upload page; current: make Req for upload doc page
+
+[33mcommit d88860671a2eae2837bc79ef3f14c25d1bc83d73[m
+Author: zewl9F <kewlzewl.kz@gmail.com>
+Date:   Fri Nov 22 10:15:59 2019 +0800
+
+    revamped 'Borang Permohonan'; reconstruct controller for applicant
+
+[33mcommit 1815162b6db4493a361268d31519b334f08df346[m
+Author: zewl9F <kewlzewl.kz@gmail.com>
+Date:   Thu Nov 21 15:05:02 2019 +0800
+
+    added new login/register page; profile page added; migration table renew
+
+[33mcommit d4917d479389d1458a772f4be50f552e9444f9bb[m
+Author: zewl9F <kewlzewl.kz@gmail.com>
+Date:   Tue Nov 12 11:32:57 2019 +0800
+
+    added .env file; experimental datatable functionality
+
+[33mcommit 776b70f8fad33f9b4fafa088f29df0063e2ec638[m
+Author: zewl9F <kewlzewl.kz@gmail.com>
+Date:   Mon Nov 11 12:27:15 2019 +0800
+
+    added jquery-v3.3.1//v.1.11.3 *(local); fixed drop down (popup) on cards and navbars
+
+[33mcommit 3e6d0287ce7511e1e7b4172c6f4d341cc382b3ea[m
+Author: zewl9F <kewlzewl.kz@gmail.com>
+Date:   Fri Nov 8 09:35:00 2019 +0800
+
+    admin panel:fresh

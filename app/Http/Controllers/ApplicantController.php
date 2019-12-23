@@ -85,6 +85,7 @@ class ApplicantController extends Controller
 
         //return balik pi record pembayaran: let the admin pindah page sendiri
         //return Redirect()->route('');
+        return Redirect::back();
 
     }    
 
