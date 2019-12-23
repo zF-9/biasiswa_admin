@@ -24,12 +24,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/datatable', function () {
+Route::get('/datatable_pemohon', function () {
     //return view('datatable');
-    $penerima_biasiswa = DB::table('applicants')->get();
+    $data_pemohon = DB::table('applicants')->get();
     $data_student = DB::table('up_documents')->get();
 
-    return view('Admin.datatable', ['penerima_biasiswa' => $penerima_biasiswa, 'data_student' => $data_student]); 
+    return view('Admin.table_pemohon', ['data_pemohon' => $data_pemohon, 'data_student' => $data_student]); 
+
+
+});
+//Route::get('/datatable', '<NewController>@MethodName');
+
+Route::get('/datatable_pelajar', function () {
+    //return view('datatable');
+    $data_pemohon = DB::table('applicants')->where('isApproved', '=', 1)->get();
+    $data_student = DB::table('up_documents')->get();
+
+    return view('Admin.table_pelajar', ['data_pemohon' => $data_pemohon, 'data_student' => $data_student]); 
 
 
 });

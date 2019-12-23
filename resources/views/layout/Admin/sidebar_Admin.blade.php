@@ -36,8 +36,8 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Datatable Components:</h6>
-            <a class="collapse-item" href="/datatable">Permohonan</a>
-            <a class="collapse-item" href="cards.html">Pengguna</a>
+            <a class="collapse-item" href="/datatable_pemohon">Permohonan</a>
+            <a class="collapse-item" href="/datatable_pelajar">Pelajar</a>
           </div>
         </div>
       </li>

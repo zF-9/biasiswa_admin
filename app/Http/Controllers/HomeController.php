@@ -32,7 +32,14 @@ class HomeController extends Controller
     {
         $data_pemohon = DB::table('applicants')->get();
         //return view('Admin.dashboard_admin');
-        return view('Admin.dashboard_admin', ['data_pemohon' => $data_pemohon]); 
+        //return view('Admin.dashboard_admin', ['data_pemohon' => $data_pemohon]); 
+        $deg_p = DB::table('up_documents')->where('AkademikLvl', '=', 'Sarjana Muda')->get();
+        $mstr_p = DB::table('up_documents')->where('AkademikLvl', '=', 'Sarjana')->get();
+        $phd_p = DB::table('up_documents')->where('AkademikLvl', '=', 'Doktor Falsafah')->get();
+    
+        //so, everything yg load d admin dashboard perlu kena parse di Method yg ini
+    
+        return view('Admin.dashboard_admin', ['data_pemohon' => $data_pemohon, 'degree' => $deg_p, 'master' => $mstr_p, 'phd' => $phd_p]);  
     }  
 
     public function AdminProfile()
