@@ -134,10 +134,3 @@ Route::get('/home', 'HomeController@index')->name('home');
 //route to validate if the user is admin or bukan 
 Route::get('/dashboard', 'HomeController@Admin')->middleware('AdminMiddleware');
 
-<<<<<<< HEAD
-=======
-
-
-
-
->>>>>>> staging
