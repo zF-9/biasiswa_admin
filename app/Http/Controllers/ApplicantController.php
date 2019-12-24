@@ -74,22 +74,6 @@ class ApplicantController extends Controller
         return Redirect()->route('profile');
     }
 
-    public function update_payment() {
-        $new_record = new payment_records;
-
-        $new_record-> date_pymnt = request('date');
-        $new_record-> No_baucer = request('baucer_no');
-        $new_record-> Amount = request('jumlah');
-        $new_record-> jenis_pymnt = request('perkara');
-
-        $new_record->save();
-
-        //return balik pi record pembayaran: let the admin pindah page sendiri
-        //return Redirect()->route('');
-        return Redirect::back();
-
-    }    
-
     public function apply()
     {
         return view('User.borang');
