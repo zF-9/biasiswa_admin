@@ -45,16 +45,16 @@
 
                         <div class="text-center" id="profile_permohonan">
                             <h3>
-                                {{ auth()->user()->name }}<span class="font-weight-light"></span>
+                                <span class="font-weight-light">Nama: </span>{{ auth()->user()->name }}
                             </h3>
                             <div class="h5 font-weight-300">
-                                <i class="ni location_pin mr-2"></i>{{ auth()->user()->email }}
+                                <i class="ni location_pin mr-2">Email: </i>{{ auth()->user()->email }}
                             </div>
                             <div class="h5 mt-4">
                                 <i class="ni business_briefcase-24 mr-2"></i>{{ __('Solution Manager - Creative Tim Officer') }}
                             </div>
                             <div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2"></i>
+                                <i class="ni business_briefcase-24 mr-2">No. Kad Pengenalan:</i>
                                 {{ $user_profile -> nokp }}
                             </div>
                             <div class="h5 mt-4">
@@ -125,10 +125,14 @@
                                 <i class="ni location_pin mr-2"></i>{{ auth()->user()->email }}
                             </div>
                             <div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2"></i>{{ __('Solution Manager - Creative Tim Officer') }}
+                                <i class="ni business_briefcase-24 mr-2"></i>{{
+                                $student_profile -> Uni_name
+                            }}
                             </div>
                             <div>
-                                <i class="ni education_hat mr-2"></i>{{ __('University of Computer Science') }}
+                                <i class="ni education_hat mr-2"></i>{{
+                                $student_profile -> AppliedKursus
+                            }}
                             </div>
                             <hr class="my-4" />
                             <p>A member since {{ auth()->user()->created_at }}</p>

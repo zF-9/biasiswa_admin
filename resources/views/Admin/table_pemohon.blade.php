@@ -24,6 +24,7 @@
                       <th>email</th> 
                       <th>No. Kad Pengenalan</th>
                       <th>Jabatan</th>
+                      <th></th>
                     </tr>
                   </thead>
                   <tfoot>
@@ -33,19 +34,24 @@
                       <th>email</th> 
                       <th>No. Kad Pengenalan</th>
                       <th>Jabatan</th>
+                      <th></th>
                     </tr>
                   </tfoot>
                   <tbody>
                     @foreach($data_pemohon as $key => $data)
-                     @foreach($data_student as $key => $user_data)
                     <tr>
-                      <td>{{ $data -> id }}</td>
+                      <td name="data_id">{{ $data -> id }}</td>
                       <td>{{ $data -> nama }}</td>
                       <td>{{ $data -> email }}</td>
                       <td>{{ $data -> nokp }}</td>
-                      <td>{{ $user_data -> AkademikLvl }}</td>
+                      <td>{{ $data -> AkademikLvl }}</td>
+                      <td>
+                        <form action="/cubatrytest">
+                        <button type="submit" class="btn btn-success mt-4">Approve</button>
+                        </form>
+                      </td>
                     </tr>    
-                     @endforeach
+                     
                     @endforeach                
 
                   </tbody>

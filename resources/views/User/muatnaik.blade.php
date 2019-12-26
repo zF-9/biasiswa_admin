@@ -40,6 +40,8 @@
                           <div class="form-group">
                             <label>Kelulusan Akademik</label>
                               <select name="AkademikLvl" class="form-group form-control-user" placeholder="Pilih la yang mana satu">
+                                <option>SPM</option>
+                                <option>Diploma</option>
                                 <option>Sarjana Muda</option>
                                 <option>Sarjana</option>
                                 <option>Doktor Falsafah</option>

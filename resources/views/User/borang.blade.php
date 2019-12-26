@@ -71,13 +71,13 @@
                   <div class="form-group col-lg-6">
                     <div class="form-group">
                       <label>No. Telefon Peribadi</label>
-                      <input name="telno" value="+60" type="text" class="form-control form-control-user" id="InputFon" placeholder="Nombor Telefon (Peribadi)">
+                      <input name="telno" maxlength="12" value="+60" type="text" class="form-control form-control-user" id="InputFon" placeholder="Nombor Telefon (Peribadi)">
                     </div>
                   </div>
                   <div class="form-group col-lg-6">
                     <div class="form-group">
                       <label>No. Telefon Pejabat</label>
-                      <input name="telnoPej" value="+60" type="text" class="form-control form-control-user" id="InputFonOff" placeholder="Nombor Telefon (Pejabat)">
+                      <input name="telnoPej" maxlength="12" value="+60" type="text" class="form-control form-control-user" id="InputFonOff" placeholder="Nombor Telefon (Pejabat)">
                     </div>
                   </div>
                 </div>
@@ -239,20 +239,24 @@
                         </select>
                     </div>
                   </div>
-                  <div class="form-group col-lg-4">
+                  </div> 
+
+                  <div class="row">
+                  <div class="form-group col-lg-6">
                     <div class="form-group">
                       <label>Tarikh Perlantikan</label>
                       <input name="tarikhlantik" type="text" class="form-control form-control-user Tlantik" id="InputTlantik" placeholder="Tarikh Perlantikan">
                       <input class="btn-user btn-block" type="button" id="cal_servicey" value="calculate tahun berkhidmat" />
                     </div>
                   </div>
-                  <div class="form-group col-lg-4">
+                  <div class="form-group col-lg-6">
                     <div class="form-group">
                       <label>Tahun Berkhidmat</label>
                       <input name="tberkhidmat" type="text" class="form-control form-control-user inputKhidmat" id="InputTkhidmat" placeholder="Tahun Berkhidmat">
                     </div>
                   </div>
-                </div> 
+                </div>
+                
 
 
                 <div class="row">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\applicant;
 use App\upDocuments;
 use Illuminate\Http\Request;
@@ -46,7 +47,7 @@ class ApplicantController extends Controller
         //$applicant->perlantikan = request(DateTime::createFromFormat('m/d/Y',perlantikan););
         $applicant->save();
         //return view('/profile');
-        return Redirect()->route('profile');
+        return Redirect()->route('pemohon');
     }
 
     public function upload() {
@@ -71,7 +72,7 @@ class ApplicantController extends Controller
         //where users boleh upload pic
 
         $applicant_data->save();
-        return Redirect()->route('profile');
+        return Redirect()->route('pelajar');
     }
 
     public function apply()
@@ -95,8 +96,9 @@ class ApplicantController extends Controller
                 //'attend'=>request('p_attend') ? true : false
             ]);
             return Redirect()->route('registration'); //re-route p mana2 route_name*/
-            $user = Auth::User();
-            dd($user);
+            $results = User::with('user')->get();
+            //$user = Auth::User();
+            dd($results);
 
     }
 

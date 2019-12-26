@@ -217,6 +217,7 @@
   <script src="{{ asset ('js/chart-area.js')}}"></script>
   <script src="{{ asset ('js/chart-pie.js')}}"></script>
   <script src="{{ asset ('js/chart-bar.js') }}"></script>
+  <script src="{{ asset ('js/chart-acceptance.js') }}"></script>
   <script src="{{ asset ('js/chart-bar-kursus.js') }}"></script>
 
 

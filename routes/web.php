@@ -13,6 +13,7 @@
 //test test test
 use App\User;
 use App\applicant;
+use App\upDocuments;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
 
@@ -30,11 +31,11 @@ Route::get('/register', function() {
 
 Route::get('/dashboard_admin', function() {
 	return view('dashboard_admin');
-});
+})->name('admin-dashboard');
 
 Route::get('/dashboard_user', function() {
     return view('User.dashboard_user');
-});
+})->name('user-dashboard');
 
 Route::get('/form', function() {
 	return view('form');
@@ -61,9 +62,11 @@ Route::get('/muatnaik','ApplicantController@upload_doc');
 Route::post('/muatnaik', 'ApplicantController@upload');
 
 Route::get('/Userpayment_rec', 'UserController@payment_history');
-Route::get('/profile', 'UserController@profilepage')->name('profile');
+Route::get('/profilePemohon', 'UserController@profilePemohon')->name('pemohon');
+Route::get('/profilePelajar', 'UserController@profilePelajar')->name('pelajar');
 
-Route::get('/cubatrytest', 'ApplicantController@testing');
+Route::get('/cubatrytest', 'AdminController@ApprovePelajar');
+Route::get('/upload_pic', 'UserController@UploadPic');
 
 Auth::routes();
 

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use DB;
+use App\User;
+use App\applicant;
+use App\upDocuments;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -24,17 +27,23 @@ class AdminController extends Controller
     }  
 
     public function dataPemohon() {
-        $data_pemohon = DB::table('applicants')->get();
-        $data_student = DB::table('up_documents')->get();
+        //$data_pemohon = DB::table('applicants')->get();
+        //$data_student = DB::table('up_documents')->get();
     
-        return view('Admin.table_pemohon', ['data_pemohon' => $data_pemohon, 'data_student' => $data_student]); 
+        $data_pemohon = DB::table('applicants')
+        ->join('up_documents', 'up_documents.applicant_id', 'applicants.user_id')
+        ->get();
+
+        return view('Admin.table_pemohon', ['data_pemohon' => $data_pemohon]); 
     }
 
     public function dataPelajar() {
-        $data_pemohon = DB::table('applicants')->where('isApproved', '=', 1)->get();
-        $data_student = DB::table('up_documents')->get();
+        $data_student = DB::table('applicants')->where('isApproved', '=', '1')
+        ->join('up_documents', 'up_documents.applicant_id', 'applicants.user_id')
+        ->get();
+        //$data_student = DB::table('up_documents')->get();
 
-        return view('Admin.table_pelajar', ['data_pemohon' => $data_pemohon, 'data_student' => $data_student]); 
+        return view('Admin.table_pelajar', ['data_student' => $data_student]); 
     }
 
     public function payment_record() {
@@ -54,6 +63,11 @@ class AdminController extends Controller
         $new_record->save();
 
         return Redirect::back();
-    }    
+    } 
+
+    public function ApprovePelajar() {
+        $var = request('data_id');
+        dd($var);
+    }   
 
 }

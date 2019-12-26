@@ -36,18 +36,15 @@
                     </tr>
                   </tfoot>
                   <tbody>
-                    @foreach($data_pemohon as $key => $data)
                      @foreach($data_student as $key => $user_data)
                     <tr>
-                      <td>{{ $data -> id }}</td>
-                      <td>{{ $data -> nama }}</td>
-                      <td>{{ $data -> email }}</td>
-                      <td>{{ $data -> nokp }}</td>
+                      <td>{{ $user_data -> id }}</td>
+                      <td>{{ $user_data -> nama }}</td>
+                      <td>{{ $user_data -> email }}</td>
+                      <td>{{ $user_data -> nokp }}</td>
                       <td>{{ $user_data -> AkademikLvl }}</td>
                     </tr>    
-                     @endforeach
-                    @endforeach                
-
+                     @endforeach                
                   </tbody>
                 </table>
               </div>

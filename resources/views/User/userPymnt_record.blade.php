@@ -1,5 +1,4 @@
-@extends('layout.Admin.main_Admin')
-
+@extends('layout.User.main_User')
 @section('content')
 
         <!-- Begin Page Content -->
@@ -7,7 +6,7 @@
 
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Rekod Pembayaran</h1>
-          <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
+          <p class="mb-4"></p>
 
             <!-- Pie Chart -->
             <div class="col-xl-4 col-lg-5">

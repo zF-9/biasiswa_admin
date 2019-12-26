@@ -76,16 +76,21 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Addons
+        Profile
       </div>
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="/profile">
+        <a class="nav-link" href="{{ route('pemohon') }}">
           <i class="fas fa-fw fa-table"></i>
-          <span>User Profile</span></a>
+          <span>Pemohon</span></a>
       </li>
 
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('pelajar') }}">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Pelajar</span></a>
+      </li>
       <!-- Nav Item - Pages Collapse Menu 
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
@@ -106,12 +111,12 @@
         </div>
       </li>-->
 
-      <!-- Nav Item - Charts 
+      <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="/Userpayment_rec">
           <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span></a>
-      </li>-->
+          <span>Rekod Pembayaran</span></a>
+      </li>
 
 
       <!-- Divider -->
