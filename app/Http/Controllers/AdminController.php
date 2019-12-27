@@ -65,9 +65,11 @@ class AdminController extends Controller
         return Redirect::back();
     } 
 
-    public function ApprovePelajar() {
-        $var = request('data_id');
-        dd($var);
+    public function ApprovePelajar(User $user) {
+        //$var = request('data_id');
+        //$user->name();
+        //$data_user = request('data_id');
+        dd($user);
     }   
 
 }

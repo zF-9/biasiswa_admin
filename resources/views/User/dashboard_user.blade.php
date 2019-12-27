@@ -16,7 +16,7 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+            <h1 class="h3 mb-0 text-gray-800">Laman Utama</h1>
             <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
           </div>
 
@@ -53,8 +53,9 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Pengumuman Penting</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">Dibuka Dari Bulan Januari 2020 - Julai 2020
+                      </div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -70,8 +71,8 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Earnings (Annual)</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Perhatian</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">Syarat-syarat Biasiswa Pegawai Kerajaan Negeri</div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -81,7 +82,7 @@
               </div>
             </div>
 
-            <!-- Earnings (Monthly) Card Example -->
+            <!-- Earnings (Monthly) Card Example 
             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-info shadow h-100 py-2">
                 <div class="card-body">
@@ -100,6 +101,25 @@
                       </div>
                     </div>
                     <div class="col-auto">
+                      <i class="fas fa-clipboard-list fa-2x text-gray-300">
+                        Syarat-syarat Perjanjian Biasiswa
+                      </i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>-->
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Perhatian</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">Syarat-syarat Perjanjian Biasiswa</div>
+                    </div>
+                    <div class="col-auto">
                       <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
                     </div>
                   </div>
@@ -107,14 +127,34 @@
               </div>
             </div>
 
-            <!-- Pending Requests Card Example -->
+            <!-- Pending Requests Card Example 
             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-warning shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Syarat-syarat</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                         Syarat-syarat Permohonan Biasiswa
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-comments fa-2x text-gray-300">
+                       
+                      </i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>-->
+
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Syarat-syarat</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">Syarat-syarat Permohonan Biasiswa</div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -123,7 +163,6 @@
                 </div>
               </div>
             </div>
-          </div>
 
           <!-- Content Row -->
 
@@ -131,11 +170,19 @@
               <!-- Approach -->
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Bahagian Biasiswa dan Latihan</h6>
                 </div>
                 <div class="card-body">
-                  <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create custom components and custom utility classes.</p>
-                  <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
+                  <p>Bahagian Biasiswa Dan Latihan Dalam Perkhidmatan merupakan bahagian yang bertanggungjawab untuk merancang dan mengurus pemberian biasiswa kepada pegawai-pegawai awam dan pembangunan eksekutif di Perkhidmatan Awam Negeri.</p>
+                  <p class="mb-0">
+                    Perkhidmatan Biasiswa Untuk Pegawai Kerajaan
+                    Menawarkan Biasiswa kepada Pegawai Kerajaan yang layak dalam program pendidikan akademik sama ada di dalam atau di luar Negara.
+                  </p>
+                  <hr>
+                  <p class="mb-0">
+                    Latihan Dalam Perkhidmatan
+                    Merancang dan menawarkan program Latihan Dalam Perkhidmatan berteraskan pembangunan dan pembelajaran berterusan bagi melengkapkan penjawat awam dengan pengetahuan, kemahiran dan ciri-ciri peribadi yang diperlukan untuk melaksanakan tugas dan tanggungjawab sesuatu jawatan.
+                  </p>
                 </div>
               </div>
           </div>
@@ -146,7 +193,7 @@
             <!-- Content Column -->
             <div class="col-lg-6 mb-4">
 
-              <!-- Project Card Example -->
+              <!-- Project Card Example 
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
@@ -173,9 +220,9 @@
                     <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                   <hr>
-                  change variable di <code>inline css</code> ja append value dari database directly.                  
+                  <!--change variable di <code>inline css</code> ja append value dari database directly.                 
                 </div>
-              </div>
+              </div>--> 
 
               <!-- Color System 
               <div class="row">
@@ -233,7 +280,7 @@
 
             <div class="col-lg-6 mb-4">
 
-              <!-- Bar Chart -->
+              <!-- Bar Chart 
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
@@ -245,7 +292,8 @@
                   <hr>
                   change variable dekat<code>/jschart-bar.js</code> javascript style ya'll.
                 </div>
-              </div>
+              </div>-->
+
               <!-- Illustrations 
               <div class="card shadow mb-4">
                 <div class="card-header py-3">

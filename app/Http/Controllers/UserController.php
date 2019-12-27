@@ -64,7 +64,7 @@ class UserController extends Controller
         //$profile_id = Applicant::find($id)->index();
 
         if($user_profile == null){
-            return view('User.dashboard_user')->withErrors(__('User belum bikin lagi permohonan'));
+            return view('User.dashboard_user')->withErrors(__('Permohon perlu mengisi borang maklumat pegawai'));
             //return Redirect::back()->withErrors(['User belum bikin lagi permohonan kali','']);
         }
     
@@ -81,7 +81,7 @@ class UserController extends Controller
         //$profile_id = Applicant::find($id)->index();
 
         if($student_profile == null){
-            return view('User.dashboard_user')->withErrors(__('Pemohon belum memuat naik dokumen'));
+            return view('User.dashboard_user')->withErrors(__('Pemohon perlu memuat naik dokumen'));
             //return Redirect::back()->withErrors(['User belum bikin lagi permohonan kali','']);
         }
     
