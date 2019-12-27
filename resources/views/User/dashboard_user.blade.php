@@ -180,7 +180,7 @@
                   </p>
                   <hr>
                   <p class="mb-0">
-                    Latihan Dalam Perkhidmatan
+                    Latihan Dalam Perkhidmatan di Jabatan Perkhidmatan Awam Negeri Sabah
                     Merancang dan menawarkan program Latihan Dalam Perkhidmatan berteraskan pembangunan dan pembelajaran berterusan bagi melengkapkan penjawat awam dengan pengetahuan, kemahiran dan ciri-ciri peribadi yang diperlukan untuk melaksanakan tugas dan tanggungjawab sesuatu jawatan.
                   </p>
                 </div>
