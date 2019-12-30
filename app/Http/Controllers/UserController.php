@@ -23,22 +23,6 @@ class UserController extends Controller
         }     
     }
 
-    public function payment_history() {
-        $id = Auth::User()->id;
-
-        $user_record = DB::table('payment_records')->where('payment_id', '=', $id)->first();   
-        
-        if($user_record == null) {
-            return Redirect()->route('user-dashboard')->withErrors(['Permohonan anda belum lagi diproses']);
-        }
-        else {
-            //route to record pembayaran
-            $payments = DB::table('payment_records')->get();
-
-            return view('User.userPymnt_record', ['payment' => $payments]);          
-        }        
-    }
-
     public function profilepage() {
         $id = Auth::User()->id;
 
@@ -88,6 +72,23 @@ class UserController extends Controller
         else {
             return view('User.ProfilePelajar', ['student_profile' => $student_profile]);          
         }    
+    }
+
+    public function payment_history() {
+        $id = Auth::User()->id;
+
+        $user_record = DB::table('payment_records')->where('payment_id', '=', $id)->first();
+        //dd($id);   
+        
+        if($user_record == null) {
+            return Redirect()->route('user-dashboard')->withErrors(['Permohonan anda belum lagi diproses']);
+        }
+        else {
+            //route to record pembayaran
+            $payments = DB::table('payment_records')->where('payment_id', '=', $id)->get();
+
+            return view('User.userPymnt_record', ['payment' => $payments]);          
+        }      
     }
 
 }

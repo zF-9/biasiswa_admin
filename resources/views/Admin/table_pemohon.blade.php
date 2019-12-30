@@ -40,7 +40,7 @@
                   <tbody>
                     @foreach($data_pemohon as $key => $data)
                     <tr>
-                      <td name="data_id">{{ $data -> id }}</td>
+                      <td>{{ $data -> user_id }}</td>
                       <td>{{ $data -> nama }}</td>
                       <td>{{ $data -> email }}</td>
                       <td>{{ $data -> nokp }}</td>
@@ -58,7 +58,7 @@
                             <form action="" method="post">
                               @csrf
                               @method('delete')                             
-                              <a class="dropdown-item" href="">{{ __('Edit') }}</a>
+                              <a class="dropdown-item" href="/payment_rec/{{ $data -> user_id }}">{{ __('Rekod') }}</a>
                                 <button type="button" class="dropdown-item" onclick="confirm('{{ __("Are you sure you want to delete this user?") }}') ? this.parentElement.submit() : ''">
                                   {{ __('Delete') }}
                                 </button>

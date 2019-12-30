@@ -77,7 +77,7 @@
                   <div class="form-group col-lg-6">
                     <div class="form-group">
                       <label>No. Telefon Pejabat</label>
-                      <input name="telnoPej" maxlength="12" value="+60" type="text" class="form-control form-control-user" id="InputFonOff" placeholder="Nombor Telefon (Pejabat)">
+                      <input name="telnoPej" maxlength="10" value="+60" type="text" class="form-control form-control-user" id="InputFonOff" placeholder="Nombor Telefon (Pejabat)">
                     </div>
                   </div>
                 </div>

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use DB;
+use Redirect;
 use App\User;
 use App\applicant;
 use App\upDocuments;
+use App\payment_record;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -30,7 +32,7 @@ class AdminController extends Controller
         //$data_pemohon = DB::table('applicants')->get();
         //$data_student = DB::table('up_documents')->get();
     
-        $data_pemohon = DB::table('applicants')
+        $data_pemohon = DB::table('applicants')->where('isApproved', '=', '0')
         ->join('up_documents', 'up_documents.applicant_id', 'applicants.user_id')
         ->get();
 
@@ -46,19 +48,22 @@ class AdminController extends Controller
         return view('Admin.table_pelajar', ['data_student' => $data_student]); 
     }
 
-    public function payment_record() {
-        $payments = DB::table('payment_records')->get();
+    public function payment_record($id) {
+        //dd($id);
+        $payments = DB::table('payment_records')->where('payment_id', '=', $id)->get();
 
-        return view('Admin.record_pmbyrn', ['payment' => $payments]);   
+        return view('Admin.record_pmbyrn', ['id' => $id, 'payment' => $payments]);   
     }
 
-    public function update_payment() {
-        $new_record = new payment_records;
+    public function update_payment($id) {
+        //dd($id);
+        $new_record = new payment_record;
 
         $new_record-> date_pymnt = request('date');
         $new_record-> No_baucer = request('baucer_no');
         $new_record-> Amount = request('jumlah');
         $new_record-> jenis_pymnt = request('perkara');
+        $new_record-> payment_id = $id;
 
         $new_record->save();
 

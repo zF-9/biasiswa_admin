@@ -52,8 +52,8 @@ Route::get('/profilepage', 'AdminController@AdminProfile')->middleware('ProfileM
 
 Route::get('/datatable_pemohon', 'AdminController@dataPemohon');
 Route::get('/datatable_pelajar', 'AdminController@dataPelajar');
-Route::get('/payment_rec', 'AdminController@payment_record');
-Route::post('update_pyrec', 'AdminController@update_payment');
+Route::get('/payment_rec/{id}', 'AdminController@payment_record');
+Route::post('/update_pyrec/{id}', 'AdminController@update_payment');
 
 Route::get('/permohonan_baru','ApplicantController@apply');
 Route::post('/permohonan_baru', 'ApplicantController@store');
@@ -65,12 +65,15 @@ Route::get('/Userpayment_rec', 'UserController@payment_history');
 Route::get('/profilePemohon', 'UserController@profilePemohon')->name('pemohon');
 Route::get('/profilePelajar', 'UserController@profilePelajar')->name('pelajar');
 
-Route::get('/cubatrytest/{id}', 'AdminController@ApprovePelajar');
+//Route::get('/cubatrytest/{id}', 'AdminController@ApprovePelajar');
 Route::get('/upload_pic', 'UserController@UploadPic');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/testing/{id}', ['uses' => 'AdminController@payment_record'] );
+//Route::post('/testing/{id}', ['as' => 'user','uses' => 'AdminController@payment_record'] );
 
 
 

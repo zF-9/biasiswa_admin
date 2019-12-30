@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\User;
 use App\applicant;
 use App\upDocuments;
@@ -77,12 +78,30 @@ class ApplicantController extends Controller
 
     public function apply()
     {
-        return view('User.borang');
+        $id = Auth::User()->id;
+        $user_profile = DB::table('applicants')->where('user_id', '=', $id)->first();
+
+        if($user_profile == null){
+            return view('User.borang');
+        }
+        else {
+            return view('User.dashboard_user')->withErrors(__('Permohonan Telah Dibuat, Sila Kemas Kini'));
+        }
+        
     }
 
     public function upload_doc() 
     {
-        return view('User.muatnaik');
+        $id = Auth::User()->id;
+        $user_profile = DB::table('up_documents')->where('applicant_id', '=', $id)->first();
+
+        if($user_profile == null){
+            return view('User.muatnaik');
+        } 
+        else {
+            return view('User.dashboard_user')->withErrors(__('Maklumat Telah Dimuat naik, Sila Kemas Kini'));           
+        }       
+        
     }
 
     //public function attend(Request $request) {
