@@ -4,7 +4,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Blank</title>
+  <title>E-Biasiswa | JPAN SABAH</title>
 
   <!--<script href="{{ asset('vendor/jquery/jquery-1.11.3.js') }}"></script>-->
   <script href="{{ asset('vendor/jquery/jquery-3.3.1.js') }}"></script>

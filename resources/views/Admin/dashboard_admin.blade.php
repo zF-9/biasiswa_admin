@@ -16,8 +16,8 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+            <h1 class="h3 mb-0 text-gray-800">Halaman Utama</h1>
+            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Muat Turun Laporan</a>
           </div>
 
           <div class="row">
@@ -57,15 +57,14 @@
 
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
+              <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
-
                     <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                         Bilangan Pemohon
                       </div>
-                      @foreach($data_pemohon as $key => $data)
+                      @foreach($phd as $key => $data)
                       @if ($loop->first) <!-- logic: when it reaches last punya iteration baru dia display -->
 
 
@@ -73,13 +72,10 @@
                       @endif
                       @endforeach
                     </div>
-
                     <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                     </div>
-
                   </div>
-
                 </div>
               </div>
             </div>
@@ -162,15 +158,15 @@
 
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-warning shadow h-100 py-2">
+              <div class="card border-left-info shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
 
                     <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                         Bilangan Pelajar
                       </div>
-                      @foreach($data_pemohon as $key => $data)
+                      @foreach($degree as $key => $data)
                       @if ($loop->first) <!-- logic: when it reaches last punya iteration baru dia display -->
 
 
@@ -459,7 +455,7 @@
               </div>-->
 
 
-            <!-- Approach -->
+            <!-- Approach
             <div class="card shadow mb-4">
               <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
@@ -468,7 +464,7 @@
                   <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create custom components and custom utility classes.</p>
                   <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
               </div>
-            </div>
+            </div> -->
 
               <!-- Color System 
               <div class="row">
