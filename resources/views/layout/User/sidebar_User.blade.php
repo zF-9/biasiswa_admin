@@ -15,7 +15,7 @@
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
         <a class="nav-link" href="/dashboard">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <i class="fas fa-fw fa-home"></i>
           <span>Halaman</span></a>
       </li>
 
@@ -29,13 +29,13 @@
 
       <li class="nav-item">
         <a class="nav-link" href="/permohonan_baru">
-          <i class="fas fa-fw fa-wrench"></i>
+          <i class="fas fa-fw fa-user"></i>
           <span>Maklumat Pegawai</span></a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link" href="/muatnaik">
-          <i class="fas fa-fw fa-cog"></i>
+          <i class="fas fa-fw fa-university"></i>
           <span>Maklumat Pengajian</span></a>
       </li>
 
@@ -82,13 +82,13 @@
       <!-- Nav Item - Tables -->
       <li class="nav-item">
         <a class="nav-link" href="{{ route('pemohon') }}">
-          <i class="fas fa-fw fa-table"></i>
+          <i class="fas fa-fw fa-user"></i>
           <span>Pemohon</span></a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link" href="{{ route('pelajar') }}">
-          <i class="fas fa-fw fa-table"></i>
+          <i class="fas fa-fw fa-graduation-cap"></i>
           <span>Pengajian</span></a>
       </li>
       <!-- Nav Item - Pages Collapse Menu 
@@ -114,7 +114,7 @@
       <!-- Nav Item - Charts -->
       <li class="nav-item">
         <a class="nav-link" href="/Userpayment_rec">
-          <i class="fas fa-fw fa-chart-area"></i>
+        <i class="fas fa-fw fa-credit-card"></i>
           <span>Rekod Pembayaran</span></a>
       </li>
 

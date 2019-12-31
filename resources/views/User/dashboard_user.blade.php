@@ -53,12 +53,12 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Pengumuman Penting</div>
+                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Pengumuman Penting</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">Dibuka Dari Bulan Januari 2020 - Julai 2020
                       </div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                      <i class="fas fa-check fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -75,7 +75,7 @@
                       <div class="h5 mb-0 font-weight-bold text-gray-800">Syarat-syarat Biasiswa Pegawai Kerajaan Negeri</div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                      <i class="fas fa-check fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -120,7 +120,7 @@
                       <div class="h5 mb-0 font-weight-bold text-gray-800">Syarat-syarat Perjanjian Biasiswa</div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                      <i class="fas fa-check fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -153,11 +153,11 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Syarat-syarat</div>
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Perhatian</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">Syarat-syarat Permohonan Biasiswa</div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-comments fa-2x text-gray-300"></i>
+                      <i class="fas fa-check fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
