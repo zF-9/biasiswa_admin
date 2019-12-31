@@ -9,7 +9,7 @@ class applicant extends Model
 	protected $fillable = [
 		'user_id', 'isApproved'
 	];
-    //link dari user punya database
+
     public function user() {
     	return $this->belongsTo(User::class);
     }

@@ -73,8 +73,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Route::get('/testing/{id}', ['uses' => 'AdminController@payment_record'] );
-//Route::post('/testing/{id}', ['as' => 'user','uses' => 'AdminController@payment_record'] );
 
 
 

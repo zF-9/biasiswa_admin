@@ -66,10 +66,6 @@ class AdminController extends Controller
     } 
 
     public function approve_pelajar($id) {
-        //dd($id);
-        $var = true;
-        
-        //applicant::find($user_id)->update([
         applicant::where('user_id', '=', $id)->update([
             'isApproved'=>true
         ]);

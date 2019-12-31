@@ -41,19 +41,14 @@ class ApplicantController extends Controller
         $applicant->Tahun2LPPT = request('Tahun2LPPT');
         $applicant->Tahun3LPPT = request('Tahun3LPPT');
 
-        //cara add user_id static method punya way 
         $applicant->user_id = auth()->user()->id;
 
-        //ini aku x berapa sure
-        //$applicant->perlantikan = request(DateTime::createFromFormat('m/d/Y',perlantikan););
         $applicant->save();
-        //return view('/profile');
+
         return Redirect()->route('pemohon');
     }
 
     public function upload() {
-        //$applicant_data = new applicant; 
-        //auth()->user()->update($request->all());
         $applicant_data = new upDocuments;
 
         $applicant_data->startStudy = request('startStudy');
@@ -67,10 +62,7 @@ class ApplicantController extends Controller
         $applicant_data->tawaran = request()->file('tawaran')->store('public/uploadocs');
         $applicant_data->surakuan = request()->file('surakuan')->store('public/uploadocs');
 
-        //cara add user_id static method punya way 
         $applicant_data->applicant_id = auth()->user()->id;
-        //use the above as -> profile pic utk user to create stu lagi column 
-        //where users boleh upload pic
 
         $applicant_data->save();
         return Redirect()->route('pelajar');
@@ -104,21 +96,10 @@ class ApplicantController extends Controller
         
     }
 
-    //public function attend(Request $request) {
     public function testing() {
-
-            /*$id_pelatih = request('p_id');
-            
-            list_name::find($id_pelatih)->update([
-                //example: '<NamaColumn dlm database>' => request('input_name');
-                //'jam'=>request('p_masa'),
-                //'attend'=>request('p_attend') ? true : false
-            ]);
-            return Redirect()->route('registration'); //re-route p mana2 route_name*/
-            $results = User::with('user')->get();
-            //$user = Auth::User();
-            dd($results);
-
+        $results = User::with('user')->get();
+           
+        dd($results);
     }
 
     public function update_avatar(Request $request){
