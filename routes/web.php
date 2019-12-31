@@ -55,6 +55,7 @@ Route::get('/datatable_pelajar', 'AdminController@dataPelajar')->name('table_pel
 Route::get('/payment_rec/{id}', 'AdminController@payment_record');
 Route::post('/update_pyrec/{id}', 'AdminController@update_payment');
 Route::get('/approve/{id}', 'AdminController@approve_pelajar');
+Route::get('/profilePemohon/{name}', 'AdminController@profile_view')->name('profile_viewer');
 
 Route::get('/permohonan_baru','ApplicantController@apply');
 Route::post('/permohonan_baru', 'ApplicantController@store');
@@ -63,7 +64,7 @@ Route::get('/muatnaik','ApplicantController@upload_doc');
 Route::post('/muatnaik', 'ApplicantController@upload');
 
 Route::get('/Userpayment_rec', 'UserController@payment_history');
-Route::get('/profilePemohon', 'UserController@profilePemohon')->name('pemohon');
+Route::get('/profilePemohon', 'UserController@profilePemohon')->name('profile_pemohon');
 Route::get('/profilePelajar', 'UserController@profilePelajar')->name('pelajar');
 
 //Route::get('/cubatrytest/{id}', 'AdminController@ApprovePelajar');

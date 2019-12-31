@@ -43,15 +43,12 @@ class AdminController extends Controller
         ->where('AppliedKursus', '=', 'Doktor Falsafah')
         ->join('up_documents', 'up_documents.applicant_id', 'applicants.user_id')
         ->get();
-
-
     
 
         return view('Admin.dashboard_admin', ['data_pemohon' => $data_pemohon, 'data_student' => $data_student, 'degree' => $deg_ap, 'degreeapp' => $deg_p, 'master' => $mstr_ap, 'masterapp' => $mstr_p, 'phd' => $phd_ap, 'phdapp' => $phd_p]);  
     } 
     
    
-
 
     public function dataPemohon() {
         $data_pemohon = DB::table('applicants')->where('isApproved', '=', '0')
@@ -96,6 +93,11 @@ class AdminController extends Controller
         ]);
 
         return Redirect()->route('table_pemohon');     
+    }
+
+    public function profile_view($name) {
+        $user_profile = applicant::where('nama', '=', $name)->first();
+        return view('Admin.profileViewer', ['user_profile' => $user_profile]);
     }
 
     public function ApprovePelajar(User $user) {

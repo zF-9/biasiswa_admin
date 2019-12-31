@@ -41,7 +41,7 @@
                      @foreach($data_student as $key => $user_data)
                     <tr>
                       <td>{{ $user_data -> id }}</td>
-                      <td>{{ $user_data -> nama }}</td>
+                      <td><a href="/profilePemohon/{{$user_data -> nama}}">{{ $user_data -> nama }}</a></td>
                       <td>{{ $user_data -> email }}</td>
                       <td>{{ $user_data -> nokp }}</td>
                       <td>{{ $user_data -> AkademikLvl }}</td>
