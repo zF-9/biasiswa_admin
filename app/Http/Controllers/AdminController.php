@@ -29,9 +29,6 @@ class AdminController extends Controller
     }  
 
     public function dataPemohon() {
-        //$data_pemohon = DB::table('applicants')->get();
-        //$data_student = DB::table('up_documents')->get();
-    
         $data_pemohon = DB::table('applicants')->where('isApproved', '=', '0')
         ->join('up_documents', 'up_documents.applicant_id', 'applicants.user_id')
         ->get();
@@ -43,7 +40,6 @@ class AdminController extends Controller
         $data_student = DB::table('applicants')->where('isApproved', '=', '1')
         ->join('up_documents', 'up_documents.applicant_id', 'applicants.user_id')
         ->get();
-        //$data_student = DB::table('up_documents')->get();
 
         return view('Admin.table_pelajar', ['data_student' => $data_student]); 
     }
@@ -56,7 +52,6 @@ class AdminController extends Controller
     }
 
     public function update_payment($id) {
-        //dd($id);
         $new_record = new payment_record;
 
         $new_record-> date_pymnt = request('date');
@@ -70,10 +65,19 @@ class AdminController extends Controller
         return Redirect::back();
     } 
 
+    public function approve_pelajar($id) {
+        //dd($id);
+        $var = true;
+        
+        //applicant::find($user_id)->update([
+        applicant::where('user_id', '=', $id)->update([
+            'isApproved'=>true
+        ]);
+
+        return Redirect()->route('table_pemohon');     
+    }
+
     public function ApprovePelajar(User $user) {
-        //$var = request('data_id');
-        //$user->name();
-        //$data_user = request('data_id');
         dd($user);
     }   
 
