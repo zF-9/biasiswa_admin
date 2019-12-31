@@ -6,7 +6,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Biasiswa V3.0 <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">E-Biasiswa <sup>2</sup></div>
       </a>
 
       <!-- Divider -->
@@ -15,8 +15,8 @@
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
         <a class="nav-link" href="/dashboard">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
+          <i class="fas fa-fw fa-home"></i>
+          <span>Halaman</span></a>
       </li>
 
       <!-- Divider -->
@@ -29,13 +29,13 @@
 
       <li class="nav-item">
         <a class="nav-link" href="/permohonan_baru">
-          <i class="fas fa-fw fa-wrench"></i>
+          <i class="fas fa-fw fa-user"></i>
           <span>Maklumat Pegawai</span></a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link" href="/muatnaik">
-          <i class="fas fa-fw fa-cog"></i>
+          <i class="fas fa-fw fa-university"></i>
           <span>Maklumat Pengajian</span></a>
       </li>
 
@@ -76,20 +76,20 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Profile
+        Maklumat Profil
       </div>
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
         <a class="nav-link" href="{{ route('pemohon') }}">
-          <i class="fas fa-fw fa-table"></i>
+          <i class="fas fa-fw fa-user"></i>
           <span>Pemohon</span></a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link" href="{{ route('pelajar') }}">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Pelajar</span></a>
+          <i class="fas fa-fw fa-graduation-cap"></i>
+          <span>Pengajian</span></a>
       </li>
       <!-- Nav Item - Pages Collapse Menu 
       <li class="nav-item">
@@ -114,7 +114,7 @@
       <!-- Nav Item - Charts -->
       <li class="nav-item">
         <a class="nav-link" href="/Userpayment_rec">
-          <i class="fas fa-fw fa-chart-area"></i>
+        <i class="fas fa-fw fa-credit-card"></i>
           <span>Rekod Pembayaran</span></a>
       </li>
 

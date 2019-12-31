@@ -17,7 +17,7 @@
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Laman Utama</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+           <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>-->
           </div>
 
           
@@ -53,12 +53,12 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Pengumuman Penting</div>
+                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Pengumuman Penting</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">Dibuka Dari Bulan Januari 2020 - Julai 2020
                       </div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                      <i class="fas fa-check fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -75,7 +75,7 @@
                       <div class="h5 mb-0 font-weight-bold text-gray-800">Syarat-syarat Biasiswa Pegawai Kerajaan Negeri</div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                      <i class="fas fa-check fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -120,7 +120,7 @@
                       <div class="h5 mb-0 font-weight-bold text-gray-800">Syarat-syarat Perjanjian Biasiswa</div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                      <i class="fas fa-check fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -153,11 +153,11 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Syarat-syarat</div>
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Perhatian</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">Syarat-syarat Permohonan Biasiswa</div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-comments fa-2x text-gray-300"></i>
+                      <i class="fas fa-check fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -180,7 +180,7 @@
                   </p>
                   <hr>
                   <p class="mb-0">
-                    Latihan Dalam Perkhidmatan
+                    Latihan Dalam Perkhidmatan di Jabatan Perkhidmatan Awam Negeri Sabah
                     Merancang dan menawarkan program Latihan Dalam Perkhidmatan berteraskan pembangunan dan pembelajaran berterusan bagi melengkapkan penjawat awam dengan pengetahuan, kemahiran dan ciri-ciri peribadi yang diperlukan untuk melaksanakan tugas dan tanggungjawab sesuatu jawatan.
                   </p>
                 </div>
