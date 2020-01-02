@@ -37,6 +37,10 @@ Route::get('/dashboard_user', function() {
     return view('User.dashboard_user');
 })->name('user-dashboard');
 
+Route::get('/upload', function() {
+	return view('User.upload_docs');
+});//->name('');
+
 Route::get('/form', function() {
 	return view('form');
 });
@@ -65,7 +69,7 @@ Route::post('/muatnaik', 'ApplicantController@upload');
 
 Route::get('/Userpayment_rec', 'UserController@payment_history');
 Route::get('/profilePemohon', 'UserController@profilePemohon')->name('profile_pemohon');
-Route::get('/profilePelajar', 'UserController@profilePelajar')->name('pelajar');
+Route::get('/profilePelajar', 'UserController@profilePelajar')->name('profile_pelajar');
 
 //Route::get('/cubatrytest/{id}', 'AdminController@ApprovePelajar');
 Route::get('/upload_pic', 'UserController@UploadPic');
@@ -73,6 +77,8 @@ Route::get('/upload_pic', 'UserController@UploadPic');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
 
 
 

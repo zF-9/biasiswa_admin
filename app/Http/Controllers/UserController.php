@@ -72,7 +72,7 @@ class UserController extends Controller
         $user_record = DB::table('payment_records')->where('payment_id', '=', $id)->first();  
         
         if($user_record == null) {
-            return Redirect()->route('user-dashboard')->withErrors(['Permohonan anda belum lagi diproses']);
+            return Redirect()->route('user-dashboard')->withErrors(['Tiada rekod pembayaran']);
         }
         else {
             $payments = DB::table('payment_records')->where('payment_id', '=', $id)->get();

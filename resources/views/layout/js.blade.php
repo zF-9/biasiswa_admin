@@ -57,33 +57,18 @@
     </script>
 
   <script type="text/javascript">
-    $(function(){
-      /*$('.tlahir').datepicker({
-        showOn: 'button',
-        showAnim: 'slideDown'
-      });*/
+    $('#Inputlahir').datepicker().on("changeDate", function(e) {
+        var currentDate = new Date();
+        var selectedDate = new Date(e.date.toString());
+        var age = currentDate.getFullYear() - selectedDate.getFullYear();
+        var m = currentDate.getMonth() - selectedDate.getMonth();
 
-      
-      $('#find_age').click(function(){
-        $('.error, .msg').text('');
-        var tlahir = $('.tlahir').val();
-        if(tlahir == ''){
-          $('.error').text('Select Tarikh Lahir!');
-        }else{
-          dobDate = new Date(tlahir);
-          nowDate = new Date();
-          
-          var diff = nowDate.getTime() - dobDate.getTime();
-          
-          var ageDate = new Date(diff); // miliseconds from epoch
-          var age = Math.abs(ageDate.getUTCFullYear() - 1970);
-          //alert(age);
-          
-          $('.inputumur').val(age); //+ ' Years'); //text
+        if (m < 0 || (m === 0 && currentDate.getDate() < selectedDate.getDate())) {
+            age--;
         }
-      });
-    });
 
+        $('.inputumur').val(age);
+    });
   </script>
 
   <script type="text/javascript">
@@ -103,35 +88,21 @@
         });
   </script>
 
-  <script type="text/javascript">
-    $(function(){
-      /*$('.tlahir').datepicker({
-        showOn: 'button',
-        showAnim: 'slideDown'
-      });*/
-      
-      $('#cal_servicey').click(function(){
-        $('.error, .msg').text('');
-        var Tlantik = $('.Tlantik').val();
-        if(Tlantik == ''){
-          $('.error').text('Select DOB!');
-        }else{
-          lantikDate = new Date(Tlantik);
-          skrgpnyDate = new Date();
-          
-          var diff_02 = skrgpnyDate.getTime() - lantikDate.getTime();
-          
-          var khidmatTahun = new Date(diff_02); // miliseconds from epoch
-          var tKhidmat = Math.abs(khidmatTahun.getUTCFullYear() - 1970);
-          //alert(khidmatTahun.getUTCFullYear());
-          //alert(tKhidmat);
-          
-          $('.inputKhidmat').val(tKhidmat); //+ ' Years'); //text
-        }
-      });
-    });
-  </script>
+    <script type="text/javascript">
+      $('#InputTlantik').datepicker().on("changeDate", function(e) {
+          var currentDate = new Date();
+          var selectedDate = new Date(e.date.toString());
+          var age = currentDate.getFullYear() - selectedDate.getFullYear();
+          var m = currentDate.getMonth() - selectedDate.getMonth();
 
+          if (m < 0 || (m === 0 && currentDate.getDate() < selectedDate.getDate())) {
+              age--;
+          }
+          //alert(age);
+
+          $('.inputKhidmat').val(age);
+      });
+    </script>
 
     <script type="text/javascript">
        $(function () {

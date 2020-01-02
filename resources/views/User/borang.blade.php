@@ -44,8 +44,7 @@
                   <div class="form-group col-lg-4">
                     <div class="form-group">
                       <label>Tarikh Lahir</label>
-                      <input name="trkhlahir" type="text" class="form-control form-control-user tlahir" id="Inputlahir" maxlength="10" placeholder="Tarikh Lahir: xx-xx-xxxx">
-                      <input class="btn-user btn-block" type="button" id="find_age" value="calculate umur" />
+                      <input name="trkhlahir" type="text" class="form-control form-control-user tlahir" id="Inputlahir" maxlength="10" placeholder="Tarikh Lahir: xx-xx-xxxx"/>
                     </div> 
                   </div>               
                   <div class="form-group col-lg-4">
@@ -246,7 +245,6 @@
                     <div class="form-group">
                       <label>Tarikh Perlantikan</label>
                       <input name="tarikhlantik" type="text" class="form-control form-control-user Tlantik" id="InputTlantik" placeholder="Tarikh Perlantikan">
-                      <input class="btn-user btn-block" type="button" id="cal_servicey" value="calculate tahun berkhidmat" />
                     </div>
                   </div>
                   <div class="form-group col-lg-6">
