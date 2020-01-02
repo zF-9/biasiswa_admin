@@ -48,10 +48,11 @@
                               </select>
                           </div>
                         </div>
+                        <i></i>
                         <div class="form-group col-lg-8">
                           <div class="form-group">
                             <label>*Sila Nyatakan Kelulusan Akademik</label>
-                            <input name="AkademikInfo" type="text" class="form-control form-control-user" id="InputAkademik" placeholder="akademik">
+                            <input name="AkademikInfo" type="text" class="form-control form-control-user" value="" id="InputAkademik" placeholder="akademik">
                           </div>
                         </div>
                       </div>
@@ -61,7 +62,7 @@
                         <div class="form-group col-lg-6">
                           <div class="form-group">
                             <label>Kursus Yang Dipohon</label>
-                              <select name="AppliedKursus" class="form-group form-control-user" placeholder="Pilih la yang mana satu">
+                              <select name="AppliedKursus" onchange="course_validation()" class="form-group form-control-user" id="course" placeholder="Pilih la yang mana satu">
                                 <option>Sarjana Muda</option>
                                 <option>Sarjana</option>
                                 <option>Doktor Falsafah</option>

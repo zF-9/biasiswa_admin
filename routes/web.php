@@ -71,7 +71,6 @@ Route::get('/Userpayment_rec', 'UserController@payment_history');
 Route::get('/profilePemohon', 'UserController@profilePemohon')->name('profile_pemohon');
 Route::get('/profilePelajar', 'UserController@profilePelajar')->name('profile_pelajar');
 
-//Route::get('/cubatrytest/{id}', 'AdminController@ApprovePelajar');
 Route::get('/upload_pic', 'UserController@UploadPic');
 
 Auth::routes();

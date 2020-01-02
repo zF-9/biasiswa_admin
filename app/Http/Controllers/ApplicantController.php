@@ -45,7 +45,7 @@ class ApplicantController extends Controller
 
         $applicant->save();
 
-        return Redirect()->route('pemohon');
+        return Redirect()->route('profile_pemohon');
     }
 
     public function upload() {
@@ -88,18 +88,17 @@ class ApplicantController extends Controller
         $user_profile = DB::table('up_documents')->where('applicant_id', '=', $id)->first();
 
         if($user_profile == null){
-            return view('User.muatnaik');
+            $user_data = DB::table('applicants')->where('user_id', '=', $id)
+            ->join('users', 'users.id', 'applicants.user_id')
+            ->first();
+
+            return view('User.muatnaik', ['user_data' => $user_data]);
+            //dd($user_data);
         } 
         else {
             return view('User.dashboard_user')->withErrors(__('Maklumat Telah Dimuat naik, Sila Kemas Kini'));           
         }       
         
-    }
-
-    public function testing() {
-        $results = User::with('user')->get();
-           
-        dd($results);
     }
 
     public function update_avatar(Request $request){
@@ -120,6 +119,12 @@ class ApplicantController extends Controller
         return back()
             ->with('success','You have successfully upload image.');
 
+    }
+
+    public function testing() {
+        $results = User::with('user')->get();
+           
+        dd($results);
     }
 
     /**

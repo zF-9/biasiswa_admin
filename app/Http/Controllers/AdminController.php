@@ -67,7 +67,6 @@ class AdminController extends Controller
     }
 
     public function payment_record($id) {
-        //dd($id);
         $payments = DB::table('payment_records')->where('payment_id', '=', $id)->get();
 
         return view('Admin.record_pmbyrn', ['id' => $id, 'payment' => $payments]);   

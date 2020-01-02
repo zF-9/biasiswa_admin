@@ -135,7 +135,9 @@
 
     <script type="text/javascript">
       $(document).ready(function () {
-
+        if('{{ $user_data->Gred }}' > 36 && '{{ $user_data -> umur}}' => 35 ) {
+            alert("indak boleh ini memohon");
+        }
       });
     </script>
 
@@ -152,8 +154,17 @@
     </script>
 
     <script>
-      function test2load() {
-        alert("oioi");
+      function course_validation() {
+        var x = document.getElementById("course").value;
+        //alert('{{ $user_data -> umur}}');
+        alert(x);
+
+        //if(x = 'Sarjana Muda'){
+          //if('{{ $user_data->Gred }}' < 29 && '{{ $user_data->umur }}' <= 30){
+            //alert('Anda tidak layak untuk memohon');
+          //}
+          //alert(x);          
+        //document.getElementById("demo").innerHTML = "You selected: " + x;
       }
     </script>
 
