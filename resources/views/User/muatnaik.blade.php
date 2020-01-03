@@ -1,6 +1,60 @@
 @extends('layout.User.main_User')
+<script type="text/javascript">
+  var gred = '{{ $user_data -> Gred }}';
+  var age = '{{ $user_data -> umur }}';
+  var service = '{{ $user_data -> tberkhidmat }}';
+  var appoint = '{{ $user_data -> TarafLantik }}';
 
+  //alert(appoint);
+
+  //window.onload=function() { 
+    if(appoint == "Kontrak") {
+      //document.getElementById("nama_u_form").disabled = true;
+      alert(appoint);
+    }
+    else {
+      //document.getElementById("Option_uni").disabled = true;
+      alert("ohohohoh");
+    }
+  //}
+  
+  function course_validation() {
+    var x = document.getElementById("course").value;
+
+    if (service >= 2) {
+      if(x == '0') {
+        alert("please select kursus pengajian");
+      }
+
+      else if(x == '1' && gred <= 36) {
+        if (age <= 35) {
+          alert("layak ba klu kau, bo55ku");
+        }
+      }
+        
+      else if(x == '2' && gred < 41){
+        if(age <= 45){
+          alert("Anda tidak layak untuk memohon");
+          document.getElementById("apply_btn").disabled = true;
+        }
+      }
+
+      else if(x == '3' && gred < 41){
+        if(age <= 45){
+          alert("Anda tidak layak untuk memohon");
+          document.getElementById("apply_btn").disabled = true;
+        }
+      }
+    }
+    //ini kalau tahun berkhidmat dia under < 2
+    else {
+      alert("Anda tidak layak untuk memohon");
+      document.getElementById("apply_btn").disabled = true;
+    }
+  }
+</script>
 @section('content')
+
 
 <div id="content-wrapper" class="d-flex flex-column">
 <div class="container-fluid mt--7">
@@ -63,28 +117,51 @@
                           <div class="form-group">
                             <label>Kursus Yang Dipohon</label>
                               <select name="AppliedKursus" onchange="course_validation()" class="form-group form-control-user" id="course" placeholder="Pilih la yang mana satu">
-                                <option>Sarjana Muda</option>
-                                <option>Sarjana</option>
-                                <option>Doktor Falsafah</option>
+                                <option value="0"></option>
+                                <option value="1">Sarjana Muda</option>
+                                <option value="2">Sarjana</option>
+                                <option value="3">Doktor Falsafah</option>
                               </select>
                           </div>
                         </div>
                         <div class="form-group col-lg-8">
+                          <div class="form-group" id="nama_u_form">
+                            <label>Universiti</label>
+                            <input name="Uni_name" type="text" class="form-control form-control-user" id="Input_uni" placeholder="Nama Universiti">
+                          </div>
+                        </div>   
+                        <div class="form-group col-lg-4">
                           <div class="form-group">
                             <label>Universiti</label>
-                            <input name="Uni_name" type="text" class="form-control form-control-user" id="Input" placeholder="Nama Universiti">
+                              <select name="Uni_name" onchange="" class="form-group form-control-user" id="Option_uni">
+                                <option value="0"></option>
+                                <option value="1">UTM Space</option>
+                                <option value="2">PLUMS</option>
+                              </select>
                           </div>
-                        </div>                  
+                        </div>                                        
                       </div>
 
                       <div class="row">
                         <div class="form-group col-lg-4">
                           <div class="form-group">
                             <label>Pilihan Negara/Negeri</label>
-                              <select name="tmpt_study" class="form-group form-control-user" placeholder="Pilih la yang mana satu">
+                              <select name="tmpt_study" class="form-group form-control-user" id="place_stdy" placeholder="Pilih la yang mana satu">
                                 <option>Luar Negara</option>
                                 <option>Luar Negeri Sabah</option>
                                 <option>Dalam Negeri Sabah</option>
+                              </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="form-group col-lg-4">
+                          <div class="form-group">
+                            <label>Mod Pengajian</label>
+                              <select name="study_mod" class="form-group form-control-user" id="stdy" placeholder="Pilih la yang mana satu">
+                                <option></option>
+                                <option>Sepenuh Masa</option>
+                                <option data-sync="2">Separuh Masa</option>
                               </select>
                           </div>
                         </div>
@@ -135,7 +212,7 @@
                   </div>                                                              
 
                   <div class="text-right ol-sm-12 col-md-12">
-                      <button type="submit" class="btn btn-success mt-4">Save</button>
+                      <button id="apply_btn" type="submit" class="btn btn-success mt-4">Mohon</button>
                   </div>
 
                @csrf

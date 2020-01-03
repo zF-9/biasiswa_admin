@@ -1,11 +1,19 @@
-<script type="text/javascript">
-   $(document).ready(function () {
+//$(document).ready(function () {
+//window.onload = function() {
+    /*   var gred = '{{ $user_data->Gred }}' ;
+       var age = '{{ $user_data->umur }}' ;
+   	function course_validation() {
 
-   	$('#course').onchange = function ()
-        
-    if('{{ $user_data->Gred }}' < 40 ) {
-		alert("indak boleh ini memohon}");
+       alert(gred);
+    }*/
+//}
+//});
+
+
+    function course_validation() {
+        var x = document.getElementById("course").value;
+        var gred = '{{ $user_data->Gred }}' ;
+        var age = '{{ $user_data->umur }}' ;
+        //alert('{{ $user_data -> umur}}');
+        alert(age);
     }
-
-   });
-</script>
