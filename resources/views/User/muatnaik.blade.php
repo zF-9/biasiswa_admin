@@ -1,58 +1,4 @@
 @extends('layout.User.main_User')
-<script type="text/javascript">
-  var gred = '{{ $user_data -> Gred }}';
-  var age = '{{ $user_data -> umur }}';
-  var service = '{{ $user_data -> tberkhidmat }}';
-  var appoint = '{{ $user_data -> TarafLantik }}';
-
-  //alert(appoint);
-
-  //window.onload=function() { 
-    if(appoint == "Kontrak") {
-      //document.getElementById("nama_u_form").disabled = true;
-      alert(appoint);
-    }
-    else {
-      //document.getElementById("Option_uni").disabled = true;
-      alert("ohohohoh");
-    }
-  //}
-  
-  function course_validation() {
-    var x = document.getElementById("course").value;
-
-    if (service >= 2) {
-      if(x == '0') {
-        alert("please select kursus pengajian");
-      }
-
-      else if(x == '1' && gred <= 36) {
-        if (age <= 35) {
-          alert("layak ba klu kau, bo55ku");
-        }
-      }
-        
-      else if(x == '2' && gred < 41){
-        if(age <= 45){
-          alert("Anda tidak layak untuk memohon");
-          document.getElementById("apply_btn").disabled = true;
-        }
-      }
-
-      else if(x == '3' && gred < 41){
-        if(age <= 45){
-          alert("Anda tidak layak untuk memohon");
-          document.getElementById("apply_btn").disabled = true;
-        }
-      }
-    }
-    //ini kalau tahun berkhidmat dia under < 2
-    else {
-      alert("Anda tidak layak untuk memohon");
-      document.getElementById("apply_btn").disabled = true;
-    }
-  }
-</script>
 @section('content')
 
 
@@ -124,13 +70,23 @@
                               </select>
                           </div>
                         </div>
-                        <div class="form-group col-lg-8">
-                          <div class="form-group" id="nama_u_form">
+                        <div class="form-group col-lg-4">
+                          <div class="form-group">
+                            <label>Mod Pengajian</label>
+                              <select name="study_mod" class="form-group form-control-user" id="stdy" placeholder="Pilih la yang mana satu" onchange="study_m0de()">
+                                <option></option>
+                                <option value="FT">Sepenuh Masa</option>
+                                <option value="PT">Separuh Masa</option>
+                              </select>
+                          </div>
+                        </div>
+                        <div class="form-group col-lg-8" id="nama_u_form">
+                          <div class="form-group">
                             <label>Universiti</label>
                             <input name="Uni_name" type="text" class="form-control form-control-user" id="Input_uni" placeholder="Nama Universiti">
                           </div>
                         </div>   
-                        <div class="form-group col-lg-4">
+                        <div class="form-group col-lg-4" id="option_u_form">
                           <div class="form-group">
                             <label>Universiti</label>
                               <select name="Uni_name" onchange="" class="form-group form-control-user" id="Option_uni">
@@ -147,24 +103,16 @@
                           <div class="form-group">
                             <label>Pilihan Negara/Negeri</label>
                               <select name="tmpt_study" class="form-group form-control-user" id="place_stdy" placeholder="Pilih la yang mana satu">
-                                <option>Luar Negara</option>
-                                <option>Luar Negeri Sabah</option>
-                                <option>Dalam Negeri Sabah</option>
+                                <option value="1">Luar Negara</option>
+                                <option value="2">Luar Negeri Sabah</option>
+                                <option value="3">Dalam Negeri Sabah</option>
                               </select>
                           </div>
                         </div>
                       </div>
+
                       <div class="row">
-                        <div class="form-group col-lg-4">
-                          <div class="form-group">
-                            <label>Mod Pengajian</label>
-                              <select name="study_mod" class="form-group form-control-user" id="stdy" placeholder="Pilih la yang mana satu">
-                                <option></option>
-                                <option>Sepenuh Masa</option>
-                                <option data-sync="2">Separuh Masa</option>
-                              </select>
-                          </div>
-                        </div>
+
                       </div>
 
                       <div class="row" style="align:center">
@@ -240,14 +188,92 @@
 </div>
 <!-- End of Upload Document -->
 
-
-
-
-
-
-  <!--<div class="col-xl-12 col-lg-12">
-    <div class="card shadow mb-8">-->
+<!--<div class="col-xl-12 col-lg-12">
+  <div class="card shadow mb-8">-->
     
   </div>
 </div>  
 @endsection
+
+<script type="text/javascript">
+  var gred = '{{ $user_data -> Gred }}';
+  var age = '{{ $user_data -> umur }}';
+  var service = '{{ $user_data -> tberkhidmat }}';
+  var appoint = '{{ $user_data -> TarafLantik }}';
+
+  function denied() {
+      alert("Anda tidak layak untuk memohon");
+      document.getElementById("apply_btn").disabled = true;
+  }
+
+  function study_m0de() {
+    var y = document.getElementById("stdy").value; 
+
+    if(y == "FT"){
+      document.getElementById("option_u_form").style.display = "none";
+      document.getElementById("nama_u_form").style.display = "block";
+    }
+    else {
+      document.getElementById("nama_u_form").style.display = "none"; 
+      document.getElementById("option_u_form").style.display = "block";
+    }
+  }
+
+  function check_perlantikan() {
+    if(appoint == "Kontrak") {
+      document.getElementById("nama_u_form").style.display = "none";
+      document.getElementById("stdy").value = "2"; 
+      document.getElementById("place_stdy").value = "3";
+      document.getElementById("stdy").disabled = true;
+      document.getElementById("place_stdy").disabled = true;
+    }
+    else if(appoint == "Tetap" || appoint == "Sementara" || appoint == "Percubaan") {
+      study_m0de();
+    }
+  }
+  
+  function course_validation() {
+    var x = document.getElementById("course").value;
+
+    if (service >= 2) {
+      if(x == '0') {
+        alert("please select kursus pengajian");
+      }
+
+      else if(x == '1') { //reverse initial condition: where else tu yg check validation yang lain
+        if (age <= 35  && gred <= 36) {
+          check_perlantikan();
+          document.getElementById("apply_btn").disabled = false;
+        }
+        else {
+          denied();
+        }
+      }
+        
+      else if(x == '2'){
+        if(age <= 45 && gred <= 41){
+          check_perlantikan();
+          document.getElementById("apply_btn").disabled = false;
+        }
+        else {
+          denied();
+        }
+      }
+
+      else if(x == '3'){
+        if(age <= 45 && gred <= 41){
+          check_perlantikan();
+          document.getElementById("apply_btn").disabled = false;
+        }
+        else {
+          denied();
+        }
+      }
+    }
+
+    //ini kalau tahun berkhidmat dia under < 2
+    else {
+      denied();
+    }
+  }
+</script>
