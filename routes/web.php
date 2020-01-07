@@ -51,6 +51,7 @@ Route::get('/404', function() {
 
 //route to validate if the user is admin or bukan 
 Route::get('/dashboard', 'AdminController@AdminDashboard')->middleware('AdminMiddleware');
+Route::get('/dashboard2', 'ChartDataController@Getthejumlah');
 //route to validate if the profile page takes Admin || User 
 Route::get('/profilepage', 'AdminController@AdminProfile')->middleware('ProfileMiddleware');
 
@@ -77,7 +78,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+Route::get('/test', 'ChartDataController@getthejumlah');
 
 
 

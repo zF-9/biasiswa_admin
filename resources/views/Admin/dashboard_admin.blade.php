@@ -1,4 +1,20 @@
 @extends('layout.Admin.main_Admin')
+<script>
+  var Jan = '{{ $Jan }}';
+  var Feb = '{{ $Feb}}';
+  var Mar = '{{ $Mar }}';
+  var Apr = '{{ $Apr }}';
+  var May = '{{ $May }}';
+  var Jun = '{{ $Jun }}';
+  var Jul = '{{ $Jul }}';
+  var Aug = '{{ $Aug }}';
+  var Sep = '{{ $Sep }}';
+  var Oct = '{{ $Oct }}';
+  var Nov = '{{ $Nov }}';
+  var Dis = '{{ $Dis }}';
+  var Stud = '{{ $data_student }}';
+  var Dip = '{{ $data_pemohon }}';
+</script>
 @section('content')
   <!-- Page Wrapper -->
   <div id="wrapper">
@@ -64,13 +80,11 @@
                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                         Bilangan Permohonan
                       </div>
-                      @foreach($data_pemohon as $key => $data)
-                      @if ($loop->first) <!-- logic: when it reaches last punya iteration baru dia display -->
+                      <!-- logic: when it reaches last punya iteration baru dia display -->
 
 
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $loop -> count }}</div>
-                      @endif
-                      @endforeach
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{$data_pemohon}}</div>
+             
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -166,13 +180,11 @@
                     <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                         Bilangan Pelajar
                       </div>
-                      @foreach($data_student as $key => $data)
-                      @if ($loop->first) <!-- logic: when it reaches last punya iteration baru dia display -->
+                     <!-- logic: when it reaches last punya iteration baru dia display -->
 
 
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $loop -> count }}</div>
-                      @endif
-                      @endforeach
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{$data_student}}</div>
+         
                     </div>
 
                     <div class="col-auto">
