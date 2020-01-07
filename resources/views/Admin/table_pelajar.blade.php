@@ -24,6 +24,7 @@
                       <th>email</th> 
                       <th>No. Kad Pengenalan</th>
                       <th>Jabatan</th>
+                      <th></th>
                     </tr>
                   </thead>
                   <tfoot>
@@ -33,16 +34,38 @@
                       <th>email</th> 
                       <th>No. Kad Pengenalan</th>
                       <th>Jabatan</th>
+                      <th></th>
                     </tr>
                   </tfoot>
                   <tbody>
                      @foreach($data_student as $key => $user_data)
                     <tr>
                       <td>{{ $user_data -> id }}</td>
-                      <td>{{ $user_data -> nama }}</td>
+                      <td><a href="/profilePemohon/{{$user_data -> nama}}">{{ $user_data -> nama }}</a></td>
                       <td>{{ $user_data -> email }}</td>
                       <td>{{ $user_data -> nokp }}</td>
                       <td>{{ $user_data -> AkademikLvl }}</td>
+                      <td>
+                          <div class="dropdown">
+                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v text-gray-900"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                            @if ($user_data->user_id != auth()->id())
+                            <form action="" method="post">
+                              @csrf
+                              @method('delete')                             
+                              <a class="dropdown-item" href="/payment_rec/{{ $user_data -> user_id }}">{{ __('Rekod') }}</a>
+                                <button type="button" class="dropdown-item" onclick="confirm('{{ __("Are you sure you want to delete this user?") }}') ? this.parentElement.submit() : ''">
+                                  {{ __('Delete') }}
+                                </button>
+                            </form>    
+                            @else
+                            <a class="dropdown-item" href="">{{ __('Edit') }}</a>
+                            @endif
+                            </div>
+                        </div>                        
+                      </td>
                     </tr>    
                      @endforeach                
                   </tbody>

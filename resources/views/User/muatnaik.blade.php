@@ -1,6 +1,6 @@
 @extends('layout.User.main_User')
-
 @section('content')
+
 
 <div id="content-wrapper" class="d-flex flex-column">
 <div class="container-fluid mt--7">
@@ -48,10 +48,11 @@
                               </select>
                           </div>
                         </div>
+                        <i></i>
                         <div class="form-group col-lg-8">
                           <div class="form-group">
                             <label>*Sila Nyatakan Kelulusan Akademik</label>
-                            <input name="AkademikInfo" type="text" class="form-control form-control-user" id="InputAkademik" placeholder="akademik">
+                            <input name="AkademikInfo" type="text" class="form-control form-control-user" value="" id="InputAkademik" placeholder="akademik">
                           </div>
                         </div>
                       </div>
@@ -61,32 +62,57 @@
                         <div class="form-group col-lg-6">
                           <div class="form-group">
                             <label>Kursus Yang Dipohon</label>
-                              <select name="AppliedKursus" class="form-group form-control-user" placeholder="Pilih la yang mana satu">
-                                <option>Sarjana Muda</option>
-                                <option>Sarjana</option>
-                                <option>Doktor Falsafah</option>
+                              <select name="AppliedKursus" onchange="course_validation()" class="form-group form-control-user" id="course" placeholder="Pilih la yang mana satu">
+                                <option value="0"></option>
+                                <option value="1">Sarjana Muda</option>
+                                <option id="mstr_sel" value="2">Sarjana</option>
+                                <option id="phd_sel" value="3">Doktor Falsafah</option>
                               </select>
                           </div>
                         </div>
-                        <div class="form-group col-lg-8">
+                        <div class="form-group col-lg-4">
+                          <div class="form-group">
+                            <label>Mod Pengajian</label>
+                              <select name="study_mod" class="form-group form-control-user" id="stdy" placeholder="Pilih la yang mana satu" onchange="study_m0de()">
+                                <option></option>
+                                <option value="FT">Sepenuh Masa</option>
+                                <option value="PT">Separuh Masa</option>
+                              </select>
+                          </div>
+                        </div>
+                        <div class="form-group col-lg-8" id="nama_u_form">
                           <div class="form-group">
                             <label>Universiti</label>
-                            <input name="Uni_name" type="text" class="form-control form-control-user" id="Input" placeholder="Nama Universiti">
+                            <input name="Uni_name" type="text" class="form-control form-control-user" id="Input_uni" placeholder="Nama Universiti">
                           </div>
-                        </div>                  
+                        </div>   
+                        <div class="form-group col-lg-4" id="option_u_form">
+                          <div class="form-group">
+                            <label>Universiti</label>
+                              <select name="Uni_name" onchange="" class="form-group form-control-user" id="Option_uni">
+                                <option value="0"></option>
+                                <option value="1">UTM Space</option>
+                                <option value="2">PLUMS</option>
+                              </select>
+                          </div>
+                        </div>                                        
                       </div>
 
                       <div class="row">
                         <div class="form-group col-lg-4">
                           <div class="form-group">
                             <label>Pilihan Negara/Negeri</label>
-                              <select name="tmpt_study" class="form-group form-control-user" placeholder="Pilih la yang mana satu">
-                                <option>Luar Negara</option>
-                                <option>Luar Negeri Sabah</option>
-                                <option>Dalam Negeri Sabah</option>
+                              <select name="tmpt_study" class="form-group form-control-user" id="place_stdy" placeholder="Pilih la yang mana satu">
+                                <option value="1">Luar Negara</option>
+                                <option value="2">Luar Negeri Sabah</option>
+                                <option value="3">Dalam Negeri Sabah</option>
                               </select>
                           </div>
                         </div>
+                      </div>
+
+                      <div class="row">
+
                       </div>
 
                       <div class="row" style="align:center">
@@ -134,7 +160,7 @@
                   </div>                                                              
 
                   <div class="text-right ol-sm-12 col-md-12">
-                      <button type="submit" class="btn btn-success mt-4">Save</button>
+                      <button id="apply_btn" type="submit" class="btn btn-success mt-4">Mohon</button>
                   </div>
 
                @csrf
@@ -162,14 +188,102 @@
 </div>
 <!-- End of Upload Document -->
 
-
-
-
-
-
-  <!--<div class="col-xl-12 col-lg-12">
-    <div class="card shadow mb-8">-->
+<!--<div class="col-xl-12 col-lg-12">
+  <div class="card shadow mb-8">-->
     
   </div>
 </div>  
 @endsection
+
+<script type="text/javascript">
+  var gred = '{{ $user_data -> Gred }}';
+  var age = '{{ $user_data -> umur }}';
+  var service = '{{ $user_data -> tberkhidmat }}';
+  var appoint = '{{ $user_data -> TarafLantik }}';
+
+  //alert(age);
+  //alert(gred);
+
+  function denied() {
+      alert("Anda tidak layak untuk memohon");
+      document.getElementById("apply_btn").disabled = true;
+  }
+
+  function granted() {
+    document.getElementById("apply_btn").disabled = false;
+  }
+
+  function study_m0de() {
+    document.getElementById("stdy").disabled = false;
+    var y = document.getElementById("stdy").value; 
+
+    if(y == "FT"){
+      document.getElementById("option_u_form").style.display = "none";
+      document.getElementById("nama_u_form").style.display = "block";
+    }
+    else {
+      document.getElementById("nama_u_form").style.display = "none"; 
+      document.getElementById("option_u_form").style.display = "block";
+    }
+  }
+
+  function check_perlantikan() {
+    if(appoint == "Kontrak") {
+      document.getElementById("nama_u_form").style.display = "none";
+      document.getElementById("stdy").value = "PT"; 
+      document.getElementById("place_stdy").value = "3";
+      document.getElementById("stdy").disabled = true;
+      document.getElementById("place_stdy").disabled = true;
+      document.getElementById("mstr_sel").disabled = true;
+      document.getElementById("phd_sel").disabled = true;
+    }
+    else if(appoint == "Tetap" || appoint == "Sementara" || appoint == "Percubaan") {
+      study_m0de();
+    }
+  }
+  
+  function course_validation() {
+    var x = document.getElementById("course").value;
+
+    if (service >= 2) {
+      if(x == '0') {
+        alert("please select kursus pengajian");
+      }
+
+      else if(x == '1') { //reverse initial condition: where else tu yg check validation yang lain
+        if (age <= 35  && gred <= 36) {
+          check_perlantikan();
+          granted(); 
+        }
+        else {
+          denied();         
+        }
+      }
+        
+      else if(x == '2'){
+        if(age <= 45 && gred <= 41){
+          check_perlantikan();
+          granted(); 
+        }
+        else { 
+          denied();         
+        }
+      }
+
+      else if(x == '3'){
+        if(age <= 45 && gred <= 41){
+          check_perlantikan();
+          granted();
+        }
+        else {
+          denied();
+        }
+      }
+    }
+
+    //ini kalau tahun berkhidmat dia under < 2
+    else {
+      denied();
+    }
+  }
+</script>

@@ -5,7 +5,7 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Rekod Pembayaran</h1>
+          <h1 class="h3 mb-2 text-gray-800">Muat Naik Dokumen/Keputusan</h1>
           <!--<p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>-->
 
           <!-- DataTales Example -->
@@ -18,20 +18,16 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <!--<th>Id</th>-->
-                      <th>Tarikh Pembayaran</th>
-                      <th>Nombor Baucer</th> 
-                      <th>Jumlah Dalam Ringgit Malaysia</th>
-                      <th>Jenis Pembayaran</th>
+                      <th>Tarikh Muatnaik</th>
+                      <th>Perkara</th> 
+                      <th>Submit</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
-                      <!--<th>Id</th>-->
-                      <th>Tarikh Pembayaran</th>
-                      <th>Nombor Baucer</th> 
-                      <th>Jumlah Dalam Ringgit malaysia</th>
-                      <th>Jenis Pembayaran</th>
+                      <th>Tarikh Muatnaik</th>
+                      <th>Perkara</th> 
+                      <th>Submit</th>
                     </tr>
                   </tfoot>
                   <tbody>
@@ -42,45 +38,28 @@
                       <td>
                         <div class="form-group">
                           <!--<label>Tarikh Pembayaran</label>-->
-                          <input name="date" type="text" class="form-control form-control-user date" id="Inputdate" maxlength="14">
-                          <input name="month" id="m" style="display: none">
-                          <input name="year" id="y" style="display: none">
+                          <input name="date_up" type="text" class="form-control form-control-user date" id="Inputdate" maxlength="14">
                         </div>
                       </td>
                       <td>
                         <div class="form-group">
                           <!--<label>Nombor Baucer</label>-->
-                          <input name="baucer_no" type="text" class="form-control form-control-user" id="InputBaucer" maxlength="14">
+                          <input name="thewhat" type="text" class="form-control form-control-user" id="InputBaucer" maxlength="14">
                         </div>                        
                       </td>
                       <td>
-                        <div class="form-group">
-                          <!--<label>Jumlah Pembayaran</label>-->
-                          <input name="jumlah" type="text" class="form-control form-control-user" value="" id="InputSum" maxlength="14">
-                        </div>                          
-                      </td>
-                      <td>
-                        <div class="form-group">
-                          <!--<label>Jenis Pembayaran</label>-->
-                          <input name="perkara" type="text" class="form-control form-control-user" id="InputJenis" maxlength="14">
+                        <div class="col-sm-9" style="padding-left: 0px;padding-top: 9px">
+                            <input name="dokumen" multiple="multiple" type="file" id="input-dokumen" class="custom-file-inputform-control form-control-alternative" placeholder="" value="" required="" autofocus="">
+                            <span style="margin-left: 15px; width: 480px;" class="custom-file-control"></span>
+                        </div>   
                           <hr>
                           <div class="text-right">
                             <button type="submit" class="btn btn-success btn-user btn-block">{{ __('Save') }}
                             </button>
-                          </div>
-                        </div>                          
+                          </div>                          
                       </td>
                       </form>
-                    </tr>
-
-                    @foreach($payment as $key => $data)
-                    <tr>
-                      <td>{{ $data -> date_pymnt }}</td>
-                      <td>{{ $data -> No_baucer }}</td>
-                      <td>{{ $data -> Amount }}</td>
-                      <td>{{ $data -> jenis_pymnt }}</td>
-                    </tr>    
-                    @endforeach                
+                    </tr>              
 
                   </tbody>
                 </table>

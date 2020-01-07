@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\User;
 use App\applicant;
 use App\upDocuments;
@@ -40,19 +41,14 @@ class ApplicantController extends Controller
         $applicant->Tahun2LPPT = request('Tahun2LPPT');
         $applicant->Tahun3LPPT = request('Tahun3LPPT');
 
-        //cara add user_id static method punya way 
         $applicant->user_id = auth()->user()->id;
 
-        //ini aku x berapa sure
-        //$applicant->perlantikan = request(DateTime::createFromFormat('m/d/Y',perlantikan););
         $applicant->save();
-        //return view('/profile');
-        return Redirect()->route('pemohon');
+
+        return Redirect()->route('profile_pemohon');
     }
 
     public function upload() {
-        //$applicant_data = new applicant; 
-        //auth()->user()->update($request->all());
         $applicant_data = new upDocuments;
 
         $applicant_data->startStudy = request('startStudy');
@@ -66,10 +62,7 @@ class ApplicantController extends Controller
         $applicant_data->tawaran = request()->file('tawaran')->store('public/uploadocs');
         $applicant_data->surakuan = request()->file('surakuan')->store('public/uploadocs');
 
-        //cara add user_id static method punya way 
         $applicant_data->applicant_id = auth()->user()->id;
-        //use the above as -> profile pic utk user to create stu lagi column 
-        //where users boleh upload pic
 
         $applicant_data->save();
         return Redirect()->route('pelajar');
@@ -77,29 +70,35 @@ class ApplicantController extends Controller
 
     public function apply()
     {
-        return view('User.borang');
+        $id = Auth::User()->id;
+        $user_profile = DB::table('applicants')->where('user_id', '=', $id)->first();
+
+        if($user_profile == null){
+            return view('User.borang');
+        }
+        else {
+            return view('User.dashboard_user')->withErrors(__('Permohonan Telah Dibuat, Sila Kemas Kini'));
+        }
+        
     }
 
     public function upload_doc() 
     {
-        return view('User.muatnaik');
-    }
+        $id = Auth::User()->id;
+        $user_profile = DB::table('up_documents')->where('applicant_id', '=', $id)->first();
 
-    //public function attend(Request $request) {
-    public function testing() {
+        if($user_profile == null){
+            $user_data = DB::table('applicants')->where('user_id', '=', $id)
+            ->join('users', 'users.id', 'applicants.user_id')
+            ->first();
 
-            /*$id_pelatih = request('p_id');
-            
-            list_name::find($id_pelatih)->update([
-                //example: '<NamaColumn dlm database>' => request('input_name');
-                //'jam'=>request('p_masa'),
-                //'attend'=>request('p_attend') ? true : false
-            ]);
-            return Redirect()->route('registration'); //re-route p mana2 route_name*/
-            $results = User::with('user')->get();
-            //$user = Auth::User();
-            dd($results);
-
+            return view('User.muatnaik', ['user_data' => $user_data]);
+            //dd($user_data);
+        } 
+        else {
+            return view('User.dashboard_user')->withErrors(__('Maklumat Telah Dimuat naik, Sila Kemas Kini'));           
+        }       
+        
     }
 
     public function update_avatar(Request $request){
@@ -120,6 +119,12 @@ class ApplicantController extends Controller
         return back()
             ->with('success','You have successfully upload image.');
 
+    }
+
+    public function testing() {
+        $results = User::with('user')->get();
+           
+        dd($results);
     }
 
     /**

@@ -6,7 +6,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Biasiswa V3.0 <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">E-Biasiswa <sup>2</sup></div>
       </a>
 
       <!-- Divider -->
@@ -15,8 +15,8 @@
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
         <a class="nav-link" href="/dashboard">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
+          <i class="fas fa-fw fa-home"></i>
+          <span>Halaman</span></a>
       </li>
 
       <!-- Divider -->
@@ -29,13 +29,13 @@
 
       <li class="nav-item">
         <a class="nav-link" href="/permohonan_baru">
-          <i class="fas fa-fw fa-wrench"></i>
+          <i class="fas fa-fw fa-user"></i>
           <span>Maklumat Pegawai</span></a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link" href="/muatnaik">
-          <i class="fas fa-fw fa-cog"></i>
+          <i class="fas fa-fw fa-university"></i>
           <span>Maklumat Pengajian</span></a>
       </li>
 
@@ -76,21 +76,47 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Profile
+        Maklumat Profil
       </div>
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('pemohon') }}">
-          <i class="fas fa-fw fa-table"></i>
+        <a class="nav-link" href="{{ route('profile_pemohon') }}">
+          <i class="fas fa-fw fa-user"></i>
           <span>Pemohon</span></a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('pelajar') }}">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Pelajar</span></a>
+        <a class="nav-link" href="{{ route('profile_pelajar') }}">
+          <i class="fas fa-fw fa-graduation-cap"></i>
+          <span>Pengajian</span></a>
       </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Nav Item - Charts -->
+      <li class="nav-item">
+        <a class="nav-link" href="/upload">
+        <i class="fas fa-fw fa-upload"></i>
+          <span>Muat Naik Dokumen</span></a>
+      </li>
+
+      <!-- Nav Item - Charts -->
+      <li class="nav-item">
+        <a class="nav-link" href="/Userpayment_rec">
+        <i class="fas fa-fw fa-credit-card"></i>
+          <span>Rekod Pembayaran</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
       <!-- Nav Item - Pages Collapse Menu 
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
@@ -111,21 +137,6 @@
         </div>
       </li>-->
 
-      <!-- Nav Item - Charts -->
-      <li class="nav-item">
-        <a class="nav-link" href="/Userpayment_rec">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Rekod Pembayaran</span></a>
-      </li>
-
-
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
-
-      <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-      </div>
 
     </ul>
     <!-- End of Sidebar -->

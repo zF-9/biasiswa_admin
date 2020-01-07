@@ -23,32 +23,14 @@ class UserController extends Controller
         }     
     }
 
-    public function payment_history() {
-        $id = Auth::User()->id;
-
-        $user_record = DB::table('payment_records')->where('payment_id', '=', $id)->first();   
-        
-        if($user_record == null) {
-            return Redirect()->route('user-dashboard')->withErrors(['Permohonan anda belum lagi diproses']);
-        }
-        else {
-            //route to record pembayaran
-            $payments = DB::table('payment_records')->get();
-
-            return view('User.userPymnt_record', ['payment' => $payments]);          
-        }        
-    }
-
     public function profilepage() {
         $id = Auth::User()->id;
 
         $user_profile = DB::table('applicants')->where('user_id', '=', $id)->first();
         $student_profile = DB::table('up_documents')->where('applicant_id', '=', $id)->first();
-        //$profile_id = Applicant::find($id)->index();
 
         if($user_profile == null){
             return view('User.dashboard_user')->withErrors(__('User belum bikin lagi permohonan'));
-            //return Redirect::back()->withErrors(['User belum bikin lagi permohonan kali','']);
         }
     
         else {
@@ -60,12 +42,9 @@ class UserController extends Controller
         $id = Auth::User()->id;
 
         $user_profile = DB::table('applicants')->where('user_id', '=', $id)->first();
-        //$student_profile = DB::table('up_documents')->where('applicant_id', '=', $id)->first();
-        //$profile_id = Applicant::find($id)->index();
 
         if($user_profile == null){
             return view('User.dashboard_user')->withErrors(__('Permohon perlu mengisi borang maklumat pegawai'));
-            //return Redirect::back()->withErrors(['User belum bikin lagi permohonan kali','']);
         }
     
         else {
@@ -76,18 +55,30 @@ class UserController extends Controller
     public function profilePelajar() {
         $id = Auth::User()->id;
 
-        //$user_profile = DB::table('applicants')->where('user_id', '=', $id)->first();
         $student_profile = DB::table('up_documents')->where('applicant_id', '=', $id)->first();
-        //$profile_id = Applicant::find($id)->index();
 
         if($student_profile == null){
             return view('User.dashboard_user')->withErrors(__('Pemohon perlu memuat naik dokumen'));
-            //return Redirect::back()->withErrors(['User belum bikin lagi permohonan kali','']);
         }
     
         else {
             return view('User.ProfilePelajar', ['student_profile' => $student_profile]);          
         }    
+    }
+
+    public function payment_history() {
+        $id = Auth::User()->id;
+
+        $user_record = DB::table('payment_records')->where('payment_id', '=', $id)->first();  
+        
+        if($user_record == null) {
+            return Redirect()->route('user-dashboard')->withErrors(['Tiada rekod pembayaran']);
+        }
+        else {
+            $payments = DB::table('payment_records')->where('payment_id', '=', $id)->get();
+
+            return view('User.userPymnt_record', ['payment' => $payments]);          
+        }      
     }
 
 }

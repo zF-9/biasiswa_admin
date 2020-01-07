@@ -40,25 +40,22 @@
                   <tbody>
                     @foreach($data_pemohon as $key => $data)
                     <tr>
-                      <td name="data_id">{{ $data -> id }}</td>
+                      <td>{{ $data -> user_id }}</td>
                       <td>{{ $data -> nama }}</td>
                       <td>{{ $data -> email }}</td>
                       <td>{{ $data -> nokp }}</td>
                       <td>{{ $data -> AkademikLvl }}</td>
                       <td>
-                        <!--<form action="/cubatrytest">
-                        <button type="submit" class="btn btn-success mt-4">Approve</button>
-                        </form>-->
                           <div class="dropdown">
-                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-ellipsis-v"></i>
+                            <a class="btn btn-sm btn-icon-only" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-users fa-2x text-gray-900"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                             @if ($data->user_id != auth()->id())
                             <form action="" method="post">
                               @csrf
                               @method('delete')                             
-                              <a class="dropdown-item" href="">{{ __('Edit') }}</a>
+                              <a class="dropdown-item" href="/approve/{{ $data -> user_id }}">{{ __('Approve') }}</a>
                                 <button type="button" class="dropdown-item" onclick="confirm('{{ __("Are you sure you want to delete this user?") }}') ? this.parentElement.submit() : ''">
                                   {{ __('Delete') }}
                                 </button>

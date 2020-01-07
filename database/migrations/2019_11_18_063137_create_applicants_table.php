@@ -39,7 +39,7 @@ class CreateApplicantsTable extends Migration
             $table->string('Tahun1LPPT');
             $table->string('Tahun2LPPT');
             $table->string('Tahun3LPPT');
-            $table->boolean('isApproved')->nullable();
+            $table->boolean('isApproved')->default(0);
             //$table->integer('user_id')->unsigned()->nullable();
             $table->unsignedBigInteger('user_id')->index();
             //$table->foreign('user_id')->references('id')->on('users');

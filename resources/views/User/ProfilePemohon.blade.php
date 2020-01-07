@@ -47,16 +47,26 @@
                             <h3>
                                 <span class="font-weight-light">Nama: </span>{{ auth()->user()->name }}
                             </h3>
-                            <div class="h5 font-weight-300">
-                                <i class="ni location_pin mr-2">Email: </i>{{ auth()->user()->email }}
-                            </div>
-                            <div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2"></i>{{ __('Solution Manager - Creative Tim Officer') }}
-                            </div>
                             <div class="h5 mt-4">
                                 <i class="ni business_briefcase-24 mr-2">No. Kad Pengenalan:</i>
                                 {{ $user_profile -> nokp }}
                             </div>
+                            <div class="h5 font-weight-300">
+                                <i class="ni location_pin mr-2">Email: </i>{{ auth()->user()->email }}
+                            </div>
+                            <div class="h5 mt-4">
+                                <i class="ni business_briefcase-24 mr-2"></i>{{ $user_profile -> jabatan}}
+                            </div>
+                            <div class="h5 mt-4">
+                                <i class="ni business_briefcase-24 mr-2"></i>{{ $user_profile -> jawatan}}
+                            </div>
+                            <div class="h5 mt-4">
+                                <i class="ni business_briefcase-24 mr-2"></i>{{ $user_profile -> Gred}}
+                            </div>
+                            <div class="h5 mt-4">
+                                <i class="ni business_briefcase-24 mr-2"></i>{{ $user_profile -> TarafLantik}}
+                            </div>
+
                             <div class="h5 mt-4">
                                 <i class="ni business_briefcase-24 mr-2"></i>
                                 {{ $user_profile -> umur }}

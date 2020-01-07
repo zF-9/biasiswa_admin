@@ -8,19 +8,19 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Terima Kasih Menggunakan Sistem Ini</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-body">Sila Tekan "Log Keluar" jika ingin teruskan.</div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
           <!--<a class="btn btn-primary" href="{{ route('logout') }}">Logout</a>-->
           <a href="{{ route('logout') }}" class="btn btn-primary" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
             <i class="ni ni-user-run"></i>
-            <span>{{ __('Logout') }}</span>
+            <span>{{ __('Log Keluar') }}</span>
           </a>  
           @auth()
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -56,34 +56,33 @@
         });
     </script>
 
+<script type="text/javascript">
+  $('#Inputdate').datepicker().on("changeDate", function(e) {
+      var selectedDate = new Date(e.date.toString());
+      var xMonth = selectedDate.getMonth();
+      var xYear = selectedDate.getFullYear();
+      //alert(xMonth);
+      //alert(xYear);
+
+      $('#m').val(xMonth);
+      $('#y').val(xYear);
+  });
+</script>
+
+
   <script type="text/javascript">
-    $(function(){
-      /*$('.tlahir').datepicker({
-        showOn: 'button',
-        showAnim: 'slideDown'
-      });*/
+    $('#Inputlahir').datepicker().on("changeDate", function(e) {
+        var currentDate = new Date();
+        var selectedDate = new Date(e.date.toString());
+        var age = currentDate.getFullYear() - selectedDate.getFullYear();
+        var m = currentDate.getMonth() - selectedDate.getMonth();
 
-      
-      $('#find_age').click(function(){
-        $('.error, .msg').text('');
-        var tlahir = $('.tlahir').val();
-        if(tlahir == ''){
-          $('.error').text('Select Tarikh Lahir!');
-        }else{
-          dobDate = new Date(tlahir);
-          nowDate = new Date();
-          
-          var diff = nowDate.getTime() - dobDate.getTime();
-          
-          var ageDate = new Date(diff); // miliseconds from epoch
-          var age = Math.abs(ageDate.getUTCFullYear() - 1970);
-          //alert(age);
-          
-          $('.inputumur').val(age); //+ ' Years'); //text
+        if (m < 0 || (m === 0 && currentDate.getDate() < selectedDate.getDate())) {
+            age--;
         }
-      });
-    });
 
+        $('.inputumur').val(age);
+    });
   </script>
 
   <script type="text/javascript">
@@ -103,35 +102,21 @@
         });
   </script>
 
-  <script type="text/javascript">
-    $(function(){
-      /*$('.tlahir').datepicker({
-        showOn: 'button',
-        showAnim: 'slideDown'
-      });*/
-      
-      $('#cal_servicey').click(function(){
-        $('.error, .msg').text('');
-        var Tlantik = $('.Tlantik').val();
-        if(Tlantik == ''){
-          $('.error').text('Select DOB!');
-        }else{
-          lantikDate = new Date(Tlantik);
-          skrgpnyDate = new Date();
-          
-          var diff_02 = skrgpnyDate.getTime() - lantikDate.getTime();
-          
-          var khidmatTahun = new Date(diff_02); // miliseconds from epoch
-          var tKhidmat = Math.abs(khidmatTahun.getUTCFullYear() - 1970);
-          //alert(khidmatTahun.getUTCFullYear());
-          //alert(tKhidmat);
-          
-          $('.inputKhidmat').val(tKhidmat); //+ ' Years'); //text
-        }
-      });
-    });
-  </script>
+    <script type="text/javascript">
+      $('#InputTlantik').datepicker().on("changeDate", function(e) {
+          var currentDate = new Date();
+          var selectedDate = new Date(e.date.toString());
+          var age = currentDate.getFullYear() - selectedDate.getFullYear();
+          var m = currentDate.getMonth() - selectedDate.getMonth();
 
+          if (m < 0 || (m === 0 && currentDate.getDate() < selectedDate.getDate())) {
+              age--;
+          }
+          //alert(age);
+
+          $('.inputKhidmat').val(age);
+      });
+    </script>
 
     <script type="text/javascript">
        $(function () {
@@ -163,9 +148,6 @@
     </script>
 
     <script type="text/javascript">
-      $(document).ready(function () {
-
-      });
     </script>
 
     <script>
@@ -180,19 +162,13 @@
       }
     </script>
 
-    <script>
-      function test2load() {
-        alert("oioi");
-      }
-    </script>
-
     <script type="text/javascript">
-      if($profile == 0) {
+      /*if($profile == 0) {
         document.getElementById("profile_permohonan").style.display = "none";
       }
       else {
         document.getElementById("profile_permohonan").style.display = "block";
-      }
+      }*/
    </script>
 
   <body onload="consecutiveYear();">

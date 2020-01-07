@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use DB;
+use Redirect;
 use App\User;
 use App\applicant;
 use App\upDocuments;
+use App\payment_record;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -17,14 +19,96 @@ class AdminController extends Controller
     
     public function AdminDashboard()
     {
-        $data_pemohon = DB::table('applicants')->get();
+        $data_pemohon = DB::table('applicants')->count();
 
-        $deg_p = DB::table('up_documents')->where('AkademikLvl', '=', 'Sarjana Muda')->get();
-        $mstr_p = DB::table('up_documents')->where('AkademikLvl', '=', 'Sarjana')->get();
-        $phd_p = DB::table('up_documents')->where('AkademikLvl', '=', 'Doktor Falsafah')->get();
+        $deg_ap = DB::table('up_documents')->where('AppliedKursus', '=', 'Sarjana Muda')->get();
+        $mstr_ap = DB::table('up_documents')->where('AppliedKursus', '=', 'Sarjana')->get();
+        $phd_ap = DB::table('up_documents')->where('AppliedKursus', '=', 'Doktor Falsafah')->get();
+
+        $data_student = DB::table('applicants')->where('isApproved', '=', '1')
+        ->join('up_documents', 'up_documents.applicant_id', 'applicants.user_id')
+        ->count();
+
+        $deg_p = DB::table('applicants')->where('isApproved', '=', '1')
+        ->where('AppliedKursus', '=', 'Sarjana Muda')
+        ->join('up_documents', 'up_documents.applicant_id', 'applicants.user_id')
+        ->get();
+
+        $mstr_p = DB::table('applicants')->where('isApproved', '=', '1')
+        ->where('AppliedKursus', '=', 'Sarjana')
+        ->join('up_documents', 'up_documents.applicant_id', 'applicants.user_id')
+        ->get();
+
+        $phd_p = DB::table('applicants')->where('isApproved', '=', '1')
+        ->where('AppliedKursus', '=', 'Doktor Falsafah')
+        ->join('up_documents', 'up_documents.applicant_id', 'applicants.user_id')
+        ->get();
+<<<<<<< HEAD
+
+        $Jan = DB::table('payment_records')
+        ->where('date_pymnt', '=', '1')
+        ->sum('Amount');
     
-        return view('Admin.dashboard_admin', ['data_pemohon' => $data_pemohon, 'degree' => $deg_p, 'master' => $mstr_p, 'phd' => $phd_p]);  
-    }  
+        $Feb = DB::table('payment_records')
+        ->where('date_pymnt', '=', '2')
+        ->sum('Amount');
+
+        $Mar = DB::table('payment_records')
+        ->where('date_pymnt', '=', '3')
+        ->sum('Amount');
+
+        $Apr = DB::table('payment_records')
+        ->where('date_pymnt', '=', '4')
+        ->sum('Amount');
+
+        $May = DB::table('payment_records')
+        ->where('date_pymnt', '=', '5')
+        ->sum('Amount');
+
+        $Jun = DB::table('payment_records')
+        ->where('date_pymnt', '=', '6')
+        ->sum('Amount');
+
+        $Jul = DB::table('payment_records')
+        ->where('date_pymnt', '=', '7')
+        ->sum('Amount');
+        
+        $Aug = DB::table('payment_records')
+        ->where('date_pymnt', '=', '8')
+        ->sum('Amount');
+    
+        $Sep = DB::table('payment_records')
+        ->where('date_pymnt', '=', '9')
+        ->sum('Amount');
+
+        $Oct = DB::table('payment_records')
+        ->where('date_pymnt', '=', '10')
+        ->sum('Amount');
+
+        $Nov = DB::table('payment_records')
+        ->where('date_pymnt', '=', '11')
+        ->sum('Amount');
+
+        $Dis = DB::table('payment_records')
+        ->where('date_pymnt', '=', '12')
+        ->sum('Amount');
+
+
+        return view('Admin.dashboard_admin', ['Jan' => $Jan, 'Feb' => $Feb, 'Mar' => $Mar, 'Apr' => $Apr, 'May' => $May, 'Jun' => $Jun,
+         'Jul' => $Jul, 'Aug' => $Aug, 'Sep' => $Sep, 'Oct' => $Oct, 'Nov' => $Nov, 'Dis' => $Dis, 'data_pemohon' => $data_pemohon,
+          'data_student' => $data_student, 'degree' => $deg_ap, 'degreeapp' => $deg_p, 'master' => $mstr_ap, 'masterapp' => $mstr_p, 'phd' => $phd_ap, 'phdapp' => $phd_p]);  
+=======
+
+        $count_36 = applicant::where('Gred', '=', '36')->count();
+        $count_41 = applicant::where('Gred', '=', '41')->count();
+        $count_44 = applicant::where('Gred', '=', '44')->count();
+        $count_48 = applicant::where('Gred', '=', '48')->count();
+
+        $payment = DB::table('payment_records')->get(['date_pymnt', 'Amount']);
+
+        return view('Admin.dashboard_admin', ['data_pemohon' => $data_pemohon, 'data_student' => $data_student, 'degree' => $deg_ap, 'degreeapp' => $deg_p, 'master' => $mstr_ap, 'masterapp' => $mstr_p, 'phd' => $phd_ap, 'phdapp' => $phd_p, 'c36' => $count_36, 'c41' => $count_41, 'c44' => $count_44, 'c48' => $count_48, 'pembayaran' => $payment]); 
+>>>>>>> da33d8354b1e4fcf74b579c055834dbfed1a3626
+    } 
 
     public function dataPemohon() {
         //$data_pemohon = DB::table('applicants')->get();
