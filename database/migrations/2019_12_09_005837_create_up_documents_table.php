@@ -23,7 +23,9 @@ class CreateUpDocumentsTable extends Migration
             $table->string('AkademikLvl');
             $table->string('AkademikInfo');
             $table->string('AppliedKursus');
+            $table->string('mod_pengajian');
             $table->string('Uni_name');
+            $table->string('Uni_namePT');
             $table->string('tmpt_study');
 
             $table->string('tawaran')->nullable();

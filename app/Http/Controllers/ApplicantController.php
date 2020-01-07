@@ -56,16 +56,19 @@ class ApplicantController extends Controller
         $applicant_data->AkademikLvl = request('AkademikLvl');
         $applicant_data->AkademikInfo = request('AkademikInfo');
         $applicant_data->AppliedKursus = request('AppliedKursus');
-        $applicant_data->Uni_name = request('Uni_name');
+        $applicant_data->mod_pengajian = request('study_mod');
         $applicant_data->tmpt_study = request('tmpt_study');
-
+        $applicant_data->Uni_name = request('Uni_name');
+        $applicant_data->Uni_namePT = request('Uni_named');
+                
         $applicant_data->tawaran = request()->file('tawaran')->store('public/uploadocs');
         $applicant_data->surakuan = request()->file('surakuan')->store('public/uploadocs');
 
         $applicant_data->applicant_id = auth()->user()->id;
 
         $applicant_data->save();
-        return Redirect()->route('pelajar');
+        //dd($applicant_data);
+        return Redirect()->route('profile_pelajar');
     }
 
     public function apply()
