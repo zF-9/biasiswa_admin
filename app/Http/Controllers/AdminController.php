@@ -19,7 +19,9 @@ class AdminController extends Controller
     
     public function AdminDashboard()
     {
-        $data_pemohon = DB::table('applicants')->count();
+        $data_pemohon = DB::table('applicants')
+        ->join('up_documents', 'up_documents.applicant_id', 'applicants.user_id')
+        ->count();
 
         $deg_ap = DB::table('up_documents')->where('AppliedKursus', '=', 'Sarjana Muda')->get();
         $mstr_ap = DB::table('up_documents')->where('AppliedKursus', '=', 'Sarjana')->get();
@@ -45,51 +47,51 @@ class AdminController extends Controller
         ->get();
 
         $Jan = DB::table('payment_records')
-        ->where('date_pymnt', '=', '1')
+        ->where('bulan', '=', '0')
         ->sum('Amount');
     
         $Feb = DB::table('payment_records')
-        ->where('date_pymnt', '=', '2')
+        ->where('bulan', '=', '1')
         ->sum('Amount');
 
         $Mar = DB::table('payment_records')
-        ->where('date_pymnt', '=', '3')
+        ->where('bulan', '=', '2')
         ->sum('Amount');
 
         $Apr = DB::table('payment_records')
-        ->where('date_pymnt', '=', '4')
+        ->where('bulan', '=', '3')
         ->sum('Amount');
 
         $May = DB::table('payment_records')
-        ->where('date_pymnt', '=', '5')
+        ->where('bulan', '=', '4')
         ->sum('Amount');
 
         $Jun = DB::table('payment_records')
-        ->where('date_pymnt', '=', '6')
+        ->where('bulan', '=', '5')
         ->sum('Amount');
 
         $Jul = DB::table('payment_records')
-        ->where('date_pymnt', '=', '7')
+        ->where('bulan', '=', '6')
         ->sum('Amount');
         
         $Aug = DB::table('payment_records')
-        ->where('date_pymnt', '=', '8')
+        ->where('bulan', '=', '7')
         ->sum('Amount');
     
         $Sep = DB::table('payment_records')
-        ->where('date_pymnt', '=', '9')
+        ->where('bulan', '=', '8')
         ->sum('Amount');
 
         $Oct = DB::table('payment_records')
-        ->where('date_pymnt', '=', '10')
+        ->where('bulan', '=', '9')
         ->sum('Amount');
 
         $Nov = DB::table('payment_records')
-        ->where('date_pymnt', '=', '11')
+        ->where('bulan', '=', '10')
         ->sum('Amount');
 
         $Dis = DB::table('payment_records')
-        ->where('date_pymnt', '=', '12')
+        ->where('bulan', '=', '11')
         ->sum('Amount');
 
         $count_36 = applicant::where('Gred', '=', '36')->count();
