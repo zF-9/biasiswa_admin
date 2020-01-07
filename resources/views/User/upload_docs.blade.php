@@ -31,9 +31,8 @@
                     </tr>
                   </tfoot>
                   <tbody>
-
                   <tr>
-                  <form method="post" action="" enctype="multipart/form-data" autocomplete="off">
+                  <form method="post" action="/upload" enctype="multipart/form-data" autocomplete="off">
                   {{ csrf_field() }}                      
                       <td>
                         <div class="form-group">
@@ -59,7 +58,15 @@
                           </div>                          
                       </td>
                       </form>
-                    </tr>              
+                    </tr>   
+
+                    @foreach($list_docs as $key => $data)
+                    <tr>
+                      <td>{{ $data -> date_penyerahan }}</td>
+                      <td>{{ $data -> perkara }}</td>
+                      <td>{{ $data -> file }}</td>
+                    </tr>    
+                    @endforeach    
 
                   </tbody>
                 </table>

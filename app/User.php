@@ -39,8 +39,9 @@ class User extends Authenticatable
 
     public function applicant() {
         return $this->hasOne(applicant::class);
-        return $this->hasOne(upDocuments::class);
+        return $this->hasOne(info_Pengajian::class);
         return $this->hasMany(payment_record::class);
+        return $this->hasMany(Dokumen_result::class);
         //re-evaluate syntax yang ini
     }
 }

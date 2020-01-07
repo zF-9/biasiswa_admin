@@ -21,27 +21,27 @@ class AdminController extends Controller
     {
         $data_pemohon = DB::table('applicants')->get();
 
-        $deg_ap = DB::table('up_documents')->where('AppliedKursus', '=', 'Sarjana Muda')->get();
-        $mstr_ap = DB::table('up_documents')->where('AppliedKursus', '=', 'Sarjana')->get();
-        $phd_ap = DB::table('up_documents')->where('AppliedKursus', '=', 'Doktor Falsafah')->get();
+        $deg_ap = DB::table('info__pengajians')->where('AppliedKursus', '=', 'Sarjana Muda')->get();
+        $mstr_ap = DB::table('info__pengajians')->where('AppliedKursus', '=', 'Sarjana')->get();
+        $phd_ap = DB::table('info__pengajians')->where('AppliedKursus', '=', 'Doktor Falsafah')->get();
 
         $data_student = DB::table('applicants')->where('isApproved', '=', '1')
-        ->join('up_documents', 'up_documents.applicant_id', 'applicants.user_id')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->get();
 
         $deg_p = DB::table('applicants')->where('isApproved', '=', '1')
         ->where('AppliedKursus', '=', 'Sarjana Muda')
-        ->join('up_documents', 'up_documents.applicant_id', 'applicants.user_id')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->get();
 
         $mstr_p = DB::table('applicants')->where('isApproved', '=', '1')
         ->where('AppliedKursus', '=', 'Sarjana')
-        ->join('up_documents', 'up_documents.applicant_id', 'applicants.user_id')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->get();
 
         $phd_p = DB::table('applicants')->where('isApproved', '=', '1')
         ->where('AppliedKursus', '=', 'Doktor Falsafah')
-        ->join('up_documents', 'up_documents.applicant_id', 'applicants.user_id')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->get();
 
         $count_36 = applicant::where('Gred', '=', '36')->count();
@@ -49,16 +49,64 @@ class AdminController extends Controller
         $count_44 = applicant::where('Gred', '=', '44')->count();
         $count_48 = applicant::where('Gred', '=', '48')->count();
 
+        $Jan = DB::table('payment_records')
+        ->where('bulan', '=', '0')
+        ->sum('Amount');
+     
+        $Feb = DB::table('payment_records')
+        ->where('bulan', '=', '1')
+        ->sum('Amount');
+ 
+        $Mar = DB::table('payment_records')
+        ->where('bulan', '=', '2')
+        ->sum('Amount');
+ 
+        $Apr = DB::table('payment_records')
+        ->where('bulan', '=', '3')
+        ->sum('Amount');
+ 
+        $May = DB::table('payment_records')
+        ->where('bulan', '=', '4')
+        ->sum('Amount');
+ 
+        $Jun = DB::table('payment_records')
+        ->where('bulan', '=', '5')
+        ->sum('Amount');
+ 
+        $Jul = DB::table('payment_records')
+        ->where('bulan', '=', '6')
+        ->sum('Amount');
+         
+        $Aug = DB::table('payment_records')
+        ->where('bulan', '=', '7')
+        ->sum('Amount');
+     
+        $Sep = DB::table('payment_records')
+        ->where('bulan', '=', '8')
+        ->sum('Amount');
+ 
+        $Oct = DB::table('payment_records')
+        ->where('bulan', '=', '9')
+        ->sum('Amount');
+ 
+        $Nov = DB::table('payment_records')
+        ->where('bulan', '=', '10')
+        ->sum('Amount');
+ 
+        $Dec = DB::table('payment_records')
+        ->where('bulan', '=', '11')
+        ->sum('Amount');
+
         $payment = DB::table('payment_records')->get(['date_pymnt', 'Amount']);
 
-        return view('Admin.dashboard_admin', ['data_pemohon' => $data_pemohon, 'data_student' => $data_student, 'degree' => $deg_ap, 'degreeapp' => $deg_p, 'master' => $mstr_ap, 'masterapp' => $mstr_p, 'phd' => $phd_ap, 'phdapp' => $phd_p, 'c36' => $count_36, 'c41' => $count_41, 'c44' => $count_44, 'c48' => $count_48, 'pembayaran' => $payment]); 
+        return view('Admin.dashboard_admin', ['data_pemohon' => $data_pemohon, 'data_student' => $data_student, 'degree' => $deg_ap, 'degreeapp' => $deg_p, 'master' => $mstr_ap, 'masterapp' => $mstr_p, 'phd' => $phd_ap, 'phdapp' => $phd_p, 'c36' => $count_36, 'c41' => $count_41, 'c44' => $count_44, 'c48' => $count_48, 'pembayaran' => $payment, 'Jan' => $jan, 'Feb' => $Feb, 'Mar' => $Mar, 'Apr' => $Apr, 'Jun'=> $jun, 'Jul' => $Jul, 'Aug' => $Aug, 'Sep' => $Sep, 'Oct' => $Oct, 'Nov' => $Nov, 'Dec' => $Dec]); 
     } 
     
    
 
     public function dataPemohon() {
         $data_pemohon = DB::table('applicants')->where('isApproved', '=', '0')
-        ->join('up_documents', 'up_documents.applicant_id', 'applicants.user_id')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->get();
 
         return view('Admin.table_pemohon', ['data_pemohon' => $data_pemohon]); 
@@ -66,7 +114,7 @@ class AdminController extends Controller
 
     public function dataPelajar() {
         $data_student = DB::table('applicants')->where('isApproved', '=', '1')
-        ->join('up_documents', 'up_documents.applicant_id', 'applicants.user_id')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->get();
 
         return view('Admin.table_pelajar', ['data_student' => $data_student]); 

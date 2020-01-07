@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use DB;
+use Redirect;
+use App\Dokumen_result;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Hash;
@@ -27,7 +29,7 @@ class UserController extends Controller
         $id = Auth::User()->id;
 
         $user_profile = DB::table('applicants')->where('user_id', '=', $id)->first();
-        $student_profile = DB::table('up_documents')->where('applicant_id', '=', $id)->first();
+        $student_profile = DB::table('info__pengajians')->where('applicant_id', '=', $id)->first();
 
         if($user_profile == null){
             return view('User.dashboard_user')->withErrors(__('User belum bikin lagi permohonan'));
@@ -55,7 +57,7 @@ class UserController extends Controller
     public function profilePelajar() {
         $id = Auth::User()->id;
 
-        $student_profile = DB::table('up_documents')->where('applicant_id', '=', $id)->first();
+        $student_profile = DB::table('info__pengajians')->where('applicant_id', '=', $id)->first();
 
         if($student_profile == null){
             return view('User.dashboard_user')->withErrors(__('Pemohon perlu memuat naik dokumen'));
@@ -79,6 +81,26 @@ class UserController extends Controller
 
             return view('User.userPymnt_record', ['payment' => $payments]);          
         }      
+    }
+
+    public function mn_dokumen() {
+        $id = Auth::User()->id;
+
+        $serahan_dokumen = new Dokumen_result;
+        $serahan_dokumen-> date_penyerahan = request('date_up');
+        $serahan_dokumen-> perkara = request('thewhat');
+        $serahan_dokumen-> file = request()->file('dokumen')->store('public/uploadocs');
+        $serahan_dokumen-> document_id = $id;
+
+        $serahan_dokumen->save();
+        return Redirect::back();
+    }
+
+    public function doc_res() {
+        $id = Auth::User()->id;
+
+        $list_document = DB::table('dokumen_results')->where('document_id', '=', $id)->get();
+        return view('User.upload_docs', ['list_docs' => $list_document]); 
     }
 
 }

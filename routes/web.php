@@ -37,9 +37,9 @@ Route::get('/dashboard_user', function() {
     return view('User.dashboard_user');
 })->name('user-dashboard');
 
-Route::get('/upload', function() {
-	return view('User.upload_docs');
-});//->name('');
+//Route::get('/upload', function() {
+//	return view('User.upload_docs');
+//});//->name('');
 
 Route::get('/form', function() {
 	return view('form');
@@ -64,8 +64,11 @@ Route::get('/profilePemohon/{name}', 'AdminController@profile_view')->name('prof
 Route::get('/permohonan_baru','ApplicantController@apply');
 Route::post('/permohonan_baru', 'ApplicantController@store');
 
-Route::get('/muatnaik','ApplicantController@upload_doc');
-Route::post('/muatnaik', 'ApplicantController@upload');
+Route::get('/pengajian','ApplicantController@upload_doc');
+Route::post('/pengajian', 'ApplicantController@upload');
+
+Route::get('/serahan', 'UserController@doc_res');
+Route::post('/serahan', 'UserController@mn_dokumen'); 
 
 Route::get('/Userpayment_rec', 'UserController@payment_history');
 Route::get('/profilePemohon', 'UserController@profilePemohon')->name('profile_pemohon');

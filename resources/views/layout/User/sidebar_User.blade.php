@@ -34,7 +34,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="/muatnaik">
+        <a class="nav-link" href="/pengajian">
           <i class="fas fa-fw fa-university"></i>
           <span>Maklumat Pengajian</span></a>
       </li>
@@ -97,7 +97,7 @@
 
       <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="/upload">
+        <a class="nav-link" href="/serahan">
         <i class="fas fa-fw fa-upload"></i>
           <span>Muat Naik Dokumen</span></a>
       </li>

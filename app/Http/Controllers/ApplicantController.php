@@ -6,6 +6,7 @@ use DB;
 use App\User;
 use App\applicant;
 use App\upDocuments;
+use App\info_Pengajian;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
@@ -49,7 +50,7 @@ class ApplicantController extends Controller
     }
 
     public function upload() {
-        $applicant_data = new upDocuments;
+        $applicant_data = new info_Pengajian;
 
         $applicant_data->startStudy = request('startStudy');
         $applicant_data->EndStudy = request('EndStudy');
@@ -65,9 +66,8 @@ class ApplicantController extends Controller
         $applicant_data->surakuan = request()->file('surakuan')->store('public/uploadocs');
 
         $applicant_data->applicant_id = auth()->user()->id;
-
         $applicant_data->save();
-        //dd($applicant_data);
+
         return Redirect()->route('profile_pelajar');
     }
 
@@ -88,7 +88,7 @@ class ApplicantController extends Controller
     public function upload_doc() 
     {
         $id = Auth::User()->id;
-        $user_profile = DB::table('up_documents')->where('applicant_id', '=', $id)->first();
+        $user_profile = DB::table('info__pengajians')->where('applicant_id', '=', $id)->first();
 
         if($user_profile == null){
             $user_data = DB::table('applicants')->where('user_id', '=', $id)
