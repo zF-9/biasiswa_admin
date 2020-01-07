@@ -89,7 +89,7 @@
                         <div class="form-group col-lg-4" id="option_u_form">
                           <div class="form-group">
                             <label>Universiti</label>
-                              <select name="Uni_name" onchange="" class="form-group form-control-user" id="Option_uni">
+                              <select name="Uni_named" onchange="" class="form-group form-control-user" id="Option_uni">
                                 <option value="0"></option>
                                 <option value="UTM Space">UTM Space</option>
                                 <option value="PLUMS">PLUMS</option>
@@ -219,10 +219,12 @@
 
     if(y == "Full Time"){
       document.getElementById("option_u_form").style.display = "none";
+      document.getElementById("option_u_form").disabled = true;
       document.getElementById("nama_u_form").style.display = "block";
     }
     else {
       document.getElementById("nama_u_form").style.display = "none"; 
+      document.getElementById("nama_u_form").disabled = true;
       document.getElementById("option_u_form").style.display = "block";
     }
   }
