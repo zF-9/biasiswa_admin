@@ -64,9 +64,9 @@
                             <label>Kursus Yang Dipohon</label>
                               <select name="AppliedKursus" onchange="course_validation()" class="form-group form-control-user" id="course" placeholder="Pilih la yang mana satu">
                                 <option value="0"></option>
-                                <option value="1">Sarjana Muda</option>
-                                <option id="mstr_sel" value="2">Sarjana</option>
-                                <option id="phd_sel" value="3">Doktor Falsafah</option>
+                                <option value="Sarjana Muda">Sarjana Muda</option>
+                                <option id="mstr_sel" value="Sarjana">Sarjana</option>
+                                <option id="phd_sel" value="Doktor Falsafah">Doktor Falsafah</option>
                               </select>
                           </div>
                         </div>
@@ -75,8 +75,8 @@
                             <label>Mod Pengajian</label>
                               <select name="study_mod" class="form-group form-control-user" id="stdy" placeholder="Pilih la yang mana satu" onchange="study_m0de()">
                                 <option></option>
-                                <option value="FT">Sepenuh Masa</option>
-                                <option value="PT">Separuh Masa</option>
+                                <option value="Full Time">Sepenuh Masa</option>
+                                <option value="Part Time">Separuh Masa</option>
                               </select>
                           </div>
                         </div>
@@ -91,8 +91,8 @@
                             <label>Universiti</label>
                               <select name="Uni_name" onchange="" class="form-group form-control-user" id="Option_uni">
                                 <option value="0"></option>
-                                <option value="1">UTM Space</option>
-                                <option value="2">PLUMS</option>
+                                <option value="UTM Space">UTM Space</option>
+                                <option value="PLUMS">PLUMS</option>
                               </select>
                           </div>
                         </div>                                        
@@ -103,9 +103,9 @@
                           <div class="form-group">
                             <label>Pilihan Negara/Negeri</label>
                               <select name="tmpt_study" class="form-group form-control-user" id="place_stdy" placeholder="Pilih la yang mana satu">
-                                <option value="1">Luar Negara</option>
-                                <option value="2">Luar Negeri Sabah</option>
-                                <option value="3">Dalam Negeri Sabah</option>
+                                <option value="Luar Negara">Luar Negara</option>
+                                <option value="Luar Negeri Sabah">Luar Negeri Sabah</option>
+                                <option value="Dalam Negeri Sabah">Dalam Negeri Sabah</option>
                               </select>
                           </div>
                         </div>
@@ -217,7 +217,7 @@
     document.getElementById("stdy").disabled = false;
     var y = document.getElementById("stdy").value; 
 
-    if(y == "FT"){
+    if(y == "Full Time"){
       document.getElementById("option_u_form").style.display = "none";
       document.getElementById("nama_u_form").style.display = "block";
     }
@@ -230,8 +230,8 @@
   function check_perlantikan() {
     if(appoint == "Kontrak") {
       document.getElementById("nama_u_form").style.display = "none";
-      document.getElementById("stdy").value = "PT"; 
-      document.getElementById("place_stdy").value = "3";
+      document.getElementById("stdy").value = "Part Time"; 
+      document.getElementById("place_stdy").value = "Dalam Negeri Sabah";
       document.getElementById("stdy").disabled = true;
       document.getElementById("place_stdy").disabled = true;
       document.getElementById("mstr_sel").disabled = true;
@@ -250,7 +250,7 @@
         alert("please select kursus pengajian");
       }
 
-      else if(x == '1') { //reverse initial condition: where else tu yg check validation yang lain
+      else if(x == 'Sarjana Muda') { //reverse initial condition: where else tu yg check validation yang lain
         if (age <= 35  && gred <= 36) {
           check_perlantikan();
           granted(); 
@@ -260,7 +260,7 @@
         }
       }
         
-      else if(x == '2'){
+      else if(x == 'Sarjana'){
         if(age <= 45 && gred <= 41){
           check_perlantikan();
           granted(); 
@@ -270,7 +270,7 @@
         }
       }
 
-      else if(x == '3'){
+      else if(x == 'Doktor Falsafah'){
         if(age <= 45 && gred <= 41){
           check_perlantikan();
           granted();
