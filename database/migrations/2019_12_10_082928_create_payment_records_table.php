@@ -16,6 +16,8 @@ class CreatePaymentRecordsTable extends Migration
         Schema::create('payment_records', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('date_pymnt');
+            $table->string('bulan');
+            $table->string('tahun');
             $table->string('No_baucer');
             $table->float('Amount', 8, 2);
             $table->string('jenis_pymnt');

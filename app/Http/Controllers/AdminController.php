@@ -135,6 +135,8 @@ class AdminController extends Controller
         $new_record = new payment_records;
 
         $new_record-> date_pymnt = request('date');
+        $new_record-> bulan = request('month');
+        $new_record-> tahun = request('year');
         $new_record-> No_baucer = request('baucer_no');
         $new_record-> Amount = request('jumlah');
         $new_record-> jenis_pymnt = request('perkara');
