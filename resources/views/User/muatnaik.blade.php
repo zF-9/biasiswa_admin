@@ -65,8 +65,8 @@
                               <select name="AppliedKursus" onchange="course_validation()" class="form-group form-control-user" id="course" placeholder="Pilih la yang mana satu">
                                 <option value="0"></option>
                                 <option value="1">Sarjana Muda</option>
-                                <option value="2">Sarjana</option>
-                                <option value="3">Doktor Falsafah</option>
+                                <option id="mstr_sel" value="2">Sarjana</option>
+                                <option id="phd_sel" value="3">Doktor Falsafah</option>
                               </select>
                           </div>
                         </div>
@@ -201,12 +201,20 @@
   var service = '{{ $user_data -> tberkhidmat }}';
   var appoint = '{{ $user_data -> TarafLantik }}';
 
+  //alert(age);
+  //alert(gred);
+
   function denied() {
       alert("Anda tidak layak untuk memohon");
       document.getElementById("apply_btn").disabled = true;
   }
 
+  function granted() {
+    document.getElementById("apply_btn").disabled = false;
+  }
+
   function study_m0de() {
+    document.getElementById("stdy").disabled = false;
     var y = document.getElementById("stdy").value; 
 
     if(y == "FT"){
@@ -222,10 +230,12 @@
   function check_perlantikan() {
     if(appoint == "Kontrak") {
       document.getElementById("nama_u_form").style.display = "none";
-      document.getElementById("stdy").value = "2"; 
+      document.getElementById("stdy").value = "PT"; 
       document.getElementById("place_stdy").value = "3";
       document.getElementById("stdy").disabled = true;
       document.getElementById("place_stdy").disabled = true;
+      document.getElementById("mstr_sel").disabled = true;
+      document.getElementById("phd_sel").disabled = true;
     }
     else if(appoint == "Tetap" || appoint == "Sementara" || appoint == "Percubaan") {
       study_m0de();
@@ -243,27 +253,27 @@
       else if(x == '1') { //reverse initial condition: where else tu yg check validation yang lain
         if (age <= 35  && gred <= 36) {
           check_perlantikan();
-          document.getElementById("apply_btn").disabled = false;
+          granted(); 
         }
         else {
-          denied();
+          denied();         
         }
       }
         
       else if(x == '2'){
         if(age <= 45 && gred <= 41){
           check_perlantikan();
-          document.getElementById("apply_btn").disabled = false;
+          granted(); 
         }
-        else {
-          denied();
+        else { 
+          denied();         
         }
       }
 
       else if(x == '3'){
         if(age <= 45 && gred <= 41){
           check_perlantikan();
-          document.getElementById("apply_btn").disabled = false;
+          granted();
         }
         else {
           denied();

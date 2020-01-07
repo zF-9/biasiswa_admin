@@ -1,5 +1,4 @@
 @extends('layout.Admin.main_Admin')
-
 @section('content')
 
         <!-- Begin Page Content -->
@@ -44,6 +43,8 @@
                         <div class="form-group">
                           <!--<label>Tarikh Pembayaran</label>-->
                           <input name="date" type="text" class="form-control form-control-user date" id="Inputdate" maxlength="14">
+                          <input name="month" id="m" style="display: none">
+                          <input name="year" id="y" style="display: none">
                         </div>
                       </td>
                       <td>

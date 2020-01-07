@@ -56,6 +56,20 @@
         });
     </script>
 
+<script type="text/javascript">
+  $('#Inputdate').datepicker().on("changeDate", function(e) {
+      var selectedDate = new Date(e.date.toString());
+      var xMonth = selectedDate.getMonth();
+      var xYear = selectedDate.getFullYear();
+      //alert(xMonth);
+      //alert(xYear);
+
+      $('#m').val(xMonth);
+      $('#y').val(xYear);
+  });
+</script>
+
+
   <script type="text/javascript">
     $('#Inputlahir').datepicker().on("changeDate", function(e) {
         var currentDate = new Date();

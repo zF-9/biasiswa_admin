@@ -43,9 +43,15 @@ class AdminController extends Controller
         ->where('AppliedKursus', '=', 'Doktor Falsafah')
         ->join('up_documents', 'up_documents.applicant_id', 'applicants.user_id')
         ->get();
-    
 
-        return view('Admin.dashboard_admin', ['data_pemohon' => $data_pemohon, 'data_student' => $data_student, 'degree' => $deg_ap, 'degreeapp' => $deg_p, 'master' => $mstr_ap, 'masterapp' => $mstr_p, 'phd' => $phd_ap, 'phdapp' => $phd_p]);  
+        $count_36 = applicant::where('Gred', '=', '36')->count();
+        $count_41 = applicant::where('Gred', '=', '41')->count();
+        $count_44 = applicant::where('Gred', '=', '44')->count();
+        $count_48 = applicant::where('Gred', '=', '48')->count();
+
+        $payment = DB::table('payment_records')->get(['date_pymnt', 'Amount']);
+
+        return view('Admin.dashboard_admin', ['data_pemohon' => $data_pemohon, 'data_student' => $data_student, 'degree' => $deg_ap, 'degreeapp' => $deg_p, 'master' => $mstr_ap, 'masterapp' => $mstr_p, 'phd' => $phd_ap, 'phdapp' => $phd_p, 'c36' => $count_36, 'c41' => $count_41, 'c44' => $count_44, 'c48' => $count_48, 'pembayaran' => $payment]); 
     } 
     
    

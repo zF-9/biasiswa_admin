@@ -45,7 +45,7 @@
 
                         <div class="text-center" id="profile_permohonan">
                             <h3>
-                                <span class="font-weight-light">Nama: </span>{{ auth()->user()->name }}
+                                <span class="font-weight-light">Nama: </span>{{ $user_profile -> nama }}
                             </h3>
                             <div class="h5 mt-4">
                                 <i class="ni business_briefcase-24 mr-2">No. Kad Pengenalan:</i>

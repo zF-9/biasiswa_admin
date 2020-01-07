@@ -1,4 +1,14 @@
 @extends('layout.Admin.main_Admin')
+
+<script>
+  var gred_36 = '{{ $c36 }}';
+  var gred_41 = '{{ $c41 }}';
+  var gred_48 = '{{ $c48 }}';
+  //alert(gred_41);  
+</script>
+
+
+
 @section('content')
   <!-- Page Wrapper -->
   <div id="wrapper">
@@ -333,7 +343,7 @@
                 <div class="card-body">
                   <h4 class="small font-weight-bold">Jabatan Pengairan dan Saliran<span class="float-right">50</span></h4>
                   <div class="progress mb-4">
-                    <div class="progress-bar bg-danger" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 50%" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                   <h4 class="small font-weight-bold">Unit Perancang Ekonomi Negeri<span class="float-right">60</span></h4>
                   <div class="progress mb-4">
@@ -348,6 +358,37 @@
                     <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                   <h4 class="small font-weight-bold">Jabatan Kerja Raya<span class="float-right">100</span></h4>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <hr>
+                  <!--change variable di <code>inline css</code> ja append value dari database directly.    -->              
+                </div>
+              </div>
+
+              <!-- Project Card Example -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Jumlah Pemohon Mengikut Gred</h6>
+                </div>
+                <div class="card-body">
+                  <h4 class="small font-weight-bold">36 Below<span class="float-right">50</span></h4>
+                  <div class="progress mb-4">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 50%" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <h4 class="small font-weight-bold">36<span class="float-right">60</span></h4>
+                  <div class="progress mb-4">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 60%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <h4 class="small font-weight-bold">41<span class="float-right">60</span></h4>
+                  <div class="progress mb-4">
+                    <div class="progress-bar" role="progressbar" style="width: {{ $c41 }}%" aria-valuenow="{{ $c41 }}" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <h4 class="small font-weight-bold">44<span class="float-right">80</span></h4>
+                  <div class="progress mb-4">
+                    <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <h4 class="small font-weight-bold">48<span class="float-right">100</span></h4>
                   <div class="progress">
                     <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
