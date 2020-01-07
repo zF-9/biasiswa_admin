@@ -43,7 +43,6 @@ class AdminController extends Controller
         ->where('AppliedKursus', '=', 'Doktor Falsafah')
         ->join('up_documents', 'up_documents.applicant_id', 'applicants.user_id')
         ->get();
-<<<<<<< HEAD
 
         $Jan = DB::table('payment_records')
         ->where('date_pymnt', '=', '1')
@@ -97,7 +96,7 @@ class AdminController extends Controller
         return view('Admin.dashboard_admin', ['Jan' => $Jan, 'Feb' => $Feb, 'Mar' => $Mar, 'Apr' => $Apr, 'May' => $May, 'Jun' => $Jun,
          'Jul' => $Jul, 'Aug' => $Aug, 'Sep' => $Sep, 'Oct' => $Oct, 'Nov' => $Nov, 'Dis' => $Dis, 'data_pemohon' => $data_pemohon,
           'data_student' => $data_student, 'degree' => $deg_ap, 'degreeapp' => $deg_p, 'master' => $mstr_ap, 'masterapp' => $mstr_p, 'phd' => $phd_ap, 'phdapp' => $phd_p]);  
-=======
+
 
         $count_36 = applicant::where('Gred', '=', '36')->count();
         $count_41 = applicant::where('Gred', '=', '41')->count();
@@ -107,7 +106,7 @@ class AdminController extends Controller
         $payment = DB::table('payment_records')->get(['date_pymnt', 'Amount']);
 
         return view('Admin.dashboard_admin', ['data_pemohon' => $data_pemohon, 'data_student' => $data_student, 'degree' => $deg_ap, 'degreeapp' => $deg_p, 'master' => $mstr_ap, 'masterapp' => $mstr_p, 'phd' => $phd_ap, 'phdapp' => $phd_p, 'c36' => $count_36, 'c41' => $count_41, 'c44' => $count_44, 'c48' => $count_48, 'pembayaran' => $payment]); 
->>>>>>> da33d8354b1e4fcf74b579c055834dbfed1a3626
+
     } 
 
     public function dataPemohon() {
