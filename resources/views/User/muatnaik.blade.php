@@ -200,8 +200,9 @@
   var age = '{{ $user_data -> umur }}';
   var service = '{{ $user_data -> tberkhidmat }}';
   var appoint = '{{ $user_data -> TarafLantik }}';
+  var average = '{{ $avg }}';
 
-  //alert(age);
+  //alert(average);
   //alert(gred);
 
   function denied() {
@@ -245,6 +246,15 @@
   }
   
   function course_validation() {
+    if (average >= 85) {
+      initial_validation();
+    }
+    else {
+      denied();
+    }
+  }
+
+  function initial_validation() {
     var x = document.getElementById("course").value;
 
     if (service >= 2) {
@@ -286,6 +296,6 @@
     //ini kalau tahun berkhidmat dia under < 2
     else {
       denied();
-    }
+    }    
   }
 </script>

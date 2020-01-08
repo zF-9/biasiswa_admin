@@ -95,7 +95,10 @@ class ApplicantController extends Controller
             ->join('users', 'users.id', 'applicants.user_id')
             ->first();
 
-            return view('User.muatnaik', ['user_data' => $user_data]);
+            $avg_marks = applicant::where('user_id', '=', $id)
+            ->sum('Tahun1LPPT', 'Tahun2LPPT', 'Tahun3LPPT');
+
+            return view('User.muatnaik', ['user_data' => $user_data, 'avg' => $avg_marks]);
             //dd($user_data);
         } 
         else {
