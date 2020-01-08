@@ -19,7 +19,9 @@ class AdminController extends Controller
     
     public function AdminDashboard()
     {
-        $data_pemohon = DB::table('applicants')->get();
+        $data_pemohon = DB::table('applicants')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
+        ->count();
 
         $deg_ap = DB::table('info__pengajians')->where('AppliedKursus', '=', 'Sarjana Muda')->get();
         $mstr_ap = DB::table('info__pengajians')->where('AppliedKursus', '=', 'Sarjana')->get();
@@ -27,7 +29,7 @@ class AdminController extends Controller
 
         $data_student = DB::table('applicants')->where('isApproved', '=', '1')
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
-        ->get();
+        ->count();
 
         $deg_p = DB::table('applicants')->where('isApproved', '=', '1')
         ->where('AppliedKursus', '=', 'Sarjana Muda')
@@ -93,13 +95,13 @@ class AdminController extends Controller
         ->where('bulan', '=', '10')
         ->sum('Amount');
  
-        $Dec = DB::table('payment_records')
+        $Dis = DB::table('payment_records')
         ->where('bulan', '=', '11')
         ->sum('Amount');
 
         $payment = DB::table('payment_records')->get(['date_pymnt', 'Amount']);
 
-        return view('Admin.dashboard_admin', ['data_pemohon' => $data_pemohon, 'data_student' => $data_student, 'degree' => $deg_ap, 'degreeapp' => $deg_p, 'master' => $mstr_ap, 'masterapp' => $mstr_p, 'phd' => $phd_ap, 'phdapp' => $phd_p, 'c36' => $count_36, 'c41' => $count_41, 'c44' => $count_44, 'c48' => $count_48, 'pembayaran' => $payment, 'Jan' => $jan, 'Feb' => $Feb, 'Mar' => $Mar, 'Apr' => $Apr, 'Jun'=> $jun, 'Jul' => $Jul, 'Aug' => $Aug, 'Sep' => $Sep, 'Oct' => $Oct, 'Nov' => $Nov, 'Dec' => $Dec]); 
+        return view('Admin.dashboard_admin', ['data_pemohon' => $data_pemohon, 'data_student' => $data_student, 'degree' => $deg_ap, 'degreeapp' => $deg_p, 'master' => $mstr_ap, 'masterapp' => $mstr_p, 'phd' => $phd_ap, 'phdapp' => $phd_p, 'c36' => $count_36, 'c41' => $count_41, 'c44' => $count_44, 'c48' => $count_48, 'pembayaran' => $payment, 'Jan' => $Jan, 'Feb' => $Feb, 'Mar' => $Mar, 'Apr' => $Apr, 'May' => $May, 'Jun'=> $Jun, 'Jul' => $Jul, 'Aug' => $Aug, 'Sep' => $Sep, 'Oct' => $Oct, 'Nov' => $Nov, 'Dis' => $Dis]); 
     } 
     
    

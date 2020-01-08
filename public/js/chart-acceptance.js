@@ -7,9 +7,9 @@ var ctx = document.getElementById("PieChart_TT");
 var PieChart_TT = new Chart(ctx, {
   type: 'doughnut',
   data: {
-    labels: ["Terima", "Tolak"],
+    labels: ["Diterima", "Diproses"],
     datasets: [{
-      data: [70, 30],
+      data: [data_student, data_pemohon],
       backgroundColor: ['#4e73df', '#1cc88a'], /*, '#36b9cc'*/
       hoverBackgroundColor: ['#2e59d9', '#17a673'],/*, '#2c9faf'*/
       hoverBorderColor: "rgba(234, 236, 244, 1)",

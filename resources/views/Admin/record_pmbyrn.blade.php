@@ -21,7 +21,7 @@
                       <!--<th>Id</th>-->
                       <th>Tarikh Pembayaran</th>
                       <th>Nombor Baucer</th> 
-                      <th>Jumlah</th>
+                      <th>Jumlah Dalam Ringgit Malaysia (RM)</th>
                       <th>Jenis Pembayaran</th>
                     </tr>
                   </thead>
@@ -30,7 +30,7 @@
                       <!--<th>Id</th>-->
                       <th>Tarikh Pembayaran</th>
                       <th>Nombor Baucer</th> 
-                      <th>Jumlah</th>
+                      <th>Jumlah Dalam Ringgit Malaysia (RM)</th>
                       <th>Jenis Pembayaran</th>
                     </tr>
                   </tfoot>
@@ -56,7 +56,7 @@
                       <td>
                         <div class="form-group">
                           <!--<label>Jumlah Pembayaran</label>-->
-                          <input name="jumlah" type="text" class="form-control form-control-user" value="RM" id="InputSum" maxlength="14">
+                          <input name="jumlah" type="text" class="form-control form-control-user" value="" id="InputSum" maxlength="14">
                         </div>                          
                       </td>
                       <td>

@@ -19,7 +19,7 @@ class CreatePaymentRecordsTable extends Migration
             $table->string('bulan');
             $table->string('tahun');
             $table->string('No_baucer');
-            $table->string('Amount');
+            $table->float('amount', 8, 2);
             $table->string('jenis_pymnt');
             $table->unsignedBigInteger('payment_id')->index();
             $table->timestamps();

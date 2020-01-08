@@ -1,9 +1,23 @@
 @extends('layout.Admin.main_Admin')
 
 <script>
+  var data_pemohon = '{{ $data_pemohon }}';
+  var data_student = '{{ $data_student }}';
   var gred_36 = '{{ $c36 }}';
   var gred_41 = '{{ $c41 }}';
   var gred_48 = '{{ $c48 }}';
+  var Jan = '{{ $Jan }}';
+  var Feb = '{{ $Feb }}';
+  var Mar = '{{ $Mar }}';
+  var Apr = '{{ $Apr }}';
+  var May = '{{ $May }}';
+  var Jun = '{{ $Jun }}';
+  var Jul = '{{ $Jul }}';
+  var Aug = '{{ $Aug }}';
+  var Sep = '{{ $Sep }}';
+  var Oct = '{{ $Oct }}';
+  var Nov = '{{ $Nov }}';
+  var Dis = '{{ $Dis }}';
   //alert(gred_41);  
 </script>
 
@@ -74,13 +88,7 @@
                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                         Bilangan Permohonan
                       </div>
-                      @foreach($data_pemohon as $key => $data)
-                      @if ($loop->first) <!-- logic: when it reaches last punya iteration baru dia display -->
-
-
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $loop -> count }}</div>
-                      @endif
-                      @endforeach
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $data_pemohon }}</div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -176,13 +184,7 @@
                     <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                         Bilangan Pelajar
                       </div>
-                      @foreach($data_student as $key => $data)
-                      @if ($loop->first) <!-- logic: when it reaches last punya iteration baru dia display -->
-
-
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $loop -> count }}</div>
-                      @endif
-                      @endforeach
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $data_student }}</div>
                     </div>
 
                     <div class="col-auto">
