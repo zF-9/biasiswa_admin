@@ -41,12 +41,13 @@
                           <input name="date_up" type="text" class="form-control form-control-user date" id="Inputdate" maxlength="14">
                         </div>
                       </td>
-                      <td>
+                     <td>
                         <div class="form-group">
-                          <!--<label>Nombor Baucer</label>-->
+                          <label>Nombor Baucer</label>-
                           <input name="thewhat" type="text" class="form-control form-control-user" id="InputBaucer" maxlength="14">
                         </div>                        
-                      </td>
+                      </td> 
+     
                       <td>
                         <div class="col-sm-9" style="padding-left: 0px;padding-top: 9px">
                             <input name="dokumen" multiple="multiple" type="file" id="input-dokumen" class="custom-file-inputform-control form-control-alternative" placeholder="" value="" required="" autofocus="">

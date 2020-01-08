@@ -54,6 +54,7 @@ Route::get('/dashboard', 'AdminController@AdminDashboard')->middleware('AdminMid
 //route to validate if the profile page takes Admin || User 
 Route::get('/profilepage', 'AdminController@AdminProfile')->middleware('ProfileMiddleware');
 
+Route::get('/datatable_tuntutan', 'AdminController@viewTuntutan')->name('table_tuntutan');
 Route::get('/datatable_pemohon', 'AdminController@dataPemohon')->name('table_pemohon');
 Route::get('/datatable_pelajar', 'AdminController@dataPelajar')->name('table_pelajar');
 Route::get('/payment_rec/{id}', 'AdminController@payment_record');
@@ -73,12 +74,14 @@ Route::post('/serahan', 'UserController@mn_dokumen');
 Route::get('/Userpayment_rec', 'UserController@payment_history');
 Route::get('/profilePemohon', 'UserController@profilePemohon')->name('profile_pemohon');
 Route::get('/profilePelajar', 'UserController@profilePelajar')->name('profile_pelajar');
+Route::get('/upload_docs', 'UserController@upload_docs')->name('list_docs');
 
 Route::get('/upload_pic', 'UserController@UploadPic');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 
 
 
