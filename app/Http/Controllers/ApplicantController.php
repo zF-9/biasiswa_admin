@@ -91,14 +91,21 @@ class ApplicantController extends Controller
         $user_profile = DB::table('info__pengajians')->where('applicant_id', '=', $id)->first();
 
         if($user_profile == null){
-            $user_data = DB::table('applicants')->where('user_id', '=', $id)
-            ->join('users', 'users.id', 'applicants.user_id')
-            ->first();
+            $check_info = applicant::where('user_id', '=', $id)->first();
 
-            $avg_marks = applicant::where('user_id', '=', $id)
-            ->sum('Tahun1LPPT', 'Tahun2LPPT', 'Tahun3LPPT');
+            if($check_info == null) {
+                return view('User.dashboard_user')->withErrors(__('Sila penuhkan maklumat pegawai')); 
+            }
+            else {
+                $user_data = DB::table('applicants')->where('user_id', '=', $id)
+                ->join('users', 'users.id', 'applicants.user_id')
+                ->first();
 
-            return view('User.muatnaik', ['user_data' => $user_data, 'avg' => $avg_marks]);
+                $avg_marks = applicant::where('user_id', '=', $id)
+                ->sum('Tahun1LPPT', 'Tahun2LPPT', 'Tahun3LPPT');
+
+                return view('User.muatnaik', ['user_data' => $user_data, 'avg' => $avg_marks]);                
+            }
             //dd($user_data);
         } 
         else {

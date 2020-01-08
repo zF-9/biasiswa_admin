@@ -21,8 +21,6 @@
   var Dis = '{{ $Dis }}';
 
   var element = document.getElementById('caleandar');
-      
-
   caleandar(element, events, settings);
 
 </script>

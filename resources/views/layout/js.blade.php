@@ -159,11 +159,28 @@
         //document.getElementById("year_1").innerHTML = x;
         //document.getElementById("year_2").innerHTML = y;
         //document.getElementById("year_3").innerHTML = z;
+        $("#year_1").yearpicker({
+          year: x,
+          startYear: 2012,
+          endYear: 2048
+        });
+
+        $("#year_2").yearpicker({
+          year: y,
+          startYear: 2012,
+          endYear: 2048
+        });
+
+        $("#year_3").yearpicker({
+          year: z,
+          startYear: 2012,
+          endYear: 2048
+        });
       }
     </script>
 
     <script>
-      $(document).ready(function() {
+      /*$(document).ready(function() {
         var d = new Date();
         var x = d.getFullYear();
         var y = d.getFullYear() - 1;
@@ -189,7 +206,7 @@
         //document.getElementById("year_1").val(x);
         //document.getElementById("year_2").val(y);
         //document.getElementById("year_3").val(z);
-      });
+      });*/
     </script>
 
     <script>
