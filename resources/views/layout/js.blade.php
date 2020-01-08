@@ -162,15 +162,6 @@
       }
     </script>
 
-    <script type="text/javascript">
-      /*if($profile == 0) {
-        document.getElementById("profile_permohonan").style.display = "none";
-      }
-      else {
-        document.getElementById("profile_permohonan").style.display = "block";
-      }*/
-   </script>
-
   <body onload="consecutiveYear();">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -203,6 +194,11 @@
 
   <!-- Page level custom scripts -->
   <script src="{{ asset ('js/datatables.js')}}"></script>
+
+  <!-- Year Picker CSS -->
+  <link rel="stylesheet" href="css/yearpicker.css" />
+  <!-- Year Picker Js -->
+  <script src="js/yearpicker.js"></script>
 
 
 

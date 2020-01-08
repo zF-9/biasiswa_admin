@@ -32,7 +32,7 @@
                   </tfoot>
                   <tbody>
                   <tr>
-                  <form method="post" action="/upload" enctype="multipart/form-data" autocomplete="off">
+                  <form method="post" action="/serahan" enctype="multipart/form-data" autocomplete="off">
                   {{ csrf_field() }}                      
                       <td>
                         <div class="form-group">
