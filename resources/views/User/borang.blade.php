@@ -328,19 +328,22 @@
                   <div class="row">
                   <div class="form-group col-lg-4">
                     <div class="form-group">
-                      <div id="year_1"></div>
+                      <label ></label>
+                      <input type="text" class="yearpicker form-control form-control-user" value="" id="year_1"/>
                       <input name="Tahun1LPPT" type="text" class="form-control form-control-user" id="InputT1" placeholder="">
                     </div>
                   </div> 
                   <div class="form-group col-lg-4">
                     <div class="form-group">
-                      <label id="year_2"></label>
+                      <label ></label>
+                      <input type="text" class="yearpicker form-control form-control-user" value="" id="year_2"/>
                       <input name="Tahun2LPPT" type="text" class="form-control form-control-user" id="InputT2" placeholder="">
                     </div>
                   </div>                  
                   <div class="form-group col-lg-4">
                     <div class="form-group">
-                      <label id="year_3"></label>
+                      <label ></label>
+                      <input type="text" class="yearpicker form-control form-control-user" value="" id="year_3"/>
                       <input name="Tahun3LPPT" type="text" class="form-control form-control-user" id="InputT3" placeholder="">
                     </div>
                   </div>  

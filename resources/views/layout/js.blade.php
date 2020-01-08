@@ -156,20 +156,41 @@
         var x = d.getFullYear();
         var y = d.getFullYear() - 1;
         var z = d.getFullYear() - 2;
-        document.getElementById("year_1").innerHTML = x;
-        document.getElementById("year_2").innerHTML = y;
-        document.getElementById("year_3").innerHTML = z;
+        //document.getElementById("year_1").innerHTML = x;
+        //document.getElementById("year_2").innerHTML = y;
+        //document.getElementById("year_3").innerHTML = z;
       }
     </script>
 
-    <script type="text/javascript">
-      /*if($profile == 0) {
-        document.getElementById("profile_permohonan").style.display = "none";
-      }
-      else {
-        document.getElementById("profile_permohonan").style.display = "block";
-      }*/
-   </script>
+    <script>
+      $(document).ready(function() {
+        var d = new Date();
+        var x = d.getFullYear();
+        var y = d.getFullYear() - 1;
+        var z = d.getFullYear() - 2;
+
+        $("#year_1").yearpicker({
+          year: x,
+          startYear: 2012,
+          endYear: 2048
+        });
+
+        $("#year_2").yearpicker({
+          year: y,
+          startYear: 2012,
+          endYear: 2048
+        });
+
+        $("#year_3").yearpicker({
+          year: z,
+          startYear: 2012,
+          endYear: 2048
+        });
+        //document.getElementById("year_1").val(x);
+        //document.getElementById("year_2").val(y);
+        //document.getElementById("year_3").val(z);
+      });
+    </script>
 
   <body onload="consecutiveYear();">
 
@@ -204,6 +225,10 @@
   <!-- Page level custom scripts -->
   <script src="{{ asset ('js/datatables.js')}}"></script>
 
+  <!-- Year Picker CSS -->
+  <link rel="stylesheet" href="{{ asset ('css/yearpicker.css') }}" />
+  <!-- Year Picker Js -->
+  <script src="{{ asset ('js/yearpicker.js') }}"></script>
 
 
 
