@@ -33,7 +33,7 @@
                   <div class="col-lg-12 col-sm-12 col-md-12">
                       <div class="form-group">
 
-                  <form class="user" method="post" action="/muatnaik" enctype="multipart/form-data" autocomplete="off">
+                  <form class="user" method="post" action="/pengajian" enctype="multipart/form-data" autocomplete="off">
                   {{ csrf_field() }}
                       <div class="row">
                         <div class="form-group col-lg-6">

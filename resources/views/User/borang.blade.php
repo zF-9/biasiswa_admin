@@ -59,8 +59,6 @@
                         <select name="tarafkahwin" class="form-group form-control-user" placeholder="Pilih la yang mana satu">
                           <option>Bujang</option>
                           <option>Berkahwin</option>
-                          <option>Janda</option>
-                          <option>Duda</option>
                         </select>
                     </div>
                   </div>

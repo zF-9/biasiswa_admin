@@ -28,16 +28,19 @@
       </div>
 
       <li class="nav-item">
-        <a class="nav-link" href="/permohonan_baru">
-          <i class="fas fa-fw fa-user"></i>
-          <span>Maklumat Pegawai</span></a>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw  fa-copy"></i>
+          <span>Permohonan Baru</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Borang Permohonan:</h6>
+            <a class="collapse-item" href="/permohonan_baru">Maklumat Pegawai</a>
+            <a class="collapse-item" href="/pengajian">Maklumat Pengajian</a>
+          </div>
+        </div>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="/pengajian">
-          <i class="fas fa-fw fa-university"></i>
-          <span>Maklumat Pengajian</span></a>
-      </li>
 
       <!-- Nav Item - Pages Collapse Menu
       <li class="nav-item">
@@ -73,24 +76,25 @@
 
       <!-- Divider -->
       <hr class="sidebar-divider">
-
-      <!-- Heading -->
       <div class="sidebar-heading">
-        Maklumat Profil
+        Maklumat Permohonan
       </div>
 
-      <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('profile_pemohon') }}">
-          <i class="fas fa-fw fa-user"></i>
-          <span>Pemohon</span></a>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-fw  fa-edit"></i>
+          <span>Kemaskini Maklumat</span>
+        </a>
+        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Jenis Maklumat :</h6>
+            <a class="collapse-item" href="{{ route('profile_pemohon') }}">Maklumat Pegawai</a>
+            <a class="collapse-item" href="{{ route('profile_pelajar') }}">Maklumat Pengajian</a>
+          </div>
+        </div>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('profile_pelajar') }}">
-          <i class="fas fa-fw fa-graduation-cap"></i>
-          <span>Pengajian</span></a>
-      </li>
+
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">

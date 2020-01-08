@@ -23,7 +23,8 @@
                       <th>Nama</th>
                       <th>email</th> 
                       <th>No. Kad Pengenalan</th>
-                      <th>Jenis Kursus</th>
+                      <th>Tarikh Tuntutan</th>
+                      <th>Jenis Tuntutan</th>
                       <th></th>
                     </tr>
                   </thead>
@@ -33,7 +34,8 @@
                       <th>Nama</th>
                       <th>email</th> 
                       <th>No. Kad Pengenalan</th>
-                      <th>Jenis Kursus</th>
+                      <th>Tarikh Tuntutan</th>
+                      <th>Jenis Tuntutan</th>
                       <th></th>
                     </tr>
                   </tfoot>

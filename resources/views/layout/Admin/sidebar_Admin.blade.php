@@ -68,24 +68,11 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
+
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw  fa-th-list"></i>
-          <span>Keputusan & Pembayaran</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Muat Turun Keputusan</h6>
-            <a class="collapse-item" href="">Sarjana Muda</a>
-            <a class="collapse-item" href="">Sarjana</a>
-            <a class="collapse-item" href="">Doktor Falsafah</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Muat Naik Pembayaran</h6>
-            <a class="collapse-item" href="">Sarjana Muda</a>
-            <a class="collapse-item" href="">Sarjana</a>
-            <a class="collapse-item" href="">Doktor Falsafah</a>
-          </div>
-        </div>
+        <a class="nav-link" href="/datatable_tuntutan">
+        <i class="fas fa-fw fa-credit-card"></i>
+          <span>Rekod Tuntuan Pembayaran</span></a>
       </li>
 
       <!-- Nav Item - Charts 
