@@ -17,6 +17,8 @@ class CreateDokumenResultsTable extends Migration
             $table->bigIncrements('id');
             $table->string('date_penyerahan');
             $table->string('perkara');
+            $table->string('tempoh');
+            $table->float('tuntutan', 8, 2);
             $table->string('file');
             $table->timestamps();
             $table->unsignedBigInteger('document_id')->index();

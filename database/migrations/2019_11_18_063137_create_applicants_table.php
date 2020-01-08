@@ -31,11 +31,7 @@ class CreateApplicantsTable extends Migration
             $table->string('jawatan');
             $table->string('Gred');
             $table->string('TarafLantik');
-            $table->string('GredPangku');
             $table->string('Tsahjwtn');
-            $table->string('JwtnPangku')->nullable();
-            $table->string('trkhMula');
-            $table->string('trkhTamat');
             $table->string('Tahun1LPPT');
             $table->string('Tahun2LPPT');
             $table->string('Tahun3LPPT');

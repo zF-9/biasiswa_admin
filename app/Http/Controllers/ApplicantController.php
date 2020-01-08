@@ -33,11 +33,7 @@ class ApplicantController extends Controller
         $applicant->jawatan = request('jawatan');
         $applicant->Gred = request('Gred');
         $applicant->TarafLantik = request('TarafLantik');
-        $applicant->GredPangku = request('GredPangku');
         $applicant->Tsahjwtn = request('Tsahjwtn');
-        $applicant->JwtnPangku = request('JwtnPangku');
-        $applicant->trkhMula = request('trkhMula');
-        $applicant->trkhTamat = request('trkhTamat');
         $applicant->Tahun1LPPT = request('Tahun1LPPT');
         $applicant->Tahun2LPPT = request('Tahun2LPPT');
         $applicant->Tahun3LPPT = request('Tahun3LPPT');

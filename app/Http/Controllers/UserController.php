@@ -46,13 +46,14 @@ class UserController extends Controller
         $user_profile = DB::table('applicants')->where('user_id', '=', $id)->first();
 
         if($user_profile == null){
-            return view('User.dashboard_user')->withErrors(__('Permohon perlu mengisi borang maklumat pegawai'));
+            return view('User.dashboard_user')->withErrors(__('Pemohon perlu mengisi borang maklumat pegawai'));
         }
     
         else {
             return view('User.ProfilePemohon', ['user_profile' => $user_profile]);          
         }    
     }
+
 
     public function profilePelajar() {
         $id = Auth::User()->id;
@@ -74,7 +75,7 @@ class UserController extends Controller
         $user_record = DB::table('payment_records')->where('payment_id', '=', $id)->first();  
         
         if($user_record == null) {
-            return Redirect()->route('user-dashboard')->withErrors(['Tiada rekod pembayaran']);
+            return Redirect()->route('user-dashboard')->withErrors(['Pengguna belum diterima sebagai pelajar']);
         }
         else {
             $payments = DB::table('payment_records')->where('payment_id', '=', $id)->get();
@@ -89,6 +90,7 @@ class UserController extends Controller
         $serahan_dokumen = new Dokumen_result;
         $serahan_dokumen-> date_penyerahan = request('date_up');
         $serahan_dokumen-> perkara = request('thewhat');
+        $serahan_dokumen-> tuntutan = request('tuntutan');
         $serahan_dokumen-> file = request()->file('dokumen')->store('public/uploadocs');
         $serahan_dokumen-> document_id = $id;
 

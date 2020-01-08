@@ -122,6 +122,17 @@ class AdminController extends Controller
         return view('Admin.table_pelajar', ['data_student' => $data_student]); 
     }
 
+    public function viewTuntutan() {
+        //$tuntutan = DB::table('dokumen_results')->get();
+
+        $tuntutan = DB::table('dokumen_results')
+        ->join('users', 'users.id', 'dokumen_results.document_id')
+        ->get();
+
+
+        return view('Admin.table_tuntutan', ['tuntutan' => $tuntutan]); 
+    }
+
     public function payment_record($id) {
         $payments = DB::table('payment_records')->where('payment_id', '=', $id)->get();
 
@@ -156,6 +167,8 @@ class AdminController extends Controller
         $user_profile = applicant::where('nama', '=', $name)->first();
         return view('Admin.profileViewer', ['user_profile' => $user_profile]);
     }
+
+    
 
     public function ApprovePelajar(User $user) {
         dd($user);
