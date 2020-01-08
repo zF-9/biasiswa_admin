@@ -103,4 +103,19 @@ class UserController extends Controller
         return view('User.upload_docs', ['list_docs' => $list_document]); 
     }
 
+
+    public function update_avatar(Request $request){
+        // Handle the user upload of avatar
+        if($request->hasFile('avatar')){
+            $avatar = $request->file('avatar');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            Image::make($avatar)->resize(300, 300)->save( public_path('/uploads/avatars/' . $filename ) );
+
+            $user = Auth::user();
+            $user->avatar = $filename;
+            $user->save();
+        }
+        return route('profile_pemohon', array('user' => Auth::user()) );
+    }
+
 }
