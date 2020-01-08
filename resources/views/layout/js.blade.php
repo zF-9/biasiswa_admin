@@ -266,7 +266,7 @@
   <link rel="stylesheet" href="{{ asset ('css/demo_cal.css') }}"/>
   <link rel="stylesheet" href="{{ asset ('css/theme3.css') }}"/>
   <script type="text/javascript" src="{{ asset ('js/caleandar.js') }}"></script>
-  <script type="text/javascript" src="{{ asset ('js/cal_dash.js') }}"></script>
+  <script type="text/javascript" src="{{ asset ('js/Admin_cal.js') }}"></script>
 
 
 
