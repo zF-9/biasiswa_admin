@@ -260,13 +260,13 @@
                 <div class="row">
                   <div class="form-group col-lg-6">
                     <div class="form-group">
-                      <label>Jawatan Hakiki</label>
+                      <label>Nama Jawatan (e.g Pegawai Tadbir,  dll)</label>
                       <input name="jawatan" type="text" class="form-control form-control-user" id="InputJawatan" placeholder="Jawatan">
                     </div>
                   </div>
                   <div class="form-group col-lg-6">
                     <div class="form-group">
-                      <label>Gred</label>
+                      <label>Gred Jawatan (eg 29, 41, 52 dll)</label>
                       <input name="Gred" type="text" class="form-control form-control-user" id="InputGred" placeholder="Gred">
                     </div>
                   </div>
@@ -284,44 +284,16 @@
                         </select>
                     </div>
                   </div>
-                  <div class="form-group col-lg-6">
-                    <div class="form-group">
-                      <label>Gred Dipangku</label>
-                      <input  name="GredPangku" type="text" class="form-control form-control-user" id="InputJabatan" placeholder="Gred Dipangku">
+                  <div class="form-group">
+                      <label>Tarikh Pengesahan Jawatan</label>
+                      <input  name="Tsahjwtn" type="text" class="form-control form-control-user date" id="InputTsahjwtn" placeholder="Tarikh Pengesahan Jawatan">
                     </div>
-                </div>
               </div>
 
                 <div class="row">
                   <div class="form-group col-lg-6">
-                    <div class="form-group">
-                      <label>Tarikh Pengesahan Jawatan</label>
-                      <input  name="Tsahjwtn" type="text" class="form-control form-control-user date" id="InputTsahjwtn" placeholder="Tarikh Pengesahan Jawatan">
-                    </div>
-                  </div>
-                  <div class="form-group col-lg-6">
-                    <div class="form-group">
-                      <label>Jawatan Dipangku (*Jika Ada)</label>
-                      <input name="JwtnPangku" type="text" class="form-control form-control-user" id="InputJabatan" placeholder="Jawatan Dipangku">
-                    </div>
                   </div>
                 </div>
-
-                <div class="row">
-                  <div class="form-group col-lg-6">
-                    <div class="form-group">
-                      <label>Tarikh Mula</label>
-                      <input name="trkhMula" type="text" class="form-control form-control-user tlahir date" id="InputMula" maxlength="10" placeholder="Tarikh Mula: xx-xx-xxxx">
-                    </div> 
-                  </div> 
-                  <div class="form-group col-lg-6">
-                    <div class="form-group">
-                      <label>Tarikh Tamat</label>
-                      <input name="trkhTamat" type="text" class="form-control form-control-user tlahir date" id="InputTamat" maxlength="10" placeholder="Tarikh Tamat: xx-xx-xxxx">
-                    </div> 
-                  </div> 
-                </div>
-
                 <div class="row">
                   <h4>Laporan Penilaian Prestasi Tahunan</h4>
                 </div>
