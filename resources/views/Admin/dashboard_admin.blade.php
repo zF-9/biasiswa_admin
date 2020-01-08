@@ -1,6 +1,7 @@
 @extends('layout.Admin.main_Admin')
 
-<script>
+<script type="text/javascript">
+
   var data_pemohon = '{{ $data_pemohon }}';
   var data_student = '{{ $data_student }}';
   var gred_36 = '{{ $c36 }}';
@@ -18,7 +19,12 @@
   var Oct = '{{ $Oct }}';
   var Nov = '{{ $Nov }}';
   var Dis = '{{ $Dis }}';
-  //alert(gred_41);  
+
+  var element = document.getElementById('caleandar');
+      
+
+  caleandar(element, events, settings);
+
 </script>
 
 
@@ -70,6 +76,13 @@
                   <div class="chart-area">
                     <canvas id="myAreaChart"></canvas>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-12 col-lg-12">
+              <div class="card shadow mb-4">
+                <div style="padding-top: 12px ;margin: auto;" id="caleandar">
                 </div>
               </div>
             </div>

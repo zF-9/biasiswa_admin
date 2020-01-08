@@ -192,6 +192,38 @@
       });
     </script>
 
+    <script>
+      /*var events = [
+              {'Date': new Date(2020, 1, 7), 'Title': 'Doctor appointment at 3:25pm.'},
+              {'Date': new Date(2020, 1, 18), 'Title': 'New Garfield movie comes out!', 'Link': 'https://garfield.com'},
+              {'Date': new Date(2020, 1, 27), 'Title': '25 year anniversary', 'Link': 'https://www.google.com.au/#q=anniversary+gifts'},
+      ];*/
+      $(document).ready(function(){
+        $('#full-clndr').clndr();
+      });
+
+      $( function() {
+
+        // PARDON ME while I do a little magic to keep these events relevant for the rest of time...
+        var currentMonth = moment().format('YYYY-MM');
+        var nextMonth    = moment().add('month', 1).format('YYYY-MM');
+
+        var events = [
+          { date: currentMonth + '-' + '10', title: 'Persian Kitten Auction', location: 'Center for Beautiful Cats' },
+          { date: currentMonth + '-' + '19', title: 'Cat Frisbee', location: 'Jefferson Park' },
+          { date: currentMonth + '-' + '23', title: 'Kitten Demonstration', location: 'Center for Beautiful Cats' },
+          { date: nextMonth + '-' + '07',    title: 'Small Cat Photo Session', location: 'Center for Cat Photography' }
+        ];
+
+        clndr = $('#full-clndr').clndr({
+          template: $('#full-clndr-template').html(),
+          events: events,
+          forceSixRows: true
+        });
+      });
+    </script>
+
+
   <body onload="consecutiveYear();">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -230,6 +262,11 @@
   <!-- Year Picker Js -->
   <script src="{{ asset ('js/yearpicker.js') }}"></script>
 
+  <!-- calendar plugins for dahsboard -->
+  <link rel="stylesheet" href="{{ asset ('css/demo_cal.css') }}"/>
+  <link rel="stylesheet" href="{{ asset ('css/theme3.css') }}"/>
+  <script type="text/javascript" src="{{ asset ('js/caleandar.js') }}"></script>
+  <script type="text/javascript" src="{{ asset ('js/cal_dash.js') }}"></script>
 
 
 
