@@ -267,10 +267,46 @@
                     <div class="form-group">
                       <label>Gred Jawatan</label>
                       <select name="skim" class="form-group form-control-user" id="InputSkim"  placeholder="Sila Pilih..">
+                          <option>A</option>
+                          <option>AB</option>
+                          <option>AL</option>
+                          <option>AT</option>
+                          <option>C</option>
+                          <option>DU</option>
+                          <option>DS</option>
+                          <option>DUG</option>
+                          <option>DG</option>
+                          <option>DM</option>
+                          <option>DUF</option>
+                          <option>DH</option>
+                          <option>DG</option>
+                          <option>E</option>
                           <option>F</option>
+                          <option>FA</option>
+                          <option>FT</option>
+                          <option>G</option>
+                          <option>GV</option>
+                          <option>H</option>
+                          <option>J</option>
+                          <option>JA</option>
+                          <option>KB</option>
+                          <option>KA</option>
+                          <option>KP</option>
+                          <option>KB</option>
+                          <option>LS</option>
+                          <option>L</option>
+                          <option>LA</option>
                           <option>N</option>
-                          <option>W</option>
+                          <option>NT</option>
+                          <option>Q</option>
                           <option>S</option>
+                          <option>UF</option>
+                          <option>UG</option>
+                          <option>U</option>
+                          <option>UD</option>
+                          <option>W</option>
+                          <option>WA</option>
+                          <option>WK</option>
                         </select>
                     </div>
                   </div>
@@ -304,26 +340,26 @@
                   </div>
                 </div>
                 <div class="row">
-                  <h4>Laporan Penilaian Prestasi Tahunan</h4>
+                  <h4>Laporan Penilaian Prestasi Tahunan </h4>
                 </div>
                   <div class="row">
                   <div class="form-group col-lg-4">
                     <div class="form-group">
-                      <label ></label>
-                      <input type="text" class="yearpicker form-control form-control-user" value="" id="year_1"/>
+                      <label >Tahun Pertama</label>
+                      <input type="text" class="yearpicker form-control form-control-user" value="" id="year_1" placeholder="Sila pilih tahun"/>
                       <input name="Tahun1LPPT" type="text" class="form-control form-control-user" id="InputT1" placeholder="">
                     </div>
                   </div> 
                   <div class="form-group col-lg-4">
                     <div class="form-group">
-                      <label ></label>
+                      <label >Tahun Kedua</label>
                       <input type="text" class="yearpicker form-control form-control-user" value="" id="year_2"/>
                       <input name="Tahun2LPPT" type="text" class="form-control form-control-user" id="InputT2" placeholder="">
                     </div>
                   </div>                  
                   <div class="form-group col-lg-4">
                     <div class="form-group">
-                      <label ></label>
+                      <label>Tahun Ketiga</label>
                       <input type="text" class="yearpicker form-control form-control-user" value="" id="year_3"/>
                       <input name="Tahun3LPPT" type="text" class="form-control form-control-user" id="InputT3" placeholder="">
                     </div>
