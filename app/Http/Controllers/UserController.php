@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use DB;
+use Image;
 use Redirect;
 use App\Dokumen_result;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Schema;
 
 class UserController extends Controller
 {
@@ -43,13 +45,17 @@ class UserController extends Controller
     public function profilePemohon() {
         $id = Auth::User()->id;
 
-        $user_profile = DB::table('applicants')->where('user_id', '=', $id)->first();
+        $user_profile = DB::table('applicants')
+        ->where('user_id', '=', $id)
+        ->join('users', 'users.id', 'applicants.user_id')
+        ->first();
 
         if($user_profile == null){
             return view('User.dashboard_user')->withErrors(__('Pemohon perlu mengisi borang maklumat pegawai'));
         }
     
         else {
+            //dd($user_profile);
             return view('User.ProfilePemohon', ['user_profile' => $user_profile]);          
         }    
     }
@@ -107,17 +113,29 @@ class UserController extends Controller
 
 
     public function update_avatar(Request $request){
+        $id = Auth::User()->id;
         // Handle the user upload of avatar
         if($request->hasFile('avatar')){
-            $avatar = $request->file('avatar');
+            $avatar = $request->file('avatar'); //avatar is the name of input
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
-            Image::make($avatar)->resize(300, 300)->save( public_path('/uploads/avatars/' . $filename ) );
+            $path = public_path('storage/profilePic/' . $filename );
+            Image::make($avatar)->resize(210, 210)->save( $path );
+            //->store('public/profilePic' );
+            //->save( public_path('/uploads/avatars/' . $filename ) );
 
-            $user = Auth::user();
+            $user = Auth::User();
             $user->avatar = $filename;
             $user->save();
         }
-        return route('profile_pemohon', array('user' => Auth::user()) );
+
+        /*$user_profile = DB::table('applicants')
+        ->where('user_id', '=', $id)
+        ->join('users', 'users.id', 'applicants.user_id')
+        ->first();*/
+
+        return Redirect::back();
+        //return ::route('profile_pemohon', ['user_profile' => $user_profile ]);
+        //dd($user);
     }
 
 }

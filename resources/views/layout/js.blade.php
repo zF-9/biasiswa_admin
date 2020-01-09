@@ -27,8 +27,6 @@
                 @csrf
             </form>
          @endauth            
-
-
         </div>
       </div>
     </div>

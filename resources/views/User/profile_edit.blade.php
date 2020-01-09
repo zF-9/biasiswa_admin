@@ -2,24 +2,28 @@
 @section('content')
 
     <div class="container-fluid mt--7">
-
         <div class="row">
-
             <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
-                <div class="card card-profile">
+                <div class="card card-profile shadow">
                     <div class="row justify-content-center">
                         <div class="col-lg-6 order-lg-6">
                             <div class="card-profile-image">
                                 <a href="#">
-                                    <img src="storage/profilePic/{{ auth()->user()-> avatar }}" class="rounded-circle"><!-- {{ asset('argon') }}/img/theme/team-4-800x800.jpg -->
+                                    <img src="storage/profilePic/{{ auth()->user()-> avatar }}" class="rounded-circle">
                                 </a>
                             </div>
+                        </div>
+                    </div>
+                    <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+                        <div class="d-flex justify-content-between">
+                            <a href="#" class="btn btn-sm btn-info mr-4">{{ __('Connect') }}</a>
+                            <a href="#" class="btn btn-sm btn-default float-right">{{ __('Message') }}</a>
                         </div>
                     </div>
                     <div class="card-body pt-0 pt-md-4">
                         <div class="row">
                             <div class="col">
-                                <!--<div class="card-profile-stats d-flex justify-content-center mt-md-5">
+                                <div class="card-profile-stats d-flex justify-content-center mt-md-5">
                                     <div>
                                         <span class="heading">22</span>
                                         <span class="description">{{ __('Friends') }}</span>
@@ -32,64 +36,31 @@
                                         <span class="heading">89</span>
                                         <span class="description">{{ __('Comments') }}</span>
                                     </div>
-                                </div>-->
+                                </div>
                             </div>
                         </div>
-
-
-                        <div class="text-center" id="profile_permohonan">
+                        <div class="text-center">
                             <h3>
-                                <span class="font-weight-light">Nama: </span>{{ auth()->user()->name }}
+                                {{ auth()->user()->name }}<span class="font-weight-light">, 27</span>
                             </h3>
-                            <div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2">No. Kad Pengenalan:</i>
-                                {{ $user_profile -> nokp }}
-                            </div>
                             <div class="h5 font-weight-300">
-                                <i class="ni location_pin mr-2">Email: </i>{{ auth()->user()->email }}
+                                <i class="ni location_pin mr-2"></i>{{ __('Bucharest, Romania') }}
                             </div>
                             <div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2"></i>{{ $user_profile -> jabatan}}
-                            </div>
-                            <div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2"></i>{{ $user_profile -> jawatan}}
-                            </div>
-                            <div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2"></i>{{ $user_profile -> Gred}}
-                            </div>
-                            <div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2"></i>{{ $user_profile -> TarafLantik}}
-                            </div>
-
-                            <div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2"></i>
-                                {{ $user_profile -> umur }}
-                            </div>
-                            <div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2"></i>
-                                {{ $user_profile -> telno }}
-                            </div>
-                            <div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2"></i>
-                                {{ $user_profile -> telnoPej }}
+                                <i class="ni business_briefcase-24 mr-2"></i>{{ __('Solution Manager - Creative Tim Officer') }}
                             </div>
                             <div>
                                 <i class="ni education_hat mr-2"></i>{{ __('University of Computer Science') }}
                             </div>
                             <hr class="my-4" />
-                            <p>A member since {{ auth()->user()->created_at }}</p>
-                            <p>Last Updated {{ auth()->user()->updated_at }}</p>
+                            <p>{{ __('Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.') }}</p>
                             <a href="#">{{ __('Show more') }}</a>
-                            <br>
-                            <a href="" data-toggle="modal" data-target="#avatarModal">upload a pic</a>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-            <!--<div class="col-xl-8 order-xl-1">
-                <div class="card bg-secondary">
+            <div class="col-xl-8 order-xl-1">
+                <div class="card bg-secondary shadow">
                     <div class="card-header bg-white border-0">
                         <div class="row align-items-center">
                             <h3 class="col-12 mb-0">{{ __('Edit Profile') }}</h3>
@@ -187,52 +158,8 @@
                         </form>
                     </div>
                 </div>
-            </div>-->
+            </div>
         </div>
         
     </div>
 @endsection
-
-
-
-  <!-- modal upload pic -->
-  <div id="avatarModal" class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-
-            <div class="modal-header">
-              <h5 class="modal-title">Update Personal Info</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-
-            <div class="modal-body">
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-10 col-md-offset-1">
-                        <img src="storage/profilePic/{{ $user_profile -> avatar }}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:25px;">
-                        <h2>{{ $user_profile->name }}'s Profile</h2>
-                        <form enctype="multipart/form-data" action="/updateAvatar" method="POST">
-                            <label>Update Profile Image</label>
-                            <input type="file" name="avatar">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input style="margin-top:12px" type="submit" class="pull-right btn btn-sm btn-primary">
-                        </form>
-                    </div>
-                </div>
-            </div>
-           
-
-
-            <div class="modal-footer">              
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-
-        
-      </div>
-      </div>
-    </div>  
-L</div>
-    <!-- modal upload pic -->

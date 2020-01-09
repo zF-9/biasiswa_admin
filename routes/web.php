@@ -77,11 +77,15 @@ Route::get('/profilePelajar', 'UserController@profilePelajar')->name('profile_pe
 Route::get('/upload_docs', 'UserController@upload_docs')->name('list_docs');
 
 Route::get('/upload_pic', 'UserController@UploadPic');
+Route::post('/updateAvatar', 'UserController@update_avatar');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/profile_edit', function() {
+	return view('User.profile_edit');
+});
 
 
 
