@@ -31,6 +31,7 @@ class ApplicantController extends Controller
         $applicant->tarikhlantik = request('tarikhlantik');
         $applicant->tberkhidmat = request('tberkhidmat');
         $applicant->jawatan = request('jawatan');
+        $applicant->skim = request('skim');
         $applicant->Gred = request('Gred');
         $applicant->TarafLantik = request('TarafLantik');
         $applicant->Tsahjwtn = request('Tsahjwtn');

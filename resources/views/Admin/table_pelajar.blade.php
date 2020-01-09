@@ -55,9 +55,9 @@
                             <form action="" method="post">
                               @csrf
                               @method('delete')                             
-                              <a class="dropdown-item" href="/payment_rec/{{ $user_data -> user_id }}">{{ __('Rekod') }}</a>
-                                <button type="button" class="dropdown-item" onclick="confirm('{{ __("Are you sure you want to delete this user?") }}') ? this.parentElement.submit() : ''">
-                                  {{ __('Delete') }}
+                              <a class="dropdown-item" href="/payment_rec/{{ $user_data -> user_id }}">{{ __('Membuat Pembayaran') }}</a>
+                                <button type="button" class="dropdown-item" onclick="confirm('{{ __("Tekan Ok jika ingin menghapus pelajar?") }}') ? this.parentElement.submit() : ''">
+                                  {{ __('Hapus Pelajar') }}
                                 </button>
                             </form>    
                             @else

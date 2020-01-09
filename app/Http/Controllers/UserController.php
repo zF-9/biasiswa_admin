@@ -96,6 +96,7 @@ class UserController extends Controller
         $serahan_dokumen = new Dokumen_result;
         $serahan_dokumen-> date_penyerahan = request('date_up');
         $serahan_dokumen-> perkara = request('thewhat');
+        $serahan_dokumen-> tempoh = request('tempoh');
         $serahan_dokumen-> tuntutan = request('tuntutan');
         $serahan_dokumen-> file = request()->file('dokumen')->store('public/uploadocs');
         $serahan_dokumen-> document_id = $id;

@@ -29,6 +29,7 @@ class CreateApplicantsTable extends Migration
             $table->string('tarikhlantik');
             $table->string('tberkhidmat'); 
             $table->string('jawatan');
+            $table->string('skim');
             $table->string('Gred');
             $table->string('TarafLantik');
             $table->string('Tsahjwtn');
