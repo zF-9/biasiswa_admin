@@ -3,45 +3,6 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
-  <!-- modal upload pic -->
-  <div id="avatarModal" class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-
-            <div class="modal-header">
-              <h5 class="modal-title">Update Personal Info</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-
-            <div class="modal-body">
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-10 col-md-offset-1">
-                        <img src="storage/profilePic/{{ auth()->user()-> avatar }}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:25px;">
-                        <h2>{{ auth()->user()->name }}'s Profile</h2>
-                        <form enctype="multipart/form-data" action="/updateAvatar" method="POST">
-                            <label>Update Profile Image</label>
-                            <input type="file" name="avatar">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <!--<input style="margin-top:12px; margin-bottom: 12px" type="submit" class="pull-right btn btn-sm btn-primary">-->
-                            <button type="button submit" style="margin-top:12px; margin-bottom: 12px" class="btn btn-primary">Upload</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal-footer">              
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>  
-      </div>
-      </div>
-    </div>  
-L</div>
-    <!-- modal upload pic -->
-
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
