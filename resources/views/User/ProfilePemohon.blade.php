@@ -8,10 +8,10 @@
             <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
                 <div class="card card-profile">
                     <div class="row justify-content-center">
-                        <div class="col-lg-6 order-lg-6">
+                        <div class="col-md-4 col-xl-9 col-lg-4 order-lg-4">
                             <div class="card-profile-image">
                                 <a href="#">
-                                    <img src="storage/profilePic/{{ auth()->user()-> avatar }}" class="rounded-circle"><!-- {{ asset('argon') }}/img/theme/team-4-800x800.jpg -->
+                                    <img src="storage/profilePic/{{ auth()->user()-> avatar }}" class="rounded-circle">
                                 </a>
                             </div>
                         </div>
