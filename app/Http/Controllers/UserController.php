@@ -114,12 +114,13 @@ class UserController extends Controller
 
     public function update_avatar(Request $request){
         $id = Auth::User()->id;
+        //$user = User::where('id', '=', $id);
         // Handle the user upload of avatar
         if($request->hasFile('avatar')){
             $avatar = $request->file('avatar'); //avatar is the name of input
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
             $path = public_path('storage/profilePic/' . $filename );
-            Image::make($avatar)->resize(210, 210)->save( $path );
+            Image::make($avatar)->resize(300, 300)->save( $path );
             //->store('public/profilePic' );
             //->save( public_path('/uploads/avatars/' . $filename ) );
 
