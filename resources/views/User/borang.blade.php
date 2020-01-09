@@ -241,7 +241,7 @@
                   <div class="row">
                   <div class="form-group col-lg-6">
                     <div class="form-group">
-                      <label>Tarikh Perlantikan</label>
+                      <label>Tarikh Pelantikan</label>
                       <input name="tarikhlantik" type="text" class="form-control form-control-user Tlantik" id="InputTlantik" placeholder="Tarikh Perlantikan">
                     </div>
                   </div>
@@ -262,10 +262,21 @@
                       <input name="jawatan" type="text" class="form-control form-control-user" id="InputJawatan" placeholder="Jawatan">
                     </div>
                   </div>
-                  <div class="form-group col-lg-6">
+                  
+                  <div class="form-group col-lg-0">
                     <div class="form-group">
-                      <label>Gred Jawatan (eg 29, 41, 52 dll)</label>
-                      <input name="Gred" type="text" class="form-control form-control-user" id="InputGred" placeholder="Gred">
+                      <label>Gred Jawatan</label>
+                      <select name="skim" class="form-group form-control-user" id="InputSkim"  placeholder="Sila Pilih..">
+                          <option>F</option>
+                          <option>N</option>
+                          <option>W</option>
+                          <option>S</option>
+                        </select>
+                    </div>
+                  </div>
+                  <div class="form-group col-lg-2">
+                    <div class="form-group">
+                        <input name="Gred" type="text" class="form-control form-control-user" id="InputGred" placeholder="Gred">
                     </div>
                   </div>
                 </div>

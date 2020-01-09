@@ -55,9 +55,9 @@
                             <form action="" method="post">
                               @csrf
                               @method('delete')                             
-                              <a class="dropdown-item" href="/approve/{{ $data -> user_id }}">{{ __('Approve') }}</a>
+                              <a class="dropdown-item" href="/approve/{{ $data -> user_id }}">{{ __('Terima') }}</a>
                                 <button type="button" class="dropdown-item" onclick="confirm('{{ __("Are you sure you want to delete this user?") }}') ? this.parentElement.submit() : ''">
-                                  {{ __('Delete') }}
+                                  {{ __('Hapus') }}
                                 </button>
                             </form>    
                             @else

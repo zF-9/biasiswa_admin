@@ -97,20 +97,24 @@
 
 
       <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
 
-      <!-- Nav Item - Charts -->
-      <li class="nav-item">
-        <a class="nav-link" href="/serahan">
-        <i class="fas fa-fw fa-upload"></i>
-          <span>Muat Naik Dokumen</span></a>
-      </li>
+      <hr class="sidebar-divider">
+      <div class="sidebar-heading">
+        Menu Pelajar
+      </div>
 
-      <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="/Userpayment_rec">
-        <i class="fas fa-fw fa-credit-card"></i>
-          <span>Rekod Pembayaran</span></a>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePage" aria-expanded="true" aria-controls="collapsePage">
+          <i class="fas fa-fw   fa-graduation-cap"></i>
+          <span>Pelajar</span>
+        </a>
+        <div id="collapsePage" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Ingin :</h6>
+            <a class="collapse-item" href="/Userpayment_rec">Rekod Pembayaran</a>
+            <a class="collapse-item" href="/serahan">Membuat Tuntutan</a>
+          </div>
+        </div>
       </li>
 
       <!-- Divider -->

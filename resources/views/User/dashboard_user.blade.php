@@ -54,7 +54,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Pengumuman Penting</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">Dibuka Dari Bulan Januari 2020 - Julai 2020
+                      <div> <a class="h5 mb-0 font-weight-bold text-gray-800" href="storage/iklan/iklan.png">Iklan Biasiswa Kerajaan Negeri Sabah</a>
                       </div>
                     </div>
                     <div class="col-auto">
@@ -72,7 +72,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Perhatian</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">Syarat-syarat Biasiswa Pegawai Kerajaan Negeri</div>
+                      <div><a class="h5 mb-0 font-weight-bold text-gray-800" href="storage/iklan/syarat.png">Syarat-syarat Permohonan Biasiswa</a></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-check fa-2x text-gray-300"></i>
@@ -154,7 +154,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Perhatian</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">Syarat-syarat Permohonan Biasiswa</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">Syarat-syarat Biasiswa Pegawai Kerajaan Negeri</div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-check fa-2x text-gray-300"></i>
