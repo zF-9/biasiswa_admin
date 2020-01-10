@@ -60,6 +60,8 @@ class ApplicantController extends Controller
         $applicant_data->Uni_namePT = request('Uni_named');
                 
         $applicant_data->tawaran = request()->file('tawaran')->store('public/uploadocs');
+
+
         $applicant_data->surakuan = request()->file('surakuan')->store('public/uploadocs');
 
         $applicant_data->applicant_id = auth()->user()->id;

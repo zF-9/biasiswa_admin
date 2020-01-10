@@ -21,8 +21,8 @@
                       <th>Tarikh Muatnaik</th>
                       <th>Jenis Tuntutan</th> 
                       <th>Tempoh Tuntutan</th> 
-                      <th>Jumlah Tuntutan Dalam Ringgit Malaysia (RM)</th> 
-                      <th>Muat Naik Rujukan Tuntutan</th>
+                      <th>Jumlah (RM)</th> 
+                      <th>Rujukan</th>
                     </tr>
                   </thead>
                   <tfoot>
@@ -30,8 +30,8 @@
                       <th>Tarikh Muatnaik</th>
                       <th>Jenis Tuntutan</th> 
                       <th>Tempoh Tuntutan</th> 
-                      <th>Jumlah Tuntutan Dalam Ringgit Malaysia (RM)</th> 
-                      <th>Rujukan Tuntutan</th>
+                      <th>Jumlah (RM)</th> 
+                      <th>Rujukan</th>
                     </tr>
                   </tfoot>
                   <tbody>
@@ -97,7 +97,7 @@
                       <td>{{ $data -> perkara }}</td>
                       <td>{{ $data -> tempoh }}</td>
                       <td>{{ $data -> tuntutan }}</td>
-                      <td>{{ $data -> file }}</td>
+                      <td><a href="{{ $data -> file }}">File Rujukan</a></td>
                     </tr>    
                     @endforeach    
 

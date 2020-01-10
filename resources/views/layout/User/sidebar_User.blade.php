@@ -87,7 +87,8 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Jenis Maklumat :</h6>
+            <h6 class="collapse-header">Jenis Maklumat :</h6> 
+            <a class="collapse-item" href="{{ route('full_profile') }}">Maklumat Penuh</a>
             <a class="collapse-item" href="{{ route('profile_pemohon') }}">Maklumat Pegawai</a>
             <a class="collapse-item" href="{{ route('profile_pelajar') }}">Maklumat Pengajian</a>
           </div>

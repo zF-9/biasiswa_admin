@@ -72,6 +72,7 @@ Route::get('/serahan', 'UserController@doc_res');
 Route::post('/serahan', 'UserController@mn_dokumen'); 
 
 Route::get('/Userpayment_rec', 'UserController@payment_history');
+Route::get('/profilePenuh', 'UserController@profile_penuh')->name('full_profile');
 Route::get('/profilePemohon', 'UserController@profilePemohon')->name('profile_pemohon');
 Route::get('/profilePelajar', 'UserController@profilePelajar')->name('profile_pelajar');
 Route::get('/upload_docs', 'UserController@upload_docs')->name('list_docs');

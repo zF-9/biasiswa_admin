@@ -150,6 +150,9 @@
 
     <script>
       function consecutiveYear() {
+        document.getElementById('nama_u_form').style.display = "none"; 
+        document.getElementById('option_u_form').style.display = "none";
+
         var d = new Date();
         var x = d.getFullYear();
         var y = d.getFullYear() - 1;

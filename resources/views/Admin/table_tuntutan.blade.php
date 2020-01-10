@@ -49,7 +49,7 @@
                       <td>{{ $data -> perkara }}</td>
                       <td>{{ $data -> tempoh }}</td>
                       <td>{{ $data -> tuntutan }}</td>
-                      <td><a href="storage/uploadocs/{{ $data -> file}}">{{ $data -> file}}</a></td>
+                      <td><a href="{{ $data -> file}}">{{ $data -> file}}</a></td>
                       <td>
                       </td>
                     </tr>     

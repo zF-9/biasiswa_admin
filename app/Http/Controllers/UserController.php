@@ -75,6 +75,25 @@ class UserController extends Controller
         }    
     }
 
+    public function profile_penuh() {
+        $id = Auth::User()->id;
+
+        $user_profile = DB::table('applicants')
+        ->where('user_id', '=', $id)
+        ->join('users', 'users.id', 'applicants.user_id')
+        ->join('info__pengajians', 'users.id', 'info__pengajians.applicant_id' )
+        ->first();
+
+        if($user_profile == null){
+            return view('User.dashboard_user')->withErrors(__('Pemohon perlu mengisi borang maklumat pegawai'));
+        }
+    
+        else {
+            //dd($user_profile);
+            return view('User.Profile_full', ['user_profile' => $user_profile]);          
+        }        
+    }
+
     public function payment_history() {
         $id = Auth::User()->id;
 
@@ -90,7 +109,7 @@ class UserController extends Controller
         }      
     }
 
-    public function mn_dokumen() {
+    public function mn_dokumen(Request $request) {
         $id = Auth::User()->id;
 
         $serahan_dokumen = new Dokumen_result;
@@ -98,9 +117,25 @@ class UserController extends Controller
         $serahan_dokumen-> perkara = request('thewhat');
         $serahan_dokumen-> tempoh = request('tempoh');
         $serahan_dokumen-> tuntutan = request('tuntutan');
-        $serahan_dokumen-> file = request()->file('dokumen')->store('public/uploadocs');
+
+
+    // cache the file
+    //$file = request()->file('dokumen');
+    // generate a new filename. getClientOriginalExtension() for the file extension
+    //$filename = 'dokumen-stdnt-' . time() . '.' . $file->getClientOriginalExtension();
+    // save to storage/app/photos as the new $filename
+    //$path = public_path('storage/uploadocs/' . $filename );
+    //$file->storeAs('public/uploadocs/', $filename);
+
+        //$FileName            = request()->file('dokumen')->getClientOriginalName();
+        //$FileDestinationPath = public_path('') .'public/uploadocs'.$FileName;
+        //$serahan_dokumen-> file = public_path('') .'public/uploadocs'.$FileName;
+
+        $serahan_dokumen-> file = request()->file('dokumen')->store('uploadocs');
+        //$serahan_dokumen-> file = storeAs($path, $filename);
         $serahan_dokumen-> document_id = $id;
 
+        //dd($path);
         $serahan_dokumen->save();
         return Redirect::back();
     }
@@ -115,29 +150,19 @@ class UserController extends Controller
 
     public function update_avatar(Request $request){
         $id = Auth::User()->id;
-        //$user = User::where('id', '=', $id);
-        // Handle the user upload of avatar
+
         if($request->hasFile('avatar')){
-            $avatar = $request->file('avatar'); //avatar is the name of input
+            $avatar = $request->file('avatar'); 
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
             $path = public_path('storage/profilePic/' . $filename );
             Image::make($avatar)->resize(300, 300)->save( $path );
-            //->store('public/profilePic' );
-            //->save( public_path('/uploads/avatars/' . $filename ) );
+
 
             $user = Auth::User();
             $user->avatar = $filename;
             $user->save();
         }
-
-        /*$user_profile = DB::table('applicants')
-        ->where('user_id', '=', $id)
-        ->join('users', 'users.id', 'applicants.user_id')
-        ->first();*/
-
         return Redirect::back();
-        //return ::route('profile_pemohon', ['user_profile' => $user_profile ]);
-        //dd($user);
     }
 
 }
