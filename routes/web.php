@@ -14,6 +14,7 @@
 use App\User;
 use App\applicant;
 use App\upDocuments;
+use App\Dokumen_result;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
 
@@ -59,6 +60,7 @@ Route::get('/datatable_pemohon', 'AdminController@dataPemohon')->name('table_pem
 Route::get('/datatable_pelajar', 'AdminController@dataPelajar')->name('table_pelajar');
 Route::get('/payment_rec/{id}', 'AdminController@payment_record');
 Route::post('/update_pyrec/{id}', 'AdminController@update_payment');
+Route::get('/tuntutan_pay/{ticket}/{info}', 'AdminController@payment_claim');
 Route::get('/approve/{id}', 'AdminController@approve_pelajar');
 Route::get('/profilePemohon/{name}', 'AdminController@profile_view')->name('profile_viewer');
 

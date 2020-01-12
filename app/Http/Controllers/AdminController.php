@@ -6,6 +6,7 @@ use DB;
 use Redirect;
 use App\User;
 use App\applicant;
+use App\Dokumen_result;
 use App\upDocuments;
 use App\payment_record;
 use Illuminate\Http\Request;
@@ -123,8 +124,6 @@ class AdminController extends Controller
     }
 
     public function viewTuntutan() {
-        //$tuntutan = DB::table('dokumen_results')->get();
-
         $tuntutan = DB::table('dokumen_results')
         ->join('users', 'users.id', 'dokumen_results.document_id')
         ->get();
@@ -135,8 +134,20 @@ class AdminController extends Controller
 
     public function payment_record($id) {
         $payments = DB::table('payment_records')->where('payment_id', '=', $id)->get();
+        $user_data = User::where('id', '=', $id)->first();
 
-        return view('Admin.record_pmbyrn', ['id' => $id, 'payment' => $payments]);   
+        return view('Admin.record_pmbyrn', ['id' => $id, 'user_data' => $user_data, 'payment' => $payments]);
+        //dd($user_data);   
+    }
+
+    public function payment_claim($id, $data_id) {
+        $payments = DB::table('payment_records')->where('payment_id', '=', $id)->get();
+        $user_data = User::where('id', '=', $id)->first();
+        $claim_info = Dokumen_result::where('document_id', '=', $id)
+                    ->where('date_penyerahan', '=', $data_id)->first();
+
+        return view('Admin.record_pmbyrn', ['id' => $id, 'claim_info' => $claim_info, 'user_data' => $user_data, 'payment' => $payments]);    
+        //dd($data_id, $id);    
     }
 
     public function update_payment($id) {

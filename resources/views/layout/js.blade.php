@@ -220,7 +220,7 @@
         $('#full-clndr').clndr();
       });
 
-      $( function() {
+     /* $( function() {
 
         // PARDON ME while I do a little magic to keep these events relevant for the rest of time...
         var currentMonth = moment().format('YYYY-MM');
@@ -238,7 +238,7 @@
           events: events,
           forceSixRows: true
         });
-      });
+      });*/
     </script>
 
 
