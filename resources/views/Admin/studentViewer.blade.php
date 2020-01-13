@@ -11,11 +11,9 @@
                         <div class="col-md-4 col-xl-9 col-lg-4 order-lg-4">
                             <div class="card-profile-image">
                                 <a href="storage/profilePic/{{ $user_profile -> avatar }}">
+
                                     <img src="storage/profilePic/{{ $user_profile -> avatar }}" class="rounded-circle">
                                 </a>
-                                
-                                <i>{{ $user_profile -> avatar }}</i>
-                                <i>{{ auth()->user()-> avatar }}</i>
                             </div>
                         </div>
                     </div>
@@ -69,7 +67,7 @@
                             <!--<div>
                                 <i class="ni education_hat mr-2"></i>{{ __('University of Computer Science') }}
                             </div>-->
-                            <!--<hr class="my-4" />-->
+                            <hr class="my-4" />
                             <!--<p>A member since {{ auth()->user()->created_at }}</p>
                             <p>Last Updated {{ auth()->user()->updated_at }}</p>
                             <a href="#">{{ __('Show more') }}</a>
@@ -104,6 +102,7 @@
                     <p class="leade font-italic">Jawatan: {{ $user_profile->jawatan }}</p>
                     <p class="leade font-italic">Gred: {{ $user_profile->Gred }}</p>
                     <p class="leade font-italic">Taraf Pelantikan: {{ $user_profile->TarafLantik }}</p>
+                    <p class="leade font-italic">Tarikh Sah Jawatan: {{ $user_profile->Tsahjwtn }}</p>
 
                     <!--<p class="leade font-italic mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
                       irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->

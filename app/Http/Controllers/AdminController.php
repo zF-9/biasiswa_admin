@@ -177,21 +177,13 @@ class AdminController extends Controller
     }
 
     public function profile_view($user_data) {
-        /*$user_profile = applicant::where('user_id', '=', $user_data)
-        ->join('users', 'users.id', 'applicants.user_id')
-        ->join('info__pengajians', 'users.id', 'info__pengajians.applicant_id' )
-        ->first();*/
-
         $user_profile = DB::table('applicants')
         ->where('user_id', '=', $user_data)
         ->join('users', 'users.id', 'applicants.user_id')
         ->join('info__pengajians', 'users.id', 'info__pengajians.applicant_id' )
         ->first();
 
-        $student_avatar = Storage::disk('public')->get('profilePic/'.$user_profile->avatar);
-
-        dd($student_avatar);
-        //return view('Admin.studentViewer', ['user_profile' => $user_profile]);
+        return view('Admin.studentViewer', ['user_profile' => $user_profile]);
     }
 
     

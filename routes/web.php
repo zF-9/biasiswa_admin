@@ -62,7 +62,7 @@ Route::get('/payment_rec/{id}', 'AdminController@payment_record');
 Route::post('/update_pyrec/{id}', 'AdminController@update_payment');
 Route::get('/tuntutan_pay/{ticket}/{info}', 'AdminController@payment_claim');
 Route::get('/approve/{id}', 'AdminController@approve_pelajar');
-Route::get('/profilePemohon/{user_data}', 'AdminController@profile_view')->name('profile_viewer');
+Route::get('/{user_data}', 'AdminController@profile_view')->name('profile_viewer');
 
 Route::get('/permohonan_baru','ApplicantController@apply');
 Route::post('/permohonan_baru', 'ApplicantController@store');
