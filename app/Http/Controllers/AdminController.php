@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use Redirect;
+use Storage;
 use App\User;
 use App\applicant;
 use App\Dokumen_result;
@@ -146,7 +147,7 @@ class AdminController extends Controller
         $claim_info = Dokumen_result::where('document_id', '=', $id)
                     ->where('date_penyerahan', '=', $data_id)->first();
 
-        return view('Admin.record_pmbyrn', ['id' => $id, 'claim_info' => $claim_info, 'user_data' => $user_data, 'payment' => $payments]);    
+        return view('Admin.record_tuntutan', ['id' => $id, 'claim_info' => $claim_info, 'user_data' => $user_data, 'payment' => $payments]);    
         //dd($data_id, $id);    
     }
 
@@ -175,9 +176,22 @@ class AdminController extends Controller
         return Redirect()->route('table_pemohon');     
     }
 
-    public function profile_view($name) {
-        $user_profile = applicant::where('nama', '=', $name)->first();
-        return view('Admin.profileViewer', ['user_profile' => $user_profile]);
+    public function profile_view($user_data) {
+        /*$user_profile = applicant::where('user_id', '=', $user_data)
+        ->join('users', 'users.id', 'applicants.user_id')
+        ->join('info__pengajians', 'users.id', 'info__pengajians.applicant_id' )
+        ->first();*/
+
+        $user_profile = DB::table('applicants')
+        ->where('user_id', '=', $user_data)
+        ->join('users', 'users.id', 'applicants.user_id')
+        ->join('info__pengajians', 'users.id', 'info__pengajians.applicant_id' )
+        ->first();
+
+        $student_avatar = Storage::disk('public')->get('profilePic/'.$user_profile->avatar);
+
+        dd($student_avatar);
+        //return view('Admin.studentViewer', ['user_profile' => $user_profile]);
     }
 
     

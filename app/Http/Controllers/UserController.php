@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use Image;
 use Redirect;
+use App\applicant;
 use App\Dokumen_result;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
@@ -112,39 +113,35 @@ class UserController extends Controller
     public function mn_dokumen(Request $request) {
         $id = Auth::User()->id;
 
+
         $serahan_dokumen = new Dokumen_result;
         $serahan_dokumen-> date_penyerahan = request('date_up');
         $serahan_dokumen-> perkara = request('thewhat');
         $serahan_dokumen-> tempoh = request('tempoh');
         $serahan_dokumen-> tuntutan = request('tuntutan');
 
+        $file = $request->file('dokumen');
+        $originalname = $file->getClientOriginalName();
+        $serahan_dokumen-> file = $file->storeAs('public/upload_docs', $originalname);
 
-    // cache the file
-    //$file = request()->file('dokumen');
-    // generate a new filename. getClientOriginalExtension() for the file extension
-    //$filename = 'dokumen-stdnt-' . time() . '.' . $file->getClientOriginalExtension();
-    // save to storage/app/photos as the new $filename
-    //$path = public_path('storage/uploadocs/' . $filename );
-    //$file->storeAs('public/uploadocs/', $filename);
-
-        //$FileName            = request()->file('dokumen')->getClientOriginalName();
-        //$FileDestinationPath = public_path('') .'public/uploadocs'.$FileName;
-        //$serahan_dokumen-> file = public_path('') .'public/uploadocs'.$FileName;
-
-        $serahan_dokumen-> file = request()->file('dokumen')->store('uploadocs');
-        //$serahan_dokumen-> file = storeAs($path, $filename);
         $serahan_dokumen-> document_id = $id;
-
         //dd($path);
         $serahan_dokumen->save();
         return Redirect::back();
+
     }
 
     public function doc_res() {
         $id = Auth::User()->id;
+        $student_record = DB::table('applicants')->where('user_id', '=', $id)->where('isApproved', '=', '1')->first();
 
-        $list_document = DB::table('dokumen_results')->where('document_id', '=', $id)->get();
-        return view('User.upload_docs', ['list_docs' => $list_document]); 
+        if($student_record == null) {
+           return Redirect()->route('user-dashboard')->withErrors(['Pengguna belum diterima sebagai pelajar']);            
+        }
+        else {
+            $list_document = DB::table('dokumen_results')->where('document_id', '=', $id)->get();
+            return view('User.upload_docs', ['list_docs' => $list_document]); 
+        }
     }
 
 

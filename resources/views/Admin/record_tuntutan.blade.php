@@ -99,7 +99,7 @@
                       <td>  
                         <div class="form-group">
                           <!--<label>Jenis Pembayaran</label>-->
-                          <input name="jumlah" type="text" class="form-control form-control-user" value="" id="InputSum" maxlength="14">
+                          <input name="jumlah" type="text" class="form-control form-control-user" value="{{ $claim_info -> tuntutan }}" id="InputSum" maxlength="14">
                           <div class="text-right">
                             <button type="submit" class="btn btn-success btn-user btn-block">{{ __('Hantar') }}
                             </button>

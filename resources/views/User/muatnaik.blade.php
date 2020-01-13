@@ -70,7 +70,7 @@
                               </select>
                           </div>
                         </div>
-                        <div class="form-group col-lg-4">
+                        <div class="form-group col-lg-6">
                           <div class="form-group">
                             <label>Mod Pengajian</label>
                               <select name="study_mod" class="form-group form-control-user" id="stdy" placeholder="Pilih la yang mana satu" onchange="study_m0de()">

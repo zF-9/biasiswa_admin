@@ -153,7 +153,7 @@
         document.getElementById('nama_u_form').style.display = "none"; 
         document.getElementById('option_u_form').style.display = "none";
 
-        var d = new Date();
+        /*var d = new Date();
         var x = d.getFullYear();
         var y = d.getFullYear() - 1;
         var z = d.getFullYear() - 2;
@@ -176,12 +176,12 @@
           year: z,
           startYear: 2012,
           endYear: 2048
-        });
+        });*/
       }
     </script>
 
     <script>
-      /*$(document).ready(function() {
+      $(document).ready(function() {
         var d = new Date();
         var x = d.getFullYear();
         var y = d.getFullYear() - 1;
@@ -207,7 +207,7 @@
         //document.getElementById("year_1").val(x);
         //document.getElementById("year_2").val(y);
         //document.getElementById("year_3").val(z);
-      });*/
+      });
     </script>
 
     <script>

@@ -346,7 +346,7 @@
                   <div class="form-group col-lg-4">
                     <div class="form-group">
                       <label >Tahun Pertama</label>
-                      <input type="text" class="yearpicker form-control form-control-user" value="" id="year_1" placeholder="Sila pilih tahun"/>
+                      <input type="text" class="yearpicker form-control form-control-user" value="" id="year_1"/>
                       <input name="Tahun1LPPT" type="text" class="form-control form-control-user" id="InputT1" placeholder="">
                     </div>
                   </div> 

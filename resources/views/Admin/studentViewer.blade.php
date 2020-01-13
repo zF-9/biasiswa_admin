@@ -1,4 +1,4 @@
-@extends('layout.User.main_User')
+@extends('layout.Admin.main_Admin')
 @section('content')
 
     <div class="container-fluid mt--7">
@@ -10,9 +10,12 @@
                     <div class="row justify-content-center">
                         <div class="col-md-4 col-xl-9 col-lg-4 order-lg-4">
                             <div class="card-profile-image">
-                                <a href="#">
-                                    <img src="storage/profilePic/{{ auth()->user()-> avatar }}" class="rounded-circle">
+                                <a href="storage/profilePic/{{ $user_profile -> avatar }}">
+                                    <img src="storage/profilePic/{{ $user_profile -> avatar }}" class="rounded-circle">
                                 </a>
+                                
+                                <i>{{ $user_profile -> avatar }}</i>
+                                <i>{{ auth()->user()-> avatar }}</i>
                             </div>
                         </div>
                     </div>
@@ -29,14 +32,14 @@
                             </h3>-->
                             <div class="h5 mt-4">
                                 <i class="ni business_briefcase-24 mr-2">Nama: </i>
-                                {{ auth()->user()->name }}
+                                {{ $user_profile -> name }}
                             </div>
                             <div class="h5 mt-4">
                                 <i class="ni business_briefcase-24 mr-2">No. Kad Pengenalan:</i>
                                 {{ $user_profile -> nokp }}
                             </div>
                             <div class="h5 font-weight-300">
-                                <i class="ni location_pin mr-2">Email: </i>{{ auth()->user()->email }}
+                                <i class="ni location_pin mr-2">Email: </i>{{ $user_profile -> email }}
                             </div>
                             <!--<div class="h5 mt-4">
                                 <i class="ni business_briefcase-24 mr-2"></i>{{ $user_profile -> jabatan}}
@@ -92,7 +95,7 @@
                 </ul>
                 <div id="myTab1Content" class="tab-content">
                   <div id="home1" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5 show active">
-                    <p class="leade font-italic">nama: {{ auth()->user()->name }}</p>
+                    <p class="leade font-italic">nama: {{ $user_profile -> name }}</p>
                     <p class="leade font-italic">No kad Pengenalan: {{ $user_profile->nokp }}</p>
                     <p class="leade font-italic">Email: {{ $user_profile->email }}</p>
                     <p class="leade font-italic">Alamat: {{ $user_profile->alamat }}</p>

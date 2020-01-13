@@ -41,7 +41,7 @@
                      @foreach($data_student as $key => $user_data)
                     <tr>
                       <td>{{ $user_data -> id }}</td>
-                      <td><a href="/profilePemohon/{{$user_data -> nama}}">{{ $user_data -> nama }}</a></td>
+                      <td><a href="/profilePemohon/{{$user_data -> user_id}}">{{ $user_data -> nama }}</a></td>
                       <td>{{ $user_data -> email }}</td>
                       <td>{{ $user_data -> nokp }}</td>
                       <td>{{ $user_data -> AkademikLvl }}</td>
@@ -55,7 +55,7 @@
                             <form action="" method="post">
                               @csrf
                               @method('delete')                             
-                              <a class="dropdown-item" href="/payment_rec/{{ $user_data -> user_id }}">{{ __('Membuat Pembayaran') }}</a>
+                              <a class="dropdown-item" href="/payment_rec/{{ $user_data -> user_id }}">{{ __('Rekod Pembayaran') }}</a>
                                 <button type="button" class="dropdown-item" onclick="confirm('{{ __("Tekan Ok jika ingin menghapus pelajar?") }}') ? this.parentElement.submit() : ''">
                                   {{ __('Hapus Pelajar') }}
                                 </button>
