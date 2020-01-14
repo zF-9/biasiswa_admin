@@ -57,6 +57,7 @@ Route::get('/profilepage', 'AdminController@AdminProfile')->middleware('ProfileM
 Route::get('/datatable_tuntutan', 'AdminController@viewTuntutan')->name('table_tuntutan');
 Route::get('/datatable_pemohon', 'AdminController@dataPemohon')->name('table_pemohon');
 Route::get('/datatable_pelajar', 'AdminController@dataPelajar')->name('table_pelajar');
+
 Route::get('/payment_rec/{id}', 'AdminController@payment_record');
 Route::post('/update_pyrec/{id}', 'AdminController@update_payment');
 Route::get('/approve/{id}', 'AdminController@approve_pelajar');
@@ -70,6 +71,8 @@ Route::post('/pengajian', 'ApplicantController@upload');
 
 Route::get('/serahan', 'UserController@doc_res');
 Route::post('/serahan', 'UserController@mn_dokumen'); 
+Route::get('/exportstudent', 'UserController@exportstudent');
+Route::get('/exportchart', 'UserController@exportlaporan');
 
 Route::get('/Userpayment_rec', 'UserController@payment_history');
 Route::get('/profilePemohon', 'UserController@profilePemohon')->name('profile_pemohon');
@@ -84,7 +87,12 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/profile_edit', function() {
-	return view('User.profile_edit');
+    return view('User.profile_edit');
+    
+
+
+//Route::get('/export_excel/excel', 'ExportExcelController@excel')->name('export_excel.excel');
+
 });
 
 

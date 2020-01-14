@@ -11,6 +11,9 @@ use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Schema;
+use App\Exports\UsersExport;
+use App\Exports\chartExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -25,6 +28,18 @@ class UserController extends Controller
         else {
             $user->profilepic = request()->file('profilepic')->store('public/uploadProfilePic');
         }     
+    }
+
+    public function exportstudent() 
+    {
+        //sreturn (new InvoicesExport)->download('invoices.xlsx', \Maatwebsite\Excel\Excel::XLSX);
+      return Excel::download(new UsersExport, 'Student.csv');
+    }
+
+    public function exportlaporan() 
+    {
+        //sreturn (new InvoicesExport)->download('invoices.xlsx', \Maatwebsite\Excel\Excel::XLSX);
+      return Excel::download(new chartExport, 'Laporan.csv');
     }
 
     public function profilepage() {
@@ -98,7 +113,7 @@ class UserController extends Controller
         $serahan_dokumen-> perkara = request('thewhat');
         $serahan_dokumen-> tempoh = request('tempoh');
         $serahan_dokumen-> tuntutan = request('tuntutan');
-        $serahan_dokumen-> file = request()->file('dokumen')->store('public/uploadocs');
+        $serahan_dokumen-> file = request()->file('dokumen')->store('public/storage/uploadocs');
         $serahan_dokumen-> document_id = $id;
 
         $serahan_dokumen->save();
@@ -111,6 +126,8 @@ class UserController extends Controller
         $list_document = DB::table('dokumen_results')->where('document_id', '=', $id)->get();
         return view('User.upload_docs', ['list_docs' => $list_document]); 
     }
+
+    
 
 
     public function update_avatar(Request $request){
