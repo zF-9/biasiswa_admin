@@ -19,7 +19,7 @@
               <div class="col-lg-12">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">BORANG PERMOHONAN</h1>
+                    <h1 class="h4 text-gray-900 mb-4">BORANG MAKLUMAT PEGAWAI</h1>
                   </div>
                   <!--<form class="user">-->
                   <form class="user" method="post" action="/permohonan_baru" enctype="multipart/form-data" autocomplete="off">
@@ -83,8 +83,8 @@
                   <div class="form-group col-lg-12">
                     <div class="form-group">
                       <label>Alamat Rumah Semasa</label>
-                      <input name="alamat" type="text" class="form-control form-control-user" id="InputAlamat" placeholder="Alamat_1">
-                      <input name="alamat" type="text" class="form-control form-control-user" id="InputAlamat" placeholder="Alamat_2">
+                      <input name="alamat_1" type="text" class="form-control form-control-user" id="InputAlamat" placeholder="Cth: Jalan 1234, Lorong 42">
+                      <input name="alamat_2" type="text" class="form-control form-control-user" id="InputAlamat" placeholder="Cth: 88400 Kota Kinabalu Sabah">
                     </div>
                   </div>
                 </div>

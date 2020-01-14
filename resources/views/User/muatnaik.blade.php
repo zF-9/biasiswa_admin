@@ -112,7 +112,21 @@
                       </div>
 
                       <div class="row">
-
+                      <!-- tanggungan 
+                      <div id="Tanggungan" class="card shadow mb-4 col-xl-12">
+                        <div class="card-header py-3">
+                          <h6 class="m-0 font-weight-bold text-primary">anak</h6>
+                        </div>
+                        <div class="card-body">
+                          <div class="text-center">
+                            <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="" alt="">
+                          </div>
+                          <p>
+                            <input class="form-control form-group form-control-user" type="" name="">
+                            <input class="form-control form-group form-control-user" type="" name="">
+                          </p>
+                        </div>
+                      </div>-->
                       </div>
 
                       <div class="row" style="align:center">
@@ -134,16 +148,16 @@
                       </div>
                       
 
-                      <div class="row">
+                      <!--<div class="row">
                         <input id="statustw" type="checkbox" onclick="togglediv('uploadstatw')" name="is_ok[]">
                             <label class="form-control-label" style="margin:3px 9px 0px 6px" for="input-tawaran">
                                   Surat tawaran daripada Universiti
                             </label>
-                      </div>
+                      </div>-->
 
                   <div class="surat-tawaran col-sm-12 col-md-9" style="align:center">
-                      <div id="uploadstatw" style="display: none">
-                          <label class="stuni form-control-label" for="input-tawaran">Surat Tawaran</label>
+                      <div id="uploadstatw"> <!-- style="display: none" -->
+                          <label class="stuni form-control-label" for="input-tawaran">Surat Tawaran Dari Universiti</label>
                               <div class="col-sm-9" style="padding-left: 0px;padding-top: 9px;padding-bottom: 12px">
                                   <input name="tawaran" type="file" id="input_tawaran" class="custom-file-inputform-control form-control-alternative" placeholder="" value="" required="" autofocus="">
                                   <span style="margin-left: 15px; width: 480px;" class="custom-file-control"></span>
@@ -200,10 +214,14 @@
   var age = '{{ $user_data -> umur }}';
   var service = '{{ $user_data -> tberkhidmat }}';
   var appoint = '{{ $user_data -> TarafLantik }}';
-  var average = '{{ $avg }}';
+  var average = '{{ $avg }}' / 3;
 
-  //alert(average);
-  //alert(gred);
+  var tanggungan = '{{ $user_data -> tarafkahwin }}';
+  //alert(tanggungan);
+
+  if(tanggungan == 'Berkahwin'){
+    document.getElementById("Tanggungan").style.display = 'block';
+  }
 
   function denied() {
       alert("Anda tidak layak untuk memohon");
@@ -218,7 +236,7 @@
     document.getElementById("stdy").disabled = false;
     var y = document.getElementById("stdy").value; 
 
-    if(y == "Full Time"){
+    if(y == "Full Time") {
       document.getElementById("option_u_form").style.display = "none";
       document.getElementById("option_u_form").disabled = true;
       document.getElementById("nama_u_form").style.display = "block";

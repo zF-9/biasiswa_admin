@@ -137,12 +137,12 @@
     <script type="text/javascript">
       /*window.onload = function() {
         document.getElementById('uploadstatw').style.display = 'none';
-      };*/
+      };
 
       function togglediv(id) {
         var div = document.getElementById(id);
         div.style.display = div.style.display == "none" ? "block" : "none";
-      } 
+      } */
     </script>
 
     <script type="text/javascript">
@@ -152,6 +152,7 @@
       function consecutiveYear() {
         document.getElementById('nama_u_form').style.display = "none"; 
         document.getElementById('option_u_form').style.display = "none";
+        document.getElementById('Tanggungan').style.display = "none";
 
         /*var d = new Date();
         var x = d.getFullYear();

@@ -113,7 +113,6 @@ class UserController extends Controller
     public function mn_dokumen(Request $request) {
         $id = Auth::User()->id;
 
-
         $serahan_dokumen = new Dokumen_result;
         $serahan_dokumen-> date_penyerahan = request('date_up');
         $serahan_dokumen-> perkara = request('thewhat');
@@ -125,10 +124,9 @@ class UserController extends Controller
         $serahan_dokumen-> file = $file->storeAs('public/upload_docs', $originalname);
 
         $serahan_dokumen-> document_id = $id;
-        //dd($path);
+
         $serahan_dokumen->save();
         return Redirect::back();
-
     }
 
     public function doc_res() {
@@ -157,7 +155,7 @@ class UserController extends Controller
 
             $user = Auth::User();
             $user->avatar = $filename;
-            $user->save();
+            $user->update(); //save()
         }
         return Redirect::back();
     }

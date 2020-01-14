@@ -10,8 +10,7 @@
                     <div class="row justify-content-center">
                         <div class="col-md-4 col-xl-9 col-lg-4 order-lg-4">
                             <div class="card-profile-image">
-                                <a href="storage/profilePic/{{ $user_profile -> avatar }}">
-
+                                <a href="">
                                     <img src="storage/profilePic/{{ $user_profile -> avatar }}" class="rounded-circle">
                                 </a>
                             </div>
@@ -25,9 +24,6 @@
 
 
                         <div class="text-center" id="profile_permohonan">
-                            <!--<h3>
-                                <span class="font-weight-light">Nama: </span>{{ auth()->user()->name }}
-                            </h3>-->
                             <div class="h5 mt-4">
                                 <i class="ni business_briefcase-24 mr-2">Nama: </i>
                                 {{ $user_profile -> name }}
@@ -128,10 +124,25 @@
                       irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
                   </div>
                   <div id="contact1" role="tabpanel" aria-labelledby="contact-tab" class="tab-pane fade px-4 py-5">
-                    <p class="leade font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                    <!--<p class="leade font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
                       irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     <p class="leade font-italic mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                      irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                      irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
+
+                      <!-- Illustrations 
+                      <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                          <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+                        </div>
+                        <div class="card-body">
+                          <div class="text-center">
+                            <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="torage/{{ $user_profile->surakuan }}" alt="">
+                          </div>
+                          <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a constantly updated collection of beautiful svg images that you can use completely free and without attribution!</p>
+                          <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on unDraw &rarr;</a>
+                        </div>
+                      </div>-->
+
                   </div>
                 </div>
                 <!-- End bordered tabs -->

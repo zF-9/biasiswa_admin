@@ -13,14 +13,16 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+        //$default_pic = Storage::disk('public')->get('default.png');
+
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id'); //parses as 'user_id' on applicant table
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->boolean('isAdmin')->nullable();
-            $table->string('avatar')->default('storage/profilePic/default.jpg');
+            $table->boolean('isAdmin')->default(0);
+            $table->string('avatar')->default('default.png');
             $table->rememberToken();
             $table->timestamps();
         });

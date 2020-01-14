@@ -17,6 +17,10 @@ class ApplicantController extends Controller
     public function store() 
     {
         $applicant = new applicant; 
+
+        $alamat_1 = request('alamat_1');
+        $alamat_2 = request('alamat_2');
+        $full_alamat = $alamat_1 . ' ' . $alamat_2;
         
         $applicant->nama = request('nama');
         $applicant->nokp = request('nokp');
@@ -25,7 +29,7 @@ class ApplicantController extends Controller
         $applicant->tarafkahwin = request('tarafkahwin');
         $applicant->telno = request('telno');
         $applicant->telnoPej = request('telnoPej');
-        $applicant->alamat = request('alamat');
+        $applicant->alamat = $full_alamat;
         $applicant->email = request('email');
         $applicant->jabatan = request('jabatan');
         $applicant->tarikhlantik = request('tarikhlantik');
@@ -101,8 +105,9 @@ class ApplicantController extends Controller
                 ->first();
 
                 $avg_marks = applicant::where('user_id', '=', $id)
-                ->sum('Tahun1LPPT', 'Tahun2LPPT', 'Tahun3LPPT');
+                ->sum(DB::raw('Tahun1LPPT + Tahun2LPPT + Tahun3LPPT'));
 
+                //dd($avg_marks);
                 return view('User.muatnaik', ['user_data' => $user_data, 'avg' => $avg_marks]);                
             }
             //dd($user_data);
