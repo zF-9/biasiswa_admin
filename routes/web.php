@@ -59,6 +59,7 @@ Route::get('/datatable_pemohon', 'AdminController@dataPemohon')->name('table_pem
 Route::get('/datatable_pelajar', 'AdminController@dataPelajar')->name('table_pelajar');
 
 Route::get('/payment_rec/{id}', 'AdminController@payment_record');
+//Route::get('/export_pdf', 'AdminController@export_pdf');
 Route::post('/update_pyrec/{id}', 'AdminController@update_payment');
 Route::get('/approve/{id}', 'AdminController@approve_pelajar');
 Route::get('/profilePemohon/{name}', 'AdminController@profile_view')->name('profile_viewer');

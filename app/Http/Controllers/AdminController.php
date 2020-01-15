@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use DB;
 use Redirect;
 use App\User;
@@ -174,5 +175,6 @@ class AdminController extends Controller
     public function ApprovePelajar(User $user) {
         dd($user);
     }   
+
 
 }
