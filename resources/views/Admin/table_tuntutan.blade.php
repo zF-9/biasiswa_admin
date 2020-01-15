@@ -25,25 +25,23 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-
-                    <th>Nama Penuntut</th>
-                      <th>Tarikh Tuntutan</th>
-                      <th>Jenis Tuntutan</th> 
-                      <th>Tempoh Tuntutan</th> 
-                      <th>Jumlah Tuntutan</th>    
-                      <th>Muat Turun Rujukan Tuntutan</th>
+                      <th>Nama </th>
+                      <th>Tarikh</th>
+                      <th>Jenis</th> 
+                      <th>Tempoh</th> 
+                      <th>Jumlah(RM)</th>                     
+                      <th>Rujukan</th>
                       <th></th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
-
-                      <th>Nama Penuntut</th>
-                      <th>Tarikh Tuntutan</th>
-                      <th>Jenis Tuntutan</th> 
-                      <th>Tempoh Tuntutan</th> 
-                      <th>Jumlah Tuntutan</th>                     
-                      <th>Muat Turun Rujukan Tuntutan</th>
+                      <th>Nama </th>
+                      <th>Tarikh</th>
+                      <th>Jenis</th> 
+                      <th>Tempoh</th> 
+                      <th>Jumlah(RM)</th>                     
+                      <th>Rujukan</th>
                       <th></th>
                     </tr>
                   </tfoot>
@@ -55,8 +53,27 @@
                       <td>{{ $data -> perkara }}</td>
                       <td>{{ $data -> tempoh }}</td>
                       <td>{{ $data -> tuntutan }}</td>
+<<<<<<< HEAD
                       <td><a href="{{ $data -> file}}">{{ $data -> file}}</a></td>
+=======
+                      <td><a href="storage/{{ $data -> file}}">Rujukan</a></td>
+>>>>>>> f40b4109c86f3677c6d17aac3295d48e961113ff
                       <td>
+                      <div class="dropdown">
+                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v text-gray-900"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                            <form action="" method="post">
+                              @csrf                            
+                              <a class="dropdown-item" href="/tuntutan_pay/{{ $data -> id }}/{{ $data -> date_penyerahan }}">{{ __('Membuat Pembayaran') }}</a>
+                                <button type="button" class="dropdown-item" onclick="confirm('{{ __("Tekan Ok jika ingin menghapus pelajar?") }}') ? this.parentElement.submit() : ''">
+                                  {{ __('Hapus Pelajar') }}
+                                </button>
+                            </form>    
+                            <a class="dropdown-item" href="">{{ __('Edit') }}</a>
+                            </div>
+                        </div>                         
                       </td>
                     </tr>     
                     @endforeach                

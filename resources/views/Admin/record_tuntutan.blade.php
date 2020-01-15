@@ -11,7 +11,7 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Senarai Pembayaran : {{ $user_data -> name }}</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Senarai Pembayaran {{ $user_data -> name }}</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -77,18 +77,29 @@
                           <option>Elaun Tangunggan</option>
                           <option>Elaun Perjalanan</option>
                         </select>
+                        <script type="text/javascript">
+                          var jenis = '{{ $claim_info -> perkara }}';
+                          var selection = document.getElementById('InputJenis');
+                            for (var i = 0; i < selection.options.length; i++) {
+                              if (selection.options[i].text === jenis) {
+                                selection.selectedIndex = i;
+                                //alert(selection.selectedIndex);
+                                break;
+                              }
+                            } 
+                        </script>
                         </div>   
                       </td>
                       <td>
                         <div class="form-group">
                           <!--<label>Jumlah Pembayaran</label>-->
-                          <input name="tempoh" type="text" class="form-control form-control-user" value="" id="InputTempoh" maxlength="14">
+                          <input name="tempoh" type="text" class="form-control form-control-user" value="{{ $claim_info -> tempoh }}" id="InputTempoh" maxlength="14">
                         </div>                                           
                       </td>
                       <td>  
                         <div class="form-group">
                           <!--<label>Jenis Pembayaran</label>-->
-                          <input name="jumlah" type="text" class="form-control form-control-user" value="" id="InputSum" maxlength="14">
+                          <input name="jumlah" type="text" class="form-control form-control-user" value="{{ $claim_info -> tuntutan }}" id="InputSum" maxlength="14">
                           <div class="text-right">
                             <button type="submit" class="btn btn-success btn-user btn-block">{{ __('Hantar') }}
                             </button>

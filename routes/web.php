@@ -14,6 +14,7 @@
 use App\User;
 use App\applicant;
 use App\upDocuments;
+use App\Dokumen_result;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
 
@@ -37,10 +38,6 @@ Route::get('/dashboard_user', function() {
     return view('User.dashboard_user');
 })->name('user-dashboard');
 
-//Route::get('/upload', function() {
-//	return view('User.upload_docs');
-//});//->name('');
-
 Route::get('/form', function() {
 	return view('form');
 });
@@ -49,11 +46,9 @@ Route::get('/404', function() {
     return view('404');
 });
 
-//route to validate if the user is admin or bukan 
-Route::get('/dashboard', 'AdminController@AdminDashboard')->middleware('AdminMiddleware');
-//route to validate if the profile page takes Admin || User 
 Route::get('/profilepage', 'AdminController@AdminProfile')->middleware('ProfileMiddleware');
 
+<<<<<<< HEAD
 Route::get('/datatable_tuntutan', 'AdminController@viewTuntutan')->name('table_tuntutan');
 Route::get('/datatable_pemohon', 'AdminController@dataPemohon')->name('table_pemohon');
 Route::get('/datatable_pelajar', 'AdminController@dataPelajar')->name('table_pelajar');
@@ -64,6 +59,8 @@ Route::post('/update_pyrec/{id}', 'AdminController@update_payment');
 Route::get('/approve/{id}', 'AdminController@approve_pelajar');
 Route::get('/profilePemohon/{name}', 'AdminController@profile_view')->name('profile_viewer');
 
+=======
+>>>>>>> f40b4109c86f3677c6d17aac3295d48e961113ff
 Route::get('/permohonan_baru','ApplicantController@apply');
 Route::post('/permohonan_baru', 'ApplicantController@store');
 
@@ -76,6 +73,7 @@ Route::get('/exportstudent', 'UserController@exportstudent');
 Route::get('/exportchart', 'UserController@exportlaporan');
 
 Route::get('/Userpayment_rec', 'UserController@payment_history');
+Route::get('/profilePenuh', 'UserController@profile_penuh')->name('full_profile');
 Route::get('/profilePemohon', 'UserController@profilePemohon')->name('profile_pemohon');
 Route::get('/profilePelajar', 'UserController@profilePelajar')->name('profile_pelajar');
 Route::get('/upload_docs', 'UserController@upload_docs')->name('list_docs');
@@ -93,6 +91,19 @@ Route::get('/profile_edit', function() {
 
 
 //Route::get('/export_excel/excel', 'ExportExcelController@excel')->name('export_excel.excel');
+
+});
+
+Route::group(['middleware' => 'AdminMiddleware'], function() {
+	Route::get('/dashboard', 'AdminController@AdminDashboard');
+	Route::get('/datatable_tuntutan', 'AdminController@viewTuntutan')->name('table_tuntutan');
+	Route::get('/datatable_pemohon', 'AdminController@dataPemohon')->name('table_pemohon');
+	Route::get('/datatable_pelajar', 'AdminController@dataPelajar')->name('table_pelajar');
+	Route::get('/payment_rec/{id}', 'AdminController@payment_record');
+	Route::post('/update_pyrec/{id}', 'AdminController@update_payment');
+	Route::get('/tuntutan_pay/{ticket}/{info}', 'AdminController@payment_claim');
+	Route::get('/approve/{id}', 'AdminController@approve_pelajar');
+	Route::get('/{user_data}', 'AdminController@profile_view')->name('profile_viewer');
 
 });
 

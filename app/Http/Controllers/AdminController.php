@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use PDF;
 use DB;
 use Redirect;
+use Storage;
 use App\User;
 use App\applicant;
+use App\Dokumen_result;
+use App\info_Pengajian;
 use App\upDocuments;
 use App\payment_record;
 use Illuminate\Http\Request;
@@ -24,13 +27,17 @@ class AdminController extends Controller
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->count();
 
-        $deg_ap = DB::table('info__pengajians')->where('AppliedKursus', '=', 'Sarjana Muda')->get();
-        $mstr_ap = DB::table('info__pengajians')->where('AppliedKursus', '=', 'Sarjana')->get();
-        $phd_ap = DB::table('info__pengajians')->where('AppliedKursus', '=', 'Doktor Falsafah')->get();
+        $data_applicant = DB::table('applicants')->where('isApproved', '=', '0')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
+        ->count();
 
         $data_student = DB::table('applicants')->where('isApproved', '=', '1')
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->count();
+
+        $deg_ap = DB::table('info__pengajians')->where('AppliedKursus', '=', 'Sarjana Muda')->get();
+        $mstr_ap = DB::table('info__pengajians')->where('AppliedKursus', '=', 'Sarjana')->get();
+        $phd_ap = DB::table('info__pengajians')->where('AppliedKursus', '=', 'Doktor Falsafah')->get();
 
         $deg_p = DB::table('applicants')->where('isApproved', '=', '1')
         ->where('AppliedKursus', '=', 'Sarjana Muda')
@@ -54,55 +61,60 @@ class AdminController extends Controller
 
         $Jan = DB::table('payment_records')
         ->where('bulan', '=', '0')
-        ->sum('Amount');
+        ->sum('amount');
      
         $Feb = DB::table('payment_records')
         ->where('bulan', '=', '1')
-        ->sum('Amount');
+        ->sum('amount');
  
         $Mar = DB::table('payment_records')
         ->where('bulan', '=', '2')
-        ->sum('Amount');
+        ->sum('amount');
  
         $Apr = DB::table('payment_records')
         ->where('bulan', '=', '3')
-        ->sum('Amount');
+        ->sum('amount');
  
         $May = DB::table('payment_records')
         ->where('bulan', '=', '4')
-        ->sum('Amount');
+        ->sum('amount');
  
         $Jun = DB::table('payment_records')
         ->where('bulan', '=', '5')
-        ->sum('Amount');
+        ->sum('amount');
  
         $Jul = DB::table('payment_records')
         ->where('bulan', '=', '6')
-        ->sum('Amount');
+        ->sum('amount');
          
         $Aug = DB::table('payment_records')
         ->where('bulan', '=', '7')
-        ->sum('Amount');
+        ->sum('amount');
      
         $Sep = DB::table('payment_records')
         ->where('bulan', '=', '8')
-        ->sum('Amount');
+        ->sum('amount');
  
         $Oct = DB::table('payment_records')
         ->where('bulan', '=', '9')
-        ->sum('Amount');
+        ->sum('amount');
  
         $Nov = DB::table('payment_records')
         ->where('bulan', '=', '10')
-        ->sum('Amount');
+        ->sum('amount');
  
         $Dis = DB::table('payment_records')
         ->where('bulan', '=', '11')
-        ->sum('Amount');
+        ->sum('amount');
 
-        $payment = DB::table('payment_records')->get(['date_pymnt', 'Amount']);
+        $payment = DB::table('payment_records')->get(['date_pymnt', 'amount']);
 
-        return view('Admin.dashboard_admin', ['data_pemohon' => $data_pemohon, 'data_student' => $data_student, 'degree' => $deg_ap, 'degreeapp' => $deg_p, 'master' => $mstr_ap, 'masterapp' => $mstr_p, 'phd' => $phd_ap, 'phdapp' => $phd_p, 'c36' => $count_36, 'c41' => $count_41, 'c44' => $count_44, 'c48' => $count_48, 'pembayaran' => $payment, 'Jan' => $Jan, 'Feb' => $Feb, 'Mar' => $Mar, 'Apr' => $Apr, 'May' => $May, 'Jun'=> $Jun, 'Jul' => $Jul, 'Aug' => $Aug, 'Sep' => $Sep, 'Oct' => $Oct, 'Nov' => $Nov, 'Dis' => $Dis]); 
+        //student: study mode
+        $FT_student = info_Pengajian::where('mod_pengajian', '=', 'Full Time')->join('applicants', 'info__pengajians.applicant_id', 'applicants.user_id')->count();
+        $PT_student = info_pengajian::where('mod_pengajian', '=', 'Part Time')->join('applicants', 'info__pengajians.applicant_id', 'applicants.user_id')->count();
+        //student: study mode
+
+        return view('Admin.dashboard_admin', ['data_pemohon' => $data_pemohon, 'data_student' => $data_student, 'data_applicant' => $data_applicant,'degree' => $deg_ap, 'degreeapp' => $deg_p, 'master' => $mstr_ap, 'masterapp' => $mstr_p, 'phd' => $phd_ap, 'phdapp' => $phd_p, 'c36' => $count_36, 'c41' => $count_41, 'c44' => $count_44, 'c48' => $count_48, 'pembayaran' => $payment, 'Jan' => $Jan, 'Feb' => $Feb, 'Mar' => $Mar, 'Apr' => $Apr, 'May' => $May, 'Jun'=> $Jun, 'Jul' => $Jul, 'Aug' => $Aug, 'Sep' => $Sep, 'Oct' => $Oct, 'Nov' => $Nov, 'Dis' => $Dis, 'FT_student' => $FT_student, 'PT_student' => $PT_student]); 
     } 
     
    
@@ -124,8 +136,6 @@ class AdminController extends Controller
     }
 
     public function viewTuntutan() {
-        //$tuntutan = DB::table('dokumen_results')->get();
-
         $tuntutan = DB::table('dokumen_results')
         ->join('users', 'users.id', 'dokumen_results.document_id')
         ->get();
@@ -136,8 +146,20 @@ class AdminController extends Controller
 
     public function payment_record($id) {
         $payments = DB::table('payment_records')->where('payment_id', '=', $id)->get();
+        $user_data = User::where('id', '=', $id)->first();
 
-        return view('Admin.record_pmbyrn', ['id' => $id, 'payment' => $payments]);   
+        return view('Admin.record_pmbyrn', ['id' => $id, 'user_data' => $user_data, 'payment' => $payments]);
+        //dd($user_data);   
+    }
+
+    public function payment_claim($id, $data_id) {
+        $payments = DB::table('payment_records')->where('payment_id', '=', $id)->get();
+        $user_data = User::where('id', '=', $id)->first();
+        $claim_info = Dokumen_result::where('document_id', '=', $id)
+                    ->where('date_penyerahan', '=', $data_id)->first();
+
+        return view('Admin.record_tuntutan', ['id' => $id, 'claim_info' => $claim_info, 'user_data' => $user_data, 'payment' => $payments]);    
+        //dd($data_id, $id);    
     }
 
     public function update_payment($id) {
@@ -165,13 +187,17 @@ class AdminController extends Controller
         return Redirect()->route('table_pemohon');     
     }
 
-    public function profile_view($name) {
-        $user_profile = applicant::where('nama', '=', $name)->first();
-        return view('Admin.profileViewer', ['user_profile' => $user_profile]);
+    public function profile_view($user_data) {
+        $user_profile = DB::table('applicants')
+        ->where('user_id', '=', $user_data)
+        ->join('users', 'users.id', 'applicants.user_id')
+        ->join('info__pengajians', 'users.id', 'info__pengajians.applicant_id' )
+        ->first();
+
+        return view('Admin.studentViewer', ['user_profile' => $user_profile]);
     }
 
     
-
     public function ApprovePelajar(User $user) {
         dd($user);
     }   
