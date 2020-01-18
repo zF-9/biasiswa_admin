@@ -47,20 +47,6 @@ Route::get('/404', function() {
 });
 
 Route::get('/profilepage', 'AdminController@AdminProfile')->middleware('ProfileMiddleware');
-
-<<<<<<< HEAD
-Route::get('/datatable_tuntutan', 'AdminController@viewTuntutan')->name('table_tuntutan');
-Route::get('/datatable_pemohon', 'AdminController@dataPemohon')->name('table_pemohon');
-Route::get('/datatable_pelajar', 'AdminController@dataPelajar')->name('table_pelajar');
-
-Route::get('/payment_rec/{id}', 'AdminController@payment_record');
-//Route::get('/export_pdf', 'AdminController@export_pdf');
-Route::post('/update_pyrec/{id}', 'AdminController@update_payment');
-Route::get('/approve/{id}', 'AdminController@approve_pelajar');
-Route::get('/profilePemohon/{name}', 'AdminController@profile_view')->name('profile_viewer');
-
-=======
->>>>>>> f40b4109c86f3677c6d17aac3295d48e961113ff
 Route::get('/permohonan_baru','ApplicantController@apply');
 Route::post('/permohonan_baru', 'ApplicantController@store');
 

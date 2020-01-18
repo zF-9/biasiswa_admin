@@ -8,6 +8,7 @@
 
   <!--<script href="{{ asset('vendor/jquery/jquery-1.11.3.js') }}"></script>-->
   <script href="{{ asset('vendor/jquery/jquery-3.3.1.js') }}"></script>
+  <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
   <!-- Custom fonts for this template-->
   <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css" />

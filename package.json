@@ -22,5 +22,9 @@
         "sass-loader": "7.*",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10"
+    },
+    "dependencies": {
+        "blueimp-canvas-to-blob": "^3.17.0",
+        "file-saver": "^2.0.2"
     }
 }

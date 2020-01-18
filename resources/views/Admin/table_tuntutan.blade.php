@@ -53,11 +53,8 @@
                       <td>{{ $data -> perkara }}</td>
                       <td>{{ $data -> tempoh }}</td>
                       <td>{{ $data -> tuntutan }}</td>
-<<<<<<< HEAD
-                      <td><a href="{{ $data -> file}}">{{ $data -> file}}</a></td>
-=======
                       <td><a href="storage/{{ $data -> file}}">Rujukan</a></td>
->>>>>>> f40b4109c86f3677c6d17aac3295d48e961113ff
+
                       <td>
                       <div class="dropdown">
                             <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

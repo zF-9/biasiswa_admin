@@ -133,15 +133,11 @@ class UserController extends Controller
         $serahan_dokumen-> perkara = request('thewhat');
         $serahan_dokumen-> tempoh = request('tempoh');
         $serahan_dokumen-> tuntutan = request('tuntutan');
-<<<<<<< HEAD
-        $serahan_dokumen-> file = request()->file('dokumen')->store('public/storage/uploadocs');
-=======
 
         $file = $request->file('dokumen');
         $originalname = $file->getClientOriginalName();
         $serahan_dokumen-> file = $file->storeAs('public/upload_docs', $originalname);
 
->>>>>>> f40b4109c86f3677c6d17aac3295d48e961113ff
         $serahan_dokumen-> document_id = $id;
 
         $serahan_dokumen->save();
