@@ -99,6 +99,15 @@
                       </div>
 
                       <div class="row">
+                        <div class="form-group col-lg-8" id="nama_u_form">
+                          <div class="form-group">
+                            <label>Nama Kursus</label>
+                            <input name="course" type="text" class="form-control form-control-user" id="Input_course" placeholder="Nama Kursus">
+                          </div>
+                        </div>   
+                      </div>
+
+                      <div class="row">
                         <div class="form-group col-lg-4">
                           <div class="form-group">
                             <label>Pilihan Negara/Negeri</label>

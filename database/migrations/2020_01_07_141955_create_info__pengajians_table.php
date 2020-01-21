@@ -37,6 +37,7 @@ class CreateInfoPengajiansTable extends Migration
 
         Schema::table('info__pengajians', function(Blueprint $table) {
             $table->foreign('applicant_id')->references('id')->on('users');
+            
         });
     }
 

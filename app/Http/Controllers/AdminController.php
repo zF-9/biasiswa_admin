@@ -30,33 +30,39 @@ class AdminController extends Controller
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->count();
 
-        $data_student = DB::table('applicants')->where('isApproved', '=', '1')
+        $all_student = DB::table('applicants')->where('isApproved', '=', '1')
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
-        ->count();
+        ->get();
 
-        $deg_ap = DB::table('info__pengajians')->where('AppliedKursus', '=', 'Sarjana Muda')->get();
-        $mstr_ap = DB::table('info__pengajians')->where('AppliedKursus', '=', 'Sarjana')->get();
-        $phd_ap = DB::table('info__pengajians')->where('AppliedKursus', '=', 'Doktor Falsafah')->get();
+        $data_student = $all_student->count();
 
-        $deg_p = DB::table('applicants')->where('isApproved', '=', '1')
+        $deg_ap = DB::table('applicants')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->where('AppliedKursus', '=', 'Sarjana Muda')
-        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->get();
 
-        $mstr_p = DB::table('applicants')->where('isApproved', '=', '1')
+        $mstr_ap = DB::table('applicants')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->where('AppliedKursus', '=', 'Sarjana')
-        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->get();
 
-        $phd_p = DB::table('applicants')->where('isApproved', '=', '1')
-        ->where('AppliedKursus', '=', 'Doktor Falsafah')
+        $phd_ap = DB::table('applicants')
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
+        ->where('AppliedKursus', '=', 'Doktor Falsafah')
         ->get();
+
+        $deg_p = $deg_ap->where('isApproved', '=', '1');
+        $mstr_p = $mstr_ap->where('isApproved', '=', '1');
+        $phd_p = $phd_ap->where('isApproved', '=', '1');
+
 
         $count_36 = applicant::where('Gred', '=', '36')->count();
         $count_41 = applicant::where('Gred', '=', '41')->count();
         $count_44 = applicant::where('Gred', '=', '44')->count();
         $count_48 = applicant::where('Gred', '=', '48')->count();
+
+        $monthly = DB::table('payment_records')->get()->groupBy('bulan');
+        //$monthly = compact('pay_month');
 
         $Jan = DB::table('payment_records')
         ->where('bulan', '=', '0')
@@ -113,7 +119,28 @@ class AdminController extends Controller
         $PT_student = info_pengajian::where('mod_pengajian', '=', 'Part Time')->join('applicants', 'info__pengajians.applicant_id', 'applicants.user_id')->count();
         //student: study mode
 
-        return view('Admin.dashboard_admin', ['data_pemohon' => $data_pemohon, 'data_student' => $data_student, 'data_applicant' => $data_applicant,'degree' => $deg_ap, 'degreeapp' => $deg_p, 'master' => $mstr_ap, 'masterapp' => $mstr_p, 'phd' => $phd_ap, 'phdapp' => $phd_p, 'c36' => $count_36, 'c41' => $count_41, 'c44' => $count_44, 'c48' => $count_48, 'pembayaran' => $payment, 'Jan' => $Jan, 'Feb' => $Feb, 'Mar' => $Mar, 'Apr' => $Apr, 'May' => $May, 'Jun'=> $Jun, 'Jul' => $Jul, 'Aug' => $Aug, 'Sep' => $Sep, 'Oct' => $Oct, 'Nov' => $Nov, 'Dis' => $Dis, 'FT_student' => $FT_student, 'PT_student' => $PT_student]); 
+        //local-oversea student
+        $local_state = info_Pengajian::where('tmpt_study', '=', 'Dalam Negeri Sabah');
+        $local_country = info_Pengajian::where('tmpt_study', '=', 'Luar Negeri Sabah');
+        $oversea = info_Pengajian::where('tmpt_study', '=', 'Luar Negara');
+        //local-oversea student
+
+        //test script
+        $test_04 = $deg_p->where('Gred', '=', '41')->count();
+        $test_05 = $deg_p->where('Gred', '=', '44')->count();
+        $test_06 = $deg_p->where('Gred', '=', '48')->count();
+
+        $test_01 = $mstr_p->where('Gred', '=', '41')->count();
+        $test_02 = $mstr_p->where('Gred', '=', '44')->count();
+        $test_03 = $mstr_p->where('Gred', '=', '48')->count();
+
+        $test_07 = $phd_p->where('Gred', '=', '41')->count();
+        $test_08 = $phd_p->where('Gred', '=', '44')->count();
+        $test_09 = $phd_p->where('Gred', '=', '48')->count();
+
+        //dd($monthly);
+
+        return view('Admin.dashboard_admin', ['data_pemohon' => $data_pemohon, 'data_student' => $data_student, 'data_applicant' => $data_applicant,'degree' => $deg_ap, 'degreeapp' => $deg_p, 'master' => $mstr_ap, 'masterapp' => $mstr_p, 'phd' => $phd_ap, 'phdapp' => $phd_p, 'c36' => $count_36, 'c41' => $count_41, 'c44' => $count_44, 'c48' => $count_48, 'pembayaran' => $payment, 'Jan' => $Jan, 'Feb' => $Feb, 'Mar' => $Mar, 'Apr' => $Apr, 'May' => $May, 'Jun'=> $Jun, 'Jul' => $Jul, 'Aug' => $Aug, 'Sep' => $Sep, 'Oct' => $Oct, 'Nov' => $Nov, 'Dis' => $Dis, 'FT_student' => $FT_student, 'PT_student' => $PT_student, 'payment' => $monthly, 'state' => $local_state, 'country' => $local_country, 'oversea' => $oversea]); 
     } 
     
    

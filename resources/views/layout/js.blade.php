@@ -135,14 +135,7 @@
     </script>
 
     <script type="text/javascript">
-      /*window.onload = function() {
-        document.getElementById('uploadstatw').style.display = 'none';
-      };
-
-      function togglediv(id) {
-        var div = document.getElementById(id);
-        div.style.display = div.style.display == "none" ? "block" : "none";
-      } */
+      // test
     </script>
 
     <script type="text/javascript">
@@ -153,31 +146,6 @@
         document.getElementById('nama_u_form').style.display = "none"; 
         document.getElementById('option_u_form').style.display = "none";
         document.getElementById('Tanggungan').style.display = "none";
-
-        /*var d = new Date();
-        var x = d.getFullYear();
-        var y = d.getFullYear() - 1;
-        var z = d.getFullYear() - 2;
-        //document.getElementById("year_1").innerHTML = x;
-        //document.getElementById("year_2").innerHTML = y;
-        //document.getElementById("year_3").innerHTML = z;
-        $("#year_1").yearpicker({
-          year: x,
-          startYear: 2012,
-          endYear: 2048
-        });
-
-        $("#year_2").yearpicker({
-          year: y,
-          startYear: 2012,
-          endYear: 2048
-        });
-
-        $("#year_3").yearpicker({
-          year: z,
-          startYear: 2012,
-          endYear: 2048
-        });*/
       }
     </script>
 
@@ -205,43 +173,14 @@
           startYear: 2012,
           endYear: 2048
         });
-        //document.getElementById("year_1").val(x);
-        //document.getElementById("year_2").val(y);
-        //document.getElementById("year_3").val(z);
       });
     </script>
 
     <script>
-      /*var events = [
-              {'Date': new Date(2020, 1, 7), 'Title': 'Doctor appointment at 3:25pm.'},
-              {'Date': new Date(2020, 1, 18), 'Title': 'New Garfield movie comes out!', 'Link': 'https://garfield.com'},
-              {'Date': new Date(2020, 1, 27), 'Title': '25 year anniversary', 'Link': 'https://www.google.com.au/#q=anniversary+gifts'},
-      ];*/
       $(document).ready(function(){
         $('#full-clndr').clndr();
       });
-
-     /* $( function() {
-
-        // PARDON ME while I do a little magic to keep these events relevant for the rest of time...
-        var currentMonth = moment().format('YYYY-MM');
-        var nextMonth    = moment().add('month', 1).format('YYYY-MM');
-
-        var events = [
-          { date: currentMonth + '-' + '10', title: 'Persian Kitten Auction', location: 'Center for Beautiful Cats' },
-          { date: currentMonth + '-' + '19', title: 'Cat Frisbee', location: 'Jefferson Park' },
-          { date: currentMonth + '-' + '23', title: 'Kitten Demonstration', location: 'Center for Beautiful Cats' },
-          { date: nextMonth + '-' + '07',    title: 'Small Cat Photo Session', location: 'Center for Cat Photography' }
-        ];
-
-        clndr = $('#full-clndr').clndr({
-          template: $('#full-clndr-template').html(),
-          events: events,
-          forceSixRows: true
-        });
-      });*/
     </script>
-
 
   <body onload="consecutiveYear();">
 
@@ -267,7 +206,10 @@
   <script src="{{ asset ('js/chart-bar.js') }}"></script>
   <script src="{{ asset ('js/chart-acceptance.js') }}"></script>
   <script src="{{ asset ('js/chart-bar-kursus.js') }}"></script>
-
+  <script src="{{ asset ('js/chart-bar-mod.js') }}"></script>
+  <script src="{{ asset ('js/pie-gredbyDegree.js') }}"></script>
+  <script src="{{ asset ('js/pie-gredbyMaster.js') }}"></script>
+  <script src="{{ asset ('js/pie-gredbyPHD.js') }}"></script>
 
     <!-- Page level plugins -->
   <script src="{{ asset ('vendor/datatables/jquery.dataTables.min.js')}}"></script>
@@ -283,9 +225,10 @@
 
   <!-- calendar plugins for dahsboard -->
   <link rel="stylesheet" href="{{ asset ('css/demo_cal.css') }}"/>
-  <link rel="stylesheet" href="{{ asset ('css/theme3.css') }}"/>
+  <link rel="stylesheet" href="{{ asset ('css/theme2.css') }}"/>
   <script type="text/javascript" src="{{ asset ('js/caleandar.js') }}"></script>
   <script type="text/javascript" src="{{ asset ('js/Admin_cal.js') }}"></script>
+  <script type="text/javascript" src="{{ asset ('js/canvasjs.min.js') }}"></script>
 
 
 
