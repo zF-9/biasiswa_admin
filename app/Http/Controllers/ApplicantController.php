@@ -60,8 +60,14 @@ class ApplicantController extends Controller
         $applicant_data->AppliedKursus = request('AppliedKursus');
         $applicant_data->mod_pengajian = request('study_mod');
         $applicant_data->tmpt_study = request('tmpt_study');
-        $applicant_data->Uni_name = request('Uni_name');
-        $applicant_data->Uni_namePT = request('Uni_named');
+
+        $uni_1 = request('Uni_name');
+        $uni_2 = request('Uni_named');
+
+        $Uni_name = $uni_1 . ' ' . $uni_2;
+        $applicant_data->Uni_name = $Uni_name;
+        //$applicant_data->Uni_namePT = request('Uni_named');
+        $applicant_data->course = request('course');
                 
         $applicant_data->tawaran = request()->file('tawaran')->store('public/uploadocs');
 

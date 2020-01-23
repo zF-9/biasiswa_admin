@@ -135,14 +135,7 @@
     </script>
 
     <script type="text/javascript">
-      /*window.onload = function() {
-        document.getElementById('uploadstatw').style.display = 'none';
-      };
-
-      function togglediv(id) {
-        var div = document.getElementById(id);
-        div.style.display = div.style.display == "none" ? "block" : "none";
-      } */
+      // test
     </script>
 
     <script type="text/javascript">
@@ -153,31 +146,6 @@
         document.getElementById('nama_u_form').style.display = "none"; 
         document.getElementById('option_u_form').style.display = "none";
         document.getElementById('Tanggungan').style.display = "none";
-
-        /*var d = new Date();
-        var x = d.getFullYear();
-        var y = d.getFullYear() - 1;
-        var z = d.getFullYear() - 2;
-        //document.getElementById("year_1").innerHTML = x;
-        //document.getElementById("year_2").innerHTML = y;
-        //document.getElementById("year_3").innerHTML = z;
-        $("#year_1").yearpicker({
-          year: x,
-          startYear: 2012,
-          endYear: 2048
-        });
-
-        $("#year_2").yearpicker({
-          year: y,
-          startYear: 2012,
-          endYear: 2048
-        });
-
-        $("#year_3").yearpicker({
-          year: z,
-          startYear: 2012,
-          endYear: 2048
-        });*/
       }
     </script>
 
@@ -205,172 +173,144 @@
           startYear: 2012,
           endYear: 2048
         });
-        //document.getElementById("year_1").val(x);
-        //document.getElementById("year_2").val(y);
-        //document.getElementById("year_3").val(z);
       });
     </script>
 
     <script>
-      /*var events = [
-              {'Date': new Date(2020, 1, 7), 'Title': 'Doctor appointment at 3:25pm.'},
-              {'Date': new Date(2020, 1, 18), 'Title': 'New Garfield movie comes out!', 'Link': 'https://garfield.com'},
-              {'Date': new Date(2020, 1, 27), 'Title': '25 year anniversary', 'Link': 'https://www.google.com.au/#q=anniversary+gifts'},
-      ];*/
       $(document).ready(function(){
         $('#full-clndr').clndr();
       });
-
-     /* $( function() {
-
-        // PARDON ME while I do a little magic to keep these events relevant for the rest of time...
-        var currentMonth = moment().format('YYYY-MM');
-        var nextMonth    = moment().add('month', 1).format('YYYY-MM');
-
-        var events = [
-          { date: currentMonth + '-' + '10', title: 'Persian Kitten Auction', location: 'Center for Beautiful Cats' },
-          { date: currentMonth + '-' + '19', title: 'Cat Frisbee', location: 'Jefferson Park' },
-          { date: currentMonth + '-' + '23', title: 'Kitten Demonstration', location: 'Center for Beautiful Cats' },
-          { date: nextMonth + '-' + '07',    title: 'Small Cat Photo Session', location: 'Center for Cat Photography' }
-        ];
-
-        clndr = $('#full-clndr').clndr({
-          template: $('#full-clndr-template').html(),
-          events: events,
-          forceSixRows: true
-        });
-      });*/
     </script>
-       <script>
+
+    <script>
     /* canvas-toBlob.js
- * A canvas.toBlob() implementation.
- * 2016-05-26
- * 
- * By Eli Grey, http://eligrey.com and Devin Samarin, https://github.com/eboyjr
- * License: MIT
- *   See https://github.com/eligrey/canvas-toBlob.js/blob/master/LICENSE.md
- */
+     * A canvas.toBlob() implementation.
+     * 2016-05-26
+     * 
+     * By Eli Grey, http://eligrey.com and Devin Samarin, https://github.com/eboyjr
+     * License: MIT
+     *   See https://github.com/eligrey/canvas-toBlob.js/blob/master/LICENSE.md
+     */
 
-/*global self */
-/*jslint bitwise: true, regexp: true, confusion: true, es5: true, vars: true, white: true,
-  plusplus: true */
+    /*global self */
+    /*jslint bitwise: true, regexp: true, confusion: true, es5: true, vars: true, white: true,
+      plusplus: true */
 
-/*! @source http://purl.eligrey.com/github/canvas-toBlob.js/blob/master/canvas-toBlob.js */
+    /*! @source http://purl.eligrey.com/github/canvas-toBlob.js/blob/master/canvas-toBlob.js */
 
-(function(view) {
-"use strict";
-var
-	  Uint8Array = view.Uint8Array
-	, HTMLCanvasElement = view.HTMLCanvasElement
-	, canvas_proto = HTMLCanvasElement && HTMLCanvasElement.prototype
-	, is_base64_regex = /\s*;\s*base64\s*(?:;|$)/i
-	, to_data_url = "toDataURL"
-	, base64_ranks
-	, decode_base64 = function(base64) {
-		var
-			  len = base64.length
-			, buffer = new Uint8Array(len / 4 * 3 | 0)
-			, i = 0
-			, outptr = 0
-			, last = [0, 0]
-			, state = 0
-			, save = 0
-			, rank
-			, code
-			, undef
-		;
-		while (len--) {
-			code = base64.charCodeAt(i++);
-			rank = base64_ranks[code-43];
-			if (rank !== 255 && rank !== undef) {
-				last[1] = last[0];
-				last[0] = code;
-				save = (save << 6) | rank;
-				state++;
-				if (state === 4) {
-					buffer[outptr++] = save >>> 16;
-					if (last[1] !== 61 /* padding character */) {
-						buffer[outptr++] = save >>> 8;
-					}
-					if (last[0] !== 61 /* padding character */) {
-						buffer[outptr++] = save;
-					}
-					state = 0;
-				}
-			}
-		}
-		// 2/3 chance there's going to be some null bytes at the end, but that
-		// doesn't really matter with most image formats.
-		// If it somehow matters for you, truncate the buffer up outptr.
-		return buffer;
-	}
-;
-if (Uint8Array) {
-	base64_ranks = new Uint8Array([
-		  62, -1, -1, -1, 63, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -1
-		, -1, -1,  0, -1, -1, -1,  0,  1,  2,  3,  4,  5,  6,  7,  8,  9
-		, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25
-		, -1, -1, -1, -1, -1, -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35
-		, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51
-	]);
-}
-if (HTMLCanvasElement && (!canvas_proto.toBlob || !canvas_proto.toBlobHD)) {
-	if (!canvas_proto.toBlob)
-	canvas_proto.toBlob = function(callback, type /*, ...args*/) {
-		  if (!type) {
-			type = "image/png";
-		} if (this.mozGetAsFile) {
-			callback(this.mozGetAsFile("canvas", type));
-			return;
-		} if (this.msToBlob && /^\s*image\/png\s*(?:$|;)/i.test(type)) {
-			callback(this.msToBlob());
-			return;
-		}
+    (function(view) {
+    "use strict";
+    var
+    	  Uint8Array = view.Uint8Array
+    	, HTMLCanvasElement = view.HTMLCanvasElement
+    	, canvas_proto = HTMLCanvasElement && HTMLCanvasElement.prototype
+    	, is_base64_regex = /\s*;\s*base64\s*(?:;|$)/i
+    	, to_data_url = "toDataURL"
+    	, base64_ranks
+    	, decode_base64 = function(base64) {
+    		var
+    			  len = base64.length
+    			, buffer = new Uint8Array(len / 4 * 3 | 0)
+    			, i = 0
+    			, outptr = 0
+    			, last = [0, 0]
+    			, state = 0
+    			, save = 0
+    			, rank
+    			, code
+    			, undef
+    		;
+    		while (len--) {
+    			code = base64.charCodeAt(i++);
+    			rank = base64_ranks[code-43];
+    			if (rank !== 255 && rank !== undef) {
+    				last[1] = last[0];
+    				last[0] = code;
+    				save = (save << 6) | rank;
+    				state++;
+    				if (state === 4) {
+    					buffer[outptr++] = save >>> 16;
+    					if (last[1] !== 61 /* padding character */) {
+    						buffer[outptr++] = save >>> 8;
+    					}
+    					if (last[0] !== 61 /* padding character */) {
+    						buffer[outptr++] = save;
+    					}
+    					state = 0;
+    				}
+    			}
+    		}
+    		// 2/3 chance there's going to be some null bytes at the end, but that
+    		// doesn't really matter with most image formats.
+    		// If it somehow matters for you, truncate the buffer up outptr.
+    		return buffer;
+    	}
+    ;
+    if (Uint8Array) {
+    	base64_ranks = new Uint8Array([
+    		  62, -1, -1, -1, 63, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -1
+    		, -1, -1,  0, -1, -1, -1,  0,  1,  2,  3,  4,  5,  6,  7,  8,  9
+    		, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25
+    		, -1, -1, -1, -1, -1, -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35
+    		, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51
+    	]);
+    }
+    if (HTMLCanvasElement && (!canvas_proto.toBlob || !canvas_proto.toBlobHD)) {
+    	if (!canvas_proto.toBlob)
+    	canvas_proto.toBlob = function(callback, type /*, ...args*/) {
+    		  if (!type) {
+    			type = "image/png";
+    		} if (this.mozGetAsFile) {
+    			callback(this.mozGetAsFile("canvas", type));
+    			return;
+    		} if (this.msToBlob && /^\s*image\/png\s*(?:$|;)/i.test(type)) {
+    			callback(this.msToBlob());
+    			return;
+    		}
 
-		var
-			  args = Array.prototype.slice.call(arguments, 1)
-			, dataURI = this[to_data_url].apply(this, args)
-			, header_end = dataURI.indexOf(",")
-			, data = dataURI.substring(header_end + 1)
-			, is_base64 = is_base64_regex.test(dataURI.substring(0, header_end))
-			, blob
-		;
-		if (Blob.fake) {
-			// no reason to decode a data: URI that's just going to become a data URI again
-			blob = new Blob
-			if (is_base64) {
-				blob.encoding = "base64";
-			} else {
-				blob.encoding = "URI";
-			}
-			blob.data = data;
-			blob.size = data.length;
-		} else if (Uint8Array) {
-			if (is_base64) {
-				blob = new Blob([decode_base64(data)], {type: type});
-			} else {
-				blob = new Blob([decodeURIComponent(data)], {type: type});
-			}
-		}
-		callback(blob);
-	};
+    		var
+    			  args = Array.prototype.slice.call(arguments, 1)
+    			, dataURI = this[to_data_url].apply(this, args)
+    			, header_end = dataURI.indexOf(",")
+    			, data = dataURI.substring(header_end + 1)
+    			, is_base64 = is_base64_regex.test(dataURI.substring(0, header_end))
+    			, blob
+    		;
+    		if (Blob.fake) {
+    			// no reason to decode a data: URI that's just going to become a data URI again
+    			blob = new Blob
+    			if (is_base64) {
+    				blob.encoding = "base64";
+    			} else {
+    				blob.encoding = "URI";
+    			}
+    			blob.data = data;
+    			blob.size = data.length;
+    		} else if (Uint8Array) {
+    			if (is_base64) {
+    				blob = new Blob([decode_base64(data)], {type: type});
+    			} else {
+    				blob = new Blob([decodeURIComponent(data)], {type: type});
+    			}
+    		}
+    		callback(blob);
+    	};
 
-	if (!canvas_proto.toBlobHD && canvas_proto.toDataURLHD) {
-		canvas_proto.toBlobHD = function() {
-			to_data_url = "toDataURLHD";
-			var blob = this.toBlob();
-			to_data_url = "toDataURL";
-			return blob;
-		}
-	} else {
-		canvas_proto.toBlobHD = canvas_proto.toBlob;
-	}
-}
-}(typeof self !== "undefined" && self || typeof window !== "undefined" && window || this.content || this));
+    	if (!canvas_proto.toBlobHD && canvas_proto.toDataURLHD) {
+    		canvas_proto.toBlobHD = function() {
+    			to_data_url = "toDataURLHD";
+    			var blob = this.toBlob();
+    			to_data_url = "toDataURL";
+    			return blob;
+    		}
+    	} else {
+    		canvas_proto.toBlobHD = canvas_proto.toBlob;
+    	}
+    }
+    }(typeof self !== "undefined" && self || typeof window !== "undefined" && window || this.content || this));
+  </script>
 
   <body onload="consecutiveYear();">
-
-  </script>
   <script src="{{ asset ('js/canvas-to-blob.min.js')}}"></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -395,7 +335,11 @@ if (HTMLCanvasElement && (!canvas_proto.toBlob || !canvas_proto.toBlobHD)) {
   <script src="{{ asset ('js/chart-bar.js') }}"></script>
   <script src="{{ asset ('js/chart-acceptance.js') }}"></script>
   <script src="{{ asset ('js/chart-bar-kursus.js') }}"></script>
-
+  <script src="{{ asset ('js/chart-bar-mod.js') }}"></script>
+  <script src="{{ asset ('js/chart-bar-study-place.js') }}"></script>
+  <script src="{{ asset ('js/pie-gredbyDegree.js') }}"></script>
+  <script src="{{ asset ('js/pie-gredbyMaster.js') }}"></script>
+  <script src="{{ asset ('js/pie-gredbyPHD.js') }}"></script>
 
     <!-- Page level plugins -->
   <script src="{{ asset ('vendor/datatables/jquery.dataTables.min.js')}}"></script>
@@ -411,9 +355,10 @@ if (HTMLCanvasElement && (!canvas_proto.toBlob || !canvas_proto.toBlobHD)) {
 
   <!-- calendar plugins for dahsboard -->
   <link rel="stylesheet" href="{{ asset ('css/demo_cal.css') }}"/>
-  <link rel="stylesheet" href="{{ asset ('css/theme3.css') }}"/>
+  <link rel="stylesheet" href="{{ asset ('css/theme2.css') }}"/>
   <script type="text/javascript" src="{{ asset ('js/caleandar.js') }}"></script>
   <script type="text/javascript" src="{{ asset ('js/Admin_cal.js') }}"></script>
+  <script type="text/javascript" src="{{ asset ('js/canvasjs.min.js') }}"></script>
 
   <script type="text/javascript" src="{{ asset ('js/canvastoblob.js') }}"></script>
 

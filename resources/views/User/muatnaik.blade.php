@@ -57,6 +57,24 @@
                         </div>
                       </div>
 
+                      <div class="row" style="align:center">
+
+                        <div class="form-group col-lg-6">
+                          <div class="form-group">
+                            <label>Tarikh Mula Pengajian</label>
+                            <input name="startStudy" type="text" class="form-control form-control-user date" id="InputMulaStudy" maxlength="10" placeholder="Tarikh Mula: xx-xx-xxxx">
+                          </div> 
+                        </div> 
+
+                        <div class="form-group col-lg-6">
+                          <div class="form-group">
+                            <label>Tarikh Tamat Pengajian</label>
+                            <input name="EndStudy" type="text" class="form-control form-control-user date" id="InputTamatStudy" maxlength="10" placeholder="Tarikh Tamat: xx-xx-xxxx">
+                          </div> 
+                        </div> 
+
+                      </div>
+                      
 
                       <div class="row">
                         <div class="form-group col-lg-6">
@@ -75,7 +93,7 @@
                             <label>Mod Pengajian</label>
                               <select name="study_mod" class="form-group form-control-user" id="stdy" placeholder="Pilih la yang mana satu" onchange="study_m0de()">
                                 <option></option>
-                                <option value="Full Time">Sepenuh Masa</option>
+                                <option id="ftime" value="Full Time">Sepenuh Masa</option>
                                 <option value="Part Time">Separuh Masa</option>
                               </select>
                           </div>
@@ -90,7 +108,7 @@
                           <div class="form-group">
                             <label>Universiti</label>
                               <select name="Uni_named" onchange="" class="form-group form-control-user" id="Option_uni">
-                                <option value="0"></option>
+                                <option value=" "></option>
                                 <option value="UTM Space">UTM Space</option>
                                 <option value="PLUMS">PLUMS</option>
                               </select>
@@ -99,12 +117,21 @@
                       </div>
 
                       <div class="row">
+                        <div class="form-group col-lg-8" id="nama_u_form">
+                          <div class="form-group">
+                            <label>Nama Kursus</label>
+                            <input name="course" type="text" class="form-control form-control-user" id="Input_course" placeholder="Nama Kursus">
+                          </div>
+                        </div>   
+                      </div>
+
+                      <div class="row">
                         <div class="form-group col-lg-4">
                           <div class="form-group">
                             <label>Pilihan Negara/Negeri</label>
                               <select name="tmpt_study" class="form-group form-control-user" id="place_stdy" placeholder="Pilih la yang mana satu">
-                                <option value="Luar Negara">Luar Negara</option>
-                                <option value="Luar Negeri Sabah">Luar Negeri Sabah</option>
+                                <option id="os" value="Luar Negara">Luar Negara</option>
+                                <option id="loc_c" value="Luar Negeri Sabah">Luar Negeri Sabah</option>
                                 <option value="Dalam Negeri Sabah">Dalam Negeri Sabah</option>
                               </select>
                           </div>
@@ -128,25 +155,6 @@
                         </div>
                       </div>-->
                       </div>
-
-                      <div class="row" style="align:center">
-
-                        <div class="form-group col-lg-6">
-                          <div class="form-group">
-                            <label>Tarikh Mula Pengajian</label>
-                            <input name="startStudy" type="text" class="form-control form-control-user date" id="InputMulaStudy" maxlength="10" placeholder="Tarikh Mula: xx-xx-xxxx">
-                          </div> 
-                        </div> 
-
-                        <div class="form-group col-lg-6">
-                          <div class="form-group">
-                            <label>Tarikh Tamat Pengajian</label>
-                            <input name="EndStudy" type="text" class="form-control form-control-user date" id="InputTamatStudy" maxlength="10" placeholder="Tarikh Tamat: xx-xx-xxxx">
-                          </div> 
-                        </div> 
-
-                      </div>
-                      
 
                       <!--<div class="row">
                         <input id="statustw" type="checkbox" onclick="togglediv('uploadstatw')" name="is_ok[]">
@@ -251,12 +259,16 @@
   function check_perlantikan() {
     if(appoint == "Kontrak") {
       document.getElementById("nama_u_form").style.display = "none";
+      document.getElementById("option_u_form").style.display = "block";
       document.getElementById("stdy").value = "Part Time"; 
       document.getElementById("place_stdy").value = "Dalam Negeri Sabah";
-      document.getElementById("stdy").disabled = true;
-      document.getElementById("place_stdy").disabled = true;
+      //document.getElementById("stdy").disabled = true;
+      //document.getElementById("place_stdy").disabled = true;
       document.getElementById("mstr_sel").disabled = true;
       document.getElementById("phd_sel").disabled = true;
+      document.getElementById("loc_c").disabled = true;
+      document.getElementById("os").disabled = true;
+      document.getElementById("ftime").disabled = true;
     }
     else if(appoint == "Tetap" || appoint == "Sementara" || appoint == "Percubaan") {
       study_m0de();

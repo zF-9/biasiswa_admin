@@ -18,6 +18,10 @@ use App\Dokumen_result;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
 
+Route::get('/chart', function () { 
+    return view('testChart2');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -92,6 +96,8 @@ Route::group(['middleware' => 'AdminMiddleware'], function() {
 	Route::get('/{user_data}', 'AdminController@profile_view')->name('profile_viewer');
 
 });
+
+
 
 
 

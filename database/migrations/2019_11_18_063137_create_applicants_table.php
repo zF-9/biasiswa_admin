@@ -32,7 +32,7 @@ class CreateApplicantsTable extends Migration
             $table->string('skim');
             $table->string('Gred');
             $table->string('TarafLantik');
-            $table->string('Tsahjwtn');
+            $table->string('Tsahjwtn')->nullable();
             $table->string('Tahun1LPPT');
             $table->string('Tahun2LPPT');
             $table->string('Tahun3LPPT');
