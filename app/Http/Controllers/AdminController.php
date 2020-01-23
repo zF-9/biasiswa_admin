@@ -63,6 +63,15 @@ class AdminController extends Controller
 
         $monthly = DB::table('payment_records')->get()->groupBy('bulan');
         //$monthly = compact('pay_month');
+        $rank_jabatan = DB::table('applicants')->get(['nama', 'jabatan'])->groupBy('jabatan');
+        //$new = $rank_jabatan->toArray();
+        /*$lists = [];
+        foreach($rank_jabatan as $key => $value)
+        {
+                  $lists[] = ['ranking' => $value];
+        }*/
+        //return $new;
+        //$test_var = collect($rank_jabatan);
 
         $Jan = DB::table('payment_records')
         ->where('bulan', '=', '0')
@@ -120,9 +129,9 @@ class AdminController extends Controller
         //student: study mode
 
         //local-oversea student
-        $local_state = info_Pengajian::where('tmpt_study', '=', 'Dalam Negeri Sabah');
-        $local_country = info_Pengajian::where('tmpt_study', '=', 'Luar Negeri Sabah');
-        $oversea = info_Pengajian::where('tmpt_study', '=', 'Luar Negara');
+        $local_state = info_Pengajian::where('tmpt_study', '=', 'Dalam Negeri Sabah')->count();
+        $local_country = info_Pengajian::where('tmpt_study', '=', 'Luar Negeri Sabah')->count();
+        $oversea = info_Pengajian::where('tmpt_study', '=', 'Luar Negara')->count();
         //local-oversea student
 
         //test script
@@ -138,9 +147,9 @@ class AdminController extends Controller
         $test_08 = $phd_p->where('Gred', '=', '44')->count();
         $test_09 = $phd_p->where('Gred', '=', '48')->count();
 
-        //dd($monthly);
+        //dd(compact('rank_jabatan'));
 
-        return view('Admin.dashboard_admin', ['data_pemohon' => $data_pemohon, 'data_student' => $data_student, 'data_applicant' => $data_applicant,'degree' => $deg_ap, 'degreeapp' => $deg_p, 'master' => $mstr_ap, 'masterapp' => $mstr_p, 'phd' => $phd_ap, 'phdapp' => $phd_p, 'c36' => $count_36, 'c41' => $count_41, 'c44' => $count_44, 'c48' => $count_48, 'pembayaran' => $payment, 'Jan' => $Jan, 'Feb' => $Feb, 'Mar' => $Mar, 'Apr' => $Apr, 'May' => $May, 'Jun'=> $Jun, 'Jul' => $Jul, 'Aug' => $Aug, 'Sep' => $Sep, 'Oct' => $Oct, 'Nov' => $Nov, 'Dis' => $Dis, 'FT_student' => $FT_student, 'PT_student' => $PT_student, 'payment' => $monthly, 'state' => $local_state, 'country' => $local_country, 'oversea' => $oversea]); 
+        return view('Admin.dashboard_admin', ['data_pemohon' => $data_pemohon, 'data_student' => $data_student, 'data_applicant' => $data_applicant,'degree' => $deg_ap, 'degreeapp' => $deg_p, 'master' => $mstr_ap, 'masterapp' => $mstr_p, 'phd' => $phd_ap, 'phdapp' => $phd_p, 'c36' => $count_36, 'c41' => $count_41, 'c44' => $count_44, 'c48' => $count_48, 'pembayaran' => $payment, 'Jan' => $Jan, 'Feb' => $Feb, 'Mar' => $Mar, 'Apr' => $Apr, 'May' => $May, 'Jun'=> $Jun, 'Jul' => $Jul, 'Aug' => $Aug, 'Sep' => $Sep, 'Oct' => $Oct, 'Nov' => $Nov, 'Dis' => $Dis, 'FT_student' => $FT_student, 'PT_student' => $PT_student, 'payment' => $monthly, 'state' => $local_state, 'country' => $local_country, 'oversea' => $oversea, 'rank' => compact('rank_jabatan')]); 
     } 
     
    

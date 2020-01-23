@@ -27,9 +27,16 @@
   var Nov = '{{ $Nov }}';
   var Dis = '{{ $Dis }}';
 
-  var pymnt_m = '{{!! json_encode($payment) !!}}';
-  //var p = pymnt_m[1];
-  alert(pymnt_m[1]);
+  var state = '{{ $state }}';
+  var country = '{{ $country }}';
+  var oversea = '{{ $oversea }}';
+
+  var jabatan = '{{!! json_encode($rank) !!}}'; 
+  //var new_rank = jabatan[0];
+
+
+  //alert(new_rank);
+
 </script>
 @section('content')
   <!-- Page Wrapper -->
@@ -663,7 +670,7 @@
                 </div>
                 <div class="card-body">
                   <div class="chart-bar">
-                    <canvas id="myBarChart"></canvas>
+                    <canvas id="BarChart-plcestdy"></canvas>
                   </div>
                   <hr>
                 </div>

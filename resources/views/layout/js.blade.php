@@ -207,6 +207,7 @@
   <script src="{{ asset ('js/chart-acceptance.js') }}"></script>
   <script src="{{ asset ('js/chart-bar-kursus.js') }}"></script>
   <script src="{{ asset ('js/chart-bar-mod.js') }}"></script>
+  <script src="{{ asset ('js/chart-bar-study-place.js') }}"></script>
   <script src="{{ asset ('js/pie-gredbyDegree.js') }}"></script>
   <script src="{{ asset ('js/pie-gredbyMaster.js') }}"></script>
   <script src="{{ asset ('js/pie-gredbyPHD.js') }}"></script>
