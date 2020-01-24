@@ -89,13 +89,19 @@
                         const canvas = document.getElementById('myAreaChart');
                        // const dataURI = canvas.toDataURL("image/png");
 
-                        console.log(canvas);
+                        //console.log(canvas);
                         //var canvas = document.getElementById("mcanvas");
                         image = canvas.toDataURL("image/png");
+
                         var link = document.createElement('a');
-                         link.download = "jumlahpembiayaan.png";
                          link.href = image;
-                         link.click();
+                         link.download = "jumlahpembiayaan.png";
+                         
+                         var event = new MouseEvent('click');
+                         
+                         //link.click();
+                         link.dispatchEvent(event);
+
                      // console.log(dataURI);                        
 
                       };
