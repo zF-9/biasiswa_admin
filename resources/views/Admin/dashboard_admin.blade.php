@@ -31,11 +31,10 @@
   var country = '{{ $country }}';
   var oversea = '{{ $oversea }}';
 
-  var jabatan = '{{!! json_encode($rank) !!}}'; 
-  //var new_rank = jabatan[0];
-
-
-  //alert(new_rank);
+  var tetap = '{{ $tetap }}';
+  var percubaan = '{{ $percubaan }}';
+  var sementara = '{{ $sementara }}';
+  var kontrak = '{{ $kontrak }}';
 
 </script>
 @section('content')
@@ -367,6 +366,7 @@
                         </div>
                         <div class="card-body">
                           <div class="text-center">
+
                             <!--<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="" alt="">-->
 <!--<canvas id="PieChart-gredbyDegree" width="200" height="200"></canvas>
 <canvas id="PieChart-gredbyMaster" width="200" height="200"></canvas>
@@ -557,25 +557,60 @@
                   <h6 class="m-0 font-weight-bold text-primary">Jumlah Pemohon Mengikut Agensi</h6>
                 </div>
                 <div class="card-body">
-                  <h4 class="small font-weight-bold">Jabatan Pengairan dan Saliran<span class="float-right">50</span></h4>
+                  <h4 class="small font-weight-bold">
+                      @if(!empty( $agensi_1 )) 
+                          {{ $agensi_1 }}
+                      @else 
+                          {{ __('Data tidak lengkap') }}
+                      @endif
+                    <span class="float-right">{{$total_1}}</span>
+                  </h4>
                   <div class="progress mb-4">
-                    <div class="progress-bar bg-danger" role="progressbar" style="width: 50%" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: {{ $no_1 }}%" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <h4 class="small font-weight-bold">Unit Perancang Ekonomi Negeri<span class="float-right">60</span></h4>
+                  <h4 class="small font-weight-bold">
+                      @if(!empty( $agensi_2 )) 
+                          {{ $agensi_2 }}
+                      @else 
+                          {{ __('Data tidak lengkap') }}
+                      @endif
+                    <span class="float-right">{{$total_2}}</span>
+                  </h4>
                   <div class="progress mb-4">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: 60%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: {{ $no_2 }}%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <h4 class="small font-weight-bold">Jabatan Air Negeri Sabah<span class="float-right">60</span></h4>
+                  <h4 class="small font-weight-bold">
+                      @if(!empty( $agensi_3 )) 
+                          {{ $agensi_3 }}
+                      @else 
+                          {{ __('Data tidak lengkap') }}
+                      @endif
+                    <span class="float-right">{{$total_3}}</span>
+                  </h4>
                   <div class="progress mb-4">
-                    <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar" role="progressbar" style="width: {{ $no_3 }}%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <h4 class="small font-weight-bold">Jabatan Tanah & Ukur<span class="float-right">80</span></h4>
+                  <h4 class="small font-weight-bold">
+                      @if(!empty( $agensi_4 )) 
+                          {{ $agensi_4 }}
+                      @else 
+                          {{ __('Data tidak lengkap') }}
+                      @endif
+                    <span class="float-right">{{$total_4}}</span>
+                  </h4>
                   <div class="progress mb-4">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-info" role="progressbar" style="width: {{ $no_4 }}%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <h4 class="small font-weight-bold">Jabatan Kerja Raya<span class="float-right">100</span></h4>
+                  <h4 class="small font-weight-bold">
+                      @if(!empty( $agensi_5 )) 
+                          {{ $agensi_5 }}
+                      @else 
+                          {{ __('Data tidak lengkap') }}
+                      @endif
+                    <span class="float-right">{{$total_5}}</span>
+                  </h4>
                   <div class="progress">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-success" role="progressbar" style="width: {{ $no_5 }}%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                   <hr>
                   <!--change variable di <code>inline css</code> ja append value dari database directly.    -->              
@@ -711,6 +746,23 @@
               </div>  
           </div>
 
+          </div>
+
+          <div class="row">
+            <div class="col-xl-12 col-lg-12 mb-4">
+              <!-- Bar Chart -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Jumlah Pelajar: Taraf Pelantikan</h6>
+                </div>
+                <div class="card-body">
+                  <div class="chart-bar">
+                    <canvas id="BarChart-tlantik"></canvas>
+                  </div>
+                  <hr>
+                </div>
+              </div>  
+          </div>
           </div>
 
         </div>

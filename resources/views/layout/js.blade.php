@@ -183,6 +183,9 @@
     </script>
 
     <script>
+    </script>
+
+    <script>
     /* canvas-toBlob.js
      * A canvas.toBlob() implementation.
      * 2016-05-26
@@ -337,6 +340,7 @@
   <script src="{{ asset ('js/chart-bar-kursus.js') }}"></script>
   <script src="{{ asset ('js/chart-bar-mod.js') }}"></script>
   <script src="{{ asset ('js/chart-bar-study-place.js') }}"></script>
+  <script src="{{ asset ('js/chart-bar-taraf-pelantikan.js') }}"></script>
   <script src="{{ asset ('js/pie-gredbyDegree.js') }}"></script>
   <script src="{{ asset ('js/pie-gredbyMaster.js') }}"></script>
   <script src="{{ asset ('js/pie-gredbyPHD.js') }}"></script>
