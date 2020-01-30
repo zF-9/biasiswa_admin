@@ -173,21 +173,23 @@ class AdminController extends Controller
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->where('AppliedKursus', '=', 'Sarjana Muda')
         ->select('Gred', DB::raw('count(*) as jumlah'))
-        ->groupBy('Gred')->get());
+        ->groupBy('Gred')->get()->sortBy('jumlah')->reverse()->values()->all());
+
+        $deg_total = $gred_deg->sum('jumlah');
 
         //Master by gred
         $gred_mstr = collect(DB::table('applicants')
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->where('AppliedKursus', '=', 'Sarjana')
         ->select('Gred', DB::raw('count(*) as jumlah'))
-        ->groupBy('Gred')->get());
+        ->groupBy('Gred')->get()->sortBy('jumlah')->reverse()->values()->all());
 
         //PhD by gred
         $gred_phd = collect(DB::table('applicants')
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->where('AppliedKursus', '=', 'Doktor Falsafah')
         ->select('Gred', DB::raw('count(*) as jumlah'))
-        ->groupBy('Gred')->get());
+        ->groupBy('Gred')->get()->sortBy('jumlah')->reverse()->values()->all());
 
         //taraf pelantikan 
         $stdnt_tetap = $all_student->where('TarafLantik', '=', 'Tetap')->count();
@@ -195,10 +197,10 @@ class AdminController extends Controller
         $stdnt_Sementara = $all_student->where('TarafLantik', '=', 'Sementara')->count();
         $stdnt_Kontrak = $all_student->where('TarafLantik', '=', 'Kontrak')->count();                
 
-        //dd($staff_percubaan);
+        //dd($deg_total);
         
 
-        return view('Admin.dashboard_admin', ['data_pemohon' => $data_pemohon, 'data_student' => $data_student, 'data_applicant' => $data_applicant,'degree' => $deg_ap, 'degreeapp' => $deg_p, 'master' => $mstr_ap, 'masterapp' => $mstr_p, 'phd' => $phd_ap, 'phdapp' => $phd_p, 'c36' => $count_36, 'c41' => $count_41, 'c44' => $count_44, 'c48' => $count_48, 'pembayaran' => $payment, 'Jan' => $Jan, 'Feb' => $Feb, 'Mar' => $Mar, 'Apr' => $Apr, 'May' => $May, 'Jun'=> $Jun, 'Jul' => $Jul, 'Aug' => $Aug, 'Sep' => $Sep, 'Oct' => $Oct, 'Nov' => $Nov, 'Dis' => $Dis, 'FT_student' => $FT_student, 'PT_student' => $PT_student, 'payment' => $monthly, 'state' => $local_state, 'country' => $local_country, 'oversea' => $oversea, 'total_1' => $total_1, 'total_2' => $total_2, 'total_3' => $total_3, 'total_4' => $total_4, 'total_5' => $total_5, 'agensi_1' => $agensi_1, 'agensi_2' => $agensi_2, 'agensi_3' => $agensi_3, 'agensi_4' => $agensi_4, 'agensi_5' => $agensi_5, 'no_1' => $no_1, 'no_2' => $no_2, 'no_3' => $no_3, 'no_4' => $no_4, 'no_5' => $no_5, 'gred_d' => $gred_deg, 'tetap' => $stdnt_tetap, 'percubaan' => $stdnt_percubaan, 'sementara' => $stdnt_Sementara, 'kontrak' => $stdnt_Kontrak]); 
+        return view('Admin.dashboard_admin', ['data_pemohon' => $data_pemohon, 'data_student' => $data_student, 'data_applicant' => $data_applicant,'degree' => $deg_ap, 'degreeapp' => $deg_p, 'master' => $mstr_ap, 'masterapp' => $mstr_p, 'phd' => $phd_ap, 'phdapp' => $phd_p, 'c36' => $count_36, 'c41' => $count_41, 'c44' => $count_44, 'c48' => $count_48, 'pembayaran' => $payment, 'Jan' => $Jan, 'Feb' => $Feb, 'Mar' => $Mar, 'Apr' => $Apr, 'May' => $May, 'Jun'=> $Jun, 'Jul' => $Jul, 'Aug' => $Aug, 'Sep' => $Sep, 'Oct' => $Oct, 'Nov' => $Nov, 'Dis' => $Dis, 'FT_student' => $FT_student, 'PT_student' => $PT_student, 'payment' => $monthly, 'state' => $local_state, 'country' => $local_country, 'oversea' => $oversea, 'total_1' => $total_1, 'total_2' => $total_2, 'total_3' => $total_3, 'total_4' => $total_4, 'total_5' => $total_5, 'agensi_1' => $agensi_1, 'agensi_2' => $agensi_2, 'agensi_3' => $agensi_3, 'agensi_4' => $agensi_4, 'agensi_5' => $agensi_5, 'no_1' => $no_1, 'no_2' => $no_2, 'no_3' => $no_3, 'no_4' => $no_4, 'no_5' => $no_5, 'gred_d' => $gred_deg, 'tetap' => $stdnt_tetap, 'percubaan' => $stdnt_percubaan, 'sementara' => $stdnt_Sementara, 'kontrak' => $stdnt_Kontrak, 'g_deg' => $gred_deg, 'deg_total' => $deg_total,'g_mstr' => $gred_mstr, 'g_phd' => $gred_phd]); 
     } 
     
    

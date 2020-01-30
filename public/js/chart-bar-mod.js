@@ -35,8 +35,8 @@ var BarChart_mod = new Chart(ctx, {
     labels: ["Sepenuh Masa", "Separuh Masa"],
     datasets: [{
       label: "Total",
-      backgroundColor: "#1cc88a",
-      hoverBackgroundColor: "#e74a3b",
+      backgroundColor: "#36b9cc", 
+      hoverBackgroundColor: "#1cc88a",
       borderColor: "#4e73df",
       data: [fulltime, parttime],
     }],
