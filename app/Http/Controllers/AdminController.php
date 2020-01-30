@@ -257,7 +257,7 @@ class AdminController extends Controller
         $new_record-> No_baucer = request('baucer_no');
         $new_record-> jenis_pymnt = request('perkara');
         $new_record-> tempoh = request('tempoh');
-        $new_record-> Amount = request('jumlah');
+        $new_record-> amount = request('jumlah');
         $new_record-> payment_id = $id;
 
         $new_record->save();
@@ -266,11 +266,15 @@ class AdminController extends Controller
     } 
 
     public function approve_pelajar($id) {
-        applicant::where('user_id', '=', $id)->update([
-            'isApproved'=>true
-        ]);
+        $value = request('budget');
 
-        return Redirect()->route('table_pemohon');     
+        applicant::where('user_id', '=', $id)->update([
+            'isApproved'=>true,
+            'budget' => $value
+        ]);
+        dd([$id], [$value]);
+        
+        return Redirect()->route('table_pelajar');     
     }
 
     public function profile_view($user_data) {
@@ -286,7 +290,23 @@ class AdminController extends Controller
     
     public function ApprovePelajar(User $user) {
         dd($user);
-    }   
+    }  
+    
+  //  public function update_budget($req){
+     //   $value = request('budget');
+//  applicant::where('nama', '=',  $req)->update([
+
+         //   'budget' => $value
+
+       // ]);
+
+        //return Redirect()->route('table_pemohon');     
+    
+        
+    
+        
+    
+
 
 
 }

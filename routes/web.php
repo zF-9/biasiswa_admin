@@ -71,6 +71,8 @@ Route::get('/upload_docs', 'UserController@upload_docs')->name('list_docs');
 Route::get('/upload_pic', 'UserController@UploadPic');
 Route::post('/updateAvatar', 'UserController@update_avatar');
 
+//Route::post('/updateBudget/{req}', 'AdminController@update_budget');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
