@@ -265,14 +265,15 @@ class AdminController extends Controller
         return Redirect::back();
     } 
 
-    public function approve_pelajar($id) {
+    public function approve_pelajar() {
+        $pelajar = request('student');
         $value = request('budget');
 
-        applicant::where('user_id', '=', $id)->update([
+        applicant::where('nama', '=', $pelajar)->update([
             'isApproved'=>true,
             'budget' => $value
         ]);
-        dd([$id], [$value]);
+        //dd([$pelajar, $value]);
         
         return Redirect()->route('table_pelajar');     
     }

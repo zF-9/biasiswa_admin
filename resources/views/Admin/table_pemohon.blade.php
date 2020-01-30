@@ -56,10 +56,10 @@
                             <form action="" method="post">
                               @csrf
                              <!-- @method('delete')-->                            
-                             <a class="dropdown-item" href=/approve/{{ $data -> user_id }}">Terima</a>
-                             <!--  <button  type="button" class="dropdown-item" href="/approve/{{ $data -> user_id }}" data-toggle="modal" data-target="#budgetModal">
+                             <a class="dropdown-item" href="/approve/{{ $data -> user_id }}">Terima</a>
+                             <button  type="button" class="dropdown-item" href="" data-toggle="modal" data-target="#budgetModal" data-id="{{ $data -> user_id }}">
                               Terima Sebagai Pelajar
-                              </a>-->
+                              </a>
                                 <button type="button" class="dropdown-item" onclick="confirm('{{ __("Are you sure you want to delete this user?") }}') ? this.parentElement.submit() : ''">
                                   {{ __('Hapus') }}
                                 </button>
@@ -69,8 +69,35 @@
                             
                             @endif
                             </div>
-                        </div>
-                                            <!-- modal add budget -->
+                        </div>     
+                      </td>
+                    </tr>     
+                    @endforeach                
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+  <script type="text/javascript">
+      $(document).ready(function(){
+          $("#dataTable button").click(function(){ 
+              var trElem = $(this).closest("tr");
+              var secondTd = $(trElem).children("td")[1]; //nama
+
+              //alert($(secondTd).text())
+
+              $('#user_id').val($(secondTd).text());
+          })
+      })
+  </script>
+
+
+                       <!-- modal add budget -->
                        <div id="budgetModal" class="modal" tabindex="-1" role="dialog">
                        <div class="modal-dialog" role="document">
                        <div class="modal-content">
@@ -87,9 +114,10 @@
                        <div class="container">
                        <div class="row">
                        <div class="col-md-10 col-md-offset-1">
-                       <h5>Nama Pelajar : {{ $data -> user_id }}</h5>
-                        <form enctype="multipart/form-data" action="/approve/{{ $data -> user_id }}">
+                        
+                        <form enctype="multipart/form-data" action="/approve">
                         {{ csrf_field() }}
+                        <h5>Nama Pelajar : </h5><input name="student" type="text" id="user_id" >
                         <input name="budget" type="text" class="form-control form-control-user" id="" maxlength="30" placeholder="Sila Masukkan Nilai Dalam (RM) e.g 20000">
                             <button type="button submit" style="margin-top:12px; margin-bottom: 12px" class="btn btn-primary">Hantar</button>
                         </form>
@@ -97,27 +125,14 @@
                 </div>
             </div>
 
-            <div class="modal-footer">              
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-            </div>  
-      </div>
-      </div>
-    </div>  
-</div>
-    <!-- modal add budget -->
-                      </td>
-                    </tr>     
-                    @endforeach                
-
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <!-- /.container-fluid -->
-
+                            <div class="modal-footer">              
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                            </div>  
+                      </div>
+                      </div>
+                    </div>  
+                </div>
+               <!-- modal add budget -->
                       
 
 @endsection

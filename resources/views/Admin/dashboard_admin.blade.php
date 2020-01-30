@@ -362,7 +362,7 @@
             <!-- Illustrations -->
               <div class="col-lg-12 card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Jumlah Pelajar Mengikut Gred</h6>
                 </div>
                 <div class="card-body">
                   <div class="text-center">
@@ -374,7 +374,7 @@
                   <div class="col-lg-4 mb-4">
                     <div class="card shadow mb-4">
                       <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Pelajar Sarjana Muda Mengikut Gred</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Pelajar Sarjana Muda</h6>
                       </div>
                       @foreach($g_deg as $key => $graded)
                       <div class="card-body">
@@ -390,7 +390,7 @@
                   <div class="col-lg-4 mb-4">
                     <div class="card shadow mb-4">
                       <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Pelajar Sarjana Muda Mengikut Gred</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Pelajar Sarjana</h6>
                       </div>
                       @foreach($g_mstr as $key => $graded)
                       <div class="card-body">
@@ -405,7 +405,7 @@
                   <div class="col-lg-4 mb-4">
                     <div class="card shadow mb-4">
                       <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Pelajar Sarjana Muda Mengikut Gred</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Pelajar Doktor Falsafah</h6>
                       </div>
                       @foreach($g_phd as $key => $graded)
                       <div class="card-body">
