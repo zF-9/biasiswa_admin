@@ -359,94 +359,72 @@
 
             <div class="row">
 
-                      <!-- Illustrations -->
-                      <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                          <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
-                        </div>
-                        <div class="card-body">
-                          <div class="text-center">
-
-                            <!--<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="" alt="">-->
-<!--<canvas id="PieChart-gredbyDegree" width="200" height="200"></canvas>
-<canvas id="PieChart-gredbyMaster" width="200" height="200"></canvas>
-<canvas id="PieChart-gredbyPHD" width="200" height="200"></canvas>-->
-
-
-                          </div>
-                          <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a constantly updated collection of beautiful svg images that you can use completely free and without attribution!</p>
-                        </div>
-                      </div>
-
-            <!-- Pending Requests Card Example 
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-warning shadow h-100 py-2">
+            <!-- Illustrations -->
+              <div class="col-lg-12 card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+                </div>
                 <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-comments fa-2x text-gray-300"></i>
+                  <div class="text-center">
+
+                  </div>
+                  <div class="row">
+
+                  <!-- Project Card Example -->
+                  <div class="col-lg-4 mb-4">
+                    <div class="card shadow mb-4">
+                      <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Pelajar Sarjana Muda Mengikut Gred</h6>
+                      </div>
+                      @foreach($g_deg as $key => $graded)
+                      <div class="card-body">
+                        <h4 class="small font-weight-bold">Gred: {{ $graded->Gred }}<span class="float-right">{{ $graded->jumlah }}</span></h4>
+                        <!--change variable di <code>inline css</code> ja append value dari database directly.    -->              
+                      </div>
+                      @endforeach
+                      <hr>
                     </div>
                   </div>
-                </div>
+
+                    <!-- Project Card Example -->
+                  <div class="col-lg-4 mb-4">
+                    <div class="card shadow mb-4">
+                      <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Pelajar Sarjana Muda Mengikut Gred</h6>
+                      </div>
+                      @foreach($g_mstr as $key => $graded)
+                      <div class="card-body">
+                        <h4 class="small font-weight-bold">Gred: {{ $graded->Gred }}<span class="float-right">{{ $graded->jumlah }}</span></h4>
+                        <!--change variable di <code>inline css</code> ja append value dari database directly.    -->              
+                      </div>
+                      @endforeach
+                      <hr>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-4 mb-4">
+                    <div class="card shadow mb-4">
+                      <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Pelajar Sarjana Muda Mengikut Gred</h6>
+                      </div>
+                      @foreach($g_phd as $key => $graded)
+                      <div class="card-body">
+                        <h4 class="small font-weight-bold">Gred: {{ $graded->Gred }}<span class="float-right">{{ $graded->jumlah }}</span></h4>
+                        <!--change variable di <code>inline css</code> ja append value dari database directly.    -->              
+                      </div>
+                      @endforeach
+                      <hr>
+                    </div>
+                  </div>
+
               </div>
-            </div>
-          </div>-->
+
+
+              </div>
+              </div>
         </div>
 
-        <div class="row">
 
-              <!-- Project Card Example -->
-            <div class="col-lg-4 mb-4">
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Pelajar Sarjana Muda Mengikut Gred</h6>
-                </div>
-                @foreach($g_deg as $key => $graded)
-                <div class="card-body">
-                  <h4 class="small font-weight-bold">Gred: {{ $graded->Gred }}<span class="float-right">{{ $graded->jumlah }}</span></h4>
-                  <!--change variable di <code>inline css</code> ja append value dari database directly.    -->              
-                </div>
-                @endforeach
-                <hr>
-              </div>
-            </div>
-
-              <!-- Project Card Example -->
-            <div class="col-lg-4 mb-4">
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Pelajar Sarjana Muda Mengikut Gred</h6>
-                </div>
-                @foreach($g_mstr as $key => $graded)
-                <div class="card-body">
-                  <h4 class="small font-weight-bold">Gred: {{ $graded->Gred }}<span class="float-right">{{ $graded->jumlah }}</span></h4>
-                  <!--change variable di <code>inline css</code> ja append value dari database directly.    -->              
-                </div>
-                @endforeach
-                <hr>
-              </div>
-            </div>
-
-            <div class="col-lg-4 mb-4">
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Pelajar Sarjana Muda Mengikut Gred</h6>
-                </div>
-                @foreach($g_phd as $key => $graded)
-                <div class="card-body">
-                  <h4 class="small font-weight-bold">Gred: {{ $graded->Gred }}<span class="float-right">{{ $graded->jumlah }}</span></h4>
-                  <!--change variable di <code>inline css</code> ja append value dari database directly.    -->              
-                </div>
-                @endforeach
-                <hr>
-              </div>
-            </div>
-
-        </div>
 
           <!-- Content Row -->
 
