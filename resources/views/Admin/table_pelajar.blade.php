@@ -4,7 +4,7 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-        <a href="/exportstudent"  class="btn btn-success d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Muat Turun Senarai Pelajar</a>
+        <a href="/exportstudent"  class="btn btn-success d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-bottom: 12px"><i class="fas fa-download fa-sm text-white-50"></i> Muat Turun Senarai Pelajar</a>
 
 
           <!-- Page Heading -->
