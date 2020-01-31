@@ -174,7 +174,9 @@ class AdminController extends Controller
             //top 5 agensi            
         }
 
-
+        $test = DB::table('applicants')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')->where('Gred', '=', '41')->where('AppliedKursus', '=', 'Sarjana Muda')->get();
+        //dd($test);
 
         //degree by gred
         $gred_deg = collect(DB::table('applicants')
@@ -221,7 +223,7 @@ class AdminController extends Controller
         $all_applicant = DB::table('applicants')->where('isApproved', '=', '0')
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')->get();
 
-        $all_claim = DB::table('dokumen_results')->join('users', 'users.id', 'dokumen_results.document_id')->get();
+        $all_claim = DB::table('dokumen_results')->join('users', 'users.id', 'dokumen_results.document_id')->where('pay_status', '=', '0')->get();
         $claim_count = $all_claim->count();
         $applicant_count = $all_applicant->count();
         $noti_count = $claim_count + $applicant_count;
@@ -237,7 +239,7 @@ class AdminController extends Controller
         $all_applicant = DB::table('applicants')->where('isApproved', '=', '0')
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')->get();
 
-        $all_claim = DB::table('dokumen_results')->join('users', 'users.id', 'dokumen_results.document_id')->get();
+        $all_claim = DB::table('dokumen_results')->join('users', 'users.id', 'dokumen_results.document_id')->where('pay_status', '=', '0')->get();
         $claim_count = $all_claim->count();
         $applicant_count = $all_applicant->count();
         $noti_count = $claim_count + $applicant_count;
@@ -253,7 +255,7 @@ class AdminController extends Controller
         $all_applicant = DB::table('applicants')->where('isApproved', '=', '0')
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')->get();
 
-        $all_claim = DB::table('dokumen_results')->join('users', 'users.id', 'dokumen_results.document_id')->get();
+        $all_claim = DB::table('dokumen_results')->join('users', 'users.id', 'dokumen_results.document_id')->where('pay_status', '=', '0')->get();
         $claim_count = $all_claim->count();
         $applicant_count = $all_applicant->count();
         $noti_count = $claim_count + $applicant_count;
@@ -270,7 +272,7 @@ class AdminController extends Controller
         $all_applicant = DB::table('applicants')->where('isApproved', '=', '0')
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')->get();
 
-        $all_claim = DB::table('dokumen_results')->join('users', 'users.id', 'dokumen_results.document_id')->get();
+        $all_claim = DB::table('dokumen_results')->join('users', 'users.id', 'dokumen_results.document_id')->where('pay_status', '=', '0')->get();
         $claim_count = $all_claim->count();
         $applicant_count = $all_applicant->count();
         $noti_count = $claim_count + $applicant_count;
@@ -286,7 +288,7 @@ class AdminController extends Controller
         $all_applicant = DB::table('applicants')->where('isApproved', '=', '0')
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')->get();
 
-        $all_claim = DB::table('dokumen_results')->join('users', 'users.id', 'dokumen_results.document_id')->get();
+        $all_claim = DB::table('dokumen_results')->join('users', 'users.id', 'dokumen_results.document_id')->where('pay_status', '=', '0')->get();
         $claim_count = $all_claim->count();
         $applicant_count = $all_applicant->count();
         $noti_count = $claim_count + $applicant_count;
@@ -312,6 +314,10 @@ class AdminController extends Controller
         $new_record-> amount = request('jumlah');
         $new_record-> payment_id = $id;
 
+        Dokumen_result::where('document_id', '=', $id)->update([
+            'pay_status'=>true
+        ]);
+
         $new_record->save();
 
         return Redirect::back();
@@ -334,7 +340,7 @@ class AdminController extends Controller
         $all_applicant = DB::table('applicants')->where('isApproved', '=', '0')
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')->get();
 
-        $all_claim = DB::table('dokumen_results')->join('users', 'users.id', 'dokumen_results.document_id')->get();
+        $all_claim = DB::table('dokumen_results')->join('users', 'users.id', 'dokumen_results.document_id')->where('pay_status', '=', '0')->get();
         $claim_count = $all_claim->count();
         $applicant_count = $all_applicant->count();
         $noti_count = $claim_count + $applicant_count;

@@ -54,7 +54,7 @@
                   Notifikasi
                 </h6>
                 @foreach($noti_pemohon as $key => $noti) 
-                <a class="dropdown-item d-flex align-items-center" href="#">
+                <a class="dropdown-item d-flex align-items-center" href="/datatable_pemohon">
                   <div class="mr-3">
                     <div class="icon-circle bg-primary">
                       <i class="fas fa-file-alt text-white"></i>
@@ -67,7 +67,7 @@
                 </a>
                 @endforeach
                 @foreach($noti_claim as $key => $claim)
-                <a class="dropdown-item d-flex align-items-center" href="#">
+                <a class="dropdown-item d-flex align-items-center" href="/tuntutan_pay/{{ $claim -> document_id}}/{{ $claim -> date_penyerahan}}">
                   <div class="mr-3">
                     <div class="icon-circle bg-success">
                       <i class="fas fa-donate text-white"></i>
