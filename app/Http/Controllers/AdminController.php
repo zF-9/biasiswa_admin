@@ -206,7 +206,7 @@ class AdminController extends Controller
         $stdnt_Kontrak = $all_student->where('TarafLantik', '=', 'Kontrak')->count();
 
         //notification tuntutan 
-        $all_claim = DB::table('dokumen_results')->join('users', 'users.id', 'dokumen_results.document_id')->get();
+        $all_claim = DB::table('dokumen_results')->join('users', 'users.id', 'dokumen_results.document_id')->where('pay_status', '=', '0')->get();
         $claim_count = $all_claim->count();
         $applicant_count = $all_applicant->count();
         $noti_count = $claim_count + $applicant_count;

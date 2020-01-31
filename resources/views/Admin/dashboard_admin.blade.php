@@ -219,117 +219,6 @@
               </div>
             </div>
 
-
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-
-                    <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                        Bilangan Pelajar
-                      </div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $data_student }}</div>
-                    </div>
-
-                    <div class="col-auto">
-                      <i class="fas fa-users fa-2x text-gray-300"></i>
-                    </div>
-
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-
-                    <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                        Bilangan Pelajar Sarjana Muda
-                      </div>
-                      @foreach($degreeapp as $key => $data)
-                      @if ($loop->first) <!-- logic: when it reaches last punya iteration baru dia display -->
-
-
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $loop -> count }}</div>
-                      @endif
-                      @endforeach
-                    </div>
-
-                    <div class="col-auto">
-                      <i class="fas fa-users fa-2x text-gray-300"></i>
-                    </div>
-
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-
-                    <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                        Bilangan Pelajar Sarjana
-                      </div>
-                      @foreach($masterapp as $key => $data)
-                      @if ($loop->first) <!-- logic: when it reaches last punya iteration baru dia display -->
-
-
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $loop -> count }}</div>
-                      @endif
-                      @endforeach
-                    </div>
-
-                    <div class="col-auto">
-                      <i class="fas fa-users fa-2x text-gray-300"></i>
-                    </div>
-
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-
-                    <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                        Bilangan Pelajar Doktor Falsafah
-                      </div>
-                      @foreach($phdapp  as $key => $data)
-                      @if ($loop->first) <!-- logic: when it reaches last punya iteration baru dia display -->
-
-
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $loop -> count }}</div>
-                      @endif
-                      @endforeach
-                    </div>
-
-                    <div class="col-auto">
-                      <i class="fas fa-users fa-2x text-gray-300"></i>
-                    </div>
-
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
             <!-- Earnings (Monthly) Card Example 
             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-info shadow h-100 py-2">
@@ -593,6 +482,118 @@
 
 
           </div>
+        </div>
+
+        <div class="row">
+            <!-- Earnings (Monthly) Card Example SNINS -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+
+                    <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                        Bilangan Pelajar
+                      </div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $data_student }}</div>
+                    </div>
+
+                    <div class="col-auto">
+                      <i class="fas fa-users fa-2x text-gray-300"></i>
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+
+                    <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                        Bilangan Pelajar Sarjana Muda
+                      </div>
+                      @foreach($degreeapp as $key => $data)
+                      @if ($loop->first) <!-- logic: when it reaches last punya iteration baru dia display -->
+
+
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $loop -> count }}</div>
+                      @endif
+                      @endforeach
+                    </div>
+
+                    <div class="col-auto">
+                      <i class="fas fa-users fa-2x text-gray-300"></i>
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+
+                    <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                        Bilangan Pelajar Sarjana
+                      </div>
+                      @foreach($masterapp as $key => $data)
+                      @if ($loop->first) <!-- logic: when it reaches last punya iteration baru dia display -->
+
+
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $loop -> count }}</div>
+                      @endif
+                      @endforeach
+                    </div>
+
+                    <div class="col-auto">
+                      <i class="fas fa-users fa-2x text-gray-300"></i>
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+
+                    <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                        Bilangan Pelajar Doktor Falsafah
+                      </div>
+                      @foreach($phdapp  as $key => $data)
+                      @if ($loop->first) <!-- logic: when it reaches last punya iteration baru dia display -->
+
+
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $loop -> count }}</div>
+                      @endif
+                      @endforeach
+                    </div>
+
+                    <div class="col-auto">
+                      <i class="fas fa-users fa-2x text-gray-300"></i>
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
         </div>
 
 
