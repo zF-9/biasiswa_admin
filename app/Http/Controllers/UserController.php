@@ -100,13 +100,24 @@ class UserController extends Controller
         ->join('info__pengajians', 'users.id', 'info__pengajians.applicant_id' )
         ->first();
 
+        $jumlah = DB::table('applicants')
+        ->where('user_id', '=', $id)
+        ->join('payment_records', 'payment_records.payment_id', 'applicants.user_id')
+        ->sum('amount');
+
+        $tuntutans = DB::table('applicants')
+        ->where('user_id', '=', $id)
+        ->join('dokumen_results', 'dokumen_results.document_id', 'applicants.user_id')
+        ->sum('tuntutan');
+        
+
         if($user_profile == null){
             return view('User.dashboard_user')->withErrors(__('Pemohon perlu mengisi borang maklumat pegawai'));
         }
     
         else {
-            //dd($user_profile);
-            return view('User.Profile_full', ['user_profile' => $user_profile]);          
+           // dd($jumlah);
+            return view('User.Profile_full', ['user_profile' => $user_profile, 'jumlah' => $jumlah, 'tuntutans' => $tuntutans]);          
         }        
     }
 

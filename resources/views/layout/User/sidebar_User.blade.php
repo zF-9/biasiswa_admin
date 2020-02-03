@@ -89,8 +89,8 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Jenis Maklumat :</h6> 
             <a class="collapse-item" href="{{ route('full_profile') }}">Maklumat Penuh</a>
-            <a class="collapse-item" href="{{ route('profile_pemohon') }}">Maklumat Pegawai</a>
-            <a class="collapse-item" href="{{ route('profile_pelajar') }}">Maklumat Pengajian</a>
+           <!-- <a class="collapse-item" href="{{ route('profile_pemohon') }}">Maklumat Pegawai</a>
+            <a class="collapse-item" href="{{ route('profile_pelajar') }}">Maklumat Pengajian</a>-->
           </div>
         </div>
       </li>
@@ -112,7 +112,7 @@
         <div id="collapsePage" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Ingin :</h6>
-            <a class="collapse-item" href="/Userpayment_rec">Rekod Pembayaran</a>
+           <!-- <a class="collapse-item" href="/Userpayment_rec">Rekod Pembayaran</a>-->
             <a class="collapse-item" href="/serahan">Membuat Tuntutan</a>
           </div>
         </div>

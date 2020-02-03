@@ -14,7 +14,7 @@ class AddBudgetToApplicant extends Migration
     public function up()
     {
         Schema::table('applicants', function (Blueprint $table) {
-            $table->string('budget')->after('Tsahjwtn');
+            $table->float('budget', 8, 2)->after('Tsahjwtn')->nullable();
         });
     }
 
