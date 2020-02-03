@@ -347,6 +347,7 @@
   <script src="{{ asset ('js/pie-gredbyDegree.js') }}"></script>
   <script src="{{ asset ('js/pie-gredbyMaster.js') }}"></script>
   <script src="{{ asset ('js/pie-gredbyPHD.js') }}"></script>
+  <script src="{{ asset ('js/Chart-Pie-41.js') }}"></script>
 
     <!-- Page level plugins -->
   <script src="{{ asset ('vendor/datatables/jquery.dataTables.min.js')}}"></script>
