@@ -109,6 +109,11 @@ class UserController extends Controller
         ->where('user_id', '=', $id)
         ->join('dokumen_results', 'dokumen_results.document_id', 'applicants.user_id')
         ->sum('tuntutan');
+
+        $tuntut = DB::table('applicants')
+        ->where('user_id', '=', $id)
+        ->join('dokumen_results', 'dokumen_results.document_id', 'applicants.user_id')
+        ->get();
         
 
         if($user_profile == null){
@@ -117,7 +122,7 @@ class UserController extends Controller
     
         else {
            // dd($jumlah);
-            return view('User.Profile_full', ['user_profile' => $user_profile, 'jumlah' => $jumlah, 'tuntutans' => $tuntutans]);          
+            return view('User.Profile_full', ['user_profile' => $user_profile, 'jumlah' => $jumlah, 'tuntutans' => $tuntutans, 'tuntut' => $tuntut]);          
         }        
     }
 

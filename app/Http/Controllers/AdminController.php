@@ -345,7 +345,24 @@ class AdminController extends Controller
         ->join('info__pengajians', 'users.id', 'info__pengajians.applicant_id' )
         ->first();
 
-        return view('Admin.studentViewer', ['user_profile' => $user_profile, 'noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count]);
+        $tuntut = DB::table('applicants')
+        ->where('user_id', '=', $user_data)
+        ->join('payment_records', 'payment_records.payment_id', 'applicants.user_id')
+        ->get();
+
+        $budget = DB::table('applicants')
+        ->where('user_id', '=', $user_data)
+        ->join('users', 'users.id', 'applicants.user_id')
+        ->value('budget');
+
+        $jumlah = DB::table('applicants')
+        ->where('user_id', '=', $user_data)
+        ->join('payment_records', 'payment_records.payment_id', 'applicants.user_id')
+        ->sum('amount');
+        
+      $pembiayaan = $budget - $jumlah; 
+
+        return view('Admin.studentViewer', ['user_profile' => $user_profile, 'pembiayaan' => $pembiayaan, 'jumlah' => $jumlah, 'tuntut' => $tuntut, 'noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count]);
     }
 
     

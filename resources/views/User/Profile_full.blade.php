@@ -193,7 +193,7 @@ var tuntutans = '{{ $tuntutans }}';
 
                     <th>Tarikh</th>
                     <th>Jenis</th> 
-                    <th>No Baucer</th>                     
+                    <th>Tempoh</th>                     
                     <th>Jumlah(RM)</th>
 
                   </tr>
@@ -203,7 +203,7 @@ var tuntutans = '{{ $tuntutans }}';
 
                     <th>Tarikh</th>
                     <th>Jenis</th> 
-                    <th>No Baucer</th>                     
+                    <th>Tempoh</th>                     
                     <th>Jumlah(RM)</th>
 
                   </tr>
@@ -211,10 +211,10 @@ var tuntutans = '{{ $tuntutans }}';
                 <tbody>
                     @foreach($tuntut as $key => $data)
                     <tr>
-                      <td>{{ $data -> date_pymnt }}</td>
-                      <td>{{ $data -> jenis_pymnt }}</td>
-                      <td>{{ $data -> No_baucer }}</td>
-                      <td>{{ $data -> amount }}</td>
+                      <td>{{ $data -> date_penyerahan }}</td>
+                      <td>{{ $data -> perkara }}</td>
+                      <td>{{ $data -> tempoh }}</td>
+                      <td>{{ $data -> tuntutan }}</td>
                     </tr>     
                     @endforeach                
 
