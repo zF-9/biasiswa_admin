@@ -209,7 +209,14 @@ var tuntutans = '{{ $tuntutans }}';
                   </tr>
                 </tfoot>
                 <tbody>
-            
+                    @foreach($tuntut as $key => $data)
+                    <tr>
+                      <td>{{ $data -> date_pymnt }}</td>
+                      <td>{{ $data -> jenis_pymnt }}</td>
+                      <td>{{ $data -> No_baucer }}</td>
+                      <td>{{ $data -> amount }}</td>
+                    </tr>     
+                    @endforeach                
 
                   </tbody>
 

@@ -5,7 +5,7 @@
         <!-- Begin Page Content -->
   
         <div class="container-fluid">
-        <a href="/exportchart"  class="btn btn-success d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Muat Turun Senarai Tuntutan</a>
+        <a href="/exportchart"  class="btn btn-success d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-bottom: 12px"><i class="fas fa-download fa-sm text-white-50"></i> Muat Turun Senarai Tuntutan</a>
 
           <!-- Page Heading -->
           <!--<h1 class="h3 mb-2 text-gray-800">Tables</h1>

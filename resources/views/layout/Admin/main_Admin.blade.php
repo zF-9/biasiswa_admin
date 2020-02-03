@@ -20,7 +20,7 @@
       <!-- Main Content -->
       <div id="content">
 
-          @include('layout.navbar')
+          @include('layout.Admin.navbar_Admin')
 
         <!-- Begin Page Content -->
         <div class="container-fluid">

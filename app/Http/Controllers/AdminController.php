@@ -27,9 +27,10 @@ class AdminController extends Controller
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->count();
 
-        $data_applicant = DB::table('applicants')->where('isApproved', '=', '0')
-        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
-        ->count();
+        $all_applicant = DB::table('applicants')->where('isApproved', '=', '0')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')->get();
+
+        $data_applicant = $all_applicant->count();
 
         $all_student = DB::table('applicants')->where('isApproved', '=', '1')
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
@@ -143,30 +144,37 @@ class AdminController extends Controller
         $rank_jabatan = $rank->sortBy('total')->reverse()->values()->all();
         $rank_array = collect($rank_jabatan);
 
-        //top 5 agensi
-        $total_sum = $rank_array->sum('total');
+        if( $rank_array === null) {
+            //
+        }
+        else {
+            //top 5 agensi
+            $total_sum = $rank_array->sum('total');
 
-        $total_1 = $rank_array[0]->total; 
-        $no_1 = $total_1 / $total_sum * 100;
-        $agensi_1 = $rank_array[0]->jabatan;
+            $total_1 = $rank_array[0]->total; 
+            $no_1 = $total_1 / $total_sum * 100;
+            $agensi_1 = $rank_array[0]->jabatan;
 
-        $total_2 = $rank_array[1]->total;
-        $no_2 = $total_2 / $total_sum * 100;
-        $agensi_2 = $rank_array[1]->jabatan;
+            $total_2 = $rank_array[1]->total;
+            $no_2 = $total_2 / $total_sum * 100;
+            $agensi_2 = $rank_array[1]->jabatan;
 
-        $total_3 = $rank_array[2]->total;
-        $no_3 = $total_3 / $total_sum * 100;
-        $agensi_3 = $rank_array[2]->jabatan;
+            $total_3 = $rank_array[2]->total;
+            $no_3 = $total_3 / $total_sum * 100;
+            $agensi_3 = $rank_array[2]->jabatan;
 
-        $total_4 = $rank_array[3]->total;
-        $no_4 = $total_4 / $total_sum * 100;
-        $agensi_4 = $rank_array[3]->jabatan;
+            $total_4 = $rank_array[3]->total;
+            $no_4 = $total_4 / $total_sum * 100;
+            $agensi_4 = $rank_array[3]->jabatan;
 
 
-        $total_5 = $rank_array[4]->total;
-        $no_5 = $total_5 / $total_sum * 100;
-        $agensi_5 = $rank_array[4]->jabatan;
-        //top 5 agensi
+            $total_5 = $rank_array[4]->total;
+            $no_5 = $total_5 / $total_sum * 100;
+            $agensi_5 = $rank_array[4]->jabatan;
+            //top 5 agensi            
+        }
+
+
 
         //degree by gred
         $gred_deg = collect(DB::table('applicants')
@@ -195,56 +203,100 @@ class AdminController extends Controller
         $stdnt_tetap = $all_student->where('TarafLantik', '=', 'Tetap')->count();
         $stdnt_percubaan = $all_student->where('TarafLantik', '=', 'Percubaan')->count();        
         $stdnt_Sementara = $all_student->where('TarafLantik', '=', 'Sementara')->count();
-        $stdnt_Kontrak = $all_student->where('TarafLantik', '=', 'Kontrak')->count();                
+        $stdnt_Kontrak = $all_student->where('TarafLantik', '=', 'Kontrak')->count();
 
-        //dd($deg_total);
-        
+        //notification tuntutan 
+        $all_claim = DB::table('dokumen_results')->join('users', 'users.id', 'dokumen_results.document_id')->get();
+        $claim_count = $all_claim->count();
+        $applicant_count = $all_applicant->count();
+        $noti_count = $claim_count + $applicant_count;
 
-        return view('Admin.dashboard_admin', ['data_pemohon' => $data_pemohon, 'data_student' => $data_student, 'data_applicant' => $data_applicant,'degree' => $deg_ap, 'degreeapp' => $deg_p, 'master' => $mstr_ap, 'masterapp' => $mstr_p, 'phd' => $phd_ap, 'phdapp' => $phd_p, 'c36' => $count_36, 'c41' => $count_41, 'c44' => $count_44, 'c48' => $count_48, 'pembayaran' => $payment, 'Jan' => $Jan, 'Feb' => $Feb, 'Mar' => $Mar, 'Apr' => $Apr, 'May' => $May, 'Jun'=> $Jun, 'Jul' => $Jul, 'Aug' => $Aug, 'Sep' => $Sep, 'Oct' => $Oct, 'Nov' => $Nov, 'Dis' => $Dis, 'FT_student' => $FT_student, 'PT_student' => $PT_student, 'payment' => $monthly, 'state' => $local_state, 'country' => $local_country, 'oversea' => $oversea, 'total_1' => $total_1, 'total_2' => $total_2, 'total_3' => $total_3, 'total_4' => $total_4, 'total_5' => $total_5, 'agensi_1' => $agensi_1, 'agensi_2' => $agensi_2, 'agensi_3' => $agensi_3, 'agensi_4' => $agensi_4, 'agensi_5' => $agensi_5, 'no_1' => $no_1, 'no_2' => $no_2, 'no_3' => $no_3, 'no_4' => $no_4, 'no_5' => $no_5, 'gred_d' => $gred_deg, 'tetap' => $stdnt_tetap, 'percubaan' => $stdnt_percubaan, 'sementara' => $stdnt_Sementara, 'kontrak' => $stdnt_Kontrak, 'g_deg' => $gred_deg, 'deg_total' => $deg_total,'g_mstr' => $gred_mstr, 'g_phd' => $gred_phd]); 
+
+        return view('Admin.dashboard_admin', ['data_pemohon' => $data_pemohon, 'data_student' => $data_student, 'data_applicant' => $data_applicant,'degree' => $deg_ap, 'degreeapp' => $deg_p, 'master' => $mstr_ap, 'masterapp' => $mstr_p, 'phd' => $phd_ap, 'phdapp' => $phd_p, 'c36' => $count_36, 'c41' => $count_41, 'c44' => $count_44, 'c48' => $count_48, 'pembayaran' => $payment, 'Jan' => $Jan, 'Feb' => $Feb, 'Mar' => $Mar, 'Apr' => $Apr, 'May' => $May, 'Jun'=> $Jun, 'Jul' => $Jul, 'Aug' => $Aug, 'Sep' => $Sep, 'Oct' => $Oct, 'Nov' => $Nov, 'Dis' => $Dis, 'FT_student' => $FT_student, 'PT_student' => $PT_student, 'payment' => $monthly, 'state' => $local_state, 'country' => $local_country, 'oversea' => $oversea, 'total_1' => $total_1, 'total_2' => $total_2, 'total_3' => $total_3, 'total_4' => $total_4, 'total_5' => $total_5, 'agensi_1' => $agensi_1, 'agensi_2' => $agensi_2, 'agensi_3' => $agensi_3, 'agensi_4' => $agensi_4, 'agensi_5' => $agensi_5, 'no_1' => $no_1, 'no_2' => $no_2, 'no_3' => $no_3, 'no_4' => $no_4, 'no_5' => $no_5, 'gred_d' => $gred_deg, 'tetap' => $stdnt_tetap, 'percubaan' => $stdnt_percubaan, 'sementara' => $stdnt_Sementara, 'kontrak' => $stdnt_Kontrak, 'g_deg' => $gred_deg, 'deg_total' => $deg_total,'g_mstr' => $gred_mstr, 'g_phd' => $gred_phd, 'noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count]); 
     } 
     
    
 
     public function dataPemohon() {
+        $all_applicant = DB::table('applicants')->where('isApproved', '=', '0')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')->get();
+
+        $all_claim = DB::table('dokumen_results')->join('users', 'users.id', 'dokumen_results.document_id')->get();
+        $claim_count = $all_claim->count();
+        $applicant_count = $all_applicant->count();
+        $noti_count = $claim_count + $applicant_count;
+
         $data_pemohon = DB::table('applicants')->where('isApproved', '=', '0')
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->get();
 
-        return view('Admin.table_pemohon', ['data_pemohon' => $data_pemohon]); 
+        return view('Admin.table_pemohon', ['data_pemohon' => $data_pemohon, 'noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count]); 
     }
 
     public function dataPelajar() {
+        $all_applicant = DB::table('applicants')->where('isApproved', '=', '0')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')->get();
+
+        $all_claim = DB::table('dokumen_results')->join('users', 'users.id', 'dokumen_results.document_id')->get();
+        $claim_count = $all_claim->count();
+        $applicant_count = $all_applicant->count();
+        $noti_count = $claim_count + $applicant_count;
+
         $data_student = DB::table('applicants')->where('isApproved', '=', '1')
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->get();
 
-        return view('Admin.table_pelajar', ['data_student' => $data_student]); 
+        return view('Admin.table_pelajar', ['data_student' => $data_student, 'noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count]); 
     }
 
     public function viewTuntutan() {
+        $all_applicant = DB::table('applicants')->where('isApproved', '=', '0')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')->get();
+
+        $all_claim = DB::table('dokumen_results')->join('users', 'users.id', 'dokumen_results.document_id')->get();
+        $claim_count = $all_claim->count();
+        $applicant_count = $all_applicant->count();
+        $noti_count = $claim_count + $applicant_count;
+
         $tuntutan = DB::table('dokumen_results')
         ->join('users', 'users.id', 'dokumen_results.document_id')
         ->get();
 
 
-        return view('Admin.table_tuntutan', ['tuntutan' => $tuntutan]); 
+        return view('Admin.table_tuntutan', ['tuntutan' => $tuntutan, 'noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count]); 
     }
 
     public function payment_record($id) {
+        $all_applicant = DB::table('applicants')->where('isApproved', '=', '0')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')->get();
+
+        $all_claim = DB::table('dokumen_results')->join('users', 'users.id', 'dokumen_results.document_id')->get();
+        $claim_count = $all_claim->count();
+        $applicant_count = $all_applicant->count();
+        $noti_count = $claim_count + $applicant_count;
+
         $payments = DB::table('payment_records')->where('payment_id', '=', $id)->get();
         $user_data = User::where('id', '=', $id)->first();
 
-        return view('Admin.record_pmbyrn', ['id' => $id, 'user_data' => $user_data, 'payment' => $payments]);
+        return view('Admin.record_pmbyrn', ['id' => $id, 'user_data' => $user_data, 'payment' => $payments, 'noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count]);
         //dd($user_data);   
     }
 
     public function payment_claim($id, $data_id) {
+        $all_applicant = DB::table('applicants')->where('isApproved', '=', '0')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')->get();
+
+        $all_claim = DB::table('dokumen_results')->join('users', 'users.id', 'dokumen_results.document_id')->get();
+        $claim_count = $all_claim->count();
+        $applicant_count = $all_applicant->count();
+        $noti_count = $claim_count + $applicant_count;
+
         $payments = DB::table('payment_records')->where('payment_id', '=', $id)->get();
         $user_data = User::where('id', '=', $id)->first();
         $claim_info = Dokumen_result::where('document_id', '=', $id)
                     ->where('date_penyerahan', '=', $data_id)->first();
 
-        return view('Admin.record_tuntutan', ['id' => $id, 'claim_info' => $claim_info, 'user_data' => $user_data, 'payment' => $payments]);    
+        return view('Admin.record_tuntutan', ['id' => $id, 'claim_info' => $claim_info, 'user_data' => $user_data, 'payment' => $payments,  'noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count]);    
         //dd($data_id, $id);    
     }
 
@@ -279,53 +331,27 @@ class AdminController extends Controller
     }
 
     public function profile_view($user_data) {
+        $all_applicant = DB::table('applicants')->where('isApproved', '=', '0')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')->get();
+
+        $all_claim = DB::table('dokumen_results')->join('users', 'users.id', 'dokumen_results.document_id')->get();
+        $claim_count = $all_claim->count();
+        $applicant_count = $all_applicant->count();
+        $noti_count = $claim_count + $applicant_count;
+
         $user_profile = DB::table('applicants')
         ->where('user_id', '=', $user_data)
         ->join('users', 'users.id', 'applicants.user_id')
         ->join('info__pengajians', 'users.id', 'info__pengajians.applicant_id' )
         ->first();
 
-        $tuntut = DB::table('applicants')
-        ->where('user_id', '=', $user_data)
-        ->join('payment_records', 'payment_records.payment_id', 'applicants.user_id')
-        ->get();
-
-        $budget = DB::table('applicants')
-        ->where('user_id', '=', $user_data)
-        ->join('users', 'users.id', 'applicants.user_id')
-        ->value('budget');
-
-        $jumlah = DB::table('applicants')
-        ->where('user_id', '=', $user_data)
-        ->join('payment_records', 'payment_records.payment_id', 'applicants.user_id')
-        ->sum('amount');
-        
-      $pembiayaan = $budget - $jumlah; 
-
-        
-        return view('Admin.studentViewer', ['user_profile' => $user_profile, 'pembiayaan' => $pembiayaan, 'jumlah' => $jumlah, 'tuntut' => $tuntut]);
+        return view('Admin.studentViewer', ['user_profile' => $user_profile, 'noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count]);
     }
 
     
-    public function ApprovePelajar(User $user) {
+    /*public function ApprovePelajar(User $user) {
         dd($user);
-    }  
+    } */ 
     
-  //  public function update_budget($req){
-     //   $value = request('budget');
-//  applicant::where('nama', '=',  $req)->update([
-
-         //   'budget' => $value
-
-       // ]);
-
-        //return Redirect()->route('table_pemohon');     
-    
-        
-    
-        
-    
-
-
-
+  
 }
