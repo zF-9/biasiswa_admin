@@ -1,5 +1,4 @@
 @extends('layout.Admin.main_Admin')
-
 @section('content')
 
         <!-- Begin Page Content -->
@@ -25,6 +24,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
+                      <th>Status</th>
                       <th>Nama </th>
                       <th>Tarikh</th>
                       <th>Jenis</th> 
@@ -36,6 +36,7 @@
                   </thead>
                   <tfoot>
                     <tr>
+                      <th>Status</th>
                       <th>Nama </th>
                       <th>Tarikh</th>
                       <th>Jenis</th> 
@@ -48,6 +49,14 @@
                   <tbody>
                     @foreach($tuntutan as $key => $data)
                     <tr>
+                      <td>
+                        <input type="hidden" name="status_pay" type="checkbox" value="{{ $data -> pay_status }}">
+                        @if(old('status_pay',$data -> pay_status) == "0")
+                            Diproses
+                        @else 
+                            Dibayar
+                        @endif
+                      </td>
                       <td>{{ $data -> name }}</td>
                       <td>{{ $data -> date_penyerahan }}</td>
                       <td>{{ $data -> perkara }}</td>
@@ -63,7 +72,7 @@
                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                             <form action="" method="post">
                               @csrf                            
-                              <a class="dropdown-item" href="/tuntutan_pay/{{ $data -> id }}/{{ $data -> date_penyerahan }}">{{ __('Membuat Pembayaran') }}</a>
+                              <a class="dropdown-item" href="/{{ $data -> id }}/{{ $data -> date_penyerahan }}">{{ __('Membuat Pembayaran') }}</a>
                                 <button type="button" class="dropdown-item" onclick="confirm('{{ __("Tekan Ok jika ingin menghapus pelajar?") }}') ? this.parentElement.submit() : ''">
                                   {{ __('Hapus Pelajar') }}
                                 </button>
