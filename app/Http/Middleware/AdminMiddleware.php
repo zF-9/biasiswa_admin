@@ -23,7 +23,8 @@ class AdminMiddleware
         //dd(auth()->user());
         //return $next($request);
         if(auth()->user() == null) {
-            return Redirect()->route('home');
+            //dd(auth()-user());
+            return Redirect()->route('login');
         }
         else if(auth()->user()->isAdmin == 1){ //isAdmin is [Boolean] define: manually dari mysql table dalam Database
             return $next($request);
