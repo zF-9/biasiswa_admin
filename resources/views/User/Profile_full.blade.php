@@ -106,6 +106,7 @@ var tuntutans = '{{ $tuntutans }}';
                     <p class="leade font-italic">Gred: {{ $user_profile->skim }}{{ $user_profile->Gred }}</p>
                     <p class="leade font-italic">Taraf Pelantikan: {{ $user_profile->TarafLantik }}</p>
 
+                    <a href="/editmaklumat/{{ $user_profile->nokp}}" class="btn btn-success d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-edit fa-sm text-white-50"></i> Edit Maklumat</a>
                     <!--<p class="leade font-italic mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
                       irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
                   </div>
@@ -160,7 +161,7 @@ var tuntutans = '{{ $tuntutans }}';
                        console.log(canvas);
                        image = canvas.toDataURL("image/png");
                        var link = document.createElement('a');
-                       link.download = "JumlahPemohon.png";
+                       link.download = "Status-Pembiayaan-Pelajar.png";
                        link.href = image;
                        link.click();
                       };

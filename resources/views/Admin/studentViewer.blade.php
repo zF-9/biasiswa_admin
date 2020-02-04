@@ -2,6 +2,7 @@
 <script type="text/javascript">
   var pembiayaan = '{{ $pembiayaan }}';
   var jumlah = '{{ $jumlah }}';
+  var budget = '{{ $budget }}';
 
 
 </script>

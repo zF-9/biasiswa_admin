@@ -150,6 +150,80 @@ class ApplicantController extends Controller
         dd($results);
     }
 
+    public function update_maklumat($id) {
+
+        $maklumat = applicant::where('nokp', '=', $id)->first();
+           
+       // dd($maklumat);
+        return view('User.editmaklumat', ['maklumat' => $maklumat]);
+    }
+
+    public function newstore($id) {
+      //  $applicant = new applicant;
+
+       // $applicant->nokp = request('nokp');
+       // $applicant->trkhlahir = request('trkhlahir');
+       // $applicant->umur = request('umur');
+       // $applicant->tarafkahwin = request('tarafkahwin');
+       // $applicant->telno = request('telno');
+       // $applicant->telnoPej = request('telnoPej');
+       // $applicant->alamat = $full_alamat;
+       // $applicant->jabatan = request('jabatan');
+      //  $applicant->tarikhlantik = request('tarikhlantik');
+     //   $applicant->tberkhidmat = request('tberkhidmat');
+      //  $applicant->jawatan = request('jawatan');
+      //  $applicant->skim = request('skim');
+      //  $applicant->Gred = request('Gred');
+      //  $applicant->TarafLantik = request('TarafLantik');
+      //  $applicant->Tsahjwtn = request('Tsahjwtn');
+       // $applicant->Tahun1LPPT = request('Tahun1LPPT');
+       // $applicant->Tahun2LPPT = request('Tahun2LPPT');
+      //  $applicant->Tahun3LPPT = request('Tahun3LPPT');
+
+
+
+        $new_data = applicant::where('user_id', '=', $id)->first();
+
+        $alamat_1 = request('alamat_1');
+        $alamat_2 = request('alamat_2');
+        $full_alamat = $alamat_1 . ' ' . $alamat_2;
+
+        $new_data-> nama = request('nama');
+        $new_data->  nokp = request('nokp');
+        $new_data->  trkhlahir = request('trkhlahir');
+        $new_data->  umur = request('umur');
+        $new_data-> tarafkahwin = request('tarafkahwin');
+        $new_data-> telno = request('telno');
+        $new_data-> telnoPej = request('telnoPej');
+        $new_data-> alamat = $full_alamat;
+        $new_data-> jabatan = request('jabatan');
+        $new_data-> tarikhlantik = request('tarikhlantik');
+        $new_data-> tberkhidmat = request('tberkhidmat');
+        $new_data-> jawatan = request('jawatan');
+        $new_data-> skim = request('skim');
+        $new_data-> Gred = request('Gred');
+        $new_data-> TarafLantik = request('TarafLantik');
+        $new_data-> Tsahjwtn = request('Tsahjwtn');
+        $new_data-> Tahun1LPPT = request('Tahun1LPPT');
+        $new_data-> Tahun2LPPT= request('Tahun2LPPT');
+        $new_data-> Tahun3LPPT = request('Tahun3LPPT');
+
+        $new_data->save();
+
+      //]);
+
+
+       
+
+        //return Redirect::back();
+        return Redirect()->route('full_profile');
+
+      //  $maklumat = applicant::where('nokp', '=', $id)->first();
+           
+      // dd($id);
+       // return view('User.editmaklumat', ['maklumat' => $maklumat]);
+    }
+
     /**
      * Display a listing of the resource.
      *

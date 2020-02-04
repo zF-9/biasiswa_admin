@@ -367,6 +367,9 @@ class AdminController extends Controller
     }
 
     public function profile_view($user_data) {
+
+       // $new_record = new payment_record;
+
         $all_applicant = DB::table('applicants')->where('isApproved', '=', '0')
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')->get();
 
@@ -398,7 +401,7 @@ class AdminController extends Controller
         
       $pembiayaan = $budget - $jumlah; 
 
-        return view('Admin.studentViewer', ['user_profile' => $user_profile, 'pembiayaan' => $pembiayaan, 'jumlah' => $jumlah, 'tuntut' => $tuntut, 'noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count]);
+        return view('Admin.studentViewer', ['user_profile' => $user_profile,'budget' => $budget, 'pembiayaan' => $pembiayaan, 'jumlah' => $jumlah, 'tuntut' => $tuntut, 'noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count]);
     }
 
     

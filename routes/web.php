@@ -57,6 +57,10 @@ Route::post('/permohonan_baru', 'ApplicantController@store');
 Route::get('/pengajian','ApplicantController@upload_doc');
 Route::post('/pengajian', 'ApplicantController@upload');
 
+Route::get('/editmaklumat/{id}','ApplicantController@update_maklumat');
+Route::post('/maklumat_baru/{id}', 'ApplicantController@newstore');
+
+
 Route::get('/serahan', 'UserController@doc_res');
 Route::post('/serahan', 'UserController@mn_dokumen'); 
 Route::get('/exportstudent', 'UserController@exportstudent');
