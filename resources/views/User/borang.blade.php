@@ -365,6 +365,30 @@
                     </div>
                   </div>  
                 </div>
+                <div class="form-group col-lg-6">
+                          <div class="form-group">
+                            <label>Kelulusan Akademik</label>
+                              <select name="AkademikLvl" class="form-group form-control-user" placeholder="Pilih la yang mana satu">
+                                <option>SPM</option>
+                                <option>Diploma</option>
+                                <option>Sarjana Muda</option>
+                                <option>Sarjana</option>
+                                <option>Doktor Falsafah</option>
+                              </select>
+                          </div>
+                        </div>
+
+                        <i></i>
+                        <div class="form-group col-lg-8">
+                          <div class="form-group">
+                            <label>*Sila Nyatakan Kelulusan Akademik</label>
+                            <input name="AkademikInfo" type="text" class="form-control form-control-user" value="" id="InputAkademik" placeholder="akademik">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                   </div>
+                  
 
                     <!--<div class="form-group">
                       <input name="universiti" type="text" class="form-control form-control-user" id="InputUni" placeholder="Nama Universiti">
@@ -420,6 +444,7 @@
       </div>
 
     </div>
+    
 
   </div>
 </div>

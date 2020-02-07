@@ -91,7 +91,7 @@ Route::get('/profile_edit', function() {
 });
 
 Route::group(['middleware' => 'AdminMiddleware'], function() {
-	Route::get('/dashboard', 'AdminController@AdminDashboard');
+	Route::get('/dashboard', 'AdminController@AdminDashboard')->name('dashboard');
 	Route::get('/datatable_tuntutan', 'AdminController@viewTuntutan')->name('table_tuntutan');
 	Route::get('/datatable_pemohon', 'AdminController@dataPemohon')->name('table_pemohon');
 	Route::get('/datatable_pelajar', 'AdminController@dataPelajar')->name('table_pelajar');

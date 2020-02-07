@@ -37,6 +37,8 @@ class CreateApplicantsTable extends Migration
             $table->string('Tahun1LPPT');
             $table->string('Tahun2LPPT');
             $table->string('Tahun3LPPT');
+            $table->string('AkademikLvl');
+            $table->string('AkademikInfo');
             $table->boolean('isApproved')->default(0);
 
             //$table->integer('user_id')->unsigned()->nullable();

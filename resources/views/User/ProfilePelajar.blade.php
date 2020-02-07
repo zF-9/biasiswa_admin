@@ -41,12 +41,7 @@
                             <h3>
                                 {{ auth()->user()->name }}<span class="font-weight-light"></span>
                             </h3>
-                            <div>
-                                <i class="ni education_hat mr-2"></i>{{ $student_profile -> AkademikLvl }}
-                            </div>
-                            <div class="h5 font-weight-300">
-                                <i class="ni location_pin mr-2"></i>{{ $student_profile -> AkademikInfo }}
-                            </div>
+
                             <div>
                                 <i class="ni education_hat mr-2"></i>{{ $student_profile -> AppliedKursus }}
                             </div>

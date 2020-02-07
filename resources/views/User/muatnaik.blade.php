@@ -37,22 +37,21 @@
                   {{ csrf_field() }}
                       <div class="row">
                         <div class="form-group col-lg-6">
-                          <div class="form-group">
-                            <label>Kelulusan Akademik</label>
-                              <select name="AkademikLvl" class="form-group form-control-user" placeholder="Pilih la yang mana satu">
-                                <option>SPM</option>
-                                <option>Diploma</option>
-                                <option>Sarjana Muda</option>
-                                <option>Sarjana</option>
-                                <option>Doktor Falsafah</option>
+                        <div class="form-group">
+                            <label>Kursus Yang Dipohon</label>
+                              <select name="AppliedKursus" onchange="course_validation()" class="form-group form-control-user" id="course" placeholder="Pilih la yang mana satu">
+                                <option value="0"></option>
+                                <option value="Sarjana Muda">Sarjana Muda</option>
+                                <option id="mstr_sel" value="Sarjana">Sarjana</option>
+                                <option id="phd_sel" value="Doktor Falsafah">Doktor Falsafah</option>
                               </select>
                           </div>
                         </div>
                         <i></i>
                         <div class="form-group col-lg-8">
-                          <div class="form-group">
-                            <label>*Sila Nyatakan Kelulusan Akademik</label>
-                            <input name="AkademikInfo" type="text" class="form-control form-control-user" value="" id="InputAkademik" placeholder="akademik">
+                        <div class="form-group">
+                            <label>Nama Kursus</label>
+                            <input name="course" type="text" class="form-control form-control-user" id="Input_course" placeholder="Nama Kursus">
                           </div>
                         </div>
                       </div>
@@ -78,18 +77,7 @@
 
                       <div class="row">
                         <div class="form-group col-lg-6">
-                          <div class="form-group">
-                            <label>Kursus Yang Dipohon</label>
-                              <select name="AppliedKursus" onchange="course_validation()" class="form-group form-control-user" id="course" placeholder="Pilih la yang mana satu">
-                                <option value="0"></option>
-                                <option value="Sarjana Muda">Sarjana Muda</option>
-                                <option id="mstr_sel" value="Sarjana">Sarjana</option>
-                                <option id="phd_sel" value="Doktor Falsafah">Doktor Falsafah</option>
-                              </select>
-                          </div>
-                        </div>
-                        <div class="form-group col-lg-6">
-                          <div class="form-group">
+                        <div class="form-group">
                             <label>Mod Pengajian</label>
                               <select name="study_mod" class="form-group form-control-user" id="stdy" placeholder="Pilih la yang mana satu" onchange="study_m0de()">
                                 <option></option>
@@ -97,6 +85,8 @@
                                 <option value="Part Time">Separuh Masa</option>
                               </select>
                           </div>
+                        </div>
+                        <div class="form-group col-lg-6">
                         </div>
                         <div class="form-group col-lg-8" id="nama_u_form">
                           <div class="form-group">
@@ -118,10 +108,7 @@
 
                       <div class="row">
                         <div class="form-group col-lg-8" id="nama_u_form">
-                          <div class="form-group">
-                            <label>Nama Kursus</label>
-                            <input name="course" type="text" class="form-control form-control-user" id="Input_course" placeholder="Nama Kursus">
-                          </div>
+                          
                         </div>   
                       </div>
 
@@ -137,6 +124,61 @@
                           </div>
                         </div>
                       </div>
+
+              <div class="table-responsive">
+              <table class="table table-bordered" id="table" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+
+                    <th>Nama</th>
+                    <th>Hubungan</th> 
+                    <th>No Kad Pengenalan</th>                     
+                    <th>Umur</th>
+                    <th><a href="#"><i class="btn btn-success mt-4">+</i></a></th><!-- onclick="addRow()" -->
+
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+             
+
+                  </tr>
+                </tfoot>
+                <tbody>
+                <tr>
+                      <td> <input name="tanggung_nama" type="text" class="form-control " id="Input_course"></td>
+                      <td> <input name="tanggung_hubungan" type="text" class="form-control " id="Input_course"></td>
+                      <td> <input name="tanggung_nokp" type="text" class="form-control " id="Input_course"></td>
+                      <td> <input name="tanggung_umur" type="text" class="form-control " id="Input_course"></td>
+                      <td> </td>
+                  </tr>  
+            
+                  </tbody>
+
+                
+              </table>
+              </div>
+              
+            </div>
+          </div>
+          <script type="text/javascript">
+              function addRow()
+              {
+
+                  var tr='<tr>'+
+                  '<td><input name="tanggung_nama" type="text" class="form-control" require=""></td>'+
+                  '<td><input name="tanggung_hubungan" type="text" class="form-control" require=""></td>'+
+                  '<td><input name="tanggung_nokp" type="text" class="form-control" require=""></td>'+
+                  '<td><input name="tanggung_umur" type="text" class="form-control" require=""></td>'+
+                  '<td></td>'+
+                  '</tr>';
+                  
+                  $('table').append(tr);
+
+              };
+          </script>
+              
+
 
                       <div class="row">
                       <!-- tanggungan 
@@ -182,7 +224,7 @@
                   </div>                                                              
 
                   <div class="text-right ol-sm-12 col-md-12">
-                      <button id="apply_btn" type="submit" class="btn btn-success mt-4">Mohon</button>
+                      <button id="apply_btn" type="submit" class="btn btn-primary mt-4">Mohon</button>
                   </div>
 
                @csrf

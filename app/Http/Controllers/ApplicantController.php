@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use App\User;
 use App\applicant;
+use App\create_tanggungan_pelajar;
 use App\upDocuments;
 use App\info_Pengajian;
 use Illuminate\Http\Request;
@@ -42,6 +43,8 @@ class ApplicantController extends Controller
         $applicant->Tahun1LPPT = request('Tahun1LPPT');
         $applicant->Tahun2LPPT = request('Tahun2LPPT');
         $applicant->Tahun3LPPT = request('Tahun3LPPT');
+        $applicant->AkademikLvl = request('AkademikLvl');
+        $applicant->AkademikInfo = request('AkademikInfo');
 
         $applicant->user_id = auth()->user()->id;
 
@@ -52,11 +55,9 @@ class ApplicantController extends Controller
 
     public function upload() {
         $applicant_data = new info_Pengajian;
-
+    
         $applicant_data->startStudy = request('startStudy');
         $applicant_data->EndStudy = request('EndStudy');
-        $applicant_data->AkademikLvl = request('AkademikLvl');
-        $applicant_data->AkademikInfo = request('AkademikInfo');
         $applicant_data->AppliedKursus = request('AppliedKursus');
         $applicant_data->mod_pengajian = request('study_mod');
         $applicant_data->tmpt_study = request('tmpt_study');
@@ -73,11 +74,36 @@ class ApplicantController extends Controller
 
 
         $applicant_data->surakuan = request()->file('surakuan')->store('public/uploadocs');
-
         $applicant_data->applicant_id = auth()->user()->id;
         $applicant_data->save();
 
-        return Redirect()->route('profile_pelajar');
+
+        $tanggungan_data = new create_tanggungan_pelajar;
+       // $data = $tanggungan_data;
+        
+      //  if(count($tanggungan_data > 0){
+         //   foreach($tanggungan_data as $data)
+
+         //   $temp = array(
+
+          //      'tanggung_nama'
+                
+dd($tanggungan_data);
+
+       //     )
+      //  })
+       // $tanggungan_data->tanggung_nama = request('tanggung_nama');
+       // $tanggungan_data->tanggung_hubungan = request('tanggung_hubungan');
+       // $tanggungan_data->tanggung_nokp = request('tanggung_nokp');
+       // $tanggungan_data->tanggung_umur = request('tanggung_umur');
+
+
+      //  $tanggungan_data->applicant_id = auth()->user()->id;
+
+      
+      //  $tanggungan_data->save();
+
+       // return Redirect()->route('profile_pelajar');
     }
 
     public function apply()
