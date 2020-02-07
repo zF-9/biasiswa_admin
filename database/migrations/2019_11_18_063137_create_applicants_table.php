@@ -33,7 +33,7 @@ class CreateApplicantsTable extends Migration
             $table->string('Gred');
             $table->string('TarafLantik');
             $table->string('Tsahjwtn')->nullable();
-            $table->float('budget', 8, 2)->nullable();
+            //$table->float('budget', 8, 2)->nullable();
             $table->string('Tahun1LPPT');
             $table->string('Tahun2LPPT');
             $table->string('Tahun3LPPT');

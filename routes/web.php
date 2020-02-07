@@ -38,9 +38,9 @@ Route::get('/dashboard_admin', function() {
 	return view('dashboard_admin');
 })->name('admin-dashboard');
 
-Route::get('/dashboard_user', function() {
+/*Route::get('/dashboard_user', function() {
     return view('User.dashboard_user');
-})->name('user-dashboard');
+})->name('user-dashboard');*/
 
 Route::get('/form', function() {
 	return view('form');
@@ -50,12 +50,17 @@ Route::get('/404', function() {
     return view('404');
 });
 
+Route::get('/dashboard_user', 'UserController@user_dashboard');
 Route::get('/profilepage', 'AdminController@AdminProfile')->middleware('ProfileMiddleware');
 Route::get('/permohonan_baru','ApplicantController@apply');
 Route::post('/permohonan_baru', 'ApplicantController@store');
 
 Route::get('/pengajian','ApplicantController@upload_doc');
 Route::post('/pengajian', 'ApplicantController@upload');
+
+Route::get('/editmaklumat/{id}','ApplicantController@update_maklumat');
+Route::post('/maklumat_baru/{id}', 'ApplicantController@newstore');
+
 
 Route::get('/serahan', 'UserController@doc_res');
 Route::post('/serahan', 'UserController@mn_dokumen'); 

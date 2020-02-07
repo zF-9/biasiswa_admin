@@ -56,7 +56,7 @@
                             <form action="" method="post">
                               @csrf
                              <!-- @method('delete')-->                            
-                             <a class="dropdown-item" href="/approve/{{ $data -> user_id }}">Terima</a>
+                           <!-- <a class="dropdown-item" href="/approve/{{ $data -> user_id }}">Terima</a>-->
                              <button  type="button" class="dropdown-item" href="" data-toggle="modal" data-target="#budgetModal" data-id="{{ $data -> user_id }}">
                               Terima Sebagai Pelajar
                               </a>

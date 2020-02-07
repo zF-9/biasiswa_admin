@@ -1,4 +1,11 @@
 @extends('layout.Admin.main_Admin')
+<script type="text/javascript">
+  var pembiayaan = '{{ $pembiayaan }}';
+  var jumlah = '{{ $jumlah }}';
+  var budget = '{{ $budget }}';
+
+
+</script>
 @section('content')
 
     <div class="container-fluid mt--7">
@@ -84,19 +91,19 @@
                     <a id="profile1-tab" data-toggle="tab" href="#profile1" role="tab" aria-controls="profile1" aria-selected="false" class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0 border">Pengajian</a>
                   </li>
                   <li class="nav-item flex-sm-fill">
-                    <a id="contact1-tab" data-toggle="tab" href="#contact1" role="tab" aria-controls="contact1" aria-selected="false" class="nav-link text-uppercase font-weight-bold rounded-0 border">Contact</a>
+                    <a id="contact1-tab" data-toggle="tab" href="#contact1" role="tab" aria-controls="contact1" aria-selected="false" class="nav-link text-uppercase font-weight-bold rounded-0 border">Pembiayaan</a>
                   </li>
                 </ul>
                 <div id="myTab1Content" class="tab-content">
                   <div id="home1" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5 show active">
-                    <p class="leade font-italic">nama: {{ $user_profile -> name }}</p>
+                    <p class="leade font-italic">Nama: {{ $user_profile -> name }}</p>
                     <p class="leade font-italic">No kad Pengenalan: {{ $user_profile->nokp }}</p>
                     <p class="leade font-italic">Email: {{ $user_profile->email }}</p>
                     <p class="leade font-italic">Alamat: {{ $user_profile->alamat }}</p>
-                    <p class="leade font-italic">taraf perkahwinan: {{ $user_profile->tarafkahwin }}</p>
+                    <p class="leade font-italic">Status Peribadi: {{ $user_profile->tarafkahwin }}</p>
                     <p class="leade font-italic">Jabatan: {{ $user_profile->jabatan }}</p>
                     <p class="leade font-italic">Jawatan: {{ $user_profile->jawatan }}</p>
-                    <p class="leade font-italic">Gred: {{ $user_profile->Gred }}</p>
+                    <p class="leade font-italic">Gred: {{ $user_profile->skim }}{{ $user_profile->Gred }}</p>
                     <p class="leade font-italic">Taraf Pelantikan: {{ $user_profile->TarafLantik }}</p>
                     <p class="leade font-italic">Tarikh Sah Jawatan: {{ $user_profile->Tsahjwtn }}</p>
 
@@ -107,11 +114,11 @@
                   <div id="profile1" role="tabpanel" aria-labelledby="profile-tab" class="tab-pane fade px-4 py-5">
                     <p class="leade font-italic">Kursus Dipohon: {{ $user_profile->AppliedKursus }}</p>
                     <p class="leade font-italic">Pengajian: {{ $user_profile->AkademikInfo }}</p>
-                    <p class="leade font-italic">Tarikh Mula: {{ $user_profile->startStudy }}</p>
-                    <p class="leade font-italic">Tarikh Tamat: {{ $user_profile->EndStudy }}</p>
+                    <p class="leade font-italic">Tarikh Mula Pengajian: {{ $user_profile->startStudy }}</p>
+                    <p class="leade font-italic">Tarikh Tamat Pengajian: {{ $user_profile->EndStudy }}</p>
                     <p class="leade font-italic">Nama Universiti: {{ $user_profile->Uni_name }}</p>
                     <p class="leade font-italic">Mod Pengajian: {{ $user_profile->mod_pengajian }}</p>
-                    <p class="leade font-italic">lokasi pengajian: {{ $user_profile->tmpt_study }}</p>
+                    <p class="leade font-italic">Lokasi Pengajian: {{ $user_profile->tmpt_study }}</p>
                     <p class="leade font-italic">
                         Surat Tawaran Universiti: <a href="storage/{{ $user_profile->tawaran }}">File</a>
                     </p>
@@ -124,25 +131,101 @@
                       irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
                   </div>
                   <div id="contact1" role="tabpanel" aria-labelledby="contact-tab" class="tab-pane fade px-4 py-5">
-                    <!--<p class="leade font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                      irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <p class="leade font-italic mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                      irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
+                  <div class="card-body">
+         
+          
+                <div class="card-header">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" >
+                  <h6 class="m-0 font-weight-bold text-primary" >Status Pembiayaan Biasiswa</h6>
+                  <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                      <div class="dropdown-header">Dropdown Header:</div>
+                      <a class="dropdown-item" onclick="myChartTTT()">Muat Turun</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                <div class="table-responsive">
+                  <div class="chart-pie pt-4 pb-2">
+                    <canvas id="PieChart_profile"></canvas>
+                    <script type="text/javascript">
 
-                      <!-- Illustrations 
-                      <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                          <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
-                        </div>
-                        <div class="card-body">
-                          <div class="text-center">
-                            <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="torage/{{ $user_profile->surakuan }}" alt="">
-                          </div>
-                          <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a constantly updated collection of beautiful svg images that you can use completely free and without attribution!</p>
-                          <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on unDraw &rarr;</a>
-                        </div>
-                      </div>-->
+                      function myChartTTT(){
+                       const canvas = document.getElementById('PieChart_profile');
+                       console.log(canvas);
+                       image = canvas.toDataURL("image/png");
+                       var link = document.createElement('a');
+                       link.download = "Status-Pembiayaan.png";
+                       link.href = image;
+                       link.click();
+                      };
+                    </script>
+                  </div>
+                  
+                  <div class="mt-4 text-center small">
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-primary"></i> Jumlah Pembiayaan Sekarang
+                    </span>
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-success"></i> Baki Peruntukan
+                    </span>
+                    <!--<span class="mr-2">
+                      <i class="fas fa-circle text-info"></i> Referral
+                    </span>-->
+                  </div>
+                 
+                </div>
 
+              </div>
+            </div>
+          </div>
+      
+          
+          <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+
+                    <th>Tarikh</th>
+                    <th>Jenis</th> 
+                    <th>No Baucer</th>                     
+                    <th>Jumlah(RM)</th>
+
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+
+                    <th>Tarikh</th>
+                    <th>Jenis</th> 
+                    <th>No Baucer</th>                     
+                    <th>Jumlah(RM)</th>
+
+                  </tr>
+                </tfoot>
+                <tbody>
+                    @foreach($tuntut as $key => $data)
+                    <tr>
+                      <td>{{ $data -> date_pymnt }}</td>
+                      <td>{{ $data -> jenis_pymnt }}</td>
+                      <td>{{ $data -> No_baucer }}</td>
+                      <td>{{ $data -> amount }}</td>
+                    </tr>     
+                    @endforeach                
+
+                  </tbody>
+
+                
+              </table>
+              </div>
+              
+            </div>
+          </div>
                   </div>
                 </div>
                 <!-- End bordered tabs -->

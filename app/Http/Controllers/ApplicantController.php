@@ -6,10 +6,12 @@ use DB;
 use App\User;
 use App\applicant;
 use App\upDocuments;
+use App\payment_record;
 use App\info_Pengajian;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Schema;
 
 class ApplicantController extends Controller
 {
@@ -83,10 +85,15 @@ class ApplicantController extends Controller
     public function apply()
     {
         $id = Auth::User()->id;
+        //dd($id);
+
+        $user_noti = payment_record::where('payment_id', '=', $id)->get(); 
+        //dd($user_noti);        
+
         $user_profile = DB::table('applicants')->where('user_id', '=', $id)->first();
 
         if($user_profile == null){
-            return view('User.borang');
+            return view('User.borang', ['user_noti' => $user_noti]);
         }
         else {
             return view('User.dashboard_user')->withErrors(__('Permohonan Telah Dibuat, Sila Kemas Kini'));
@@ -96,7 +103,8 @@ class ApplicantController extends Controller
 
     public function upload_doc() 
     {
-        $id = Auth::User()->id;
+        $id = Auth::User()->id; 
+
         $user_profile = DB::table('info__pengajians')->where('applicant_id', '=', $id)->first();
 
         if($user_profile == null){
@@ -113,8 +121,10 @@ class ApplicantController extends Controller
                 $avg_marks = applicant::where('user_id', '=', $id)
                 ->sum(DB::raw('Tahun1LPPT + Tahun2LPPT + Tahun3LPPT'));
 
+                $user_noti = payment_record::where('payment_id', '=', $id)->get();  
+
                 //dd($avg_marks);
-                return view('User.muatnaik', ['user_data' => $user_data, 'avg' => $avg_marks]);                
+                return view('User.muatnaik', ['user_data' => $user_data, 'avg' => $avg_marks, 'user_noti' => $user_noti]);                
             }
             //dd($user_data);
         } 
@@ -148,6 +158,50 @@ class ApplicantController extends Controller
         $results = User::with('user')->get();
            
         dd($results);
+    }
+
+    public function update_maklumat($id) {
+        $id_data = Auth::User()->id;
+
+        $maklumat = applicant::where('nokp', '=', $id)->first();
+        $user_noti = payment_record::where('payment_id', '=', $id_data)->get();   
+           
+       // dd($maklumat);
+        return view('User.editmaklumat', ['maklumat' => $maklumat, 'user_noti' => $user_noti]);
+    }
+
+    public function newstore($id) {
+
+        $new_data = applicant::where('user_id', '=', $id)->first();
+
+        $alamat_1 = request('alamat_1');
+        $alamat_2 = request('alamat_2');
+        $full_alamat = $alamat_1 . ' ' . $alamat_2;
+
+        $new_data-> nama = request('nama');
+        $new_data->  nokp = request('nokp');
+        $new_data->  trkhlahir = request('trkhlahir');
+        $new_data->  umur = request('umur');
+        $new_data-> tarafkahwin = request('tarafkahwin');
+        $new_data-> telno = request('telno');
+        $new_data-> telnoPej = request('telnoPej');
+        $new_data-> alamat = $full_alamat;
+        $new_data-> jabatan = request('jabatan');
+        $new_data-> tarikhlantik = request('tarikhlantik');
+        $new_data-> tberkhidmat = request('tberkhidmat');
+        $new_data-> jawatan = request('jawatan');
+        $new_data-> skim = request('skim');
+        $new_data-> Gred = request('Gred');
+        $new_data-> TarafLantik = request('TarafLantik');
+        $new_data-> Tsahjwtn = request('Tsahjwtn');
+        $new_data-> Tahun1LPPT = request('Tahun1LPPT');
+        $new_data-> Tahun2LPPT= request('Tahun2LPPT');
+        $new_data-> Tahun3LPPT = request('Tahun3LPPT');
+
+        $new_data->save();
+
+        return Redirect()->route('full_profile');
+
     }
 
     /**

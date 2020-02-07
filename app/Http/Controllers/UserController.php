@@ -7,6 +7,7 @@ use Image;
 use Redirect;
 use App\applicant;
 use App\Dokumen_result;
+use App\payment_record;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Hash;
@@ -18,7 +19,15 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
-    public function UploadPic() {
+    public function user_dashboard() {
+        $id_user = Auth::User()->id;
+        $user_noti = payment_record::where('payment_id', '=', $id_user)->get();
+
+        return view('User.dashboard_user', ['user_noti' => $user_noti]);
+
+    }
+
+    /*public function UploadPic() {
         $id = Auth::User()->id;
 
         $user = DB::table('users')->where('id', '=', $id)->first();
@@ -29,7 +38,7 @@ class UserController extends Controller
         else {
             $user->profilepic = request()->file('profilepic')->store('public/uploadProfilePic');
         }     
-    }
+    }*/
 
     public function exportstudent() 
     {
@@ -45,6 +54,7 @@ class UserController extends Controller
 
     public function profilepage() {
         $id = Auth::User()->id;
+
 
         $user_profile = DB::table('applicants')->where('user_id', '=', $id)->first();
         $student_profile = DB::table('info__pengajians')->where('applicant_id', '=', $id)->first();
@@ -93,6 +103,7 @@ class UserController extends Controller
 
     public function profile_penuh() {
         $id = Auth::User()->id;
+        $user_noti = payment_record::where('payment_id', '=', $id)->get();        
 
         $user_profile = DB::table('applicants')
         ->where('user_id', '=', $id)
@@ -100,18 +111,37 @@ class UserController extends Controller
         ->join('info__pengajians', 'users.id', 'info__pengajians.applicant_id' )
         ->first();
 
+        $jumlah = DB::table('applicants')
+        ->where('user_id', '=', $id)
+        ->join('payment_records', 'payment_records.payment_id', 'applicants.user_id')
+        ->sum('amount');
+
+        $tuntutans = DB::table('applicants')
+        ->where('user_id', '=', $id)
+        ->join('dokumen_results', 'dokumen_results.document_id', 'applicants.user_id')
+        ->sum('tuntutan');
+
+        $tuntut = DB::table('applicants')
+        ->where('user_id', '=', $id)
+        ->join('dokumen_results', 'dokumen_results.document_id', 'applicants.user_id')
+        ->get();
+
+        $total = $jumlah - $tuntutans ;
+        
+
         if($user_profile == null){
             return view('User.dashboard_user')->withErrors(__('Pemohon perlu mengisi borang maklumat pegawai'));
         }
     
         else {
-            //dd($user_profile);
-            return view('User.Profile_full', ['user_profile' => $user_profile]);          
+           // dd($jumlah);
+            return view('User.Profile_full', ['user_profile' => $user_profile, 'jumlah' => $jumlah, 'total' => $total, 'tuntutans' => $tuntutans, 'tuntut' => $tuntut, 'user_noti' => $user_noti]);          
         }        
     }
 
     public function payment_history() {
         $id = Auth::User()->id;
+        $user_noti = payment_record::where('payment_id', '=', $id)->get();   
 
         $user_record = DB::table('payment_records')->where('payment_id', '=', $id)->first();  
         
@@ -121,7 +151,7 @@ class UserController extends Controller
         else {
             $payments = DB::table('payment_records')->where('payment_id', '=', $id)->get();
 
-            return view('User.userPymnt_record', ['payment' => $payments]);          
+            return view('User.userPymnt_record', ['payment' => $payments, 'user_noti' => $user_noti]);          
         }      
     }
 
@@ -146,6 +176,8 @@ class UserController extends Controller
 
     public function doc_res() {
         $id = Auth::User()->id;
+        $user_noti = payment_record::where('payment_id', '=', $id)->get();   
+
         $student_record = DB::table('applicants')->where('user_id', '=', $id)->where('isApproved', '=', '1')->first();
 
         if($student_record == null) {
@@ -153,7 +185,7 @@ class UserController extends Controller
         }
         else {
             $list_document = DB::table('dokumen_results')->where('document_id', '=', $id)->get();
-            return view('User.upload_docs', ['list_docs' => $list_document]); 
+            return view('User.upload_docs', ['list_docs' => $list_document, 'user_noti' => $user_noti]); 
         }
     }
 
