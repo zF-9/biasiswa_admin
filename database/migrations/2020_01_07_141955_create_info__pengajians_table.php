@@ -20,13 +20,12 @@ class CreateInfoPengajiansTable extends Migration
             //added lps permohonan
             $table->string('startStudy');
             $table->string('EndStudy');
-            $table->string('AkademikLvl');
-            $table->string('AkademikInfo');
             $table->string('AppliedKursus');
             $table->string('mod_pengajian');
             $table->string('Uni_name');
             //$table->string('Uni_namePT');
             $table->string('tmpt_study');
+
 
             $table->string('tawaran')->nullable();
             $table->string('surakuan')->nullable();

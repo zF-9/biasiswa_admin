@@ -8,6 +8,7 @@ use App\applicant;
 use App\upDocuments;
 use App\payment_record;
 use App\info_Pengajian;
+use App\tanggungan_pelajar;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
@@ -44,21 +45,21 @@ class ApplicantController extends Controller
         $applicant->Tahun1LPPT = request('Tahun1LPPT');
         $applicant->Tahun2LPPT = request('Tahun2LPPT');
         $applicant->Tahun3LPPT = request('Tahun3LPPT');
+        $applicant->AkademikLvl = request('AkademikLvl');
+        $applicant->AkademikInfo = request('AkademikInfo');
 
         $applicant->user_id = auth()->user()->id;
 
         $applicant->save();
 
-        return Redirect()->route('profile_pemohon');
+        return Redirect()->route('user-dashboard');
     }
 
     public function upload() {
         $applicant_data = new info_Pengajian;
-
+    
         $applicant_data->startStudy = request('startStudy');
         $applicant_data->EndStudy = request('EndStudy');
-        $applicant_data->AkademikLvl = request('AkademikLvl');
-        $applicant_data->AkademikInfo = request('AkademikInfo');
         $applicant_data->AppliedKursus = request('AppliedKursus');
         $applicant_data->mod_pengajian = request('study_mod');
         $applicant_data->tmpt_study = request('tmpt_study');
@@ -68,27 +69,95 @@ class ApplicantController extends Controller
 
         $Uni_name = $uni_1 . ' ' . $uni_2;
         $applicant_data->Uni_name = $Uni_name;
-        //$applicant_data->Uni_namePT = request('Uni_named');
         $applicant_data->course = request('course');
                 
         $applicant_data->tawaran = request()->file('tawaran')->store('public/uploadocs');
 
 
         $applicant_data->surakuan = request()->file('surakuan')->store('public/uploadocs');
-
         $applicant_data->applicant_id = auth()->user()->id;
+        
         $applicant_data->save();
 
-        return Redirect()->route('profile_pelajar');
+        $tanggungan_data_1 = new tanggungan_pelajar;
+
+        $tanggungan_data_1->tanggung_nama = request('tanggung_nama');
+        $tanggungan_data_1->tanggung_hubungan = request('tanggung_hubungan');
+        $tanggungan_data_1->tanggung_nokp = request('tanggung_nokp');
+        $tanggungan_data_1->tanggung_umur = request('tanggung_umur');
+        $tanggungan_data_1->student_id = auth()->user()->id;
+
+        $tanggungan_data_2 = new tanggungan_pelajar;
+
+        $tanggungan_data_2->tanggung_nama = request('tanggung_nama_2');
+        $tanggungan_data_2->tanggung_hubungan = request('tanggung_hubungan_2');
+        $tanggungan_data_2->tanggung_nokp = request('tanggung_nokp_2');
+        $tanggungan_data_2->tanggung_umur = request('tanggung_umur_2');
+        $tanggungan_data_2->student_id = auth()->user()->id;
+
+        $tanggungan_data_3 = new tanggungan_pelajar;
+
+        $tanggungan_data_3->tanggung_nama = request('tanggung_nama_3');
+        $tanggungan_data_3->tanggung_hubungan = request('tanggung_hubungan_3');
+        $tanggungan_data_3->tanggung_nokp = request('tanggung_nokp_3');
+        $tanggungan_data_3->tanggung_umur = request('tanggung_umur_3');
+        $tanggungan_data_3->student_id = auth()->user()->id;
+
+        $tanggungan_data_4 = new tanggungan_pelajar;
+
+        $tanggungan_data_4->tanggung_nama = request('tanggung_nama_4');
+        $tanggungan_data_4->tanggung_hubungan = request('tanggung_hubungan_4');
+        $tanggungan_data_4->tanggung_nokp = request('tanggung_nokp_4');
+        $tanggungan_data_4->tanggung_umur = request('tanggung_umur_4');
+        $tanggungan_data_4->student_id = auth()->user()->id;                
+
+
+        /*if($tanggungan_data_4 != null) {
+          dd([$tanggungan_data_1, $tanggungan_data_2, $tanggungan_data_3, $tanggungan_data_4]);
+          //dd([$tanggungan_data_1, $tanggungan_data_2, $tanggungan_data_3]);
+          //dd([$tanggungan_data_1, $tanggungan_data_2, $tanggungan_data_3, $tanggungan_data_4]);
+          //$tanggungan_data_1->save();
+          //$tanggungan_data_2->save();
+          //$tanggungan_data_3->save();
+          //dd("yeah on the right path");
+        }
+        else if($tanggungan_data_4 == null) {
+          dd([$tanggungan_data_1, $tanggungan_data_2, $tanggungan_data_3]);
+          //$tanggungan_data_1->save();
+          //$tanggungan_data_2->save();          
+        }
+        else if($tanggungan_data_3 == null) {
+          dd([$tanggungan_data_1, $tanggungan_data_2]);
+         // $tanggungan_data_1->save();
+        }
+        else if($tanggungan_data_2 == null) {
+          dd([$tanggungan_data_1]);
+          /*$tanggungan_data_1->save();
+          $tanggungan_data_2->save();
+          $tanggungan_data_3->save();
+          $tanggungan_data_4->save();
+        }
+        else if($tanggungan_data_1 == null) {
+          dd("xda apa2 yang kena save");
+          /*$tanggungan_data_1->save();
+          $tanggungan_data_2->save();
+          $tanggungan_data_3->save();
+          $tanggungan_data_4->save();
+        }*/
+
+        $tanggungan_data_1->save();
+        $tanggungan_data_2->save();
+        $tanggungan_data_3->save();
+        $tanggungan_data_4->save();
+
+      return Redirect()->route('user-dashboard');
     }
 
     public function apply()
     {
         $id = Auth::User()->id;
-        //dd($id);
 
-        $user_noti = payment_record::where('payment_id', '=', $id)->get(); 
-        //dd($user_noti);        
+        $user_noti = payment_record::where('payment_id', '=', $id)->get();    
 
         $user_profile = DB::table('applicants')->where('user_id', '=', $id)->first();
 
@@ -96,7 +165,7 @@ class ApplicantController extends Controller
             return view('User.borang', ['user_noti' => $user_noti]);
         }
         else {
-            return view('User.dashboard_user')->withErrors(__('Permohonan Telah Dibuat, Sila Kemas Kini'));
+            return view('User.dashboard_user', ['user_noti' => $user_noti])->withErrors(__('Permohonan Telah Dibuat, Sila Kemas Kini'));
         }
         
     }
@@ -105,13 +174,14 @@ class ApplicantController extends Controller
     {
         $id = Auth::User()->id; 
 
+        $user_noti = payment_record::where('payment_id', '=', $id)->get(); 
         $user_profile = DB::table('info__pengajians')->where('applicant_id', '=', $id)->first();
 
         if($user_profile == null){
             $check_info = applicant::where('user_id', '=', $id)->first();
 
             if($check_info == null) {
-                return view('User.dashboard_user')->withErrors(__('Sila penuhkan maklumat pegawai')); 
+                return view('User.dashboard_user', ['user_noti' => $user_noti])->withErrors(__('Sila penuhkan maklumat pegawai')); 
             }
             else {
                 $user_data = DB::table('applicants')->where('user_id', '=', $id)
@@ -129,7 +199,7 @@ class ApplicantController extends Controller
             //dd($user_data);
         } 
         else {
-            return view('User.dashboard_user')->withErrors(__('Maklumat Telah Dimuat naik, Sila Kemas Kini'));           
+            return view('User.dashboard_user', ['user_noti' => $user_noti])->withErrors(__('Maklumat Telah Dimuat naik, Sila Kemas Kini'));           
         }       
         
     }

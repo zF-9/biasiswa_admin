@@ -15,6 +15,7 @@ use App\User;
 use App\applicant;
 use App\upDocuments;
 use App\Dokumen_result;
+use App\tanggungan_pelajar;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
 
@@ -50,7 +51,7 @@ Route::get('/404', function() {
     return view('404');
 });
 
-Route::get('/dashboard_user', 'UserController@user_dashboard');
+Route::get('/dashboard_user', 'UserController@user_dashboard')->name('user-dashboard');
 Route::get('/profilepage', 'AdminController@AdminProfile')->middleware('ProfileMiddleware');
 Route::get('/permohonan_baru','ApplicantController@apply');
 Route::post('/permohonan_baru', 'ApplicantController@store');

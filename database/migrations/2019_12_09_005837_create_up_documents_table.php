@@ -20,8 +20,6 @@ class CreateUpDocumentsTable extends Migration
             //added lps permohonan
             $table->string('startStudy');
             $table->string('EndStudy');
-            $table->string('AkademikLvl');
-            $table->string('AkademikInfo');
             $table->string('AppliedKursus');
             $table->string('mod_pengajian');
             $table->string('Uni_name');

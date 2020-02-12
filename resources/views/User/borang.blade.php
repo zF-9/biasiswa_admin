@@ -365,6 +365,30 @@
                     </div>
                   </div>  
                 </div>
+                <div class="form-group col-lg-6">
+                          <div class="form-group">
+                            <label>Kelulusan Akademik</label>
+                              <select name="AkademikLvl" class="form-group form-control-user" placeholder="Pilih la yang mana satu">
+                                <option>SPM</option>
+                                <option>Diploma</option>
+                                <option>Sarjana Muda</option>
+                                <option>Sarjana</option>
+                                <option>Doktor Falsafah</option>
+                              </select>
+                          </div>
+                        </div>
+
+                        <i></i>
+                        <div class="form-group col-lg-8">
+                          <div class="form-group">
+                            <label>*Sila Nyatakan Kelulusan Akademik</label>
+                            <input name="AkademikInfo" type="text" class="form-control form-control-user" value="" id="InputAkademik" placeholder="akademik">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                   </div>
+                  
 
                     <!--<div class="form-group">
                       <input name="universiti" type="text" class="form-control form-control-user" id="InputUni" placeholder="Nama Universiti">
@@ -400,12 +424,12 @@
                       Login
                     </a>-->
                     <hr>
-                    <div class="text-right">
+                    <div class="btn" style="float: right; margin-right: 0px; margin-bottom: 12px">
                       <button type="submit" class="btn btn-primary btn-user btn-block">{{ __('Save') }}</button>
                     </div>
                   </form>
-                  <hr>
-                  <!--<div class="text-center">
+                  <!--<hr>
+                  <div class="text-center">
                     <a class="small" href="forgot-password.html">Forgot Password?</a>
                   </div>
                   <div class="text-center">
@@ -419,9 +443,8 @@
 
       </div>
 
+    <!--</div>
     </div>
-
-  </div>
-</div>
+</div>-->
 <!-- end of borang permohonan -->
 @endsection

@@ -8,6 +8,7 @@ use Redirect;
 use App\applicant;
 use App\Dokumen_result;
 use App\payment_record;
+use App\tanggungan_pelajar;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Hash;
