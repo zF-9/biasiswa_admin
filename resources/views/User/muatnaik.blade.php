@@ -40,7 +40,7 @@
                         <div class="form-group">
                             <label>Kursus Yang Dipohon</label>
                               <select name="AppliedKursus" onchange="course_validation()" class="form-group form-control-user" id="course" placeholder="Pilih la yang mana satu">
-                                <option value="0"></option>
+                                <option value="0">Sila Pilih</option>
                                 <option value="Sarjana Muda">Sarjana Muda</option>
                                 <option id="mstr_sel" value="Sarjana">Sarjana</option>
                                 <option id="phd_sel" value="Doktor Falsafah">Doktor Falsafah</option>
@@ -80,7 +80,7 @@
                         <div class="form-group">
                             <label>Mod Pengajian</label>
                               <select name="study_mod" class="form-group form-control-user" id="stdy" placeholder="Pilih la yang mana satu" onchange="study_m0de()">
-                                <option></option>
+                                <option>Sila Pilih</option>
                                 <option id="ftime" value="Full Time">Sepenuh Masa</option>
                                 <option value="Part Time">Separuh Masa</option>
                               </select>
@@ -98,7 +98,7 @@
                           <div class="form-group">
                             <label>Universiti</label>
                               <select name="Uni_named" onchange="" class="form-group form-control-user" id="Option_uni">
-                                <option value=" "></option>
+                                <option value="">Sila Pilih</option>
                                 <option value="UTM Space">UTM Space</option>
                                 <option value="PLUMS">PLUMS</option>
                               </select>
@@ -116,14 +116,62 @@
                         <div class="form-group col-lg-4">
                           <div class="form-group">
                             <label>Pilihan Negara/Negeri</label>
-                              <select name="tmpt_study" class="form-group form-control-user" id="place_stdy" placeholder="Pilih la yang mana satu">
-                                <option id="os" value="Luar Negara">Luar Negara</option>
-                                <option id="loc_c" value="Luar Negeri Sabah">Luar Negeri Sabah</option>
+                              <select name="tmpt_study" class="form-group form-control-user" id="place_stdy" placeholder="Pilih la yang mana satu" onchange="cek_luarnegara()">
+                                <option>Sila Pilih</option>
+                                <option id="luar" value="Luar Negara">Luar Negara</option>
+                                <option id="luar_neg" value="Luar Negeri Sabah">Luar Negeri Sabah</option>
                                 <option value="Dalam Negeri Sabah">Dalam Negeri Sabah</option>
                               </select>
                           </div>
                         </div>
-                      </div>
+                        <div class="form-group col-lg-4">
+                          <div class="form-group">
+                              <label>Nama Negara</label>
+                              <select name="tmpt_study1" class="form-group form-control-user" id="place_study" placeholder="Pilih la yang mana satu" onchange="cek_namanegara()">
+                              <option id="" value="">Sila Pilih</option>
+                                <option id="Amerika Syarikat" value="Amerika Syarikat">Amerika Syarikat</option>
+                                <option id="Australia" value="Australia">Australia</option>
+                                <option value="China">China</option>
+                              </select>
+                          </div>
+                        </div>
+                        <div class="form-group col-lg-4">
+                          <div class="form-group">
+                            <label>Pilihan Tempat</label>
+                              <select name="tmpt_study2" class="form-group form-control-user" id="place_amerika" placeholder="Pilih la yang mana satu" onchange="">
+                              <option id="os" value="Lain-lain">Sila Pilih</option>
+                                <option id="os" value="Washington D.C">Washington D.C</option>
+                                <option id="loc_c" value="Los Angeles">Los Angeles</option>
+                                <option value="New York City">New York City</option>
+                                <option value="Chicago">Chicago</option>
+                                <option value="San Francisco">San Francisco</option>
+                                <option value="California">California</option>
+                                <option value="Hawaii">Hawaii</option>
+                                <option value="Rhode Island">Rhode Island</option>
+                                <option value="Massachusettes">Massachusettes</option>
+                                <option value="Connecticut">Connecticut</option>
+                                <option value="New Jersey">New Jersey</option>   
+                                <option value="Philadelphia">Philadelphia</option> 
+                                <option value="Pittsburgh">Pittsburgh</option>    
+                                <option value="University Park">University Park</option> 
+                                <option value="Atlanta">Atlanta</option> 
+                                <option value="Miami">Miami</option>  
+                                <option value="Houstan">Houstan</option>  
+                                <option value="Dallas/Fort Worth">Dallas/Fort Worth</option>    
+                                <option value="Detroit">Detroit</option>     
+                                <option value="Seattle">Seattle</option>
+                                <option value="Portland">Evanston</option> 
+                                <option value="Park Forest">Park Forest</option>  
+                                <option value="Arlington">Arlington</option>  
+                                <option value="Irving">Irving</option> 
+                                <option value="Coral Gables">Coral Gables</option>                                        
+                              </select>
+                          </div>
+                        </div>
+                    </div>
+              
+     
+                      
 
               <div class="table-responsive">
               <table class="table table-bordered" id="table" width="100%" cellspacing="0">
@@ -166,13 +214,13 @@
               {
 
                   var tr='<tr>'+
-                  '<td><input name="tanggung_nama" type="text" class="form-control" require=""></td>'+
+                  '<td><input name="tanggung_nama_[i]" type="text" class="form-control" require=""></td>'+
                   '<td><input name="tanggung_hubungan" type="text" class="form-control" require=""></td>'+
                   '<td><input name="tanggung_nokp" type="text" class="form-control" require=""></td>'+
                   '<td><input name="tanggung_umur" type="text" class="form-control" require=""></td>'+
                   '<td></td>'+
                   '</tr>';
-                  
+
                   $('table').append(tr);
 
               };
@@ -297,6 +345,64 @@
       document.getElementById("option_u_form").style.display = "block";
     }
   }
+
+  function cek_luarnegara() {
+  
+    var y = document.getElementById("place_stdy").value; 
+
+
+    if(y == "Luar Negara") {
+
+      document.getElementById("place_study").disabled = false; 
+      document.getElementById("place_amerika").disabled = false; 
+
+
+    }
+    else {
+      document.getElementById("place_study").disabled = true; 
+      document.getElementById("place_amerika").disabled = true; 
+
+    }
+  }
+
+  function cek_namanegara() {
+  
+  var z = document.getElementById("place_study").value; 
+
+
+  if(z == "Amerika Syarikat") {
+
+    document.getElementById("place_amerika").disabled = false; 
+
+
+  }
+  else {
+ 
+    document.getElementById("place_amerika").disabled = true; 
+
+  }
+}
+
+function cek_lain() {
+  
+  var x = document.getElementById("place_amerika").value; 
+
+
+  if(x == "Lain-lain") {
+
+    document.getElementById("lainlain").style.display = "block";
+    document.getElementById("lainlain").disabled = false;
+
+
+  }
+  else {
+ 
+    document.getElementById("lainlain").style.display = "none"; 
+    document.getElementById("lainlain").disabled = true;
+
+  }
+}
+
 
   function check_perlantikan() {
     if(appoint == "Kontrak") {

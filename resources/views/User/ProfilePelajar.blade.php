@@ -39,19 +39,19 @@
                         </div>
                         <div class="text-center">
                             <h3>
-                                {{ auth()->user()->name }}<span class="font-weight-light"></span>
+                                Nama : {{ auth()->user()->name }}<span class="font-weight-light"></span>
                             </h3>
 
                             <div>
-                                <i class="ni education_hat mr-2"></i>{{ $student_profile -> AppliedKursus }}
+                                <i class="ni education_hat mr-2">Kursus Dipohon :</i>{{ $student_profile -> AppliedKursus }}
                             </div>
                             <div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2"></i>{{ $student_profile -> Uni_name }}
+                                <i class="ni business_briefcase-24 mr-2">Nama Universiti :</i>{{ $student_profile -> Uni_name }}
                             </div>
                             <hr class="my-4" />
-                            <p>A member since {{ auth()->user()->created_at }}</p>
-                            <p>Last Updated {{ auth()->user()->updated_at }}</p>
-                            <a href="#">{{ __('Show more') }}</a>
+                            <p>Tarikh Ahli : {{ auth()->user()->created_at }}</p>
+                            <p>Tarikh Akhir Kemaskini : {{ auth()->user()->updated_at }}</p>
+                            <a href="/profilePenuh">{{ __('Profil Penuh') }}</a>
                         </div>
                     </div>
                 </div>

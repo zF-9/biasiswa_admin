@@ -25,49 +25,48 @@
 
                         <div class="text-center" id="profile_permohonan">
                             <h3>
-                                <span class="font-weight-light">Nama: </span>{{ auth()->user()->name }}
+                                <span class="font-weight-light">Nama : </span>{{ auth()->user()->name }}
                             </h3>
                             <div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2">No. Kad Pengenalan:</i>
+                                <i class="ni business_briefcase-24 mr-2">No. Kad Pengenalan :</i>
                                 {{ $user_profile -> nokp }}
                             </div>
                             <div class="h5 font-weight-300">
-                                <i class="ni location_pin mr-2">Email: </i>{{ auth()->user()->email }}
+                                <i class="ni location_pin mr-2">Email : </i>{{ auth()->user()->email }}
                             </div>
                             <div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2"></i>{{ $user_profile -> jabatan}}
+                                <i class="ni business_briefcase-24 mr-2">Kementerian/Agensi :</i>{{ $user_profile -> jabatan}}
                             </div>
                             <div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2"></i>{{ $user_profile -> jawatan}}
+                                <i class="ni business_briefcase-24 mr-2">Jawatan :</i>{{ $user_profile -> jawatan}}
                             </div>
                             <div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2"></i>{{ $user_profile -> Gred}}
+                                <i class="ni business_briefcase-24 mr-2">Gred :</i>{{ $user_profile -> Gred}}
                             </div>
                             <div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2"></i>{{ $user_profile -> TarafLantik}}
+                                <i class="ni business_briefcase-24 mr-2">Taraf Lantikan :</i>{{ $user_profile -> TarafLantik}}
                             </div>
 
                             <div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2"></i>
+                                <i class="ni business_briefcase-24 mr-2">Umur :</i>
                                 {{ $user_profile -> umur }}
                             </div>
-                            <div class="h5 mt-4">
+                            <div class="h5 mt-4">Telefon No. :
                                 <i class="ni business_briefcase-24 mr-2"></i>
                                 {{ $user_profile -> telno }}
                             </div>
-                            <div class="h5 mt-4">
+                            <div class="h5 mt-4">Telefon Pejabat No. :
                                 <i class="ni business_briefcase-24 mr-2"></i>
                                 {{ $user_profile -> telnoPej }}
                             </div>
-                            <div>
-                                <i class="ni education_hat mr-2"></i>{{ __('University of Computer Science') }}
-                            </div>
+
                             <hr class="my-4" />
-                            <p>A member since {{ auth()->user()->created_at }}</p>
-                            <p>Last Updated {{ auth()->user()->updated_at }}</p>
-                            <a href="#">{{ __('Show more') }}</a>
+                            <p>Tarikh Daftar Ke Sistem :{{ auth()->user()->created_at }}</p>
+                            <p>Tarikh Akhir Kemaskini :{{ auth()->user()->updated_at }}</p>
                             <br>
-                            <a href="" data-toggle="modal" data-target="#avatarModal">upload a pic</a>
+                            <a href="/pengajian">{{ __('Seterusnya') }}</a>
+                            <br>
+                            <a href="" data-toggle="modal" data-target="#avatarModal">Sila Muat Naik Gambar</a>
                         </div>
                     </div>
                 </div>

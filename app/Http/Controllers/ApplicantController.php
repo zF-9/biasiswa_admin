@@ -61,6 +61,8 @@ class ApplicantController extends Controller
         $applicant_data->AppliedKursus = request('AppliedKursus');
         $applicant_data->mod_pengajian = request('study_mod');
         $applicant_data->tmpt_study = request('tmpt_study');
+        $applicant_data->tmpt_study1 = request('tmpt_study1');
+        $applicant_data->tmpt_study2 = request('tmpt_study2');
 
         $uni_1 = request('Uni_name');
         $uni_2 = request('Uni_named');
@@ -78,32 +80,7 @@ class ApplicantController extends Controller
         $applicant_data->save();
 
 
-        $tanggungan_data = new create_tanggungan_pelajar;
-       // $data = $tanggungan_data;
-        
-      //  if(count($tanggungan_data > 0){
-         //   foreach($tanggungan_data as $data)
-
-         //   $temp = array(
-
-          //      'tanggung_nama'
-                
-dd($tanggungan_data);
-
-       //     )
-      //  })
-       // $tanggungan_data->tanggung_nama = request('tanggung_nama');
-       // $tanggungan_data->tanggung_hubungan = request('tanggung_hubungan');
-       // $tanggungan_data->tanggung_nokp = request('tanggung_nokp');
-       // $tanggungan_data->tanggung_umur = request('tanggung_umur');
-
-
-      //  $tanggungan_data->applicant_id = auth()->user()->id;
-
-      
-      //  $tanggungan_data->save();
-
-       // return Redirect()->route('profile_pelajar');
+        return Redirect()->route('profile_pelajar');
     }
 
     public function apply()

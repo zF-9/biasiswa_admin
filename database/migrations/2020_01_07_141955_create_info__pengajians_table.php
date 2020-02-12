@@ -25,6 +25,8 @@ class CreateInfoPengajiansTable extends Migration
             $table->string('Uni_name');
             //$table->string('Uni_namePT');
             $table->string('tmpt_study');
+            $table->string('tmpt_study1')->nullable();
+            $table->string('tmpt_study2')->nullable();
 
 
             $table->string('tawaran')->nullable();
