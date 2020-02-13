@@ -45,6 +45,7 @@ class ApplicantController extends Controller
         $applicant->Tahun3LPPT = request('Tahun3LPPT');
         $applicant->AkademikLvl = request('AkademikLvl');
         $applicant->AkademikInfo = request('AkademikInfo');
+        $applicant->LastStudy = request('LastStudy');
 
         $applicant->user_id = auth()->user()->id;
 
