@@ -131,7 +131,19 @@
                               <option id="" value="">Sila Pilih</option>
                                 <option id="Amerika Syarikat" value="Amerika Syarikat">Amerika Syarikat</option>
                                 <option id="Australia" value="Australia">Australia</option>
-                                <option value="China">China</option>
+                                <option id="India" value="India">India</option>
+                                <option id="Indonesia" value="Indonesia">Indonesia</option>
+                                <option id="Jepun" value="Jepun">Jepun</option>
+                                <option id="Kanada" value="Kanada">Kanada</option>
+                                <option id="Korea Selatan" value="Korea Selatan">Korea Selatan</option>
+                                <option id="Mesir" value="Mesir">Mesir</option>
+                                <option id="New Zealand" value="New Zealand">New Zealand</option>
+                                <option id="Singapore" value="Singapore">Singapore</option>
+                                <option id="United Kingdom" value="United Kingdom">United Kingdom</option>
+                                <option id="China" value="China">China</option>
+                                <option id="Hong Kong" value="Hong Kong">Hong Kong</option>
+                                <option id="Lain-lain" value="Lain-lain">Lain-lain</option>
+
                               </select>
                           </div>
                         </div>
@@ -140,8 +152,8 @@
                             <label>Pilihan Tempat</label>
                               <select name="tmpt_study2" class="form-group form-control-user" id="place_amerika" placeholder="Pilih la yang mana satu" onchange="">
                               <option id="os" value="Lain-lain">Sila Pilih</option>
-                                <option id="os" value="Washington D.C">Washington D.C</option>
-                                <option id="loc_c" value="Los Angeles">Los Angeles</option>
+                                <option value="Washington D.C">Washington D.C</option>
+                                <option value="Los Angeles">Los Angeles</option>
                                 <option value="New York City">New York City</option>
                                 <option value="Chicago">Chicago</option>
                                 <option value="San Francisco">San Francisco</option>
@@ -164,8 +176,98 @@
                                 <option value="Park Forest">Park Forest</option>  
                                 <option value="Arlington">Arlington</option>  
                                 <option value="Irving">Irving</option> 
-                                <option value="Coral Gables">Coral Gables</option>                                        
+                                <option value="Coral Gables">Coral Gables</option>  
+                                <option value="Lain-lain">Lain-lain</option>                                        
                               </select>
+                          </div>
+                          <div class="form-group">
+                              <select name="tmpt_study2" class="form-group form-control-user" id="place_australia" placeholder="Pilih la yang mana satu" onchange="">
+                                <option value="Lain-lain">Sila Pilih</option>
+                                <option value="Sydney">Sydney</option>
+                                <option value="Melbourne">Melbourne</option>
+                                <option value="Perth">Perth</option>     
+                                <option value="Canberra">Canberra</option> 
+                                <option value="Brisbane">Brisbane</option> 
+                                <option value="Lain-lain">Lain-lain</option>                                    
+                              </select>
+                          </div>
+                          <div class="form-group">
+                              <select name="tmpt_study2" class="form-group form-control-user" id="place_india" placeholder="Pilih la yang mana satu" onchange="">
+                                <option value="Lain-lain">Sila Pilih</option>
+                                <option value="Mumbai">Mumbai</option>
+                                <option value="New Delhi">New Delhi</option>
+                                <option value="Mangalore">Mangalore</option>
+                                <option value="Bangalore">Bangalore</option>
+                                <option value="Madras">Madras</option>
+                                <option value="Manipal">Manipal</option>
+                                <option value="Belgaum">Belgaum</option> 
+                                <option value="Lain-lain">Lain-lain</option>                                        
+                              </select>
+                          </div>
+                          <div class="form-group">
+                              <select name="tmpt_study2" class="form-group form-control-user" id="place_indon" placeholder="Pilih la yang mana satu" onchange="">
+                                <option value="Lain-lain">Sila Pilih</option>
+                                <option value="Jakarta">Jakarta</option>
+                                <option value="Bandung">Bandung</option>
+                                <option value=Bali>Bali</option>
+                                <option value="Lain-lain">Lain-lain</option>                                        
+                              </select>
+                          </div>
+                          <div class="form-group">
+                              <select name="tmpt_study2" class="form-group form-control-user" id="place_japan" placeholder="Pilih la yang mana satu" onchange="">
+                                <option value="Lain-lain">Sila Pilih</option>
+                                <option value="Yokohama-city">Yokohama-city</option>
+                                <option value="Yokosuka-city">Yokosuka-city</option>
+                                <option value="Kawasaki-city">Kawasaki-city</option>
+                                <option value="Kamakura-city">Kamakura-city</option>
+                                <option value="zushi-city">zushi-city</option>
+                                <option value="Hayama-cho,Miuragun">Hayama-cho,Miuragun</option>
+                                <option value="Nagoya-city">Nagoya-city</option> 
+                                <option value="Kyoto-city">Kyoto-city</option>
+                                <option value="Osaka-city">Osaka-city</option>    
+                                <option value="Sakai-city">Sakai-city</option>    
+                                <option value="Kishiwada-city">Kishiwada-city</option>    
+                                <option value="Toyanaka-city">Toyanaka-city</option>    
+                                <option value="Ikeda-city">Ikeda-city</option>    
+                                <option value="Izuma Otsu-city">Izuma Otsu-city</option>    
+                                <option value="Takatsuki-city">Takatsuki-city</option>  
+                                <option value="Kaizuka-city">Kaizuka-city</option>  
+                                <option value="Moriguchi-city">Moriguchi-city</option>  
+                                <option value="Hirakata-city">Hirakata-city</option>  
+                                <option value="Ibaraki-city">Ibaraki-city</option>  
+                                <option value="Yoa-city">Yoa-city</option>  
+                                <option value="Izumisano-city">Izumisano-city</option>  
+                                <option value="Tondabayashi-city">Tondabayashi-city</option>  
+                                <option value="Niyagawa-city">Niyagawa-city</option>   
+                                <option value="Izumic-city">Izumic-city</option> 
+                                <option value="Minoo-city">Minoo-city</option>  
+                                <option value="Takishi-city">Takishi-city</option>  
+                                <option value="Higashi Osaka-city">Higashi Osaka-city</option>
+                                <option value="Tadaoka-city, Izumi Kitagun">Tadaoka-city, Izumi Kitagun</option>  
+                                <option value="Lain-lain">Lain-lain</option>  
+                              </select>
+                          </div>
+                          <div class="form-group">
+                              <select name="tmpt_study2" class="form-group form-control-user" id="place_canada" placeholder="Pilih la yang mana satu" onchange="">
+                                <option value="Lain-lain">Sila Pilih</option>
+                                <option value="Toronto">Toronto</option>
+                                <option value="Ottawa">Ottawa</option>
+                                <option value="Calgary">Calgary</option>
+                                <option value="Montreal">Montreal</option>
+                                <option value="Vancouver">Vancouver</option>
+                                <option value="Lain-lain">Lain-lain</option>                                        
+                              </select>
+                          </div>
+                          <div class="form-group">
+                              <select name="tmpt_study2" class="form-group form-control-user" id="place_newzealand" placeholder="Pilih la yang mana satu" onchange="">
+                                <option value="Lain-lain">Sila Pilih</option>
+                                <option value="Wellington">Wellington</option>
+                                <option value="Auckland">Auckland</option>
+                                <option value="Lain-lain">Lain-lain</option>                                        
+                              </select>
+                          </div>
+                          <div class="form-group">
+                            <input name="tmpt_study2" type="text" class="form-control form-control-user" id="place" placeholder="Nama Tempat">
                           </div>
                         </div>
                     </div>
@@ -278,17 +380,6 @@
                @csrf
               </form>
             </div>
-            </div>
-                  <hr>
-                  <div class="text-center">
-                    <a class="small" href="">Profile Page</a>
-                  </div>
-                  <div class="text-center">
-                    <a class="small" href="">Update Borang Permohonan</a>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -347,6 +438,13 @@
   }
 
   function cek_luarnegara() {
+    document.getElementById("place_amerika").disabled = false;
+    document.getElementById("place_india").disabled = false;
+    document.getElementById("place_japan").disabled = false;
+    document.getElementById("place_indon").disabled = false;
+    document.getElementById("place_newzealand").disabled = false;
+    document.getElementById("place_australia").disabled = false;
+    document.getElementById("place_canada").disabled = false;
   
     var y = document.getElementById("place_stdy").value; 
 
@@ -354,13 +452,27 @@
     if(y == "Luar Negara") {
 
       document.getElementById("place_study").disabled = false; 
-      document.getElementById("place_amerika").disabled = false; 
-
-
+      document.getElementById("place_amerika").disabled = true; 
+      document.getElementById("place_india").style.display = "none";
+      document.getElementById("place_japan").style.display = "none";
+      document.getElementById("place_indon").style.display = "none";
+      document.getElementById("place_newzealand").style.display = "none";
+      document.getElementById("place_australia").style.display = "none";
+      document.getElementById("place_canada").style.display = "none";
+      document.getElementById("place").style.display = "none"; 
+  
     }
     else {
       document.getElementById("place_study").disabled = true; 
       document.getElementById("place_amerika").disabled = true; 
+      document.getElementById("place_india").style.display = "none";
+      document.getElementById("place_japan").style.display = "none";
+      document.getElementById("place_indon").style.display = "none";
+      document.getElementById("place_newzealand").style.display = "none";
+      document.getElementById("place_australia").style.display = "none";
+      document.getElementById("place_canada").style.display = "none";
+      document.getElementById("place").style.display = "none"; 
+
 
     }
   }
@@ -373,35 +485,109 @@
   if(z == "Amerika Syarikat") {
 
     document.getElementById("place_amerika").disabled = false; 
-
+    document.getElementById("place_amerika").style.display = "block"; 
+    document.getElementById("place_indon").style.display = "none"; 
+    document.getElementById("place_canada").style.display = "none"; 
+    document.getElementById("place_japan").style.display = "none"; 
+    document.getElementById("place_india").style.display = "none"; 
+    document.getElementById("place_newzealand").style.display = "none"; 
+    document.getElementById("place_australia").style.display = "none"; 
+    document.getElementById("place").style.display = "none"; 
 
   }
-  else {
+  else if(z == "Australia") {
  
-    document.getElementById("place_amerika").disabled = true; 
+    document.getElementById("place_australia").disabled = false; 
+    document.getElementById("place_australia").style.display = "block"; 
+    document.getElementById("place_indon").style.display = "none"; 
+    document.getElementById("place_canada").style.display = "none"; 
+    document.getElementById("place_japan").style.display = "none"; 
+    document.getElementById("place_india").style.display = "none"; 
+    document.getElementById("place_newzealand").style.display = "none"; 
+    document.getElementById("place_amerika").style.display = "none"; 
+    document.getElementById("place").style.display = "none"; 
 
   }
+  else if(z == "India") {
+ 
+   document.getElementById("place_india").disabled = false; 
+   document.getElementById("place_india").style.display = "block"; 
+   document.getElementById("place_indon").style.display = "none"; 
+   document.getElementById("place_canada").style.display = "none"; 
+   document.getElementById("place_japan").style.display = "none"; 
+   document.getElementById("place_australia").style.display = "none"; 
+   document.getElementById("place_newzealand").style.display = "none"; 
+   document.getElementById("place_amerika").style.display = "none"; 
+   document.getElementById("place").style.display = "none"; 
+
+}
+else if(z == "Indonesia") {
+ 
+ document.getElementById("place_indon").disabled = false; 
+ document.getElementById("place_indon").style.display = "block"; 
+ document.getElementById("place_india").style.display = "none"; 
+ document.getElementById("place_canada").style.display = "none"; 
+ document.getElementById("place_japan").style.display = "none"; 
+ document.getElementById("place_australia").style.display = "none"; 
+ document.getElementById("place_newzealand").style.display = "none"; 
+ document.getElementById("place_amerika").style.display = "none"; 
+ document.getElementById("place").style.display = "none"; 
+
+}
+else if(z == "Jepun") {
+ 
+ document.getElementById("place_japan").disabled = false; 
+ document.getElementById("place_japan").style.display = "block"; 
+ document.getElementById("place_india").style.display = "none"; 
+ document.getElementById("place_canada").style.display = "none"; 
+ document.getElementById("place_indon").style.display = "none"; 
+ document.getElementById("place_australia").style.display = "none"; 
+ document.getElementById("place_newzealand").style.display = "none"; 
+ document.getElementById("place_amerika").style.display = "none"; 
+ document.getElementById("place").style.display = "none"; 
+
+}
+else if(z == "Kanada") {
+ 
+ document.getElementById("place_canada").disabled = false; 
+ document.getElementById("place_canada").style.display = "block"; 
+ document.getElementById("place_india").style.display = "none"; 
+ document.getElementById("place_japan").style.display = "none"; 
+ document.getElementById("place_indon").style.display = "none"; 
+ document.getElementById("place_australia").style.display = "none"; 
+ document.getElementById("place_newzealand").style.display = "none"; 
+ document.getElementById("place_amerika").style.display = "none"; 
+ document.getElementById("place").style.display = "none"; 
+
+}
+else if(z == "New Zealand") {
+ 
+ document.getElementById("place_newzealand").disabled = false; 
+ document.getElementById("place_newzealand").style.display = "block"; 
+ document.getElementById("place_india").style.display = "none"; 
+ document.getElementById("place_japan").style.display = "none"; 
+ document.getElementById("place_indon").style.display = "none"; 
+ document.getElementById("place_australia").style.display = "none"; 
+ document.getElementById("place_canada").style.display = "none"; 
+ document.getElementById("place_amerika").style.display = "none"; 
+ document.getElementById("place").style.display = "none"; 
+
 }
 
-function cek_lain() {
-  
-  var x = document.getElementById("place_amerika").value; 
+else{
 
-
-  if(x == "Lain-lain") {
-
-    document.getElementById("lainlain").style.display = "block";
-    document.getElementById("lainlain").disabled = false;
-
-
-  }
-  else {
- 
-    document.getElementById("lainlain").style.display = "none"; 
-    document.getElementById("lainlain").disabled = true;
-
-  }
+  document.getElementById("place").disabled = false;
+  document.getElementById("place").style.display = "block"; 
+  document.getElementById("place_newzealand").style.display = "none"; 
+  document.getElementById("place_india").style.display = "none"; 
+  document.getElementById("place_japan").style.display = "none"; 
+  document.getElementById("place_indon").style.display = "none"; 
+  document.getElementById("place_australia").style.display = "none"; 
+  document.getElementById("place_canada").style.display = "none"; 
+  document.getElementById("place_amerika").style.display = "none"; 
 }
+}
+
 
 
   function check_perlantikan() {

@@ -342,6 +342,7 @@
                 <div class="row">
                   <h4>Laporan Nilaian Prestasi Tahunan</h4>
                 </div>(Sila Nyatakan 3 Tahun Terakhir) 
+                <br></br>
                   <div class="row">
                   <div class="form-group col-lg-4">
                     <div class="form-group">
@@ -382,14 +383,14 @@
                         <div class="form-group col-lg-8">
                           <div class="form-group">
                             <label>*Sila Nyatakan Bidang Akademik</label>
-                            <input name="AkademikInfo" type="text" class="form-control form-control-user" value="" id="TmptAkademik" placeholder="Nama Universiti">
+                            <input name="AkademikInfo" type="text" class="form-control form-control-user" value="" id="TmptAkademik" placeholder="Nama Bidang">
                           </div>
                         </div>
 
                         <div class="form-group col-lg-8">
                           <div class="form-group">
                             <label>*Sila Nyatakan Universiti Terdahulu</label>
-                            <input name="LastStudy" type="text" class="form-control form-control-user" value="" id="InputAkademik" placeholder="akademik">
+                            <input name="LastStudy" type="text" class="form-control form-control-user" value="" id="InputAkademik" placeholder="Nama Universiti">
                           </div>
                         </div>
                       </div>
