@@ -162,6 +162,14 @@ class ApplicantController extends Controller
         return view('User.editmaklumat', ['maklumat' => $maklumat]);
     }
 
+    public function update_maklumat($id) {
+
+        $maklumat = applicant::where('nokp', '=', $id)->first();
+           
+       // dd($maklumat);
+        return view('User.editmaklumat', ['maklumat' => $maklumat]);
+    }
+
     public function newstore($id) {
       //  $applicant = new applicant;
 
