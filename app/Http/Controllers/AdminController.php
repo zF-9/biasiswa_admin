@@ -13,7 +13,10 @@ use App\Dokumen_result;
 use App\info_Pengajian;
 use App\upDocuments;
 use App\payment_record;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use GuzzleHttp\Exception\GuzzleException;
+
 
 class AdminController extends Controller
 {
@@ -148,7 +151,7 @@ class AdminController extends Controller
         $rank_jabatan = $rank->sortBy('total')->reverse()->values()->all();
         $rank_array = collect($rank_jabatan);
 
-        if( $rank_array === null) {
+        if( $rank_jabatan == null) {
             //
         }
         else {
@@ -219,6 +222,17 @@ class AdminController extends Controller
         
         $appcnt_above_41 = $all_applicant->where('Gred', '<=', '41')->count();  
         $appcnt_below_41 = $all_applicant->where('Gred', '>=', '41')->count(); 
+
+        //test api fetching 
+
+        /*$fetch_API = new \GuzzleHttp\Client();
+        $API_data = $fetch_API->request('GET', 'https://api.bnm.gov.my/public/usd-interbank-intraday-rate', 
+            [ 'headers' => [] ]
+        );
+        $array_test = response()->json(array('testry' => $API_data));
+        $cubatrytest = $API_data->getStatusCode();*/
+
+        //dd($API_data);
 
         return view('Admin.dashboard_admin', ['data_pemohon' => $data_pemohon, 'data_student' => $data_student, 'data_applicant' => $data_applicant,'degree' => $deg_ap, 'degreeapp' => $deg_p, 'master' => $mstr_ap, 'masterapp' => $mstr_p, 'phd' => $phd_ap, 'phdapp' => $phd_p, 'pembayaran' => $payment, 'Jan' => $Jan, 'Feb' => $Feb, 'Mar' => $Mar, 'Apr' => $Apr, 'May' => $May, 'Jun'=> $Jun, 'Jul' => $Jul, 'Aug' => $Aug, 'Sep' => $Sep, 'Oct' => $Oct, 'Nov' => $Nov, 'Dis' => $Dis, 'FT_degree' => $FT_degree, 'PT_degree' => $PT_degree, 'FT_mstr' => $FT_mstr, 'PT_mstr' => $PT_mstr, 'FT_phd' => $FT_phd, 'PT_phd' => $PT_phd, 'payment' => $monthly, 'state' => $local_state, 'country' => $local_country, 'oversea' => $oversea, 'total_1' => $total_1, 'total_2' => $total_2, 'total_3' => $total_3, 'total_4' => $total_4, 'total_5' => $total_5, 'agensi_1' => $agensi_1, 'agensi_2' => $agensi_2, 'agensi_3' => $agensi_3, 'agensi_4' => $agensi_4, 'agensi_5' => $agensi_5, 'no_1' => $no_1, 'no_2' => $no_2, 'no_3' => $no_3, 'no_4' => $no_4, 'no_5' => $no_5, 'gred_d' => $gred_deg, 'tetap' => $stdnt_tetap, 'percubaan' => $stdnt_percubaan, 'sementara' => $stdnt_Sementara, 'kontrak' => $stdnt_Kontrak, 'g_deg' => $gred_deg, 'deg_total' => $deg_total,'g_mstr' => $gred_mstr, 'g_phd' => $gred_phd, 'noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count, 's_a_41' => $stdnt_above_41, 's_b_41' => $stdnt_below_41, 'a_a_41' => $appcnt_above_41, 'a_b_41' => $appcnt_below_41 ]); 
     } 
@@ -379,6 +393,41 @@ class AdminController extends Controller
         //dd($pembiayaan);
 
         return view('Admin.studentViewer', ['user_profile' => $user_profile, 'pembiayaan' => $pembiayaan, 'budget' => $budget,  'jumlah' => $jumlah, 'tuntut' => $tuntut, 'noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count]);
+    }
+
+    public function Admin_settings() {
+        $all_applicant = DB::table('applicants')->where('isApproved', '=', '0')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')->get();
+
+        $toggle = DB::table('Toggle_Index')->where('id', '=', '42')->get();
+        $toggler = $toggle[0]->index;
+
+        $all_claim = DB::table('dokumen_results')->join('users', 'users.id', 'dokumen_results.document_id')->where('pay_status', '=', '0')->get();
+        $claim_count = $all_claim->count();
+        $applicant_count = $all_applicant->count();
+        $noti_count = $claim_count + $applicant_count;
+
+        return view('Admin.settings_admin', ['noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count, 'index' => $toggler]);
+    }
+
+
+    public function store_settings(Request $request){
+            if($request->has('toggle_1')){ //terms: name
+                //Checkbox checked
+                dd("ini satu");
+            }
+            else if($request->has('toggle_2')){ //terms: name
+                //Checkbox checked
+                dd("ini dua");
+            }
+            else if($request->has('toggle_3')){ //terms: name
+                //Checkbox checked
+                dd("ini Tiga");
+            }
+            else{
+                //Checkbox not checked
+                dd("ini kosong");
+            }
     }
 
     

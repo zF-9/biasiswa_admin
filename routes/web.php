@@ -43,6 +43,8 @@ Route::get('/dashboard_admin', function() {
     return view('User.dashboard_user');
 })->name('user-dashboard');*/
 
+
+
 Route::get('/form', function() {
 	return view('form');
 });
@@ -93,6 +95,8 @@ Route::get('/profile_edit', function() {
 });
 
 Route::group(['middleware' => 'AdminMiddleware'], function() {
+	Route::get('/Settings', 'AdminController@Admin_settings');
+	Route::post('/save_setting', 'AdminController@store_settings');
 	Route::get('/dashboard', 'AdminController@AdminDashboard')->name('dashboard');
 	Route::get('/datatable_tuntutan', 'AdminController@viewTuntutan')->name('table_tuntutan');
 	Route::get('/datatable_pemohon', 'AdminController@dataPemohon')->name('table_pemohon');
@@ -105,6 +109,8 @@ Route::group(['middleware' => 'AdminMiddleware'], function() {
 	Route::get('/{user_data}', 'AdminController@profile_view')->name('profile_viewer');
 
 });
+
+
 
 
 

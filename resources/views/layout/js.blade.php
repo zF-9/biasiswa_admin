@@ -314,6 +314,45 @@
     }(typeof self !== "undefined" && self || typeof window !== "undefined" && window || this.content || this));
   </script>
 
+  <script type="text/javascript">
+      /*var toggle_01 = document.getElementById('customSwitches1');
+      var toggle_02 = document.getElementById('customSwitches2');
+      var toggle_03 = document.getElementById('customSwitches3');*/
+
+    function toggler_fx() {
+      var toggle_01 = document.getElementById('customSwitches1');
+      var toggle_02 = document.getElementById('customSwitches2');
+      var toggle_03 = document.getElementById('customSwitches3');
+
+      if(toggle_01.checked == true) {
+        toggle_02.checked = false;
+        toggle_03.checked = false;
+
+        /*$('#customSwitches2').attr("checked", false);
+        $('#customSwitches3').attr("checked", false);*/
+      }
+      else if(toggle_02.checked == true) {
+        toggle_01.checked = false;
+        toggle_03.checked = false;
+        
+        /*$('#customSwitches1').attr("checked", false);
+        $('#customSwitches3').attr("checked", false);*/
+      } 
+      else if(toggle_03.checked == true) {
+        toggle_02.checked = false;
+        toggle_01.checked = false;
+        
+        /*$('#customSwitches2').attr("checked", false);
+        $('#customSwitches1').attr("checked", false);*/
+      } 
+      else {
+        toggle_01.checked = false;
+        toggle_02.checked = false;    
+        toggle_03.checked = false;    
+      }
+    }
+  </script>
+
   <body onload="consecutiveYear();">
   <script src="{{ asset ('js/canvas-to-blob.min.js')}}"></script>
 
@@ -369,7 +408,6 @@
   <script type="text/javascript" src="{{ asset ('js/canvasjs.min.js') }}"></script>
 
   <script type="text/javascript" src="{{ asset ('js/canvastoblob.js') }}"></script>
-
 
 
 

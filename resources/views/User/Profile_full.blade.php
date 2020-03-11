@@ -1,7 +1,10 @@
 @extends('layout.User.main_User')
-<script>
+<script type="text/javascript">
 var jumlah = '{{ $jumlah }}';
 var total = '{{ $total }}';
+var tuntut = '{{ $tuntut }}';
+
+//alert([jumlah, total]); //[jumlah, total, tuntutan]
 
 </script>
 @section('content')
