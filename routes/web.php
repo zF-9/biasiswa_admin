@@ -95,7 +95,7 @@ Route::get('/profile_edit', function() {
 });
 
 Route::group(['middleware' => 'AdminMiddleware'], function() {
-	Route::get('/Settings', 'AdminController@Admin_settings');
+	Route::get('/Settings', 'AdminController@Admin_settings')->name('setting');
 	Route::post('/save_setting', 'AdminController@store_settings');
 	Route::get('/dashboard', 'AdminController@AdminDashboard')->name('dashboard');
 	Route::get('/datatable_tuntutan', 'AdminController@viewTuntutan')->name('table_tuntutan');

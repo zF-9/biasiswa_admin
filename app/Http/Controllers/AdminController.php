@@ -412,28 +412,26 @@ class AdminController extends Controller
 
 
     public function store_settings(Request $request){
-            if($request->has('toggle_1')){ //terms: name
-                //Checkbox checked
-                dd("ini satu");
+            if($request->has('toggle_1')){ 
+                DB::table('Toggle_Index')->where('id', '=', '42')->update([
+                    'index' => '1'
+                ]);
             }
-            else if($request->has('toggle_2')){ //terms: name
-                //Checkbox checked
-                dd("ini dua");
+            else if($request->has('toggle_2')){ 
+                DB::table('Toggle_Index')->where('id', '=', '42')->update([
+                    'index' => '2'
+                ]);
             }
-            else if($request->has('toggle_3')){ //terms: name
-                //Checkbox checked
-                dd("ini Tiga");
+            else if($request->has('toggle_3')){ 
+                DB::table('Toggle_Index')->where('id', '=', '42')->update([
+                    'index' => '3'
+                ]);
             }
             else{
                 //Checkbox not checked
                 dd("ini kosong");
             }
+            return Redirect()->route('setting');
     }
-
-    
-    /*public function ApprovePelajar(User $user) {
-        dd($user);
-    } */ 
-    
-  
+ 
 }
