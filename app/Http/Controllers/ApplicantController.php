@@ -195,9 +195,9 @@ class ApplicantController extends Controller
             $check_info = applicant::where('user_id', '=', $id)->first();
 
             if($check_info == null) {
-              else {
+              //else {
                 return view('User.dashboard_user', ['user_noti' => $user_noti])->withErrors(__('Sila penuhkan maklumat pegawai')); 
-              }
+              //}
             }
             else {
 

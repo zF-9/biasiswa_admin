@@ -157,6 +157,8 @@ class AdminController extends Controller
         else {
             //top 5 agensi
             $total_sum = $rank_array->sum('total');
+            $multiplier = $rank_array->count();
+
 
             $total_1 = $rank_array[0]->total; 
             $no_1 = $total_1 / $total_sum * 100;
@@ -178,7 +180,8 @@ class AdminController extends Controller
             $total_5 = $rank_array[4]->total;
             $no_5 = $total_5 / $total_sum * 100;
             $agensi_5 = $rank_array[4]->jabatan;
-            //top 5 agensi            
+            //top 5 agensi     
+
         }
 
         //degree by gred
