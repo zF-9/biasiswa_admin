@@ -11,7 +11,7 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">History</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Senarai Pembayaran : {{ $user_data -> name }}</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -21,8 +21,9 @@
                       <!--<th>Id</th>-->
                       <th>Tarikh Pembayaran</th>
                       <th>Nombor Baucer</th> 
-                      <th>Jumlah Dalam Ringgit Malaysia</th>
                       <th>Jenis Pembayaran</th>
+                      <th>Tempoh Pembayaran</th>
+                      <th>Jumlah (RM)</th>
                     </tr>
                   </thead>
                   <tfoot>
@@ -30,8 +31,9 @@
                       <!--<th>Id</th>-->
                       <th>Tarikh Pembayaran</th>
                       <th>Nombor Baucer</th> 
-                      <th>Jumlah Dalam Ringgit malaysia</th>
                       <th>Jenis Pembayaran</th>
+                      <th>Tempoh Pembayaran</th>
+                      <th>Jumlah (RM)</th>
                     </tr>
                   </tfoot>
                   <tbody>
@@ -56,16 +58,39 @@
                       <td>
                         <div class="form-group">
                           <!--<label>Jumlah Pembayaran</label>-->
-                          <input name="jumlah" type="text" class="form-control form-control-user" value="" id="InputSum" maxlength="14">
-                        </div>                          
+                          <select name="perkara" value="" class="form-control form-group form-control-user" id="InputJenis"  placeholder="Sila Pilih Jenis Pembayaran">
+                          <option>Yuran Pengajian</option>
+                          <options>Tuntutan</option>
+                          <options>Elaun Biasiswa</option>
+                          <option>Elaun Sara Hidup</option>
+                          <option>Penginapan</option>
+                          <option>Elaun Buku</option>
+                          <option>Elaun Alat Perkakas</option>
+                          <option>Elaun Tesis</option>
+                          <option>Elaun Latihan Amali</option>
+                          <option>Elaun Penempatan</option>
+                          <option>Elaun Akhir Pengajian</option>
+                          <option>Elaun Bantuan Sewa Rumah</option>
+                          <option>Elaun Bantuan Keluarga</option>
+                          <option>Elaun Pakaian Panas</option>
+                          <option>Elaun Pakaian</option>
+                          <option>Elaun Tangunggan</option>
+                          <option>Elaun Perjalanan</option>
+                        </select>
+                        </div>   
                       </td>
                       <td>
                         <div class="form-group">
+                          <!--<label>Jumlah Pembayaran</label>-->
+                          <input name="tempoh" type="text" class="form-control form-control-user" value="" id="InputTempoh" maxlength="14">
+                        </div>                                           
+                      </td>
+                      <td>  
+                        <div class="form-group">
                           <!--<label>Jenis Pembayaran</label>-->
-                          <input name="perkara" type="text" class="form-control form-control-user" id="InputJenis" maxlength="14">
-                          <hr>
+                          <input name="jumlah" type="text" class="form-control form-control-user" value="" id="InputSum" maxlength="14">
                           <div class="text-right">
-                            <button type="submit" class="btn btn-success btn-user btn-block">{{ __('Save') }}
+                            <button type="submit" class="btn btn-success btn-user btn-block">{{ __('Hantar') }}
                             </button>
                           </div>
                         </div>                          
@@ -77,8 +102,9 @@
                     <tr>
                       <td>{{ $data -> date_pymnt }}</td>
                       <td>{{ $data -> No_baucer }}</td>
-                      <td>{{ $data -> Amount }}</td>
                       <td>{{ $data -> jenis_pymnt }}</td>
+                      <td>{{ $data -> tempoh }}</td>
+                      <td>{{ $data -> amount }}</td>
                     </tr>    
                     @endforeach                
 

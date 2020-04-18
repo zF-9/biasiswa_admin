@@ -4,6 +4,8 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
+        <a href="/exportstudent"  class="btn btn-success d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-bottom: 12px"><i class="fas fa-download fa-sm text-white-50"></i> Muat Turun Senarai Pelajar</a>
+
 
           <!-- Page Heading -->
           <!--<h1 class="h3 mb-2 text-gray-800">Tables</h1>
@@ -23,7 +25,7 @@
                       <th>Nama</th>
                       <th>email</th> 
                       <th>No. Kad Pengenalan</th>
-                      <th>Jabatan</th>
+                      <th>Jenis Kursus</th>
                       <th></th>
                     </tr>
                   </thead>
@@ -33,7 +35,7 @@
                       <th>Nama</th>
                       <th>email</th> 
                       <th>No. Kad Pengenalan</th>
-                      <th>Jabatan</th>
+                      <th>Jenis Kursus</th>
                       <th></th>
                     </tr>
                   </tfoot>
@@ -41,7 +43,7 @@
                      @foreach($data_student as $key => $user_data)
                     <tr>
                       <td>{{ $user_data -> id }}</td>
-                      <td><a href="/profilePemohon/{{$user_data -> nama}}">{{ $user_data -> nama }}</a></td>
+                      <td><a href="/{{$user_data -> user_id}}">{{ $user_data -> nama }}</a></td>
                       <td>{{ $user_data -> email }}</td>
                       <td>{{ $user_data -> nokp }}</td>
                       <td>{{ $user_data -> AkademikLvl }}</td>
@@ -55,9 +57,9 @@
                             <form action="" method="post">
                               @csrf
                               @method('delete')                             
-                              <a class="dropdown-item" href="/payment_rec/{{ $user_data -> user_id }}">{{ __('Rekod') }}</a>
-                                <button type="button" class="dropdown-item" onclick="confirm('{{ __("Are you sure you want to delete this user?") }}') ? this.parentElement.submit() : ''">
-                                  {{ __('Delete') }}
+                              <a class="dropdown-item" href="/payment_rec/{{ $user_data -> user_id }}">{{ __('Rekod Pembayaran') }}</a>
+                                <button type="button" class="dropdown-item" onclick="confirm('{{ __("Tekan Ok jika ingin menghapus pelajar?") }}') ? this.parentElement.submit() : ''">
+                                  {{ __('Hapus Pelajar') }}
                                 </button>
                             </form>    
                             @else

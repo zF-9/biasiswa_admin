@@ -68,24 +68,11 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
+
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw  fa-th-list"></i>
-          <span>Keputusan & Pembayaran</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Muat Turun Keputusan</h6>
-            <a class="collapse-item" href="">Sarjana Muda</a>
-            <a class="collapse-item" href="">Sarjana</a>
-            <a class="collapse-item" href="">Doktor Falsafah</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Muat Naik Pembayaran</h6>
-            <a class="collapse-item" href="">Sarjana Muda</a>
-            <a class="collapse-item" href="">Sarjana</a>
-            <a class="collapse-item" href="">Doktor Falsafah</a>
-          </div>
-        </div>
+        <a class="nav-link" href="/datatable_tuntutan">
+        <i class="fas fa-fw fa-credit-card"></i>
+          <span>Rekod Tuntuan Pembayaran</span></a>
       </li>
 
       <!-- Nav Item - Charts 
@@ -112,3 +99,41 @@
 
     </ul>
     <!-- End of Sidebar -->
+      <!-- modal upload pic -->
+  <div id="avatarModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+
+            <div class="modal-header">
+              <h5 class="modal-title">Update Personal Info</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <img src="storage/profilePic/{{ auth()->user()-> avatar }}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:25px;">
+                        <h2>{{ auth()->user()->name }}'s Profile</h2>
+                        <form enctype="multipart/form-data" action="/updateAvatar" method="POST">
+                            <label>Update Profile Image</label>
+                            <input type="file" name="avatar">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <!--<input style="margin-top:12px; margin-bottom: 12px" type="submit" class="pull-right btn btn-sm btn-primary">-->
+                            <button type="button submit" style="margin-top:12px; margin-bottom: 12px" class="btn btn-primary">Upload</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">              
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>  
+      </div>
+      </div>
+    </div>  
+</div>
+    <!-- modal upload pic -->

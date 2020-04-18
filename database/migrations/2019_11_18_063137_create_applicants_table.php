@@ -29,17 +29,18 @@ class CreateApplicantsTable extends Migration
             $table->string('tarikhlantik');
             $table->string('tberkhidmat'); 
             $table->string('jawatan');
+            $table->string('skim');
             $table->string('Gred');
             $table->string('TarafLantik');
-            $table->string('GredPangku');
-            $table->string('Tsahjwtn');
-            $table->string('JwtnPangku')->nullable();
-            $table->string('trkhMula');
-            $table->string('trkhTamat');
+            $table->string('Tsahjwtn')->nullable();
+            //$table->float('budget', 8, 2)->nullable();
             $table->string('Tahun1LPPT');
             $table->string('Tahun2LPPT');
             $table->string('Tahun3LPPT');
+            $table->string('AkademikLvl');
+            $table->string('AkademikInfo');
             $table->boolean('isApproved')->default(0);
+
             //$table->integer('user_id')->unsigned()->nullable();
             $table->unsignedBigInteger('user_id')->index();
             //$table->foreign('user_id')->references('id')->on('users');

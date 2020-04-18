@@ -32,7 +32,7 @@ var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dis"],
     datasets: [{
       label: "Jumlah",
       lineTension: 0.3,
@@ -115,4 +115,6 @@ var myLineChart = new Chart(ctx, {
       }
     }
   }
+
+  
 });
