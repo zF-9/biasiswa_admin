@@ -4,6 +4,8 @@
   var jumlah = '{{ $jumlah }}';
   var budget = '{{ $budget }}';
 
+  //alert([pembiayaan, jumlah, budget]);
+
 
 </script>
 @section('content')
@@ -226,9 +228,15 @@
               
             </div>
           </div>
+<<<<<<< HEAD
                   </div>
       </div>
                 <!-- End bordered tabs -->
+=======
+                  <!--</div>
+                </div>
+                 End bordered tabs -->
+>>>>>>> finalization
                 <!--<hr class="my-4" />-->
               </div>
 </div>

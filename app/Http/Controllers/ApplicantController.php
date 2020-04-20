@@ -173,6 +173,20 @@ class ApplicantController extends Controller
     public function upload_doc() 
     {
         $id = Auth::User()->id; 
+        /*$toggler = DB::table('Toggle_Index')->get('index');
+
+        if($toggler[0]->index == '1') { // condition #1: filter criterea #1
+          dd("yes ngam sini: no-1");
+        }
+        else if ($toggler[0]->index == '2') { // condition #2: filter criterea #2
+          dd("yes ngam sini: no-2");
+        }
+        else if ($toggler[0]->index == '3') { // condition #3: filter criterea #3
+          dd("yes ngam sini: no-3");
+        }*/        
+        $toggle = DB::table('Toggle_Index')->where('id', '=', '42')->get();
+        $toggler = $toggle[0]->index;
+
 
         $user_noti = payment_record::where('payment_id', '=', $id)->get(); 
         $user_profile = DB::table('info__pengajians')->where('applicant_id', '=', $id)->first();
@@ -181,20 +195,35 @@ class ApplicantController extends Controller
             $check_info = applicant::where('user_id', '=', $id)->first();
 
             if($check_info == null) {
+              //else {
                 return view('User.dashboard_user', ['user_noti' => $user_noti])->withErrors(__('Sila penuhkan maklumat pegawai')); 
+              //}
             }
             else {
-                $user_data = DB::table('applicants')->where('user_id', '=', $id)
-                ->join('users', 'users.id', 'applicants.user_id')
-                ->first();
 
-                $avg_marks = applicant::where('user_id', '=', $id)
-                ->sum(DB::raw('Tahun1LPPT + Tahun2LPPT + Tahun3LPPT'));
+              $user_data = DB::table('applicants')->where('user_id', '=', $id)
+              ->join('users', 'users.id', 'applicants.user_id')
+              ->first();
 
-                $user_noti = payment_record::where('payment_id', '=', $id)->get();  
+              $avg_marks = applicant::where('user_id', '=', $id)
+              ->sum(DB::raw('Tahun1LPPT + Tahun2LPPT + Tahun3LPPT'));
 
+              $user_noti = payment_record::where('payment_id', '=', $id)->get();  
+
+              if($toggler == '1') {
+                return view('User.borang_fullfilter', ['user_data' => $user_data, 'avg' => $avg_marks, 'user_noti' => $user_noti]); 
+              }
+              else if ($toggler =='2') {
+                return view('User.borang_studyfilter', ['user_data' => $user_data, 'avg' => $avg_marks, 'user_noti' => $user_noti]); 
+              }
+              else if ($toggler =='2') {
+                return view('User.borang_default', ['user_data' => $user_data, 'avg' => $avg_marks, 'user_noti' => $user_noti]); 
+              }
+              else {
+                return view('User.borang_default', ['user_data' => $user_data, 'avg' => $avg_marks, 'user_noti' => $user_noti]);                
                 //dd($avg_marks);
-                return view('User.muatnaik', ['user_data' => $user_data, 'avg' => $avg_marks, 'user_noti' => $user_noti]);                
+              }
+               
             }
             //dd($user_data);
         } 

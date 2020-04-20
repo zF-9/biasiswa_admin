@@ -27,6 +27,9 @@ class AdminController extends Controller
     public function AdminDashboard()
     {
         $data_pemohon = DB::table('applicants')
+        ->join('up_documents', 'up_documents.applicant_id', 'applicants.user_id')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
+        ->count();
 
         $all_applicant = DB::table('applicants')->where('isApproved', '=', '0')
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')->get();
@@ -99,6 +102,22 @@ class AdminController extends Controller
         ->sum('Amount');
 
         $Dis = DB::table('payment_records')
+        ->where('bulan', '=', '11')
+        ->sum('Amount');
+
+        $count_36 = applicant::where('Gred', '=', '36')->count();
+        $count_41 = applicant::where('Gred', '=', '41')->count();
+        $count_44 = applicant::where('Gred', '=', '44')->count();
+        $count_48 = applicant::where('Gred', '=', '48')->count();
+
+
+        $deg_p = $deg_ap->where('isApproved', '=', '1');
+        $mstr_p = $mstr_ap->where('isApproved', '=', '1');
+        $phd_p = $phd_ap->where('isApproved', '=', '1');
+
+
+        $monthly = DB::table('payment_records')->get()->groupBy('bulan');
+
 
         $Jan = DB::table('payment_records')
         ->where('bulan', '=', '0')
@@ -147,6 +166,14 @@ class AdminController extends Controller
         $Dis = DB::table('payment_records')
         ->where('bulan', '=', '11')
         ->sum('amount');
+
+        /*return view('Admin.dashboard_admin', ['data_pemohon' => $data_pemohon,'Jan' => $Jan, 'Feb' => $Feb, 'Mar' => $Mar, 'Apr' => $Apr, 'May' => $May, 'Jun' => $Jun,
+         'Jul' => $Jul, 'Aug' => $Aug, 'Sep' => $Sep, 'Oct' => $Oct, 'Nov' => $Nov, 'Dis' => $Dis, 'data_pemohon' => $data_pemohon,
+          'data_student' => $data_student, 'degree' => $deg_ap, 'degreeapp' => $deg_p, 'master' => $mstr_ap, 'masterapp' => $mstr_p, 'phd' => $phd_ap, 'phdapp' => $phd_p, 'c36' => $count_36, 'c41' => $count_41, 'c44' => $count_44, 'c48' => $count_48, 'pembayaran' => $payment]); 
+
+    } */
+
+        $payment = DB::table('payment_records')->get(['date_pymnt', 'amount']);
 
 
         //student: study mode
@@ -216,6 +243,7 @@ class AdminController extends Controller
             $agensi_5 = $rank_array[4]->jabatan;
             //top 5 agensi            
         }
+
 
 
         
