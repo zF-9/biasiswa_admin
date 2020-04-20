@@ -80,6 +80,9 @@ Route::get('/upload_pic', 'UserController@UploadPic');
 Route::post('/updateAvatar', 'UserController@update_avatar');
 
 //Route::post('/updateBudget/{req}', 'AdminController@update_budget');
+Route::get('/prototype', 'UserController@proto');
+Route::get('/protoadmin', 'AdminController@stats_protoype');
+Route::get('/test_view', 'AdminController@ahli_view');
 
 Auth::routes();
 
@@ -107,6 +110,7 @@ Route::group(['middleware' => 'AdminMiddleware'], function() {
 	//Route::get('/approve/{id}', 'AdminController@approve_pelajar');
 	Route::get('/approve/', 'AdminController@approve_pelajar');
 	Route::get('/{user_data}', 'AdminController@profile_view')->name('profile_viewer');
+
 
 });
 

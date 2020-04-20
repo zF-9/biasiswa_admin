@@ -156,6 +156,13 @@ class UserController extends Controller
         }      
     }
 
+    public function proto() {
+        $id = Auth::User()->id;
+        $user_noti = payment_record::where('payment_id', '=', $id)->get();   
+
+        return view('User.new_borang', ['user_noti' => $user_noti]);                   
+    }
+
     public function mn_dokumen(Request $request) {
         $id = Auth::User()->id;
 

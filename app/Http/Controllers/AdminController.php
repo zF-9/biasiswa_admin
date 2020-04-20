@@ -436,5 +436,35 @@ class AdminController extends Controller
             }
             return Redirect()->route('setting');
     }
+
+    public function stats_protoype() {
+        $all_applicant = DB::table('applicants')->where('isApproved', '=', '0')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')->get();
+
+        $toggle = DB::table('Toggle_Index')->where('id', '=', '42')->get();
+        $toggler = $toggle[0]->index;
+
+        $all_claim = DB::table('dokumen_results')->join('users', 'users.id', 'dokumen_results.document_id')->where('pay_status', '=', '0')->get();
+        $claim_count = $all_claim->count();
+        $applicant_count = $all_applicant->count();
+        $noti_count = $claim_count + $applicant_count;
+
+        return view('Admin.statisticpage', ['noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count, 'index' => $toggler]);
+    }
+
+    public function ahli_view() {
+        $all_applicant = DB::table('applicants')->where('isApproved', '=', '0')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')->get();
+
+        $toggle = DB::table('Toggle_Index')->where('id', '=', '42')->get();
+        $toggler = $toggle[0]->index;
+
+        $all_claim = DB::table('dokumen_results')->join('users', 'users.id', 'dokumen_results.document_id')->where('pay_status', '=', '0')->get();
+        $claim_count = $all_claim->count();
+        $applicant_count = $all_applicant->count();
+        $noti_count = $claim_count + $applicant_count;
+
+        return view('Admin.ahlimesyuarat', ['noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count, 'index' => $toggler]);
+    }
  
 }

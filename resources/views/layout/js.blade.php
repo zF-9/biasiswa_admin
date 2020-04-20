@@ -403,6 +403,8 @@
   <!-- calendar plugins for dahsboard -->
   <link rel="stylesheet" href="{{ asset ('css/demo_cal.css') }}"/>
   <link rel="stylesheet" href="{{ asset ('css/theme2.css') }}"/>
+  <!--<link rel="stylesheet" href="{{ asset ('css/progresscrumbs.css') }}"/>-->
+  <link rel="stylesheet" href="{{ asset ('css/progressdot.css') }}"/>
   <script type="text/javascript" src="{{ asset ('js/caleandar.js') }}"></script>
   <script type="text/javascript" src="{{ asset ('js/Admin_cal.js') }}"></script>
   <script type="text/javascript" src="{{ asset ('js/canvasjs.min.js') }}"></script>

@@ -24,17 +24,13 @@ var tuntut = '{{ $tuntut }}';
                             </div>
                         </div>
                     </div>
+
                     <div class="card-body pt-0 pt-md-4">
                         <div class="row">
                             <div class="col">
                             </div>
                         </div>
-
-
                         <div class="text-center" id="profile_permohonan">
-                            <!--<h3>
-                                <span class="font-weight-light">Nama: </span>{{ auth()->user()->name }}
-                            </h3>-->
                             <div class="h5 mt-4">
                                 <i class="ni business_briefcase-24 mr-2">Nama: </i>
                                 {{ auth()->user()->name }}
@@ -46,23 +42,6 @@ var tuntut = '{{ $tuntut }}';
                             <div class="h5 font-weight-300">
                                 <i class="ni location_pin mr-2">Email: </i>{{ auth()->user()->email }}
                             </div>
-                            <!--<div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2"></i>{{ $user_profile -> jabatan}}
-                            </div>
-                            <div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2"></i>{{ $user_profile -> jawatan}}
-                            </div>
-                            <div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2"></i>{{ $user_profile -> Gred}}
-                            </div>
-                            <div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2"></i>{{ $user_profile -> TarafLantik}}
-                            </div>
-
-                            <div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2"></i>
-                                {{ $user_profile -> umur }}
-                            </div>-->
                             <div class="h5 mt-4">
                                 <i class="ni business_briefcase-24 mr-2">No. Tel (peribadi): </i>
                                 {{ $user_profile -> telno }}
@@ -71,21 +50,13 @@ var tuntut = '{{ $tuntut }}';
                                 <i class="ni business_briefcase-24 mr-2">No. Tel (pejabat): </i>
                                 {{ $user_profile -> telnoPej }}
                             </div>
-                            <!--<div>
-                                <i class="ni education_hat mr-2"></i>{{ __('University of Computer Science') }}
-                            </div>-->
-                            <!--<hr class="my-4" />-->
-                            <!--<p>A member since {{ auth()->user()->created_at }}</p>
-                            <p>Last Updated {{ auth()->user()->updated_at }}</p>
-                            <a href="#">{{ __('Show more') }}</a>
-                            <br>
-                            <a href="" data-toggle="modal" data-target="#avatarModal">upload a pic</a>-->
                         </div>
                     </div>
+
                 </div>
             </div>
 
-             <div class="col-xl-8 order-xl-2 p-5 bg-white rounded shadow mb-5">
+             <div class="col-xl-8 order-xl-2 mb-5">
                 <!-- Bordered tabs-->
                 <ul id="myTab1" role="tablist" class="nav nav-tabs nav-pills with-arrow flex-column flex-sm-row text-center">
                   <li class="nav-item flex-sm-fill">
@@ -94,10 +65,8 @@ var tuntut = '{{ $tuntut }}';
                   <li class="nav-item flex-sm-fill">
                     <a id="profile1-tab" data-toggle="tab" href="#profile1" role="tab" aria-controls="profile1" aria-selected="false" class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0 border">Pengajian</a>
                   </li>
-                  <li class="nav-item flex-sm-fill">
-                    <a id="contact1-tab" data-toggle="tab" href="#contact1" role="tab" aria-controls="contact1" aria-selected="false" class="nav-link text-uppercase font-weight-bold rounded-0 border">Pembiayaan</a>
-                  </li>
                 </ul>
+
                 <div id="myTab1Content" class="tab-content">
                   <div id="home1" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5 show active">
                     <p class="leade font-italic">Nama: {{ auth()->user()->name }}</p>
@@ -111,8 +80,6 @@ var tuntut = '{{ $tuntut }}';
                     <p class="leade font-italic">Taraf Pelantikan: {{ $user_profile->TarafLantik }}</p>
 
                     <a href="/editmaklumat/{{ $user_profile->nokp}}" class="btn btn-success d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-edit fa-sm text-white-50"></i> Edit Maklumat</a>
-                    <!--<p class="leade font-italic mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                      irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
                   </div>
 
                   <div id="profile1" role="tabpanel" aria-labelledby="profile-tab" class="tab-pane fade px-4 py-5">
@@ -129,12 +96,14 @@ var tuntut = '{{ $tuntut }}';
                     <p class="leade font-italic">
                         Surat Akuan Ketua Jabatan: <a href="storage/{{ $user_profile->surakuan }}">File</a>
                     </p>
-
-                    
-                    <!--<p class="leade font-italic mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                      irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
                   </div>
-                  <div id="contact1" role="tabpanel" aria-labelledby="contact-tab" class="tab-pane fade px-4 py-5">
+          </div>
+          </div>
+          </div> <!-- row end -->
+
+
+          <div class="col-xl-12 card">
+            <!--<div id="contact1" role="tabpanel" aria-labelledby="contact-tab" class="tab-pane fade px-4 py-5">-->
                   <div class="card-body">
          
           
@@ -179,9 +148,6 @@ var tuntut = '{{ $tuntut }}';
                     <span class="mr-2">
                       <i class="fas fa-circle text-success"></i> Tuntutan Pembiayaan Belum Dibayar
                     </span>
-                    <!--<span class="mr-2">
-                      <i class="fas fa-circle text-info"></i> Referral
-                    </span>-->
                   </div>
                  
                 </div>
@@ -229,10 +195,10 @@ var tuntut = '{{ $tuntut }}';
               </table>
               </div>
               
-            </div>
+            <!--</div>-->
+            <!-- ends here  -->
           </div>
-                  </div>
-                </div> <!-- row end -->
+
                   </div>
 @endsection
 

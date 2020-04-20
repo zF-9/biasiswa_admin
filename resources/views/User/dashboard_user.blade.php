@@ -54,7 +54,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Pengumuman Penting</div>
-                      <div> <a class="h5 mb-0 font-weight-bold text-gray-800" href="storage/iklan/iklan.png">Iklan Biasiswa Kerajaan Negeri Sabah</a>
+                      <div> <a class="h5 mb-0 font-weight-bold text-gray-800" href="storage/iklan/iklan.png">Menyampaikan surat Tawaran Biasiswa Kerajaan Negeri Sabah selepas Mesyuarat Jawatankuasa Biasiswa Kerajaan Negeri Sabah</a>
                       </div>
                     </div>
                     <div class="col-auto">
