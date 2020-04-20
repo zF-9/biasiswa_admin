@@ -92,7 +92,6 @@ Route::get('/profile_edit', function() {
     return view('User.profile_edit');
     
 
-
 //Route::get('/export_excel/excel', 'ExportExcelController@excel')->name('export_excel.excel');
 
 });
@@ -114,10 +113,7 @@ Route::group(['middleware' => 'AdminMiddleware'], function() {
 
 });
 
-
-
-
-
+Route::get('/test', 'ChartDataController@getthejumlah');
 
 
 

@@ -31,6 +31,8 @@ class AdminController extends Controller
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->count();
 
+        $data_pemohon = DB::table('applicants')->count();
+
         $all_applicant = DB::table('applicants')->where('isApproved', '=', '0')
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')->get();
 
@@ -39,6 +41,10 @@ class AdminController extends Controller
         $all_student = DB::table('applicants')->where('isApproved', '=', '1')
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->get();
+
+        $data_student = DB::table('applicants')->where('isApproved', '=', '1')
+        ->join('up_documents', 'up_documents.applicant_id', 'applicants.user_id')
+        ->count();
 
         $data_student = $all_student->count();
 
@@ -184,6 +190,40 @@ class AdminController extends Controller
 
         }
 
+        $rank_pel = DB::table('applicants')->where('isApproved', '=', '1')->select('jabatan', DB::raw('count(*) as total'))->groupBy('jabatan')->get();
+        $rank_jabatan_pel = $rank_pel->sortBy('total')->reverse()->values()->all();
+        $rank_array_pel = collect($rank_jabatan_pel);
+
+        if( $rank_jabatan_pel == null) {
+            //dd("dafjmdiuchasd");
+        }
+        else {
+            //top 5 agensi
+            $total_sum_pel = $rank_array_pel->sum('total');
+
+            $total_1_pel = $rank_array_pel[0]->total; 
+            $no_1_pel = $total_1_pel / $total_sum_pel * 100;
+            $agensi_1_pel = $rank_array_pel[0]->jabatan;
+            
+            $total_2_pel = $rank_array_pel[1]->total;
+            $no_2_pel = $total_2_pel / $total_sum_pel * 100;
+            $agensi_2_pel = $rank_array_pel[1]->jabatan;
+
+            $total_3_pel = $rank_array_pel[2]->total;
+            $no_3_pel = $total_3_pel / $total_sum_pel * 100;
+            $agensi_3_pel = $rank_array_pel[2]->jabatan;
+
+            $total_4_pel = $rank_array_pel[3]->total;
+            $no_4_pel = $total_4_pel / $total_sum_pel * 100;
+            $agensi_4_pel = $rank_array_pel[3]->jabatan;
+
+
+            $total_5_pel = $rank_array_pel[4]->total;
+            $no_5_pel = $total_5_pel / $total_sum_pel * 100;
+            $agensi_5_pel = $rank_array_pel[4]->jabatan;
+            //top 5 agensi           
+        }
+
         //degree by gred
         $gred_deg = collect(DB::table('applicants')
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
@@ -237,10 +277,8 @@ class AdminController extends Controller
 
         //dd($API_data);
 
-        return view('Admin.dashboard_admin', ['data_pemohon' => $data_pemohon, 'data_student' => $data_student, 'data_applicant' => $data_applicant,'degree' => $deg_ap, 'degreeapp' => $deg_p, 'master' => $mstr_ap, 'masterapp' => $mstr_p, 'phd' => $phd_ap, 'phdapp' => $phd_p, 'pembayaran' => $payment, 'Jan' => $Jan, 'Feb' => $Feb, 'Mar' => $Mar, 'Apr' => $Apr, 'May' => $May, 'Jun'=> $Jun, 'Jul' => $Jul, 'Aug' => $Aug, 'Sep' => $Sep, 'Oct' => $Oct, 'Nov' => $Nov, 'Dis' => $Dis, 'FT_degree' => $FT_degree, 'PT_degree' => $PT_degree, 'FT_mstr' => $FT_mstr, 'PT_mstr' => $PT_mstr, 'FT_phd' => $FT_phd, 'PT_phd' => $PT_phd, 'payment' => $monthly, 'state' => $local_state, 'country' => $local_country, 'oversea' => $oversea, 'total_1' => $total_1, 'total_2' => $total_2, 'total_3' => $total_3, 'total_4' => $total_4, 'total_5' => $total_5, 'agensi_1' => $agensi_1, 'agensi_2' => $agensi_2, 'agensi_3' => $agensi_3, 'agensi_4' => $agensi_4, 'agensi_5' => $agensi_5, 'no_1' => $no_1, 'no_2' => $no_2, 'no_3' => $no_3, 'no_4' => $no_4, 'no_5' => $no_5, 'gred_d' => $gred_deg, 'tetap' => $stdnt_tetap, 'percubaan' => $stdnt_percubaan, 'sementara' => $stdnt_Sementara, 'kontrak' => $stdnt_Kontrak, 'g_deg' => $gred_deg, 'deg_total' => $deg_total,'g_mstr' => $gred_mstr, 'g_phd' => $gred_phd, 'noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count, 's_a_41' => $stdnt_above_41, 's_b_41' => $stdnt_below_41, 'a_a_41' => $appcnt_above_41, 'a_b_41' => $appcnt_below_41 ]); 
+        return view('Admin.admin_db', ['data_pemohon' => $data_pemohon, 'data_student' => $data_student, 'data_applicant' => $data_applicant,'degree' => $deg_ap, 'degreeapp' => $deg_p, 'master' => $mstr_ap, 'masterapp' => $mstr_p, 'phd' => $phd_ap, 'phdapp' => $phd_p, 'pembayaran' => $payment, 'Jan' => $Jan, 'Feb' => $Feb, 'Mar' => $Mar, 'Apr' => $Apr, 'May' => $May, 'Jun'=> $Jun, 'Jul' => $Jul, 'Aug' => $Aug, 'Sep' => $Sep, 'Oct' => $Oct, 'Nov' => $Nov, 'Dis' => $Dis, 'FT_degree' => $FT_degree, 'PT_degree' => $PT_degree, 'FT_mstr' => $FT_mstr, 'PT_mstr' => $PT_mstr, 'FT_phd' => $FT_phd, 'PT_phd' => $PT_phd, 'payment' => $monthly, 'state' => $local_state, 'country' => $local_country, 'oversea' => $oversea, 'total_1' => $total_1, 'total_2' => $total_2, 'total_3' => $total_3, 'total_4' => $total_4, 'total_5' => $total_5, 'agensi_1' => $agensi_1, 'agensi_2' => $agensi_2, 'agensi_3' => $agensi_3, 'agensi_4' => $agensi_4, 'agensi_5' => $agensi_5, 'no_1' => $no_1, 'no_2' => $no_2, 'no_3' => $no_3, 'no_4' => $no_4, 'no_5' => $no_5, 'gred_d' => $gred_deg, 'tetap' => $stdnt_tetap, 'percubaan' => $stdnt_percubaan, 'sementara' => $stdnt_Sementara, 'kontrak' => $stdnt_Kontrak, 'g_deg' => $gred_deg, 'deg_total' => $deg_total,'g_mstr' => $gred_mstr, 'g_phd' => $gred_phd, 'noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count, 's_a_41' => $stdnt_above_41, 's_b_41' => $stdnt_below_41, 'a_a_41' => $appcnt_above_41, 'a_b_41' => $appcnt_below_41, 'agensi_1_pel' => $agensi_1_pel, 'agensi_2_pel' => $agensi_2_pel, 'agensi_3_pel' => $agensi_3_pel, 'agensi_4_pel' => $agensi_4_pel, 'agensi_5_pel' => $agensi_5_pel, 'total_1_pel' => $total_1_pel, 'total_2_pel' => $total_2_pel, 'total_3_pel' => $total_3_pel, 'total_4_pel' => $total_4_pel, 'total_5_pel' => $total_5_pel, 'no_1_pel' => $no_1_pel, 'no_2_pel' => $no_2_pel, 'no_3_pel' => $no_3_pel, 'no_4_pel' => $no_4_pel, 'no_5_pel' => $no_5_pel ]);
     } 
-    
-   
 
     public function dataPemohon() {
         $all_applicant = DB::table('applicants')->where('isApproved', '=', '0')
@@ -270,6 +308,7 @@ class AdminController extends Controller
         $data_student = DB::table('applicants')->where('isApproved', '=', '1')
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->get();
+        //$data_student = DB::table('up_documents')->get();
 
         return view('Admin.table_pelajar', ['data_student' => $data_student, 'noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count]); 
     }
@@ -290,6 +329,7 @@ class AdminController extends Controller
 
         return view('Admin.table_tuntutan', ['tuntutan' => $tuntutan, 'noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count]); 
     }
+
 
     public function payment_record($id) {
         $all_applicant = DB::table('applicants')->where('isApproved', '=', '0')
@@ -322,20 +362,29 @@ class AdminController extends Controller
                     ->where('date_penyerahan', '=', $data_id)->first();
 
         return view('Admin.record_tuntutan', ['id' => $id, 'claim_info' => $claim_info, 'user_data' => $user_data, 'payment' => $payments,  'noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count]);    
-        //dd($data_id, $id);    
-    }
+        //dd($data_id, $id);   
+    } 
 
-    public function update_payment($id) {
-        $new_record = new payment_record;
+    /*public function payment_record() {
+        $payments = DB::table('payment_records')->get();
+
+        return view('Admin.record_pmbyrn', ['payment' => $payments]);   
+
+    }*/
+
+    public function update_payment() {
+        $new_record = new payment_records;
 
         $new_record-> date_pymnt = request('date');
         $new_record-> bulan = request('month');
         $new_record-> tahun = request('year');
         $new_record-> No_baucer = request('baucer_no');
         $new_record-> jenis_pymnt = request('perkara');
+
         $new_record-> tempoh = request('tempoh');
         $new_record-> amount = request('jumlah');
         $new_record-> payment_id = $id;
+
 
         Dokumen_result::where('document_id', '=', $id)->update([
             'pay_status'=>true
@@ -345,6 +394,7 @@ class AdminController extends Controller
 
         return Redirect::back();
     } 
+
 
     public function approve_pelajar() {
         $pelajar = request('student');
@@ -412,6 +462,14 @@ class AdminController extends Controller
 
         return view('Admin.settings_admin', ['noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count, 'index' => $toggler]);
     }
+
+
+    public function ApprovePelajar(User $user) {
+        //$var = request('data_id');
+        //$user->name();
+        //$data_user = request('data_id');
+        dd($user);
+    }   
 
 
     public function store_settings(Request $request){

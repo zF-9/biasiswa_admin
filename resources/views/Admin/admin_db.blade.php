@@ -3,20 +3,17 @@
   var data_pemohon = '{{ $data_pemohon }}';
   var data_student = '{{ $data_student }}';
   var data_applicant = '{{ $data_applicant}}';
-
   var fulltime_degree = '{{ $FT_degree }}';
   var parttime_degree = '{{ $PT_degree }}';
   var fulltime_mstr = '{{ $FT_mstr }}';
   var parttime_mstr = '{{ $PT_mstr }}';
   var fulltime_phd = '{{ $FT_phd }}';
   var parttime_phd = '{{ $PT_phd }}';
-
   var degree = '{{ $degreeapp->count() }}';
   var master = '{{ $masterapp->count() }}';
   var phd = '{{ $phdapp->count() }}';
-
   var Jan = '{{ $Jan }}';
-  var Feb = '{{ $Feb}}';
+  var Feb = '{{ $Feb }}';
   var Mar = '{{ $Mar }}';
   var Apr = '{{ $Apr }}';
   var May = '{{ $May }}';
@@ -27,24 +24,17 @@
   var Oct = '{{ $Oct }}';
   var Nov = '{{ $Nov }}';
   var Dis = '{{ $Dis }}';
-
-
   var state = '{{ $state }}';
   var country = '{{ $country }}';
   var oversea = '{{ $oversea }}';
-
   var tetap = '{{ $tetap }}';
   var percubaan = '{{ $percubaan }}';
   var sementara = '{{ $sementara }}';
   var kontrak = '{{ $kontrak }}';
-
   var s_41a = '{{ $s_a_41 }}';
   var s_41b = '{{ $s_b_41 }}';
   var a_41a = '{{ $a_a_41 }}';
   var a_41b = '{{ $a_b_41 }}';
-
-  var Stud = '{{ $data_student }}';
-  var Dip = '{{ $data_pemohon }}';
 </script>
 @section('content')
   <!-- Page Wrapper -->
@@ -66,11 +56,21 @@
             <h1 class="h3 mb-0 text-gray-800">Halaman Utama</h1>
             <a href="/export" class="btn btn-success d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Muat Turun Laporan</a>
           </div>
+          <ul id="myTab1" role="tablist" class="nav nav-tabs nav-pills with-arrow flex-column flex-sm-row text-center">
+                  <li class="nav-item flex-sm-fill">
+                    <a id="home1-tab" data-toggle="tab" href="#home1" role="tab" aria-controls="home1" aria-selected="true" class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0 border active">Pelajar</a>
+                  </li>
+                  <li class="nav-item flex-sm-fill">
+                    <a id="profile1-tab" data-toggle="tab" href="#profile1" role="tab" aria-controls="profile1" aria-selected="false" class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0 border">Pemohon</a>
+                  </li>
+                </ul>
 
-          <div class="row">
           
-
             <!-- Area Chart -->
+            <div id="myTab1Content" class="tab-content">
+                  <div id="home1" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5 show active">
+
+            <div class="row">
             <div class="col-xl-12 col-lg-12">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
@@ -92,15 +92,12 @@
                   <div class="chart-area">
                  <canvas id="myAreaChart"></canvas>
                   <script type="text/javascript">
-
                       function myCanvas(){
                         const canvas = document.getElementById('myAreaChart');
                        // const dataURI = canvas.toDataURL("image/png");
-
                         //console.log(canvas);
                         //var canvas = document.getElementById("mcanvas");
                         image = canvas.toDataURL("image/png");
-
                         var link = document.createElement('a');
                          link.href = image;
                          link.download = "jumlahpembiayaan.png";
@@ -109,11 +106,8 @@
                          
                          //link.click();
                          link.dispatchEvent(event);
-
                      // console.log(dataURI);                        
-
                       };
-
                   </script>
                 <div id="chartContainer" style="height: 275px; width: 100%;"></div>
                   </div>
@@ -133,14 +127,7 @@
                     <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                         Bilangan Pelajar
                       </div>
-
                       <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $data_student }}</div>
-
-                      <!-- logic: when it reaches last punya iteration baru dia display -->
-
-
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{$data_pemohon}}</div>
-
                     </div>
 
                     <div class="col-auto">
@@ -251,15 +238,8 @@
                 <div class="card-body">
                   <div class="text-center">
 
-
                   </div>
                   <div class="row">
-
-                    <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                        Bilangan Pelajar
-                      </div>
-                     <!-- logic: when it reaches last punya iteration baru dia display -->
 
                   <!-- Project Card Example -->
                   <div class="col-lg-4 mb-4">
@@ -288,9 +268,6 @@
                       </div>
                       @endforeach
                       <hr>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{$data_student}}</div>
-         
-
                     </div>
                   </div>
 
@@ -314,6 +291,72 @@
               </div>
               </div>
         </div>
+
+         <!-- Project Card Example -->
+         <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <a class="h6 m-0 font-weight-bold text-primary" href="">Jumlah Pelajar Mengikut Agensi</a>
+                </div>
+                <div class="card-body">
+                  <h4 class="small font-weight-bold">
+                      @if(!empty( $agensi_1_pel )) 
+                          {{ $agensi_1_pel }}
+                      @else 
+                          {{ __('Data tidak lengkap') }}
+                      @endif
+                    <span class="float-right">{{$total_1_pel}}</span>
+                  </h4>
+                  <div class="progress mb-4">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: {{ $no_1_pel }}%" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <h4 class="small font-weight-bold">
+                      @if(!empty( $agensi_2_pel )) 
+                          {{ $agensi_2_pel }}
+                      @else 
+                          {{ __('Data tidak lengkap') }}
+                      @endif
+                    <span class="float-right">{{$total_2_pel}}</span>
+                  </h4>
+                  <div class="progress mb-4">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: {{ $no_2_pel }}%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <h4 class="small font-weight-bold">
+                      @if(!empty( $agensi_3_pel )) 
+                          {{ $agensi_3_pel }}
+                      @else 
+                          {{ __('Data tidak lengkap') }}
+                      @endif
+                    <span class="float-right">{{$total_3_pel}}</span>
+                  </h4>
+                  <div class="progress mb-4">
+                    <div class="progress-bar" role="progressbar" style="width: {{ $no_3_pel }}%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <h4 class="small font-weight-bold">
+                      @if(!empty( $agensi_4_pel )) 
+                          {{ $agensi_4_pel }}
+                      @else 
+                          {{ __('Data tidak lengkap') }}
+                      @endif
+                    <span class="float-right">{{$total_4_pel}}</span>
+                  </h4>
+                  <div class="progress mb-4">
+                    <div class="progress-bar bg-info" role="progressbar" style="width: {{ $no_4_pel }}%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <h4 class="small font-weight-bold">
+                      @if(!empty( $agensi_5_pel )) 
+                          {{ $agensi_5_pel }}
+                      @else 
+                          {{ __('Data tidak lengkap') }}
+                      @endif
+                    <span class="float-right">{{$total_5_pel}}</span>
+                  </h4>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: {{ $no_5_pel }}%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <hr>
+
+                </div>
+              </div>
               
           <div class="row full-width">
             <div class="col-xl-12 col-lg-12 full-width">
@@ -324,11 +367,13 @@
             </div>
           </div>
 
+
+
         <div class="row">
             <!-- Illustrations -->
               <div class="col-lg-12 card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Jumlah Pelajar Mengikut Mod Pengajian</h6>
+                 <h6 class="m-0 font-weight-bold text-primary" >Jumlah Pelajar Mengikut Mod Pengajian</h6>
                 </div>
                 <div class="card-body">
                   <div class="text-center">
@@ -413,10 +458,13 @@
                 </div>
               </div>  
           </div>
+          </div>
+        
 
         </div>
 
           <!-- Content Row -->
+          <div id="profile1" role="tabpanel" aria-labelledby="profile-tab" class="tab-pane fade px-4 py-5">
           <div class="row">
 
             <!-- Earnings (Monthly) Card Example -->
@@ -623,11 +671,9 @@
                   <div class="chart-pie pt-4 pb-2">
                     <canvas id="PieChart_student"></canvas>
                     <script type="text/javascript">
-
                       function PieChart_student(){
                         const canvas = document.getElementById('PieChart_student');
                         image = canvas.toDataURL("image/png");
-
                         var link = document.createElement('a');
                          link.href = image;
                          link.download = "PieChart_student.png";
@@ -640,10 +686,10 @@
                   
                   <div class="mt-4 text-center small">
                     <span class="mr-2">
-                      <i class="fas fa-circle text-primary"></i> >= 41
+                      <i class="fas fa-circle text-primary"></i> Gred 41 Dan Keatas
                     </span>
                     <span class="mr-2">
-                      <i class="fas fa-circle text-success"></i> < 41
+                      <i class="fas fa-circle text-success"></i> Gred 41 Kebawah
                     </span>
                   </div>
                  
@@ -677,11 +723,9 @@
                   <div class="chart-pie pt-4 pb-2">
                     <canvas id="PieChart_applicant"></canvas>
                     <script type="text/javascript">
-
                       function PieChart_student(){
                         const canvas = document.getElementById('PieChart_applicant');
                         image = canvas.toDataURL("image/png");
-
                         var link = document.createElement('a');
                          link.href = image;
                          link.download = "PieChart_applicant.png";
@@ -694,10 +738,10 @@
                   
                   <div class="mt-4 text-center small">
                     <span class="mr-2">
-                      <i class="fas fa-circle text-primary"></i> >= 41
+                      <i class="fas fa-circle text-primary"></i> Gred 41 dan Keatas
                     </span>
                     <span class="mr-2">
-                      <i class="fas fa-circle text-success"></i> < 41
+                      <i class="fas fa-circle text-success"></i> Gred 41 Kebawah
                     </span>
                   </div>
                  
@@ -706,6 +750,7 @@
               </div>
             </div>
           </div>
+          
 
           </div>
         </div> <!-- row closed -->
@@ -738,7 +783,6 @@
                   <div class="chart-pie pt-4 pb-2">
                     <canvas id="PieChart_TT"></canvas>
                     <script type="text/javascript">
-
                       function myChartTT(){
                        const canvas = document.getElementById('PieChart_TT');
                        console.log(canvas);
@@ -782,7 +826,8 @@
                 </div>
               </div>  
           </div>
-
+        
+          </div>
         </div>
 
 
@@ -803,5 +848,4 @@
   </div>
   <!-- End of Page Wrapper -->
 @endsection
-
 
