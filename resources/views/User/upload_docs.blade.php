@@ -19,21 +19,24 @@
                   <thead>
                     <tr>
                       <th>Tarikh Muatnaik</th>
-                      <th>Perkara</th> 
-                      <th>Submit</th>
+                      <th>Jenis Tuntutan</th> 
+                      <th>Tempoh Tuntutan</th> 
+                      <th>Jumlah (RM)</th> 
+                      <th>Rujukan</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
                       <th>Tarikh Muatnaik</th>
-                      <th>Perkara</th> 
-                      <th>Submit</th>
+                      <th>Jenis Tuntutan</th> 
+                      <th>Tempoh Tuntutan</th> 
+                      <th>Jumlah (RM)</th> 
+                      <th>Rujukan</th>
                     </tr>
                   </tfoot>
                   <tbody>
-
                   <tr>
-                  <form method="post" action="" enctype="multipart/form-data" autocomplete="off">
+                  <form method="post" action="/serahan" enctype="multipart/form-data" autocomplete="off">
                   {{ csrf_field() }}                      
                       <td>
                         <div class="form-group">
@@ -42,11 +45,38 @@
                         </div>
                       </td>
                       <td>
-                        <div class="form-group">
-                          <!--<label>Nombor Baucer</label>-->
-                          <input name="thewhat" type="text" class="form-control form-control-user" id="InputBaucer" maxlength="14">
-                        </div>                        
+                      <div class="form-group">
+                        <select name="thewhat" class="form-group form-control-user" id="InputBaucer"  placeholder="Sila Pilih Jenis Tuntutan">
+                          <option>Yuran Pengajian</option>
+                          <option>Tuntutan</option>
+                          <option>Elaun Biasiswa</option>
+                          <option>Elaun Sara Hidup</option>
+                          <option>Penginapan</option>
+                          <option>Elaun Buku</option>
+                          <option>Elaun Alat Perkakas</option>
+                          <option>Elaun Tesis</option>
+                          <option>Elaun Latihan Amali</option>
+                          <option>Elaun Penempatan</option>
+                          <option>Elaun Akhir Pengajian</option>
+                          <option>Elaun Bantuan Sewa Rumah</option>
+                          <option>Elaun Bantuan Keluarga</option>
+                          <option>Elaun Pakaian Panas</option>
+                          <option>Elaun Pakaian</option>
+                          <option>Elaun Tangunggan</option>
+                          <option>Elaun Perjalanan</option>
+                        </select>
+                    </div>                       
                       </td>
+                      <td>
+                        <div class="form-group">
+                          <input name="tempoh" type="text" class="form-control form-control-user" id="" maxlength="30">
+                        </div>                        
+                      </td> 
+                      <td>
+                        <div class="form-group">
+                          <input name="tuntutan" type="text" class="form-control form-control-user" id="" maxlength="30">
+                        </div>                        
+                      </td> 
                       <td>
                         <div class="col-sm-9" style="padding-left: 0px;padding-top: 9px">
                             <input name="dokumen" multiple="multiple" type="file" id="input-dokumen" class="custom-file-inputform-control form-control-alternative" placeholder="" value="" required="" autofocus="">
@@ -59,7 +89,17 @@
                           </div>                          
                       </td>
                       </form>
-                    </tr>              
+                    </tr>   
+
+                    @foreach($list_docs as $key => $data)
+                    <tr>
+                      <td>{{ $data -> date_penyerahan }}</td>
+                      <td>{{ $data -> perkara }}</td>
+                      <td>{{ $data -> tempoh }}</td>
+                      <td>{{ $data -> tuntutan }}</td>
+                      <td><a href="{{ $data -> file }}">File Rujukan</a></td>
+                    </tr>    
+                    @endforeach    
 
                   </tbody>
                 </table>

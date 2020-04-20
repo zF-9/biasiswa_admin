@@ -28,16 +28,19 @@
       </div>
 
       <li class="nav-item">
-        <a class="nav-link" href="/permohonan_baru">
-          <i class="fas fa-fw fa-user"></i>
-          <span>Maklumat Pegawai</span></a>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw  fa-copy"></i>
+          <span>Permohonan Baru</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Borang Permohonan:</h6>
+            <a class="collapse-item" href="/permohonan_baru">Maklumat Pegawai</a>
+            <a class="collapse-item" href="/pengajian">Maklumat Pengajian</a>
+          </div>
+        </div>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="/muatnaik">
-          <i class="fas fa-fw fa-university"></i>
-          <span>Maklumat Pengajian</span></a>
-      </li>
 
       <!-- Nav Item - Pages Collapse Menu
       <li class="nav-item">
@@ -73,40 +76,46 @@
 
       <!-- Divider -->
       <hr class="sidebar-divider">
-
-      <!-- Heading -->
       <div class="sidebar-heading">
-        Maklumat Profil
+        Maklumat Permohonan
       </div>
 
-      <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('profile_pemohon') }}">
-          <i class="fas fa-fw fa-user"></i>
-          <span>Pemohon</span></a>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-fw  fa-edit"></i>
+          <span>Kemaskini Maklumat</span>
+        </a>
+        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Jenis Maklumat :</h6> 
+            <a class="collapse-item" href="{{ route('full_profile') }}">Maklumat Penuh</a>
+           <!-- <a class="collapse-item" href="{{ route('profile_pemohon') }}">Maklumat Pegawai</a>
+            <a class="collapse-item" href="{{ route('profile_pelajar') }}">Maklumat Pengajian</a>-->
+          </div>
+        </div>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('profile_pelajar') }}">
-          <i class="fas fa-fw fa-graduation-cap"></i>
-          <span>Pengajian</span></a>
-      </li>
+
 
       <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
 
-      <!-- Nav Item - Charts -->
-      <li class="nav-item">
-        <a class="nav-link" href="/upload">
-        <i class="fas fa-fw fa-upload"></i>
-          <span>Muat Naik Dokumen</span></a>
-      </li>
+      <hr class="sidebar-divider">
+      <div class="sidebar-heading">
+        Menu Pelajar
+      </div>
 
-      <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="/Userpayment_rec">
-        <i class="fas fa-fw fa-credit-card"></i>
-          <span>Rekod Pembayaran</span></a>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePage" aria-expanded="true" aria-controls="collapsePage">
+          <i class="fas fa-fw   fa-graduation-cap"></i>
+          <span>Pelajar</span>
+        </a>
+        <div id="collapsePage" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Ingin :</h6>
+           <!-- <a class="collapse-item" href="/Userpayment_rec">Rekod Pembayaran</a>-->
+            <a class="collapse-item" href="/serahan">Membuat Tuntutan</a>
+          </div>
+        </div>
       </li>
 
       <!-- Divider -->
@@ -140,3 +149,42 @@
 
     </ul>
     <!-- End of Sidebar -->
+
+      <!-- modal upload pic -->
+  <div id="avatarModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+
+            <div class="modal-header">
+              <h5 class="modal-title">Update Personal Info</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <img src="storage/profilePic/{{ auth()->user()-> avatar }}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:25px;">
+                        <h2>{{ auth()->user()->name }}'s Profile</h2>
+                        <form enctype="multipart/form-data" action="/updateAvatar" method="POST">
+                            <label>Update Profile Image</label>
+                            <input type="file" name="avatar">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <!--<input style="margin-top:12px; margin-bottom: 12px" type="submit" class="pull-right btn btn-sm btn-primary">-->
+                            <button type="button submit" style="margin-top:12px; margin-bottom: 12px" class="btn btn-primary">Upload</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">              
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>  
+      </div>
+      </div>
+    </div>  
+</div>
+    <!-- modal upload pic -->

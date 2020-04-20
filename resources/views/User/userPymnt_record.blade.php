@@ -80,7 +80,7 @@
                     <tr>
                       <td>{{ $data -> date_pymnt }}</td>
                       <td>{{ $data -> No_baucer }}</td>
-                      <td>{{ $data -> Amount }}</td>
+                      <td>{{ $data -> amount }}</td>
                       <td>{{ $data -> jenis_pymnt }}</td>
                     </tr>    
                     @endforeach                

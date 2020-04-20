@@ -17,10 +17,6 @@
                         </div>
                     </div>
                     <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
-                        <div class="d-flex justify-content-between">
-                            <a href="#" class="btn btn-sm btn-info mr-4">{{ __('Connect') }}</a>
-                            <!--<a href="#" class="btn btn-sm btn-default float-right">{{ __('Message') }}</a>-->
-                        </div>
                     </div>
                     <div class="card-body pt-0 pt-md-4">
                         <div class="row">
@@ -45,12 +41,7 @@
                             <h3>
                                 {{ auth()->user()->name }}<span class="font-weight-light"></span>
                             </h3>
-                            <div>
-                                <i class="ni education_hat mr-2"></i>{{ $student_profile -> AkademikLvl }}
-                            </div>
-                            <div class="h5 font-weight-300">
-                                <i class="ni location_pin mr-2"></i>{{ $student_profile -> AkademikInfo }}
-                            </div>
+
                             <div>
                                 <i class="ni education_hat mr-2"></i>{{ $student_profile -> AppliedKursus }}
                             </div>
