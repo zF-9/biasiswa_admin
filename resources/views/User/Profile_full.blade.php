@@ -1,8 +1,8 @@
-@extends('layout.User.main_User')
+@extends('User.layout.main_User')
 <script type="text/javascript">
-var jumlah = '{{ $jumlah }}';
-var total = '{{ $total }}';
-var tuntut = '{{ $tuntut }}';
+var jumlah = '{{ $budget }}';
+var bayaran = '{{ $paid }}';
+var baki = '{{ $balance }}';
 
 //alert([jumlah, total]); //[jumlah, total, tuntutan]
 

@@ -1,4 +1,4 @@
-@extends('layout.Admin.main_Admin')
+@extends('Admin.layout.main_Admin')
 <script type="text/javascript">
   var data_pemohon = '{{ $data_pemohon }}';
   var data_student = '{{ $data_student }}';

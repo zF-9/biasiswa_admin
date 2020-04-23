@@ -156,16 +156,17 @@ class ApplicantController extends Controller
     public function apply()
     {
         $id = Auth::User()->id;
+        $status = User::where('id', $id)->pluck('status');
 
         $user_noti = payment_record::where('payment_id', '=', $id)->get();    
 
         $user_profile = DB::table('applicants')->where('user_id', '=', $id)->first();
 
         if($user_profile == null){
-            return view('User.borang', ['user_noti' => $user_noti]);
+            return view('User.borang', ['user_noti' => $user_noti, 'status' => $status]);
         }
         else {
-            return view('User.dashboard_user', ['user_noti' => $user_noti])->withErrors(__('Permohonan Telah Dibuat, Sila Kemas Kini'));
+            return view('User.dashboard_user', ['user_noti' => $user_noti, 'status' => $status])->withErrors(__('Permohonan Telah Dibuat, Sila Kemas Kini'));
         }
         
     }
@@ -173,6 +174,7 @@ class ApplicantController extends Controller
     public function upload_doc() 
     {
         $id = Auth::User()->id; 
+        $status = User::where('id', $id)->pluck('status');
         /*$toggler = DB::table('Toggle_Index')->get('index');
 
         if($toggler[0]->index == '1') { // condition #1: filter criterea #1
@@ -211,16 +213,16 @@ class ApplicantController extends Controller
               $user_noti = payment_record::where('payment_id', '=', $id)->get();  
 
               if($toggler == '1') {
-                return view('User.borang_fullfilter', ['user_data' => $user_data, 'avg' => $avg_marks, 'user_noti' => $user_noti]); 
+                return view('User.borang_fullfilter', ['user_data' => $user_data, 'avg' => $avg_marks, 'user_noti' => $user_noti, 'status' => $status]); 
               }
               else if ($toggler =='2') {
-                return view('User.borang_studyfilter', ['user_data' => $user_data, 'avg' => $avg_marks, 'user_noti' => $user_noti]); 
+                return view('User.borang_studyfilter', ['user_data' => $user_data, 'avg' => $avg_marks, 'user_noti' => $user_noti, 'status' => $status]); 
               }
               else if ($toggler =='2') {
-                return view('User.borang_default', ['user_data' => $user_data, 'avg' => $avg_marks, 'user_noti' => $user_noti]); 
+                return view('User.borang_default', ['user_data' => $user_data, 'avg' => $avg_marks, 'user_noti' => $user_noti, 'status' => $status]); 
               }
               else {
-                return view('User.borang_default', ['user_data' => $user_data, 'avg' => $avg_marks, 'user_noti' => $user_noti]);                
+                return view('User.borang_default', ['user_data' => $user_data, 'avg' => $avg_marks, 'user_noti' => $user_noti, 'status' => $status]);                
                 //dd($avg_marks);
               }
                
@@ -228,7 +230,7 @@ class ApplicantController extends Controller
             //dd($user_data);
         } 
         else {
-            return view('User.dashboard_user', ['user_noti' => $user_noti])->withErrors(__('Maklumat Telah Dimuat naik, Sila Kemas Kini'));           
+            return view('User.dashboard_user', ['user_noti' => $user_noti, 'status' => $status])->withErrors(__('Maklumat Telah Dimuat naik, Sila Kemas Kini'));           
         }       
         
     }
@@ -261,12 +263,13 @@ class ApplicantController extends Controller
 
     public function update_maklumat($id) {
         $id_data = Auth::User()->id;
+        $status = User::where('id', $id)->pluck('status');
 
         $maklumat = applicant::where('nokp', '=', $id)->first();
         $user_noti = payment_record::where('payment_id', '=', $id_data)->get();   
            
        // dd($maklumat);
-        return view('User.editmaklumat', ['maklumat' => $maklumat, 'user_noti' => $user_noti]);
+        return view('User.editmaklumat', ['maklumat' => $maklumat, 'user_noti' => $user_noti, 'status' => $status]);
     }
 
     public function newstore($id) {

@@ -14,15 +14,17 @@ class CreateDokumenResultsTable extends Migration
     public function up()
     {
         Schema::create('dokumen_results', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('pay_id');
             $table->string('date_penyerahan');
             $table->string('perkara');
             $table->string('tempoh');
             $table->float('tuntutan', 8, 2);
+            $table->boolean('pay_status')->default(0);
             $table->string('file');
             $table->timestamps();
             $table->unsignedBigInteger('document_id')->index();
         });
+
         Schema::table('dokumen_results', function (Blueprint $table) {
             $table->foreign('document_id')->references('id')->on('users');
         });

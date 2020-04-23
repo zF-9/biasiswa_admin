@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use Image;
 use Redirect;
+use App\User;
 use App\applicant;
 use App\Dokumen_result;
 use App\payment_record;
@@ -22,9 +23,13 @@ class UserController extends Controller
 {
     public function user_dashboard() {
         $id_user = Auth::User()->id;
+
+        $status = User::where('id', $id_user)->pluck('status');
+
         $user_noti = payment_record::where('payment_id', '=', $id_user)->get();
 
-        return view('User.dashboard_user', ['user_noti' => $user_noti]);
+
+        return view('User.dashboard_user', ['user_noti' => $user_noti, 'status' => $status]);
 
     }
 
@@ -55,7 +60,7 @@ class UserController extends Controller
 
     public function profilepage() {
         $id = Auth::User()->id;
-
+        $status = applicant::where('user_id', '=', $id_user)->pluck('isApproved');
 
         $user_profile = DB::table('applicants')->where('user_id', '=', $id)->first();
         $student_profile = DB::table('info__pengajians')->where('applicant_id', '=', $id)->first();
@@ -65,7 +70,7 @@ class UserController extends Controller
         }
     
         else {
-            return view('profilepage', ['user_profile' => $user_profile, 'student_profile' => $student_profile]);          
+            return view('profilepage', ['user_profile' => $user_profile, 'student_profile' => $student_profile, 'status' => $status]);          
         }    
     }
 
@@ -104,6 +109,8 @@ class UserController extends Controller
 
     public function profile_penuh() {
         $id = Auth::User()->id;
+        $status = applicant::where('user_id', '=', $id)->pluck('isApproved');
+
         $user_noti = payment_record::where('payment_id', '=', $id)->get();        
 
         $user_profile = DB::table('applicants')
@@ -112,7 +119,8 @@ class UserController extends Controller
         ->join('info__pengajians', 'users.id', 'info__pengajians.applicant_id' )
         ->first();
 
-        $jumlah = DB::table('applicants')
+        // Reference 
+        /*$jumlah = DB::table('applicants')
         ->where('user_id', '=', $id)
         ->join('payment_records', 'payment_records.payment_id', 'applicants.user_id')
         ->sum('amount');
@@ -127,8 +135,31 @@ class UserController extends Controller
         ->join('dokumen_results', 'dokumen_results.document_id', 'applicants.user_id')
         ->get();
 
-        $total = $jumlah - $tuntutans ;
-        
+        $total = $jumlah - $tuntutans ;*/
+        //Reference 
+        $claim_doc = DB::table('applicants')
+        ->where('user_id', '=', $id)
+        ->join('dokumen_results', 'dokumen_results.document_id', 'applicants.user_id')
+        ->get();
+
+        $total_budget = DB::table('applicants')
+        ->where('user_id', '=', $id)
+        ->sum('budget');
+
+        $total_paid = DB::table('applicants')
+        ->where('user_id', '=', $id)
+        ->join('payment_records', 'payment_records.payment_id', 'applicants.user_id')
+        ->sum('amount');
+
+        $total_claimed = DB::table('applicants')
+        ->where('user_id', '=', $id)
+        ->join('dokumen_results', 'dokumen_results.document_id', 'applicants.user_id')
+        ->sum('tuntutan');       
+
+        $paid = $total_claimed + $total_paid;
+        $balance_budget = $total_budget - $paid;
+
+        //dd($balance_budget); 
 
         if($user_profile == null){
             return view('User.dashboard_user')->withErrors(__('Pemohon perlu mengisi borang maklumat pegawai'));
@@ -136,12 +167,14 @@ class UserController extends Controller
     
         else {
            // dd($jumlah);
-            return view('User.Profile_full', ['user_profile' => $user_profile, 'jumlah' => $jumlah, 'total' => $total, 'tuntutans' => $tuntutans, 'tuntut' => $tuntut, 'user_noti' => $user_noti]);          
+            return view('User.Profile_full', ['user_profile' => $user_profile, 'user_noti' => $user_noti, 'budget' => $total_budget, 'paid' => $paid, 'balance' => $balance_budget, 'tuntut' => $claim_doc, 'status' => $status]);          
         }        
     }
 
     public function payment_history() {
         $id = Auth::User()->id;
+        $status = applicant::where('user_id', '=', $id_user)->pluck('isApproved');
+
         $user_noti = payment_record::where('payment_id', '=', $id)->get();   
 
         $user_record = DB::table('payment_records')->where('payment_id', '=', $id)->first();  
@@ -152,15 +185,20 @@ class UserController extends Controller
         else {
             $payments = DB::table('payment_records')->where('payment_id', '=', $id)->get();
 
-            return view('User.userPymnt_record', ['payment' => $payments, 'user_noti' => $user_noti]);          
+            return view('User.userPymnt_record', ['payment' => $payments, 'user_noti' => $user_noti, 'status' => $status]);          
         }      
     }
 
     public function proto() {
         $id = Auth::User()->id;
+
+        //$status = applicant::where('user_id', '=', $id)->pluck('isApproved');
+        $status = User::where('id', $id)->pluck('status');
+        //dd($status);
+
         $user_noti = payment_record::where('payment_id', '=', $id)->get();   
 
-        return view('User.new_borang', ['user_noti' => $user_noti]);                   
+        return view('User.new_borang', ['user_noti' => $user_noti, 'status' => $status]);                   
     }
 
     public function mn_dokumen(Request $request) {
@@ -184,8 +222,9 @@ class UserController extends Controller
 
     public function doc_res() {
         $id = Auth::User()->id;
-        $user_noti = payment_record::where('payment_id', '=', $id)->get();   
+        $status = applicant::where('user_id', '=', $id)->pluck('isApproved');
 
+        $user_noti = payment_record::where('payment_id', '=', $id)->get();   
         $student_record = DB::table('applicants')->where('user_id', '=', $id)->where('isApproved', '=', '1')->first();
 
         if($student_record == null) {
@@ -193,11 +232,9 @@ class UserController extends Controller
         }
         else {
             $list_document = DB::table('dokumen_results')->where('document_id', '=', $id)->get();
-            return view('User.upload_docs', ['list_docs' => $list_document, 'user_noti' => $user_noti]); 
+            return view('User.upload_docs', ['list_docs' => $list_document, 'user_noti' => $user_noti, 'status' => $status]); 
         }
     }
-
-    
 
 
     public function update_avatar(Request $request){

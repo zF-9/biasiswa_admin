@@ -1,4 +1,4 @@
-@extends('layout.Admin.main_Admin')
+@extends('Admin.layout.main_Admin')
 @section('content')
 
         <!-- Begin Page Content -->
@@ -72,7 +72,7 @@
                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                             <form action="" method="post">
                               @csrf                            
-                              <a class="dropdown-item" href="/{{ $data -> id }}/{{ $data -> date_penyerahan }}">{{ __('Membuat Pembayaran') }}</a>
+                              <a class="dropdown-item" href="/{{ $data -> id }}/{{ $data -> date_penyerahan }}/{{ $data -> id}}">{{ __('Membuat Pembayaran') }}</a>
                                 <button type="button" class="dropdown-item" onclick="confirm('{{ __("Tekan Ok jika ingin menghapus pelajar?") }}') ? this.parentElement.submit() : ''">
                                   {{ __('Hapus Pelajar') }}
                                 </button>

@@ -156,7 +156,7 @@
       <div class="modal-content">
 
             <div class="modal-header">
-              <h5 class="modal-title">Update Personal Info</h5>
+              <h5 class="modal-title">Kemas Kini Gambar Profil</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -168,20 +168,20 @@
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">
                         <img src="storage/profilePic/{{ auth()->user()-> avatar }}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:25px;">
-                        <h2>{{ auth()->user()->name }}'s Profile</h2>
+                        <h2>{{ auth()->user()->name }}</h2>
                         <form enctype="multipart/form-data" action="/updateAvatar" method="POST">
-                            <label>Update Profile Image</label>
+                            <label>Muat Naik Gambar Profil</label>
                             <input type="file" name="avatar">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <!--<input style="margin-top:12px; margin-bottom: 12px" type="submit" class="pull-right btn btn-sm btn-primary">-->
-                            <button type="button submit" style="margin-top:12px; margin-bottom: 12px" class="btn btn-primary">Upload</button>
+                            <button type="button submit" style="margin-top:12px; margin-bottom: 12px" class="btn btn-primary">Muat Naik</button>
                         </form>
                     </div>
                 </div>
             </div>
 
             <div class="modal-footer">              
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
             </div>  
       </div>
       </div>

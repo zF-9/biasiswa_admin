@@ -1,4 +1,4 @@
-@extends('layout.Admin.main_Admin')
+@extends('Admin.layout.main_Admin')
 
 @section('content')
 
@@ -60,7 +60,7 @@
                              <button  type="button" class="dropdown-item" href="" data-toggle="modal" data-target="#budgetModal" data-id="{{ $data -> user_id }}">
                               Terima Sebagai Pelajar
                               </a>
-                                <button type="button" class="dropdown-item" onclick="confirm('{{ __("Are you sure you want to delete this user?") }}') ? this.parentElement.submit() : ''">
+                                <button type="button" class="dropdown-item" data-toggle="modal" data-target="#DestroyModal" data-id="{{ $data -> user_id }}">
                                   {{ __('Hapus') }}
                                 </button>
                             </form>    
@@ -92,6 +92,7 @@
               //alert($(secondTd).text())
 
               $('#user_id').val($(secondTd).text());
+              $('#user_name').val($(secondTd).text());
           })
       })
   </script>
@@ -133,6 +134,45 @@
                     </div>  
                 </div>
                <!-- modal add budget -->
-                      
+
+                       <!-- modal destroy -->
+                       <div id="DestroyModal" class="modal" tabindex="-1" role="dialog">
+                       <div class="modal-dialog" role="document">
+                       <div class="modal-content">
+
+                       <div class="modal-header">
+                       <h5 class="modal-title">Hapus Pelajar</h5>
+                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                       <span aria-hidden="true">&times;</span>
+                       </button>
+                       </div>
+
+                       <div class="modal-body">
+
+                       <div class="container">
+                       <div class="row">
+                       <div class="col-md-10 col-md-offset-1">
+                        <div class="row">
+                        <form enctype="multipart/form-data" action="/destroy/{{ $data -> user_id }}">
+                        {{ csrf_field() }}
+                        <h5>Nama Pelajar : </h5><input name="applicant" type="text" id="user_name" >
+                            <button type="button submit" style="margin-top:12px; margin-bottom: 12px" class="btn btn-primary">Hapus</button>
+                        </form>                        
+                            <div>              
+                              <button type="button" class="btn btn-info">Cancel</button>
+                            </div>   
+                          </div>
+                    </div>
+                </div>
+            </div>
+
+                            <div class="modal-footer">              
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                            </div>  
+                      </div>
+                      </div>
+                    </div>  
+                </div>
+               <!-- modal destroy -->                      
 
 @endsection

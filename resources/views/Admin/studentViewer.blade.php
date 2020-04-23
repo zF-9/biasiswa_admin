@@ -1,11 +1,10 @@
-@extends('layout.Admin.main_Admin')
+@extends('Admin.layout.main_Admin')
 <script type="text/javascript">
-  var pembiayaan = '{{ $pembiayaan }}';
-  var jumlah = '{{ $jumlah }}';
-  var budget = '{{ $budget }}';
+var jumlah = '{{ $budget }}';
+var bayaran = '{{ $paid }}';
+var baki = '{{ $balance }}';
 
-  //alert([pembiayaan, jumlah, budget]);
-
+//alert([jumlah, total]); //[jumlah, total, tuntutan]
 
 </script>
 @section('content')
@@ -44,23 +43,6 @@
                             <div class="h5 font-weight-300">
                                 <i class="ni location_pin mr-2">Email: </i>{{ $user_profile -> email }}
                             </div>
-                            <!--<div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2"></i>{{ $user_profile -> jabatan}}
-                            </div>
-                            <div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2"></i>{{ $user_profile -> jawatan}}
-                            </div>
-                            <div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2"></i>{{ $user_profile -> Gred}}
-                            </div>
-                            <div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2"></i>{{ $user_profile -> TarafLantik}}
-                            </div>
-
-                            <div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2"></i>
-                                {{ $user_profile -> umur }}
-                            </div>-->
                             <div class="h5 mt-4">
                                 <i class="ni business_briefcase-24 mr-2">No. Tel (peribadi): </i>
                                 {{ $user_profile -> telno }}
@@ -69,15 +51,6 @@
                                 <i class="ni business_briefcase-24 mr-2">No. Tel (pejabat): </i>
                                 {{ $user_profile -> telnoPej }}
                             </div>
-                            <!--<div>
-                                <i class="ni education_hat mr-2"></i>{{ __('University of Computer Science') }}
-                            </div>-->
-                            <hr class="my-4" />
-                            <!--<p>A member since {{ auth()->user()->created_at }}</p>
-                            <p>Last Updated {{ auth()->user()->updated_at }}</p>
-                            <a href="#">{{ __('Show more') }}</a>
-                            <br>
-                            <a href="" data-toggle="modal" data-target="#avatarModal">upload a pic</a>-->
                         </div>
                     </div>
                 </div>
@@ -92,9 +65,9 @@
                   <li class="nav-item flex-sm-fill">
                     <a id="profile1-tab" data-toggle="tab" href="#profile1" role="tab" aria-controls="profile1" aria-selected="false" class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0 border">Pengajian</a>
                   </li>
-                  <li class="nav-item flex-sm-fill">
+                  <!--<li class="nav-item flex-sm-fill">
                     <a id="contact1-tab" data-toggle="tab" href="#contact1" role="tab" aria-controls="contact1" aria-selected="false" class="nav-link text-uppercase font-weight-bold rounded-0 border">Pembiayaan</a>
-                  </li>
+                  </li>-->
                 </ul>
                 <div id="myTab1Content" class="tab-content">
                   <div id="home1" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5 show active">
@@ -108,9 +81,6 @@
                     <p class="leade font-italic">Gred: {{ $user_profile->skim }}{{ $user_profile->Gred }}</p>
                     <p class="leade font-italic">Taraf Pelantikan: {{ $user_profile->TarafLantik }}</p>
                     <p class="leade font-italic">Tarikh Sah Jawatan: {{ $user_profile->Tsahjwtn }}</p>
-
-                    <!--<p class="leade font-italic mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                      irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
                   </div>
 
                   <div id="profile1" role="tabpanel" aria-labelledby="profile-tab" class="tab-pane fade px-4 py-5">
@@ -127,12 +97,25 @@
                     <p class="leade font-italic">
                         Surat Akuan Ketua Jabatan: <a href="storage/{{ $user_profile->surakuan }}">File</a>
                     </p>
-
-                    
-                    <!--<p class="leade font-italic mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                      irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
                   </div>
-                  <div id="contact1" role="tabpanel" aria-labelledby="contact-tab" class="tab-pane fade px-4 py-5">
+                  <!--<div id="contact1" role="tabpanel" aria-labelledby="contact-tab" class="tab-pane fade px-4 py-5">
+                  <div class="card-body">
+         
+      
+              
+            </div>
+          </div>-->
+                  <!--</div>
+                </div>
+                 End bordered tabs -->
+                <!--<hr class="my-4" />-->
+              </div>
+</div>        
+</div>
+
+
+          <div class="col-xl-12 card">
+            <!--<div id="contact1" role="tabpanel" aria-labelledby="contact-tab" class="tab-pane fade px-4 py-5">-->
                   <div class="card-body">
          
           
@@ -146,7 +129,8 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                       <div class="dropdown-header">Dropdown Header:</div>
-                      <a class="dropdown-item" onclick="myChartTTT()">Muat Turun</a>
+                      <a class="dropdown-item" onclick="myChartTTTT()">PNG</a>
+                      <a class="dropdown-item" href="#">JPG</a>
                     </div>
                   </div>
                 </div>
@@ -154,15 +138,15 @@
                 <div class="card-body">
                 <div class="table-responsive">
                   <div class="chart-pie pt-4 pb-2">
-                    <canvas id="PieChart_profile"></canvas>
+                    <canvas id="PieChart_user"></canvas>
                     <script type="text/javascript">
 
-                      function myChartTTT(){
-                       const canvas = document.getElementById('PieChart_profile');
+                      function myChartTTTT(){
+                       const canvas = document.getElementById('PieChart_user');
                        console.log(canvas);
                        image = canvas.toDataURL("image/png");
                        var link = document.createElement('a');
-                       link.download = "Status-Pembiayaan.png";
+                       link.download = "Status-Pembiayaan-Pelajar.png";
                        link.href = image;
                        link.click();
                       };
@@ -174,11 +158,8 @@
                       <i class="fas fa-circle text-primary"></i> Jumlah Pembiayaan Sekarang
                     </span>
                     <span class="mr-2">
-                      <i class="fas fa-circle text-success"></i> Baki Peruntukan
+                      <i class="fas fa-circle text-success"></i> Tuntutan Pembiayaan Belum Dibayar
                     </span>
-                    <!--<span class="mr-2">
-                      <i class="fas fa-circle text-info"></i> Referral
-                    </span>-->
                   </div>
                  
                 </div>
@@ -195,7 +176,7 @@
 
                     <th>Tarikh</th>
                     <th>Jenis</th> 
-                    <th>No Baucer</th>                     
+                    <th>Tempoh</th>                     
                     <th>Jumlah(RM)</th>
 
                   </tr>
@@ -205,7 +186,7 @@
 
                     <th>Tarikh</th>
                     <th>Jenis</th> 
-                    <th>No Baucer</th>                     
+                    <th>Tempoh</th>                     
                     <th>Jumlah(RM)</th>
 
                   </tr>
@@ -213,10 +194,10 @@
                 <tbody>
                     @foreach($tuntut as $key => $data)
                     <tr>
-                      <td>{{ $data -> date_pymnt }}</td>
-                      <td>{{ $data -> jenis_pymnt }}</td>
-                      <td>{{ $data -> No_baucer }}</td>
-                      <td>{{ $data -> amount }}</td>
+                      <td>{{ $data -> date_penyerahan }}</td>
+                      <td>{{ $data -> perkara }}</td>
+                      <td>{{ $data -> tempoh }}</td>
+                      <td>{{ $data -> tuntutan }}</td>
                     </tr>     
                     @endforeach                
 
@@ -226,17 +207,11 @@
               </table>
               </div>
               
-            </div>
+            <!--</div>-->
+            <!-- ends here  -->
           </div>
-                  <!--</div>
-                </div>
-                 End bordered tabs -->
-                <!--<hr class="my-4" />-->
-              </div>
-</div>
-        
-</div>
-@endsection
 
+                  </div>
+@endsection
 
 

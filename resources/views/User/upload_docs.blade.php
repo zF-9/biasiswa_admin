@@ -1,4 +1,4 @@
-@extends('layout.User.main_User')
+@extends('User.layout.main_User')
 @section('content')
 
         <!-- Begin Page Content -->

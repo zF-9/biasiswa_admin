@@ -22,11 +22,12 @@ class CreateInfoPengajiansTable extends Migration
             $table->string('EndStudy');
             $table->string('AppliedKursus');
             $table->string('mod_pengajian');
+            $table->string('course');
             $table->string('Uni_name');
             //$table->string('Uni_namePT');
             $table->string('tmpt_study');
 
-
+            
             $table->string('tawaran')->nullable();
             $table->string('surakuan')->nullable();
 

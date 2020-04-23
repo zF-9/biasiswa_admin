@@ -82,7 +82,6 @@ Route::post('/updateAvatar', 'UserController@update_avatar');
 //Route::post('/updateBudget/{req}', 'AdminController@update_budget');
 Route::get('/prototype', 'UserController@proto');
 Route::get('/protoadmin', 'AdminController@stats_protoype');
-Route::get('/test_view', 'AdminController@ahli_view');
 
 Auth::routes();
 
@@ -96,7 +95,10 @@ Route::get('/profile_edit', function() {
 
 });
 
+Route::post('/destroy/{id}', 'AdminController@destroy_pemohon');
+
 Route::group(['middleware' => 'AdminMiddleware'], function() {
+	Route::get('/boards', 'AdminController@filtered_view');
 	Route::get('/Settings', 'AdminController@Admin_settings')->name('setting');
 	Route::post('/save_setting', 'AdminController@store_settings');
 	Route::get('/dashboard', 'AdminController@AdminDashboard')->name('dashboard');
@@ -109,8 +111,6 @@ Route::group(['middleware' => 'AdminMiddleware'], function() {
 	//Route::get('/approve/{id}', 'AdminController@approve_pelajar');
 	Route::get('/approve/', 'AdminController@approve_pelajar');
 	Route::get('/{user_data}', 'AdminController@profile_view')->name('profile_viewer');
-
-
 });
 
 Route::get('/test', 'ChartDataController@getthejumlah');

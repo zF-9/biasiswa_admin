@@ -10,38 +10,39 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Senarai Pelajar</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Senarai Pelajar Dalam Negara</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Id</th>
+                      <!--<th>Id</th>-->
                       <th>Nama</th>
-                      <th>email</th> 
-                      <th>No. Kad Pengenalan</th>
-                      <th>Jenis Kursus</th>
+                      <th>No. IC</th> 
+                      <th>Jabatan/Agensi</th>
+                      <th>Gred</th>
                       <th></th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
-                      <th>Id</th>
+                      <!--<th>Id</th>-->
                       <th>Nama</th>
-                      <th>email</th> 
-                      <th>No. Kad Pengenalan</th>
-                      <th>Jenis Kursus</th>
+                      <th>No. IC</th> 
+                      <th>Jabatan/Agensi</th>
+                      <th>Gred</th>
                       <th></th>
                     </tr>
                   </tfoot>
                   <tbody>
+                    @foreach($local as $key => $udata)
                     <tr>
-                      <td></td>
-                      <td><a href=""></a></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <!--<td>{{ $udata -> user_id }}</td>-->
+                      <td><a href="/{{ $udata -> user_id }}">{{ $udata -> nama }}</a></td>
+                      <td>{{ $udata -> nokp }}</td>
+                      <td>{{ $udata -> jabatan }}</td>
+                      <td>{{ $udata -> skim }}{{ $udata -> Gred }}</td>
                       <td>
                           <div class="dropdown">
                             <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -60,7 +61,8 @@
                             </div>
                         </div>                        
                       </td>
-                    </tr>                
+                    </tr>  
+                    @endforeach              
                   </tbody>
                 </table>
               </div>

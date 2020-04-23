@@ -14,7 +14,7 @@ class ToggleIndex extends Migration
     public function up()
     {
         Schema::create('Toggle_Index', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->string('id')->default('42');
             $table->string('index')->default(0);
         });        
     }

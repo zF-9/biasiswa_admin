@@ -46,14 +46,14 @@
               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
                 <!-- Counter - Alerts -->
-                <span class="badge badge-danger badge-counter">{{ $noti_count }}</span>
+                <span class="badge badge-danger badge-counter">{{ $user_noti -> count() }}</span>
               </a>
               <!-- Dropdown - Alerts -->
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                 <h6 class="dropdown-header">
                   Notifikasi
                 </h6>
-                @foreach($noti_pemohon as $key => $noti) 
+                @foreach($user_noti ?? '' as $key => $noti) 
                 <a class="dropdown-item d-flex align-items-center" href="/datatable_pemohon">
                   <div class="mr-3">
                     <div class="icon-circle bg-primary">
@@ -62,41 +62,29 @@
                   </div>
                   <div>
                     <div class="small text-gray-500">{{ $noti->created_at }}</div>
-                    <span class="font-weight-bold">Pemohonan Baru: {{ $noti->nama }}</span>
+                    <span class="font-weight-bold">Rekod Pembayaran: RM {{ $noti->amount }}</span>
                   </div>
                 </a>
                 @endforeach
-                @foreach($noti_claim as $key => $claim)
-                <a class="dropdown-item d-flex align-items-center" href="/{{ $claim -> document_id}}/{{ $claim -> date_penyerahan}}">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-success">
-                      <i class="fas fa-donate text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">{{ $claim->date_penyerahan }}</div>
-                    Tuntutan: {{ $claim->name }}
-                    Perkara: {{ $claim->perkara }}
-                  </div>
-                </a>     
-                @endforeach          
-                <!--<a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-warning">
-                      <i class="fas fa-exclamation-triangle text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500"></div>
-                    
-                  </div>
-                </a>-->
                 
                 
                 <a class="dropdown-item text-center small text-gray-500" href="#">Tunjukkan Semua Notifikasi</a>
               </div>
             </li>
 
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - Alerts -->
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <!--<i class="fas fa-briefcase fa-fw"></i>-->
+                @if($status[0] == 'guest')
+                  <span class="badge badge-primary">Pemohon</span> 
+                @else 
+                  <span class="badge badge-success">Pelajar</span> 
+                @endif
+              </a>
+            </li>
 
 
             <div class="topbar-divider d-none d-sm-block"></div>
@@ -105,7 +93,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ old('name', auth()->user()->name) }}</span>
-               <img class="img-profile rounded-circle" src="storage/profilePic/{{ old('name', auth()->user()->avatar) }}">
+               <img class="img-profile rounded-circle" src="storage/profilePic/{{ auth()->user()-> avatar }}">
                <!--<i class="fas fa-user text-gray-400"></i>-->
               </a>
               <!-- Dropdown - User Information -->
@@ -116,7 +104,7 @@
                 </a>-->
                 <a class="dropdown-item" href="" data-toggle="modal" data-target="#avatarModal">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Upload Picture
+                  Muat Naik Gambar
                 </a>
                 <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>

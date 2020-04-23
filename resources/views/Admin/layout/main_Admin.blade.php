@@ -12,7 +12,7 @@
   <!-- Page Wrapper -->
   <div id="wrapper">
 
-    @include('layout.User.sidebar_User')
+    @include('Admin.layout.sidebar_Admin')
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -20,7 +20,7 @@
       <!-- Main Content -->
       <div id="content">
 
-          @include('layout.User.navbar_User')
+          @include('Admin.layout.navbar_Admin')
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
