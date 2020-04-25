@@ -210,7 +210,7 @@ class UserController extends Controller
     public function doc_res() {
         $id = Auth::User()->id;
         //$status = applicant::where('user_id', '=', $id)->pluck('isApproved');
-        $status = User::where('id', $id_user)->pluck('status');
+        $status = User::where('id', $id)->pluck('status');
 
         $user_noti = payment_record::where('payment_id', '=', $id)->get();   
         $student_record = DB::table('applicants')->where('user_id', '=', $id)->where('isApproved', '=', '1')->first();

@@ -388,7 +388,7 @@ class AdminController extends Controller
            
     }
 
-    public function payment_claim($id, $data_id) {
+    public function payment_claim($id, $data_id, $pid) {
         $id_user = Auth::User()->id;
         $status = User::where('id', $id_user)->pluck('status');
 
@@ -405,7 +405,7 @@ class AdminController extends Controller
         $claim_info = Dokumen_result::where('document_id', '=', $id)
                     ->where('date_penyerahan', '=', $data_id)->first();
 
-        return view('Admin.record_tuntutan', ['id' => $id, 'claim_info' => $claim_info, 'user_data' => $user_data, 'payment' => $payments,  'noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count, 'status' => $status]);    
+        return view('Admin.record_tuntutan', ['id' => $id, 'claim_info' => $claim_info, 'user_data' => $user_data, 'payment' => $payments,  'noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count, 'status' => $status, 'pid' => $pid]);    
         //dd($data_id, $id);   
     } 
 
@@ -416,7 +416,8 @@ class AdminController extends Controller
 
     }*/
 
-    public function update_payment($id) {
+    public function update_payment($id, $pid) {
+        //dd($id, $pid);
         $new_record = new payment_record;
 
         $new_record-> date_pymnt = request('date');
@@ -430,7 +431,7 @@ class AdminController extends Controller
         $new_record-> payment_id = $id;
 
 
-        Dokumen_result::where('document_id', '=', $id)->update([
+        Dokumen_result::where('pay_id', '=', $pid)->update([
             'pay_status'=>true
         ]);
 

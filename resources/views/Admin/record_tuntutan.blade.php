@@ -1,4 +1,4 @@
-@extends('layout.Admin.main_Admin')
+@extends('Admin.layout.main_Admin')
 @section('content')
 
         <!-- Begin Page Content -->
@@ -11,7 +11,7 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Senarai Pembayaran {{ $user_data -> name }}</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Senarai Pembayaran: {{ $user_data -> name }}</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -39,7 +39,7 @@
                   <tbody>
 
                   <tr>
-                  <form method="post" action="/update_pyrec/{{ $id }}" enctype="multipart/form-data" autocomplete="off">
+                  <form method="post" action="/update_pyrec/{{ $id }}/{{ $pid }}" enctype="multipart/form-data" autocomplete="off">
                   {{ csrf_field() }}                      
                       <td>
                         <div class="form-group">
