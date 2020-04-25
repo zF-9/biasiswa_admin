@@ -16,8 +16,29 @@
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
-                height: 100vh;
+                height: 100%;/*100vh;*/
                 margin: 0;
+
+              background-image: url('storage/app/public/img/ppns.jpeg') no-repeat center center fixed; 
+              -webkit-background-size: cover;
+              -moz-background-size: cover;
+              -o-background-size: cover;
+              background-size: cover;
+
+            }
+
+            .bg_home {
+              /* The image used 
+              background-image: url("img_girl.jpg");*/
+              background: url('storage/app/public/img/HOME.png');
+
+              /* Full height */
+              height: 100%; 
+
+              /* Center and scale the image nicely */
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: cover;
             }
 
             .full-height {
@@ -64,6 +85,7 @@
         </style>
     </head>
     <body>
+        
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
             <!-- untuk check klu ada sdh org logged in ka blum -->
@@ -81,20 +103,20 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
+                    <div class="title m-b-md">
+                        Laravel la kau sturang
+                    </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                    <div class="links">
+                        <a href="https://laravel.com/docs">Docs</a>
+                        <a href="https://laracasts.com">Laracasts</a>
+                        <a href="https://laravel-news.com">News</a>
+                        <a href="https://blog.laravel.com">Blog</a>
+                        <a href="https://nova.laravel.com">Nova</a>
+                        <a href="https://forge.laravel.com">Forge</a>
+                        <a href="https://vapor.laravel.com">Vapor</a>
+                        <a href="https://github.com/laravel/laravel">GitHub</a>
+                    </div>
             </div>
         </div>
     </body>
