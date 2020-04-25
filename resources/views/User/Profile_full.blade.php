@@ -79,7 +79,7 @@ var baki = '{{ $balance }}';
                     <p class="leade font-italic">Gred: {{ $user_profile->skim }}{{ $user_profile->Gred }}</p>
                     <p class="leade font-italic">Taraf Pelantikan: {{ $user_profile->TarafLantik }}</p>
 
-                    <a href="/editmaklumat/{{ $user_profile->nokp}}" class="btn btn-success d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-edit fa-sm text-white-50"></i> Edit Maklumat</a>
+                    <a href="/editinfopegawai/{{ $user_profile->nokp}}" class="btn btn-success d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-edit fa-sm text-white-50"></i> Edit Maklumat</a>
                   </div>
 
                   <div id="profile1" role="tabpanel" aria-labelledby="profile-tab" class="tab-pane fade px-4 py-5">
@@ -96,6 +96,7 @@ var baki = '{{ $balance }}';
                     <p class="leade font-italic">
                         Surat Akuan Ketua Jabatan: <a href="storage/{{ $user_profile->surakuan }}">File</a>
                     </p>
+                    <a href="/editinfopengajian/{{ $user_profile->nokp}}" class="btn btn-success d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-edit fa-sm text-white-50"></i> Edit Maklumat</a>
                   </div>
           </div>
           </div>

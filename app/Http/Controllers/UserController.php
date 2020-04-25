@@ -9,6 +9,7 @@ use App\User;
 use App\applicant;
 use App\Dokumen_result;
 use App\payment_record;
+use App\info_Pengajian;
 use App\tanggungan_pelajar;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
@@ -23,7 +24,6 @@ class UserController extends Controller
 {
     public function user_dashboard() {
         $id_user = Auth::User()->id;
-
         $status = User::where('id', $id_user)->pluck('status');
 
         $user_noti = payment_record::where('payment_id', '=', $id_user)->get();
@@ -32,19 +32,6 @@ class UserController extends Controller
         return view('User.dashboard_user', ['user_noti' => $user_noti, 'status' => $status]);
 
     }
-
-    /*public function UploadPic() {
-        $id = Auth::User()->id;
-
-        $user = DB::table('users')->where('id', '=', $id)->first();
-        if ($user === null) {
-           // user doesn't exist
-            alert('user does not exit');
-        }   
-        else {
-            $user->profilepic = request()->file('profilepic')->store('public/uploadProfilePic');
-        }     
-    }*/
 
     public function exportstudent() 
     {
@@ -60,7 +47,7 @@ class UserController extends Controller
 
     public function profilepage() {
         $id = Auth::User()->id;
-        $status = applicant::where('user_id', '=', $id_user)->pluck('isApproved');
+        $status = User::where('id', $id_user)->pluck('status');
 
         $user_profile = DB::table('applicants')->where('user_id', '=', $id)->first();
         $student_profile = DB::table('info__pengajians')->where('applicant_id', '=', $id)->first();
@@ -87,7 +74,6 @@ class UserController extends Controller
         }
     
         else {
-            //dd($user_profile);
             return view('User.ProfilePemohon', ['user_profile' => $user_profile]);          
         }    
     }
@@ -109,7 +95,7 @@ class UserController extends Controller
 
     public function profile_penuh() {
         $id = Auth::User()->id;
-        $status = applicant::where('user_id', '=', $id)->pluck('isApproved');
+        $status = User::where('id', $id)->pluck('status');
 
         $user_noti = payment_record::where('payment_id', '=', $id)->get();        
 
@@ -119,24 +105,6 @@ class UserController extends Controller
         ->join('info__pengajians', 'users.id', 'info__pengajians.applicant_id' )
         ->first();
 
-        // Reference 
-        /*$jumlah = DB::table('applicants')
-        ->where('user_id', '=', $id)
-        ->join('payment_records', 'payment_records.payment_id', 'applicants.user_id')
-        ->sum('amount');
-
-        $tuntutans = DB::table('applicants')
-        ->where('user_id', '=', $id)
-        ->join('dokumen_results', 'dokumen_results.document_id', 'applicants.user_id')
-        ->sum('tuntutan');
-
-        $tuntut = DB::table('applicants')
-        ->where('user_id', '=', $id)
-        ->join('dokumen_results', 'dokumen_results.document_id', 'applicants.user_id')
-        ->get();
-
-        $total = $jumlah - $tuntutans ;*/
-        //Reference 
         $claim_doc = DB::table('applicants')
         ->where('user_id', '=', $id)
         ->join('dokumen_results', 'dokumen_results.document_id', 'applicants.user_id')
@@ -159,21 +127,19 @@ class UserController extends Controller
         $paid = $total_claimed + $total_paid;
         $balance_budget = $total_budget - $paid;
 
-        //dd($balance_budget); 
 
         if($user_profile == null){
-            return view('User.dashboard_user')->withErrors(__('Pemohon perlu mengisi borang maklumat pegawai'));
+            return view('User.dashboard_user', ['user_profile' => $user_profile, 'user_noti' => $user_noti, 'budget' => $total_budget, 'paid' => $paid, 'balance' => $balance_budget, 'tuntut' => $claim_doc, 'status' => $status])->withErrors(__('Pemohon perlu mengisi borang maklumat pegawai'));
         }
     
         else {
-           // dd($jumlah);
             return view('User.Profile_full', ['user_profile' => $user_profile, 'user_noti' => $user_noti, 'budget' => $total_budget, 'paid' => $paid, 'balance' => $balance_budget, 'tuntut' => $claim_doc, 'status' => $status]);          
         }        
     }
 
     public function payment_history() {
         $id = Auth::User()->id;
-        $status = applicant::where('user_id', '=', $id_user)->pluck('isApproved');
+        $status = User::where('id', $id_user)->pluck('status');
 
         $user_noti = payment_record::where('payment_id', '=', $id)->get();   
 
@@ -191,14 +157,35 @@ class UserController extends Controller
 
     public function proto() {
         $id = Auth::User()->id;
-
-        //$status = applicant::where('user_id', '=', $id)->pluck('isApproved');
         $status = User::where('id', $id)->pluck('status');
-        //dd($status);
+
+        $rekod_pegawai = applicant::where('user_id', $id)->first();
+        $rekod_pengajian = info_Pengajian::where('applicant_id', $id)->first();
+
+        if($rekod_pegawai != null && $rekod_pengajian != null) {
+            //dd("Pengawai and Pengajian data exists");
+            //pass step yg ke-3
+            $breadcrumbs = "2";
+        }
+        elseif($rekod_pegawai != null && $rekod_pengajian == null){
+            //dd("rekod pegawai exists");
+            //pass step yg ke-2
+            $breadcrumbs = "1";
+        }
+        elseif($rekod_pegawai == null && $rekod_pengajian != null){
+            //dd("rekod pengajian exists");
+            //pass step yg 
+            $breadcrumbs = "9";
+        }
+        else {
+            //dd("Pengawai and Pengajian data does not exists");
+            //step default: initial stage
+            $breadcrumbs = "0";
+        }
 
         $user_noti = payment_record::where('payment_id', '=', $id)->get();   
 
-        return view('User.new_borang', ['user_noti' => $user_noti, 'status' => $status]);                   
+        return view('User.borang_proto', ['user_noti' => $user_noti, 'status' => $status, 'steps' => $breadcrumbs]);                   
     }
 
     public function mn_dokumen(Request $request) {
@@ -222,7 +209,8 @@ class UserController extends Controller
 
     public function doc_res() {
         $id = Auth::User()->id;
-        $status = applicant::where('user_id', '=', $id)->pluck('isApproved');
+        //$status = applicant::where('user_id', '=', $id)->pluck('isApproved');
+        $status = User::where('id', $id_user)->pluck('status');
 
         $user_noti = payment_record::where('payment_id', '=', $id)->get();   
         $student_record = DB::table('applicants')->where('user_id', '=', $id)->where('isApproved', '=', '1')->first();

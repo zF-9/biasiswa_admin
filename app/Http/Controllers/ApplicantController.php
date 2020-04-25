@@ -235,7 +235,7 @@ class ApplicantController extends Controller
         
     }
 
-    public function update_avatar(Request $request){
+    /*public function update_avatar(Request $request){
 
         $request->validate([
             'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -253,23 +253,37 @@ class ApplicantController extends Controller
         return back()
             ->with('success','You have successfully upload image.');
 
-    }
+    }*/
 
-    public function testing() {
+    /*public function testing() {
         $results = User::with('user')->get();
            
         dd($results);
-    }
+    }*/
 
-    public function update_maklumat($id) {
+    public function pegawai_update($id) {
         $id_data = Auth::User()->id;
-        $status = User::where('id', $id)->pluck('status');
+        $status = User::where('id', $id_data)->pluck('status');
 
         $maklumat = applicant::where('nokp', '=', $id)->first();
-        $user_noti = payment_record::where('payment_id', '=', $id_data)->get();   
+        $user_noti = payment_record::where('payment_id', '=', $id_data[0])->get();   
+
+        return view('User.editInfoPegawai', ['maklumat' => $maklumat, 'user_noti' => $user_noti, 'status' => $status]);
+    }
+
+    public function pengajian_update($id) {
+        $id_data = Auth::User()->id;
+        $id_data = applicant::where('nokp', $id)->pluck('user_id');
+
+        $status = User::where('id', $id_data)->pluck('status');
+
+        $maklumat = applicant::where('nokp', '=', $id)
+                    ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id' )
+                    ->first();
+
+        $user_noti = payment_record::where('payment_id', '=', $id_data[0])->get();   
            
-       // dd($maklumat);
-        return view('User.editmaklumat', ['maklumat' => $maklumat, 'user_noti' => $user_noti, 'status' => $status]);
+        return view('User.editInfoPengajian', ['maklumat' => $maklumat, 'user_noti' => $user_noti, 'status' => $status]);      
     }
 
     public function newstore($id) {
@@ -304,7 +318,10 @@ class ApplicantController extends Controller
 
         return Redirect()->route('full_profile');
 
-    }
+    } 
+    // $delete ini: this will create duplicate inside the table
+    // it should query itu user pnya $id dlu baru update to row 
+
 
     /**
      * Display a listing of the resource.

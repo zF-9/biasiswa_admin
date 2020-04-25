@@ -1,4 +1,4 @@
-@extends('layout.User.main_User')
+@extends('User.layout.main_User')
 @section('content')
 
 <div class="row justify-content-center">
@@ -22,7 +22,7 @@
                     <h1 class="h4 text-gray-900 mb-4">Kemaskini Maklumat Peribadi</h1>
                   </div>
                   <!--<form class="user">-->
-                  <form class="user" method="post" action="/maklumat_baru/{{ $maklumat->user_id }}" enctype="multipart/form-data" autocomplete="off">
+                  <form class="user" method="post" action="" enctype="multipart/form-data" autocomplete="off">
                   {{ csrf_field() }}
 
                   <div class="row">
@@ -402,12 +402,10 @@
                     <!--<a href="index.html" class="btn btn-primary btn-user btn-block">
                       Login
                     </a>-->
-                    <hr>
                     <div class="text-right">
-                      <button type="submit" class="btn btn-primary btn-user btn-block">{{ __('Save') }}</button>
+                      <button type="submit" class="btn btn-primary btn-user">{{ __('Kemaskini') }}</button>
                     </div>
                   </form>
-                  <hr>
                   <!--<div class="text-center">
                     <a class="small" href="forgot-password.html">Forgot Password?</a>
                   </div>

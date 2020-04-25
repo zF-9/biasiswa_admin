@@ -380,6 +380,8 @@ class AdminController extends Controller
         $noti_count = $claim_count + $applicant_count;
 
         $payments = DB::table('payment_records')->where('payment_id', '=', $id)->get();
+        $claimed = Dokumen_result::where('document_id', $id)->where('pay_status', true)->first();
+
         $user_data = DB::table('users')->where('id', '=', $id)->first();
 
         return view('Admin.record_pmbyrn', ['id' => $id, 'user_data' => $user_data, 'payment' => $payments, 'noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count, 'status' => $status]);

@@ -28,17 +28,17 @@
       </div>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link collapsed" href="/prototype">
           <i class="fas fa-fw  fa-copy"></i>
           <span>Permohonan Baru</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <!--<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Borang Permohonan:</h6>
             <a class="collapse-item" href="/permohonan_baru">Maklumat Pegawai</a>
             <a class="collapse-item" href="/pengajian">Maklumat Pengajian</a>
           </div>
-        </div>
+        </div>-->
       </li>
 
 
@@ -95,28 +95,29 @@
         </div>
       </li>
 
-
-
       <!-- Divider -->
-
-      <hr class="sidebar-divider">
-      <div class="sidebar-heading">
-        Menu Pelajar
-      </div>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePage" aria-expanded="true" aria-controls="collapsePage">
-          <i class="fas fa-fw   fa-graduation-cap"></i>
-          <span>Pelajar</span>
-        </a>
-        <div id="collapsePage" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Ingin :</h6>
-           <!-- <a class="collapse-item" href="/Userpayment_rec">Rekod Pembayaran</a>-->
-            <a class="collapse-item" href="/serahan">Membuat Tuntutan</a>
+      @if($status[0]=='student')
+          <hr class="sidebar-divider">
+          <div class="sidebar-heading">
+            Menu Pelajar
           </div>
-        </div>
-      </li>
+
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePage" aria-expanded="true" aria-controls="collapsePage">
+              <i class="fas fa-fw   fa-graduation-cap"></i>
+              <span>Pelajar</span>
+            </a>
+            <div id="collapsePage" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+              <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Ingin :</h6>
+               <!-- <a class="collapse-item" href="/Userpayment_rec">Rekod Pembayaran</a>-->
+                <a class="collapse-item" href="/serahan">Membuat Tuntutan</a>
+              </div>
+            </div>
+          </li>
+      @else
+          <!-- Shows nothing kalau belum student --> 
+      @endif
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">

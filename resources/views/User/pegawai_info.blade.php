@@ -35,12 +35,6 @@
                       <input name="nokp" type="text" class="form-control form-control-user" id="InputKp" maxlength="14" placeholder="Nombor Kad Pengenalan: xxxxxx-xx-xxxx">
                     </div>
                     </div>
-                    <div class="form-group col-lg-6">
-                    <div class="form-group">
-                      <label>No. Kad Pengenalan</label>
-                      <input name="nokp" type="text" class="form-control form-control-user" id="InputKp" maxlength="14" placeholder="Nombor Kad Pengenalan: xxxxxx-xx-xxxx">
-                    </div>
-                    </div>
                   </div>
 
                 <div class="row">

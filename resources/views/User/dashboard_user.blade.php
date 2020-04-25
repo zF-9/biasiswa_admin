@@ -41,7 +41,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Pengumuman Penting</div>
-                      <div> <a class="h5 mb-0 font-weight-bold text-gray-800" href="storage/iklan/iklan.png">Menyampaikan surat Tawaran Biasiswa Kerajaan Negeri Sabah selepas Mesyuarat Jawatankuasa Biasiswa Kerajaan Negeri Sabah</a>
+                      <div> <a class="h5 mb-0 font-weight-bold text-gray-800" href="storage/iklan/iklan.png">Iklan Biasiswa</a>
                       </div>
                     </div>
                     <div class="col-auto">
@@ -92,7 +92,39 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Perhatian</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">Syarat-syarat Biasiswa Pegawai Kerajaan Negeri</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">Syarat-syarat Biasiswa</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-check fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-6 col-md-6 mb-4">
+              <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Perhatian</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">Elaun Biasiswa</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-check fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-6 col-md-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Perhatian</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">Universiti Dalam Dan Luar Negara</div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-check fa-2x text-gray-300"></i>

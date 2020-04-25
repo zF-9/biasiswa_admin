@@ -1,4 +1,4 @@
-@extends('layout.Admin.main_Admin')
+@extends('Admin.layout.main_Admin')
 @section('content')
 
         <!-- Begin Page Content -->
@@ -21,10 +21,6 @@
                       <!--<th>Id</th>-->
                       <th>Tarikh Pembayaran</th>
                       <th>Nombor Baucer</th> 
-<<<<<<< HEAD
-=======
-                      <th>Jumlah Dalam Ringgit Malaysia</th>
->>>>>>> master
                       <th>Jenis Pembayaran</th>
                       <th>Tempoh Pembayaran</th>
                       <th>Jumlah (RM)</th>
@@ -35,10 +31,6 @@
                       <!--<th>Id</th>-->
                       <th>Tarikh Pembayaran</th>
                       <th>Nombor Baucer</th> 
-<<<<<<< HEAD
-=======
-                      <th>Jumlah Dalam Ringgit malaysia</th>
->>>>>>> master
                       <th>Jenis Pembayaran</th>
                       <th>Tempoh Pembayaran</th>
                       <th>Jumlah (RM)</th>
@@ -66,7 +58,6 @@
                       <td>
                         <div class="form-group">
                           <!--<label>Jumlah Pembayaran</label>-->
-<<<<<<< HEAD
                           <select name="perkara" value="" class="form-control form-group form-control-user" id="InputJenis"  placeholder="Sila Pilih Jenis Pembayaran">
                           <option>Yuran Pengajian</option>
                           <options>Tuntutan</option>
@@ -86,11 +77,8 @@
                           <option>Elaun Tangunggan</option>
                           <option>Elaun Perjalanan</option>
                         </select>
-                        </div>   
-=======
-                          <input name="jumlah" type="text" class="form-control form-control-user" value="" id="InputSum" maxlength="14">
-                        </div>                          
->>>>>>> master
+                        </div>                        
+
                       </td>
                       <td>
                         <div class="form-group">

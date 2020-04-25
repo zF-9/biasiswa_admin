@@ -14,10 +14,9 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="dataTable3" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <!--<th>Id</th>-->
                       <th>Nama</th>
                       <th>No. IC</th> 
                       <th>Jabatan/Agensi</th>
@@ -27,7 +26,6 @@
                   </thead>
                   <tfoot>
                     <tr>
-                      <!--<th>Id</th>-->
                       <th>Nama</th>
                       <th>No. IC</th> 
                       <th>Jabatan/Agensi</th>
@@ -38,7 +36,6 @@
                   <tbody>
                     @foreach($abroad as $key => $udata)
                     <tr>
-                      <!--<td>{{ $udata -> user_id }}</td>-->
                       <td><a href="/{{ $udata -> user_id }}">{{ $udata -> nama }}</a></td>
                       <td>{{ $udata -> nokp }}</td>
                       <td>{{ $udata -> jabatan }}</td>

@@ -61,7 +61,8 @@ Route::post('/permohonan_baru', 'ApplicantController@store');
 Route::get('/pengajian','ApplicantController@upload_doc');
 Route::post('/pengajian', 'ApplicantController@upload');
 
-Route::get('/editmaklumat/{id}','ApplicantController@update_maklumat');
+Route::get('/editinfopegawai/{id}','ApplicantController@pegawai_update');
+Route::get('/editinfopengajian/{id}', 'ApplicantController@pengajian_update');
 Route::post('/maklumat_baru/{id}', 'ApplicantController@newstore');
 
 
