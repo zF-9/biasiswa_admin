@@ -67,7 +67,7 @@
                     <a class="small" href="forgot-password.html">Lupa Kata Laluan?</a>
                   </div>
                   <div class="text-center">
-                    <a class="small" href="{{ route('register') }}">Ingin Daftar Masuk?</a>
+                    <a class="small" href="{{ route('register') }}">Daftar Akaun Baru?</a>
                   </div>
                 </div>
               </div>

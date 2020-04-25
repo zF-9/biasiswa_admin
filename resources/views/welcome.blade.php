@@ -19,7 +19,7 @@
                 height: 100%;/*100vh;*/
                 margin: 0;
 
-              background-image: url('storage/app/public/img/ppns.jpeg') no-repeat center center fixed; 
+              background-image: url('/storage/img/HOME.png') no-repeat center center fixed; 
               -webkit-background-size: cover;
               -moz-background-size: cover;
               -o-background-size: cover;
@@ -30,7 +30,7 @@
             .bg_home {
               /* The image used 
               background-image: url("img_girl.jpg");*/
-              background: url('storage/app/public/img/HOME.png');
+              background: url('/storage/img/HOME.png');
 
               /* Full height */
               height: 100%; 
@@ -42,7 +42,7 @@
             }
 
             .full-height {
-                height: 100vh;
+                height: 100%;
             }
 
             .flex-center {
@@ -57,7 +57,7 @@
 
             .top-right {
                 position: absolute;
-                right: 10px;
+                right: 210px;
                 top: 18px;
             }
 
@@ -86,7 +86,7 @@
     </head>
     <body>
         
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center position-ref full-height bg_home">
             @if (Route::has('login'))
             <!-- untuk check klu ada sdh org logged in ka blum -->
                 <div class="top-right links">
@@ -103,11 +103,12 @@
             @endif
 
             <div class="content">
+                <!--<img src='/storage/img/HOME.png'>-->
                     <div class="title m-b-md">
-                        Laravel la kau sturang
+                        BIASISWA DALAM PERKHIDMATAN
                     </div>
 
-                    <div class="links">
+                    <!--<div class="links">
                         <a href="https://laravel.com/docs">Docs</a>
                         <a href="https://laracasts.com">Laracasts</a>
                         <a href="https://laravel-news.com">News</a>
@@ -116,7 +117,7 @@
                         <a href="https://forge.laravel.com">Forge</a>
                         <a href="https://vapor.laravel.com">Vapor</a>
                         <a href="https://github.com/laravel/laravel">GitHub</a>
-                    </div>
+                    </div>-->
             </div>
         </div>
     </body>
