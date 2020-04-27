@@ -30,6 +30,26 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
 
   <link href="{{ asset ('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+  <style>
+
+            .bg_default {
+              /* The image used 
+              background-image: url("img_girl.jpg");*/
+              background: url('/storage/img/LOGIN_bg.png');
+
+              /* Full height */
+              height: 100%; 
+
+              /* Center and scale the image nicely */
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: cover;
+            }
+
+            .full-height {
+                height: 100%;
+            }
+</style>
   
 
 

@@ -56,6 +56,7 @@ class ApplicantController extends Controller
     }
 
     public function upload() {
+        //dd($data_id);
         $applicant_data = new info_Pengajian;
     
         $applicant_data->startStudy = request('startStudy');
@@ -72,14 +73,14 @@ class ApplicantController extends Controller
         $applicant_data->course = request('course');
                 
         $applicant_data->tawaran = request()->file('tawaran')->store('public/uploadocs');
-
-
         $applicant_data->surakuan = request()->file('surakuan')->store('public/uploadocs');
+        //$applicant_data->surakuan = request()->file('pengajian_lampiran')->store('public/uploadocs');
+
         $applicant_data->applicant_id = auth()->user()->id;
         
         $applicant_data->save();
 
-        $tanggungan_data_1 = new tanggungan_pelajar;
+        /*$tanggungan_data_1 = new tanggungan_pelajar;
 
         $tanggungan_data_1->tanggung_nama = request('tanggung_nama');
         $tanggungan_data_1->tanggung_hubungan = request('tanggung_hubungan');
@@ -109,7 +110,7 @@ class ApplicantController extends Controller
         $tanggungan_data_4->tanggung_hubungan = request('tanggung_hubungan_4');
         $tanggungan_data_4->tanggung_nokp = request('tanggung_nokp_4');
         $tanggungan_data_4->tanggung_umur = request('tanggung_umur_4');
-        $tanggungan_data_4->student_id = auth()->user()->id;                
+        $tanggungan_data_4->student_id = auth()->user()->id; */               
 
 
         /*if($tanggungan_data_4 != null) {
@@ -145,10 +146,10 @@ class ApplicantController extends Controller
           $tanggungan_data_4->save();
         }*/
 
-        $tanggungan_data_1->save();
+        /*$tanggungan_data_1->save();
         $tanggungan_data_2->save();
         $tanggungan_data_3->save();
-        $tanggungan_data_4->save();
+        $tanggungan_data_4->save();*/
 
       return Redirect()->route('user-dashboard');
     }

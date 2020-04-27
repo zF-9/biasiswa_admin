@@ -22,7 +22,7 @@
                       <th>No. IC</th> 
                       <th>Jabatan/Agensi</th>
                       <th>Gred</th>
-                      <th></th>
+                      <!--<th></th>-->
                     </tr>
                   </thead>
                   <tfoot>
@@ -32,7 +32,7 @@
                       <th>No. IC</th> 
                       <th>Jabatan/Agensi</th>
                       <th>Gred</th>
-                      <th></th>
+                      <!--<th></th>-->
                     </tr>
                   </tfoot>
                   <tbody>
@@ -43,7 +43,7 @@
                       <td>{{ $udata -> nokp }}</td>
                       <td>{{ $udata -> jabatan }}</td>
                       <td>{{ $udata -> skim }}{{ $udata -> Gred }}</td>
-                      <td>
+                      <!--<td>
                           <div class="dropdown">
                             <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-ellipsis-v text-gray-900"></i>
@@ -60,7 +60,7 @@
                             <a class="dropdown-item" href="">{{ __('Edit') }}</a>
                             </div>
                         </div>                        
-                      </td>
+                      </td>-->
                     </tr>  
                     @endforeach              
                   </tbody>

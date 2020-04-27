@@ -52,12 +52,9 @@
         element_4.classList.add("todox");      
 
         tab_1.classList.add("active");
-        tab_2.classList.add("");
-        tab_3.classList.add("");
 
-        borang_1.classList.add("show");         
-        borang_2.classList.add("");  
-        borang_3.classList.add("");          
+        borang_1.classList.add("active");    
+        borang_1.classList.add("show");               
       }
 
       else if(counter == 1){
@@ -66,13 +63,10 @@
         element_3.classList.add("todox");
         element_4.classList.add("todox");                        
 
-        tab_1.classList.add("active");
-        tab_2.classList.add("");
-        tab_3.classList.add("");
+        tab_2.classList.add("active");
 
-        borang_1.classList.add("show");         
-        borang_2.classList.add("");  
-        borang_3.classList.add("");  
+        borang_2.classList.add("active");    
+        borang_2.classList.add("show");   
       }
 
       else if(counter == 2){
@@ -81,13 +75,10 @@
         element_3.classList.add("activex");
         element_4.classList.add("todox");                        
 
-        tab_1.classList.add(" ");
-        tab_2.classList.add(" ");
         tab_3.classList.add("active");
 
-        borang_1.classList.add(" ");         
-        borang_2.classList.add(" ");  
-        borang_3.classList.add("show active");  
+        borang_3.classList.add("active");    
+        borang_3.classList.add("show");   
       }
 
       else {

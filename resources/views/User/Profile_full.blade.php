@@ -105,11 +105,10 @@ var baki = '{{ $balance }}';
 
           <div class="col-xl-12 card">
             <!--<div id="contact1" role="tabpanel" aria-labelledby="contact-tab" class="tab-pane fade px-4 py-5">-->
-                  <div class="card-body">
+                <!--<div class="card-body">
          
           
                 <div class="card-header">
-                <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" >
                   <h6 class="m-0 font-weight-bold text-primary" >Status Pembiayaan Biasiswa</h6>
                   <div class="dropdown no-arrow">
@@ -123,7 +122,6 @@ var baki = '{{ $balance }}';
                     </div>
                   </div>
                 </div>
-                <!-- Card Body -->
                 <div class="card-body">
                 <div class="table-responsive">
                   <div class="chart-pie pt-4 pb-2">
@@ -153,6 +151,59 @@ var baki = '{{ $balance }}';
                  
                 </div>
 
+              </div>
+            </div>
+          </div>-->
+
+          <div class="row" style="margin-top: 12px">
+            <!-- Area Chart -->
+            <div class="col-xl-12 col-lg-12">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Jumlah Pembiayaan</h6>
+                  <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                   <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                      <div class="dropdown-header">Muat Turun :</div>
+                      <a class="dropdown-item" onclick="myCanvas()">PNG</a>
+                      <a class="dropdown-item" href="#">JPG</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="chart-area">
+                 <canvas id="AreaChart_pembayaran"></canvas>
+                  <script type="text/javascript">
+
+                      function myCanvas(){
+                        const canvas = document.getElementById('myAreaChart');
+                       // const dataURI = canvas.toDataURL("image/png");
+
+                        //console.log(canvas);
+                        //var canvas = document.getElementById("mcanvas");
+                        image = canvas.toDataURL("image/png");
+
+                        var link = document.createElement('a');
+                         link.href = image;
+                         link.download = "jumlahpembiayaan.png";
+                         
+                         var event = new MouseEvent('click');
+                         
+                         //link.click();
+                         link.dispatchEvent(event);
+
+                     // console.log(dataURI);                        
+
+                      };
+
+                  </script>
+                <div id="chartContainer" style="height: 275px; width: 100%;"></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

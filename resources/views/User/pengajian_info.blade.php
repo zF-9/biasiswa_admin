@@ -137,7 +137,25 @@
                           <input name="surakuan" type="file" id="input-surakuan" class="custom-file-inputform-control form-control-alternative" placeholder="" value="" required="" autofocus="">
                               <span style="margin-left: 15px; width: 480px;" class="custom-file-control"></span>
                       </div>
-                  </div>                                                              
+                  </div>    
+
+                <!--<div class="row" style="margin-top: 24px">
+                        <div class="form-group col-lg-8">
+                        <div class="form-group">
+                            <label>Kos Pengajian (RM)</label>
+                            <input name="course_cost" type="text" class="form-control form-control-user" id="Input_course" placeholder="Contoh: 88888">
+                          </div>
+                        </div>     
+
+                  <div class="surat-akuan col-sm-12 col-md-9" style="align:center; padding-top: 12px">
+                      <label class="form-control-label" for="input_surakuan">Lampiran Kos Pengajian</label>
+                      <div class="col-sm-9" style="padding-left: 0px;padding-top: 9px">
+                          <input name="pengajian_lampiran" type="file" id="input-kos" class="custom-file-inputform-control form-control-alternative" placeholder="" value="" required="" autofocus="">
+                              <span style="margin-left: 15px; width: 480px;" class="custom-file-control"></span>
+                      </div>
+                  </div> 
+
+                </div> -->                                                        
 
                   <div class="text-right ol-sm-12 col-md-12">
                       <button id="apply_btn" type="submit" class="btn btn-primary mt-4">Simpan</button>
@@ -162,6 +180,22 @@
 </div>
 </div>
 </div>
+<script type="text/javascript">
+  function study_m0de() {
+    document.getElementById("stdy").disabled = false;
+    var y = document.getElementById("stdy").value; 
 
+    if(y == "Full Time") {
+      document.getElementById("option_u_form").style.display = "none";
+      document.getElementById("option_u_form").disabled = true;
+      document.getElementById("nama_u_form").style.display = "block";
+    }
+    else {
+      document.getElementById("nama_u_form").style.display = "none"; 
+      document.getElementById("nama_u_form").disabled = true;
+      document.getElementById("option_u_form").style.display = "block";
+    }
+  }  
+</script>
 
 

@@ -159,7 +159,15 @@ class UserController extends Controller
         $id = Auth::User()->id;
         $status = User::where('id', $id)->pluck('status');
 
+        /*$user_data = DB::table('applicants')->where('user_id', '=', $id)
+        ->join('users', 'users.id', 'applicants.user_id')
+        ->first();        
+
+        $avg_marks = applicant::where('user_id', '=', $id)
+        ->sum(DB::raw('Tahun1LPPT + Tahun2LPPT + Tahun3LPPT'));*/
+
         $rekod_pegawai = applicant::where('user_id', $id)->first();
+        //dd($rekod_pegawai);
         $rekod_pengajian = info_Pengajian::where('applicant_id', $id)->first();
 
         if($rekod_pegawai != null && $rekod_pengajian != null) {
@@ -185,7 +193,7 @@ class UserController extends Controller
 
         $user_noti = payment_record::where('payment_id', '=', $id)->get();   
 
-        return view('User.borang_proto', ['user_noti' => $user_noti, 'status' => $status, 'steps' => $breadcrumbs]);                   
+        return view('User.borang_proto', ['user_noti' => $user_noti, 'status' => $status, 'steps' => $breadcrumbs, 'rekod_pegawai' => $rekod_pegawai]);                   
     }
 
     public function mn_dokumen(Request $request) {

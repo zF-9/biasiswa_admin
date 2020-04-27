@@ -67,7 +67,7 @@
                 </a>
                 @endforeach
                 @foreach($noti_claim as $key => $claim)
-                <a class="dropdown-item d-flex align-items-center" href="/{{ $claim -> document_id}}/{{ $claim -> date_penyerahan}}">
+                <a class="dropdown-item d-flex align-items-center" href="/{{ $claim -> document_id}}/{{ $claim -> date_penyerahan}}/{{ $claim -> pay_id }}">
                   <div class="mr-3">
                     <div class="icon-circle bg-success">
                       <i class="fas fa-donate text-white"></i>

@@ -80,7 +80,7 @@ var baki = '{{ $balance }}';
                     <p class="leade font-italic">Jawatan: {{ $user_profile->jawatan }}</p>
                     <p class="leade font-italic">Gred: {{ $user_profile->skim }}{{ $user_profile->Gred }}</p>
                     <p class="leade font-italic">Taraf Pelantikan: {{ $user_profile->TarafLantik }}</p>
-                    <p class="leade font-italic">Tarikh Sah Jawatan: {{ $user_profile->Tsahjwtn }}</p>
+                    <p class="leade font-italic">Tarikh Sah Jawatan: {{ date('Y') }} '-' {{ $user_profile->Tsahjwtn }}</p>
                   </div>
 
                   <div id="profile1" role="tabpanel" aria-labelledby="profile-tab" class="tab-pane fade px-4 py-5">

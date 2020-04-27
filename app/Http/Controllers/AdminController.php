@@ -29,6 +29,8 @@ class AdminController extends Controller
     
     public function AdminDashboard()
     {
+        //$mytime = Carbon\Carbon::now();
+        //dd($mytime);
         $id_user = Auth::User()->id;
         $status = User::where('id', $id_user)->pluck('status');
 
@@ -299,6 +301,7 @@ class AdminController extends Controller
         $data_pemohon = DB::table('applicants')->where('isApproved', '=', '0')
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->get();
+        //dd($data_pemohon);
 
         return view('Admin.table_pemohon', ['data_pemohon' => $data_pemohon, 'noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count, 'status' => $status]); 
     }

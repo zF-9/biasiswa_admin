@@ -59,7 +59,7 @@ Route::get('/permohonan_baru','ApplicantController@apply');
 Route::post('/permohonan_baru', 'ApplicantController@store');
 
 Route::get('/pengajian','ApplicantController@upload_doc');
-Route::post('/pengajian', 'ApplicantController@upload');
+Route::post('/pengajian', 'ApplicantController@upload'); ///{data_id}
 
 Route::get('/editinfopegawai/{id}','ApplicantController@pegawai_update');
 Route::get('/editinfopengajian/{id}', 'ApplicantController@pengajian_update');
@@ -82,7 +82,6 @@ Route::post('/updateAvatar', 'UserController@update_avatar');
 
 //Route::post('/updateBudget/{req}', 'AdminController@update_budget');
 Route::get('/prototype', 'UserController@proto');
-Route::get('/protoadmin', 'AdminController@stats_protoype');
 
 Auth::routes();
 
@@ -102,6 +101,7 @@ Route::group(['middleware' => 'AdminMiddleware'], function() {
 	Route::get('/boards', 'AdminController@filtered_view');
 	Route::get('/Settings', 'AdminController@Admin_settings')->name('setting');
 	Route::post('/save_setting', 'AdminController@store_settings');
+	Route::get('/protoadmin', 'AdminController@stats_protoype');
 	Route::get('/dashboard', 'AdminController@AdminDashboard')->name('dashboard');
 	Route::get('/datatable_tuntutan', 'AdminController@viewTuntutan')->name('table_tuntutan');
 	Route::get('/datatable_pemohon', 'AdminController@dataPemohon')->name('table_pemohon');

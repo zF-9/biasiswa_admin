@@ -1,6 +1,6 @@
 @extends('layout.head') 
 
-<body class="bg-gradient-primary">
+<body class="bg-gradient-primary bg_default">
 
   <div class="container">
 
@@ -43,7 +43,6 @@
                         {{ __('Daftar') }}
                     </button>
                 <!--</a>-->
-                <hr>
                 <!--<a href="index.html" class="btn btn-google btn-user btn-block">
                   <i class="fab fa-google fa-fw"></i> Daftar Dengan Google
                 </a>

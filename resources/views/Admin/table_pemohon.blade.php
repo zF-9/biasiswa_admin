@@ -153,7 +153,7 @@
                        <div class="row">
                        <div class="col-md-10 col-md-offset-1">
                         <div class="row">
-                        <form enctype="multipart/form-data" action="/destroy/{{ $data -> user_id }}">
+                        <form enctype="multipart/form-data" action="/destroy">
                         {{ csrf_field() }}
                         <h5>Nama Pelajar : </h5><input name="applicant" type="text" id="user_name" >
                             <button type="button submit" style="margin-top:12px; margin-bottom: 12px" class="btn btn-primary">Hapus</button>
