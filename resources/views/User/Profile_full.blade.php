@@ -5,7 +5,18 @@ var bayaran = '{{ $paid }}';
 var baki = '{{ $balance }}';
 
 //alert([jumlah, total]); //[jumlah, total, tuntutan]
-
+  var jan = '{{ $jan }}';
+  var feb = '{{ $feb}}';
+  var mar = '{{ $mar }}';
+  var apr = '{{ $apr }}';
+  var may = '{{ $may }}';
+  var jun = '{{ $jun }}';
+  var jul = '{{ $jul }}';
+  var aug = '{{ $aug }}';
+  var sep = '{{ $sep }}';
+  var oct = '{{ $oct }}';
+  var nov = '{{ $nov }}';
+  var dec = '{{ $dec }}';
 </script>
 @section('content')
 
@@ -176,11 +187,11 @@ var baki = '{{ $balance }}';
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="chart-area">
-                 <canvas id="AreaChart_pembayaran"></canvas>
+                 <canvas id="AreaChart_record"></canvas>
                   <script type="text/javascript">
 
                       function myCanvas(){
-                        const canvas = document.getElementById('myAreaChart');
+                        const canvas = document.getElementById('AreaChart_record');
                        // const dataURI = canvas.toDataURL("image/png");
 
                         //console.log(canvas);
@@ -189,7 +200,7 @@ var baki = '{{ $balance }}';
 
                         var link = document.createElement('a');
                          link.href = image;
-                         link.download = "jumlahpembiayaan.png";
+                         link.download = "rekodpembiayaan.png";
                          
                          var event = new MouseEvent('click');
                          
