@@ -10,20 +10,20 @@
                     <!--    muchos disgustimos   -->
                     <div class="breadcrumb-paginationx"> 
                       <div class="" id="step1">
-                        <span></span>
-                        <p>borang 1</p>   
+                        <span>1</span>
+                        <p>Borang Maklumat</p>   
                       </div>
                       <div class="" id="step2">
-                        <span></span>
-                        <p>borang 2</p>
+                        <span>2</span>
+                        <p>Borang Pengajian</p>
                       </div>
                       <div class="" id="step3">
                         <span>3</span>
-                        <p>borang 3</p>
+                        <p>Borang Tanggungan</p>
                       </div>
                       <div class="" id="step4">
                         <span>4</span>
-                        <p>borang 4</p>
+                        <p>Permohonan Dihantar</p>
                       </div>
                     </div>
                 </div>

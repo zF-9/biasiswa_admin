@@ -35,34 +35,29 @@
           <div class="row">           
 
             <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
+            <div class="col-xl-2 col-md-6 mb-4">
               <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Pengumuman Penting</div>
+                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Perhatian</div>
                       <div> <a class="h5 mb-0 font-weight-bold text-gray-800" href="storage/iklan/iklan.png">Iklan Biasiswa</a>
                       </div>
                     </div>
-                    <div class="col-auto">
-                      <i class="fas fa-check fa-2x text-gray-300"></i>
-                    </div>
+
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
+            <div class="col-xl-2 col-md-6 mb-4">
               <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Perhatian</div>
-                      <div><a class="h5 mb-0 font-weight-bold text-gray-800" href="storage/iklan/syarat.png">Syarat-syarat Permohonan Biasiswa</a></div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-check fa-2x text-gray-300"></i>
+                      <div><a class="h5 mb-0 font-weight-bold text-gray-800" href="storage/iklan/iklanpermohonan.png">Syarat-syarat Permohonan Biasiswa</a></div>
                     </div>
                   </div>
                 </div>
@@ -70,64 +65,53 @@
             </div>
 
             <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
+            <div class="col-xl-2 col-md-6 mb-4">
               <div class="card border-left-info shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Perhatian</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">Syarat-syarat Perjanjian Biasiswa</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-check fa-2x text-gray-300"></i>
+                      <div><a class="h5 mb-0 font-weight-bold text-gray-800" href="storage/iklan/syaratperjanjian.png">Syarat-syarat Perjanjian Biasiswa</a></div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="col-xl-3 col-md-6 mb-4">
+            <div class="col-xl-2 col-md-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Perhatian</div>
+                      <div> <a class="h5 mb-0 font-weight-bold text-gray-800" href="storage/iklan/syaratbiasiswa.png">Syarat-syarat Biasiswa</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-2 col-md-6 mb-4">
+              <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Perhatian</div>
+                      <div> <a class="h5 mb-0 font-weight-bold text-gray-800" href="storage/iklan/elaun.png">Elaun Biasiswa</a></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-2 col-md-6 mb-4">
               <div class="card border-left-warning shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Perhatian</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">Syarat-syarat Biasiswa</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-check fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-xl-6 col-md-6 mb-4">
-              <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Perhatian</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">Elaun Biasiswa</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-check fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-xl-6 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Perhatian</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">Universiti Dalam Dan Luar Negara</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-check fa-2x text-gray-300"></i>
+                      <div><a class="h5 mb-0 font-weight-bold text-gray-800" href="storage/iklan/universiti.png">Universiti Dalam Dan Luar Negara</a></div>
                     </div>
                   </div>
                 </div>
@@ -135,6 +119,7 @@
             </div>
 
           <!-- Content Row -->
+
 
           <div class="row">
               <!-- Approach -->

@@ -4,9 +4,10 @@
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
         <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+
         </div>
-        <div class="sidebar-brand-text mx-3">E-Biasiswa <sup>2</sup></div>
+        <img src="storage/img/pic.png" alt="Trulli" width="80" height="50">
+       <!-- <div class="sidebar-brand-text mx-3">E-Biasiswa <sup>2</sup></div>-->
       </a>
 
       <!-- Divider -->

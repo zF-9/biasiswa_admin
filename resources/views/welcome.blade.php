@@ -85,6 +85,7 @@
         </style>
     </head>
     <body>
+
         
         <div class="flex-center position-ref full-height bg_home">
             @if (Route::has('login'))
@@ -93,6 +94,7 @@
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
+
                         <a href="{{ route('login') }}">Login</a>
 
                         @if (Route::has('register'))
@@ -104,9 +106,6 @@
 
             <div class="content">
                 <!--<img src='/storage/img/HOME.png'>-->
-                    <div class="title m-b-md">
-                        BIASISWA DALAM PERKHIDMATAN
-                    </div>
 
                     <!--<div class="links">
                         <a href="https://laravel.com/docs">Docs</a>
