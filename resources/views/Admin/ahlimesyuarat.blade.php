@@ -23,14 +23,7 @@
 
                 <div id="local_abroadContent" class="tab-content">
                   <div id="abroad" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5 show active">
-                      @include('Admin.layout.LuarNegara')
-                  </div>
-
-                  <div id="local" role="tabpanel" aria-labelledby="profile-tab" class="tab-pane fade px-4 py-5">
-                       @include('Admin.layout.dalamNegara')
-                  </div>
-                </div>
-          </div>
+                      
 
              <div class="col-xl-12 order-xl-2 p-5 bg-white rounded shadow mb-5">
 
@@ -40,22 +33,57 @@
                 <!-- Bordered tabs-->
                 <ul id="ft_pt" role="tablist" class="col-lg-12 nav nav-tabs nav-pills with-arrow flex-column flex-sm-row text-center">
                   <li class="nav-item flex-sm-fill">
-                    <a id="pt-tab" data-toggle="tab" href="#pt" role="tab" aria-controls="pt" aria-selected="true" class="nav-link text-uppercase font-weight-bold rounded-0 border active">Separuh Masa</a>
+                    <a id="pt-tab_oversea" data-toggle="tab" href="#pt_oversea" role="tab" aria-controls="pt" aria-selected="true" class="nav-link text-uppercase font-weight-bold rounded-0 border active">Separuh Masa</a>
                   </li>
                   <li class="nav-item flex-sm-fill">
-                    <a id="local-tab" data-toggle="tab" href="#ft" role="tab" aria-controls="local" aria-selected="false" class="nav-link text-uppercase font-weight-bold rounded-0 border">Sepenuh Masa</a>
+                    <a id="local-tab_oversea" data-toggle="tab" href="#ft_oversea" role="tab" aria-controls="local" aria-selected="false" class="nav-link text-uppercase font-weight-bold rounded-0 border">Sepenuh Masa</a>
                   </li>
                 </ul>
               </div>
 
                 <div id="ft_ptContent" class="tab-content">
-                  <div id="pt" role="tabpanel" aria-labelledby="contact-tab" class="tab-pane fade px-4 py-5 show active">
-                       @include('Admin.layout.partTime')
+                  <div id="pt_oversea" role="tabpanel" aria-labelledby="contact-tab" class="tab-pane fade px-4 py-5 show active">
+                       @include('Admin.layout.abroad_pt')
                   </div>
-                  <div id="ft" role="tabpanel" aria-labelledby="contact-tab" class="tab-pane fade px-4 py-5">
-                       @include('Admin.layout.fullTime')
+                  <div id="ft_oversea" role="tabpanel" aria-labelledby="contact-tab" class="tab-pane fade px-4 py-5">
+                       @include('Admin.layout.abroad_ft')
                   </div>
               </div>
+          </div>
+
+                  </div>
+
+                  <div id="local" role="tabpanel" aria-labelledby="profile-tab" class="tab-pane fade px-4 py-5">
+                       
+
+             <div class="col-xl-12 order-xl-2 p-5 bg-white rounded shadow mb-5">
+
+                <!-- Breadcrumbs -->
+                <div class="row">
+
+                <!-- Bordered tabs-->
+                <ul id="ft_pt" role="tablist" class="col-lg-12 nav nav-tabs nav-pills with-arrow flex-column flex-sm-row text-center">
+                  <li class="nav-item flex-sm-fill">
+                    <a id="pt-tab_local" data-toggle="tab" href="#pt_local" role="tab" aria-controls="pt" aria-selected="true" class="nav-link text-uppercase font-weight-bold rounded-0 border active">Separuh Masa</a>
+                  </li>
+                  <li class="nav-item flex-sm-fill">
+                    <a id="local-tab_local" data-toggle="tab" href="#ft_local" role="tab" aria-controls="local" aria-selected="false" class="nav-link text-uppercase font-weight-bold rounded-0 border">Sepenuh Masa</a>
+                  </li>
+                </ul>
+              </div>
+
+                <div id="ft_ptContent" class="tab-content">
+                  <div id="pt_local" role="tabpanel" aria-labelledby="contact-tab" class="tab-pane fade px-4 py-5 show active">
+                       @include('Admin.layout.local_pt')
+                  </div>
+                  <div id="ft_local" role="tabpanel" aria-labelledby="contact-tab" class="tab-pane fade px-4 py-5">
+                       @include('Admin.layout.local_ft')
+                  </div>
+              </div>
+          </div>
+
+                  </div>
+                </div>
           </div>
 
         </div>

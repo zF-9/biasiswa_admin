@@ -2,14 +2,19 @@
         <div class="container-fluid">
         <a href="/exportstudent"  class="btn btn-success d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-bottom: 12px"><i class="fas fa-download fa-sm text-white-50"></i> Muat Turun Senarai Pelajar</a>
 
+
+          <!-- Page Heading -->
+          <!--<h1 class="h3 mb-2 text-gray-800">Tables</h1>
+          <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>-->
+
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Senarai Pelajar Sepenuh Masa</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Senarai Pelajar Sepenuh Masa Luar Negara</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable1" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="dataTable3" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th>Nama</th>
@@ -29,12 +34,12 @@
                     </tr>
                   </tfoot>
                   <tbody>
-                     @foreach($fulltime as $key => $xdata)
+                    @foreach($abroad_ft as $key => $udata)
                     <tr>
-                      <td><a href="/{{ $xdata -> user_id }}">{{ $xdata -> nama }}</a></td>
-                      <td>{{ $xdata -> nokp }}</td>
-                      <td>{{ $xdata -> jabatan }}</td>
-                      <td>{{ $xdata -> skim }}{{ $xdata -> Gred }}</td>
+                      <td><a href="/{{ $udata -> user_id }}">{{ $udata -> nama }}</a></td>
+                      <td>{{ $udata -> nokp }}</td>
+                      <td>{{ $udata -> jabatan }}</td>
+                      <td>{{ $udata -> skim }}{{ $udata -> Gred }}</td>
                       <!--<td>
                           <div class="dropdown">
                             <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -52,9 +57,9 @@
                             <a class="dropdown-item" href="">{{ __('Edit') }}</a>
                             </div>
                         </div>                        
-                      </td>-->      
+                      </td>-->
                     </tr>  
-                     @endforeach           
+                    @endforeach              
                   </tbody>
                 </table>
               </div>
