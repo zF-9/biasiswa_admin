@@ -58,7 +58,7 @@
                              <!-- @method('delete')-->                            
                            <!-- <a class="dropdown-item" href="/approve/{{ $data -> user_id }}">Terima</a>-->
                              <button  type="button" class="dropdown-item" href="" data-toggle="modal" data-target="#budgetModal" data-id="{{ $data -> user_id }}">
-                              Terima Sebagai Pelajar
+                              Kemaskini Elaun Pelajar
                               </a>
                                 <button type="button" class="dropdown-item" data-toggle="modal" data-target="#DestroyModal" data-id="{{ $data -> user_id }}">
                                   {{ __('Hapus') }}
@@ -104,7 +104,7 @@
                        <div class="modal-content">
 
                        <div class="modal-header">
-                       <h5 class="modal-title">Sila Masukkan Peruntukan Pembiayaan Pelajar</h5>
+                       <h5 class="modal-title">Sila Masukkan Elaun Pengajian Pelajar</h5>
                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                        <span aria-hidden="true">&times;</span>
                        </button>

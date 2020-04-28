@@ -444,12 +444,12 @@ class AdminController extends Controller
     } 
 
 
-    public function approve_pelajar() {
+    public function add_elaun() {
         $pelajar = request('student');
         $value = request('budget');
 
         applicant::where('nama', '=', $pelajar)->update([
-            'isApproved'=>true,
+            //'isApproved'=>true,
             'budget' => $value
         ]);
 
@@ -459,6 +459,16 @@ class AdminController extends Controller
         //dd([$pelajar, $value]);
         
         return Redirect()->route('table_pelajar');     
+    }
+
+    public function approve_pelajar() {
+        $pelajar = request('student');
+        applicant::where('nama', '=', $pelajar)->update([
+            //'isApproved'=>true,
+            'budget' => $value
+        ]);
+
+        return Redirect()->route('');   //add route yg ngam
     }
 
     public function destroy($id)

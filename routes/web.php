@@ -109,8 +109,8 @@ Route::group(['middleware' => 'AdminMiddleware'], function() {
 	Route::get('/payment_rec/{id}', 'AdminController@payment_record');
 	Route::post('/update_pyrec/{id}/{pid}', 'AdminController@update_payment');
 	Route::get('/{ticket}/{info}/{data}', 'AdminController@payment_claim');
-	//Route::get('/approve/{id}', 'AdminController@approve_pelajar');
-	Route::get('/approve/', 'AdminController@approve_pelajar');
+	Route::get('/approve', 'AdminController@approve_pelajar');
+	Route::get('/update_cost', 'AdminController@add_elaun');
 	Route::get('/{user_data}', 'AdminController@profile_view')->name('profile_viewer');
 });
 

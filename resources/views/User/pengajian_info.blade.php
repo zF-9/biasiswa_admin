@@ -103,8 +103,11 @@
                       </div>
 
                       <div class="row">
-                        <div class="form-group col-lg-8" id="nama_u_form">
-                          
+                        <div class="form-group col-lg-8" id="">
+                          <div class="form-group">
+                            <label>Kos Pengajian (RM)</label>
+                            <input name="cost_pengajian" type="text" class="form-control form-control-user" id="cost_pengajian" placeholder="Contoh: 43000">
+                          </div>
                         </div>   
                       </div>
 
