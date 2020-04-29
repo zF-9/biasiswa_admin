@@ -63,6 +63,7 @@ class ApplicantController extends Controller
         $applicant_data->EndStudy = request('EndStudy');
         $applicant_data->AppliedKursus = request('AppliedKursus');
         $applicant_data->mod_pengajian = request('study_mod');
+        $applicant_data->cost_pengajian = request('cost_pengajian');
         $applicant_data->tmpt_study = request('tmpt_study');
 
         $uni_1 = request('Uni_name');

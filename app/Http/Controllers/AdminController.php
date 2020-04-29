@@ -441,12 +441,12 @@ class AdminController extends Controller
     } 
 
 
-    public function approve_pelajar() {
+    public function add_elaun() {
         $pelajar = request('student');
         $value = request('budget');
 
         applicant::where('nama', '=', $pelajar)->update([
-            'isApproved'=>true,
+            //'isApproved'=>true,
             'budget' => $value
         ]);
 
@@ -456,6 +456,16 @@ class AdminController extends Controller
         //dd([$pelajar, $value]);
         
         return Redirect()->route('table_pelajar');     
+    }
+
+    public function approve_pelajar() {
+        $pelajar = request('student');
+        applicant::where('nama', '=', $pelajar)->update([
+            //'isApproved'=>true,
+            'budget' => $value
+        ]);
+
+        return Redirect()->route('');   //add route yg ngam
     }
 
     public function destroy($id)
@@ -639,16 +649,19 @@ class AdminController extends Controller
         $applicant_count = $all_applicant->count();
         $noti_count = $claim_count + $applicant_count;
 
-        $abroad = $all_applicant->where('tmpt_study', '=', 'Luar Negara');
-        $local_s = $all_applicant->where('tmpt_study', '=', 'Dalam Negeri Sabah');
-        $local_c = $all_applicant->where('tmpt_study', '=', 'Luar Negeri Sabah');
+        $abroad_ft = $all_applicant->where('tmpt_study', '=', 'Luar Negara')->where('mod_pengajian', "Full Time");
+        $abroad_pt = $all_applicant->where('tmpt_study', '=', 'Luar Negara')->where('mod_pengajian', "Part Time");
+        $local_ft = $all_applicant->where('tmpt_study', '=', 'Dalam Negeri Sabah')->where('mod_pengajian', "Full Time");
+        $local_pt = $all_applicant->where('tmpt_study', '=', 'Luar Negeri Sabah')->where('mod_pengajian', "Part Time");
  
-        $local_all = $local_s->merge($local_c);
+        //$local_all = $local_s->merge($local_c);
 
-        $full_time = $all_applicant->where('mod_pengajian', '=', 'Full Time');
-        $part_time = $all_applicant->where('mod_pengajian', '=', 'Part Time');
+        //$full_time = $all_applicant->where('mod_pengajian', '=', 'Full Time');
+        //$part_time = $all_applicant->where('mod_pengajian', '=', 'Part Time');
 
-       return view('Admin.ahlimesyuarat', ['noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count, 'index' => $toggler, 'abroad' => $abroad, 'local' => $local_all,'fulltime' => $full_time, 'parttime' => $part_time, 'status' => $status]);
+
+        return view('Admin.ahlimesyuarat', ['noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count, 'index' => $toggler, 'abroad_ft' => $abroad_ft, 'abroad_pt' => $abroad_pt, 'local_ft' => $local_ft, 'local_pt' => $local_pt, 'status' => $status]);
+
     }
 
 }

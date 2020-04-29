@@ -10,14 +10,13 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Senarai Pelajar Dalam Negara</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Senarai Pelajar Separuh Masa Luar Negara</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable4" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <!--<th>Id</th>-->
                       <th>Nama</th>
                       <th>No. IC</th> 
                       <th>Jabatan/Agensi</th>
@@ -27,7 +26,6 @@
                   </thead>
                   <tfoot>
                     <tr>
-                      <!--<th>Id</th>-->
                       <th>Nama</th>
                       <th>No. IC</th> 
                       <th>Jabatan/Agensi</th>
@@ -36,9 +34,8 @@
                     </tr>
                   </tfoot>
                   <tbody>
-                    @foreach($local as $key => $udata)
+                    @foreach($abroad_pt as $key => $udata)
                     <tr>
-                      <!--<td>{{ $udata -> user_id }}</td>-->
                       <td><a href="/ahliAMSAN/{{ $udata -> user_id }}">{{ $udata -> nama }}</a></td>
                       <td>{{ $udata -> nokp }}</td>
                       <td>{{ $udata -> jabatan }}</td>
