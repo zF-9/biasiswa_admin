@@ -112,6 +112,7 @@ Route::group(['middleware' => 'AdminMiddleware'], function() {
 	//Route::get('/approve/{id}', 'AdminController@approve_pelajar');
 	Route::get('/approve/', 'AdminController@approve_pelajar');
 	Route::get('/{user_data}', 'AdminController@profile_view')->name('profile_viewer');
+	Route::get('/ahliAMSAN/{user_data}', 'AdminController@profile_AMSAN')->name('profile_AMSANs');
 });
 
 Route::get('/test', 'ChartDataController@getthejumlah');

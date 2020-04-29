@@ -295,7 +295,7 @@
          <!-- Project Card Example -->
          <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <a class="h6 m-0 font-weight-bold text-primary" href="">Jumlah Pelajar Mengikut Agensi</a>
+                  <a class="h6 m-0 font-weight-bold text-primary" href="/agensi">Jumlah Pelajar Mengikut Agensi</a>
                 </div>
                 <div class="card-body">
                   <h4 class="small font-weight-bold">
@@ -304,7 +304,7 @@
                       @else 
                           {{ __('Data tidak lengkap') }}
                       @endif
-                    <span class="float-right">{{$total_1_pel}}</span>
+                    <span class="float-right">{{$total_1_pel}} Pelajar</span>
                   </h4>
                   <div class="progress mb-4">
                     <div class="progress-bar bg-danger" role="progressbar" style="width: {{ $no_1_pel }}%" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
@@ -315,7 +315,7 @@
                       @else 
                           {{ __('Data tidak lengkap') }}
                       @endif
-                    <span class="float-right">{{$total_2_pel}}</span>
+                    <span class="float-right">{{$total_2_pel}} Pelajar</span>
                   </h4>
                   <div class="progress mb-4">
                     <div class="progress-bar bg-warning" role="progressbar" style="width: {{ $no_2_pel }}%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
@@ -326,7 +326,7 @@
                       @else 
                           {{ __('Data tidak lengkap') }}
                       @endif
-                    <span class="float-right">{{$total_3_pel}}</span>
+                    <span class="float-right">{{$total_3_pel}} Pelajar</span>
                   </h4>
                   <div class="progress mb-4">
                     <div class="progress-bar" role="progressbar" style="width: {{ $no_3_pel }}%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
@@ -337,7 +337,7 @@
                       @else 
                           {{ __('Data tidak lengkap') }}
                       @endif
-                    <span class="float-right">{{$total_4_pel}}</span>
+                    <span class="float-right">{{$total_4_pel}} Pelajar</span>
                   </h4>
                   <div class="progress mb-4">
                     <div class="progress-bar bg-info" role="progressbar" style="width: {{ $no_4_pel }}%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
@@ -348,7 +348,7 @@
                       @else 
                           {{ __('Data tidak lengkap') }}
                       @endif
-                    <span class="float-right">{{$total_5_pel}}</span>
+                    <span class="float-right">{{$total_5_pel}} Pelajar</span>
                   </h4>
                   <div class="progress">
                     <div class="progress-bar bg-success" role="progressbar" style="width: {{ $no_5_pel }}%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
@@ -592,7 +592,7 @@
                       @else 
                           {{ __('Data tidak lengkap') }}
                       @endif
-                    <span class="float-right">{{$total_1}}</span>
+                    <span class="float-right">{{$total_1}} Pemohon</span>
                   </h4>
                   <div class="progress mb-4">
                     <div class="progress-bar bg-danger" role="progressbar" style="width: {{ $no_1 }}%" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
@@ -603,7 +603,7 @@
                       @else 
                           {{ __('Data tidak lengkap') }}
                       @endif
-                    <span class="float-right">{{$total_2}}</span>
+                    <span class="float-right">{{$total_2}} Pemohon</span>
                   </h4>
                   <div class="progress mb-4">
                     <div class="progress-bar bg-warning" role="progressbar" style="width: {{ $no_2 }}%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
@@ -614,7 +614,7 @@
                       @else 
                           {{ __('Data tidak lengkap') }}
                       @endif
-                    <span class="float-right">{{$total_3}}</span>
+                    <span class="float-right">{{$total_3}} Pemohon</span>
                   </h4>
                   <div class="progress mb-4">
                     <div class="progress-bar" role="progressbar" style="width: {{ $no_3 }}%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
@@ -625,7 +625,7 @@
                       @else 
                           {{ __('Data tidak lengkap') }}
                       @endif
-                    <span class="float-right">{{$total_4}}</span>
+                    <span class="float-right">{{$total_4}} Pemohon</span>
                   </h4>
                   <div class="progress mb-4">
                     <div class="progress-bar bg-info" role="progressbar" style="width: {{ $no_4 }}%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
@@ -636,7 +636,7 @@
                       @else 
                           {{ __('Data tidak lengkap') }}
                       @endif
-                    <span class="float-right">{{$total_5}}</span>
+                    <span class="float-right">{{$total_5}} Pemohon</span>
                   </h4>
                   <div class="progress">
                     <div class="progress-bar bg-success" role="progressbar" style="width: {{ $no_5 }}%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
@@ -654,34 +654,18 @@
                 <div class="card-header py-3">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Pelajar</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Pemohon</h6>
                   <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                      <div class="dropdown-header">Dropdown Header:</div>
-                      <a class="dropdown-item" onclick="PieChart_student()">PNG</a>
-                      <a class="dropdown-item" href="#">JPG</a>
-                    </div>
                   </div>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="chart-pie pt-4 pb-2">
-                    <canvas id="PieChart_student"></canvas>
-                    <script type="text/javascript">
-                      function PieChart_student(){
-                        const canvas = document.getElementById('PieChart_student');
-                        image = canvas.toDataURL("image/png");
-                        var link = document.createElement('a');
-                         link.href = image;
-                         link.download = "PieChart_student.png";
-                         
-                         var event = new MouseEvent('click');
-                         link.dispatchEvent(event);                       
-                      };
-                    </script>
+                    <canvas id="PieChart_applicant"></canvas>
+
                   </div>
                   
                   <div class="mt-4 text-center small">
@@ -700,55 +684,7 @@
 
 
           </div>
-            <div class="col-lg-4 mb-4">
-              <!-- Pie Chart -->
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Pemohon</h6>
-                  <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                      <div class="dropdown-header">Dropdown Header:</div>
-                      <a class="dropdown-item" onclick="PieChart_applicant()">PNG</a>
-                      <a class="dropdown-item" href="#">JPG</a>
-                    </div>
-                  </div>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <div class="chart-pie pt-4 pb-2">
-                    <canvas id="PieChart_applicant"></canvas>
-                    <script type="text/javascript">
-                      function PieChart_student(){
-                        const canvas = document.getElementById('PieChart_applicant');
-                        image = canvas.toDataURL("image/png");
-                        var link = document.createElement('a');
-                         link.href = image;
-                         link.download = "PieChart_applicant.png";
-                         
-                         var event = new MouseEvent('click');
-                         link.dispatchEvent(event);                       
-                      };
-                    </script>
-                  </div>
-                  
-                  <div class="mt-4 text-center small">
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-primary"></i> Gred 41 dan Keatas
-                    </span>
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-success"></i> Gred 41 Kebawah
-                    </span>
-                  </div>
-                 
-                </div>
-
-              </div>
-            </div>
+      
           </div>
           
 

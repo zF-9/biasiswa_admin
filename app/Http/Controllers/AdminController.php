@@ -49,9 +49,6 @@ class AdminController extends Controller
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->get();
 
-        $data_student = DB::table('applicants')->where('isApproved', '=', '1')
-        ->join('up_documents', 'up_documents.applicant_id', 'applicants.user_id')
-        ->count();
 
         $data_student = $all_student->count();
 
@@ -513,6 +510,49 @@ class AdminController extends Controller
         return view('Admin.studentViewer', ['user_profile' => $user_profile, 'budget' => $total_budget, 'paid' => $paid, 'balance' => $balance_budget, 'tuntut' => $claim_doc, 'noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count, 'status' => $status]);
     }
 
+    public function profile_AMSAN($user_data) {
+        $id_user = Auth::User()->id;
+        $status = User::where('id', $id_user)->pluck('status');
+
+        $all_applicant = DB::table('applicants')->where('isApproved', '=', '0')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')->get();
+
+        $all_claim = DB::table('dokumen_results')->join('users', 'users.id', 'dokumen_results.document_id')->where('pay_status', '=', '0')->get();
+        $claim_count = $all_claim->count();
+        $applicant_count = $all_applicant->count();
+        $noti_count = $claim_count + $applicant_count;
+
+        $user_profile = DB::table('applicants')
+        ->where('user_id', '=', $user_data)
+        ->join('users', 'users.id', 'applicants.user_id')
+        ->join('info__pengajians', 'users.id', 'info__pengajians.applicant_id' )
+        ->first();
+
+        $claim_doc = DB::table('applicants')
+        ->where('user_id', '=', $user_data)
+        ->join('dokumen_results', 'dokumen_results.document_id', 'applicants.user_id')
+        ->get();
+
+        $total_budget = DB::table('applicants')
+        ->where('user_id', '=', $user_data)
+        ->sum('budget');
+
+        $total_paid = DB::table('applicants')
+        ->where('user_id', '=', $user_data)
+        ->join('payment_records', 'payment_records.payment_id', 'applicants.user_id')
+        ->sum('amount');
+
+        $total_claimed = DB::table('applicants')
+        ->where('user_id', '=', $user_data)
+        ->join('dokumen_results', 'dokumen_results.document_id', 'applicants.user_id')
+        ->sum('tuntutan');       
+
+        $paid = $total_claimed + $total_paid;
+        $balance_budget = $total_budget - $paid;
+
+        return view('Admin.profileAMSAN', ['user_profile' => $user_profile, 'budget' => $total_budget, 'paid' => $paid, 'balance' => $balance_budget, 'tuntut' => $claim_doc, 'noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count, 'status' => $status]);
+    }
+
     public function Admin_settings() {
         $id_user = Auth::User()->id;
         $status = User::where('id', $id_user)->pluck('status');
@@ -608,7 +648,7 @@ class AdminController extends Controller
         $full_time = $all_applicant->where('mod_pengajian', '=', 'Full Time');
         $part_time = $all_applicant->where('mod_pengajian', '=', 'Part Time');
 
-        return view('Admin.ahlimesyuarat', ['noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count, 'index' => $toggler, 'abroad' => $abroad, 'local' => $local_all,'fulltime' => $full_time, 'parttime' => $part_time, 'status' => $status]);
+       return view('Admin.ahlimesyuarat', ['noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count, 'index' => $toggler, 'abroad' => $abroad, 'local' => $local_all,'fulltime' => $full_time, 'parttime' => $part_time, 'status' => $status]);
     }
 
 }

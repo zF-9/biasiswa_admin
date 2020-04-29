@@ -39,7 +39,7 @@
                     @foreach($local as $key => $udata)
                     <tr>
                       <!--<td>{{ $udata -> user_id }}</td>-->
-                      <td><a href="/{{ $udata -> user_id }}">{{ $udata -> nama }}</a></td>
+                      <td><a href="/ahliAMSAN/{{ $udata -> user_id }}">{{ $udata -> nama }}</a></td>
                       <td>{{ $udata -> nokp }}</td>
                       <td>{{ $udata -> jabatan }}</td>
                       <td>{{ $udata -> skim }}{{ $udata -> Gred }}</td>

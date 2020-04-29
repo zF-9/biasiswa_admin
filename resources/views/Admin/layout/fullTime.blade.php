@@ -31,7 +31,7 @@
                   <tbody>
                      @foreach($fulltime as $key => $xdata)
                     <tr>
-                      <td><a href="/{{ $xdata -> user_id }}">{{ $xdata -> nama }}</a></td>
+                      <td><a href="/ahliAMSAN/{{ $xdata -> user_id }}">{{ $xdata -> nama }}</a></td>
                       <td>{{ $xdata -> nokp }}</td>
                       <td>{{ $xdata -> jabatan }}</td>
                       <td>{{ $xdata -> skim }}{{ $xdata -> Gred }}</td>
