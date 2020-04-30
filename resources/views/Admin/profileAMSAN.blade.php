@@ -1,5 +1,21 @@
 @extends('Admin.layout.main_Admin')
 @section('content')
+<script type="text/javascript">
+  
+ var eYear = '{{ $endY }}';
+ var sYear = '{{ $startY }}';
+
+ var imgURL = 'storage/profilePic/' + '{{ $user_profile->avatar }}' ;
+ //alert(imgURL);
+
+ var elastFour = parseInt(eYear.substr(eYear.length - 4));
+ var slastFour = parseInt(sYear.substr(sYear.length - 4));
+ var total_y = elastFour - slastFour;
+ 
+ //document.getElementById("yCount").innerHTML = total_y;
+
+</script>
+
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
@@ -18,7 +34,9 @@
                         <center> <div class="h5 mb-0 font-weight-bold text-gray-800"> <h4>Maklumat Pegawai</h4></div></center>
                         <center> <div class="card-profile-image">
                                  <a href="">
-                                 <img src="storage/profilePic/{{ $user_profile -> avatar }}" class="rounded-circle">
+                                  
+                                  <!--"storage/profilePic/{{ $user_profile -> avatar }}" -->
+                                 <img class="user_pic" class="rounded-circle">
                                  </a>
                                  </div></center>
                          <p class="leade font-italic"><b>Nama:</b> {{ $user_profile -> name }}</p>
@@ -33,17 +51,7 @@
                          <p class="leade font-italic"><b>Tempoh Perkhidmatan:</b> {{ $user_profile->tberkhidmat }}</p>
                          <p class="leade font-italic"><b>Kelulusan Akademik Tertinggi:</b> {{ $user_profile->AkademikInfo }}</p>
                         <br>
-<script type="text/javascript">
-  
- var eYear = '{{ $endY }}';
- var sYear = '{{ $startY }}';
 
- var elastFour = parseInt(eYear.substr(eYear.length - 4));
- var slastFour = parseInt(sYear.substr(sYear.length - 4));
- var total_y = elastFour - slastFour;
- 
- //document.getElementById("yCount").innerHTML = total_y;
-</script>
 
                     </div>
                   </div>
@@ -99,6 +107,8 @@
   </div>
 
   </div>        
+
+
 
 @endsection
 

@@ -81,6 +81,23 @@ var baki = '{{ $balance }}';
                     <p class="leade font-italic">Gred: {{ $user_profile->skim }}{{ $user_profile->Gred }}</p>
                     <p class="leade font-italic">Taraf Pelantikan: {{ $user_profile->TarafLantik }}</p>
                     <p class="leade font-italic">Tarikh Sah Jawatan: {{ $user_profile->Tsahjwtn }}</p>
+
+
+                  <!--<div class="text-right ol-sm-12 col-md-12">
+                  <div class="row">
+                    <form enctype="multipart/form-data" action="">
+                      <button id="apply_btn" type="submit" class="btn btn-success mt-4" style="margin-right: 3px">Dalam Pengajian</button>
+                    </form>
+                    <form enctype="multipart/form-data" action="/">
+                      <button id="apply_btn" type="submit" class="btn btn-danger mt-4" style="margin-right: 3px">Tamat Pengajian</button>
+                    </form>
+                    <form enctype="multipart/form-data" action="/">
+                      <button id="apply_btn" type="submit" class="btn btn-primary mt-4" style="margin-right: 3px">Lanjut Pengajian</button>
+                    </form>
+                  </div>
+                  </div>-->
+
+
                   </div>
 
                   <div id="profile1" role="tabpanel" aria-labelledby="profile-tab" class="tab-pane fade px-4 py-5">
@@ -91,12 +108,14 @@ var baki = '{{ $balance }}';
                     <p class="leade font-italic">Nama Universiti: {{ $user_profile->Uni_name }}</p>
                     <p class="leade font-italic">Mod Pengajian: {{ $user_profile->mod_pengajian }}</p>
                     <p class="leade font-italic">Lokasi Pengajian: {{ $user_profile->tmpt_study }}</p>
+                    <p class="leade font-italic">Status Pengajian: {{ $user_profile->status_pengajian }}</p>            
                     <p class="leade font-italic">
                         Surat Tawaran Universiti: <a href="storage/{{ $user_profile->tawaran }}">File</a>
                     </p>
                     <p class="leade font-italic">
                         Surat Akuan Ketua Jabatan: <a href="storage/{{ $user_profile->surakuan }}">File</a>
                     </p>
+                    <button id="update_btn" type="submit" class="btn btn-info mt-4" style="margin-bottom: 3px" type="button" class="dropdown-item" href="" data-toggle="modal" data-target="#UpdateModal" data-id="">Kemaskini Status Pengajian</button>
                   </div>
                   <!--<div id="contact1" role="tabpanel" aria-labelledby="contact-tab" class="tab-pane fade px-4 py-5">
                   <div class="card-body">
@@ -211,7 +230,56 @@ var baki = '{{ $balance }}';
             <!-- ends here  -->
           </div>
 
-                  </div>
+  </div>
+
+  <!-- modal Status Pengajian -->
+  <div id="UpdateModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+    <div class="modal-header">
+      <h5 class="modal-title">Kemaskini Status Pengajian Pelajar</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+                          
+          <form enctype="multipart/form-data" action="/status_update/{{ $user_profile->user_id }}">
+            {{ csrf_field() }}
+
+            <label>Nama Pelajar : </label><input name="student" type="text" id="user_id" value="{{ $user_profile -> name }}">
+
+            <div class="form-group">
+              <label>Status</label>
+              <select name="Status_updater" class="form-group form-control-user" id="stdnt_stats">
+                <option value="Dalam Pengajian">Dalam Pengajian</option>
+                <option value="Tamat Pengajian">Tamat Pengajian</option>
+                <option value="Lanjut Pengajian">Lanjut Pengajian</option>
+              </select>
+            </div>
+
+            <button type="button submit" style="margin-top:12px; margin-bottom: 12px" class="btn btn-primary">Simpan</button>
+          </form>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">              
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+      </div>  
+    </div>
+  </div>
+  </div>  
+</div>
+<!-- modal Status Pengajian -->
+
 @endsection
 
 

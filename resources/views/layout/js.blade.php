@@ -176,6 +176,7 @@
         });
 
         document.getElementById("yCount").innerHTML = total_y;
+        document.getElementByClassName("user_pic").src = imgURL;
       });
     </script>
 

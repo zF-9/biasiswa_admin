@@ -459,6 +459,7 @@ class AdminController extends Controller
     }
 
     public function approve_pelajar($student_id) {
+        dd($student_id);
         //$pelajar = request('student');
         applicant::where('user_id', '=', $student_id)->update([
             'isApproved'=>true
@@ -470,6 +471,16 @@ class AdminController extends Controller
         ]);
 
         return Redirect()->route('board');   //add route yg ngam
+    }
+
+    public function update_status($applicant_id) {
+        //$pelajar = request('student');
+        $new_status = request('Status_updater');
+
+        info_Pengajian::where('applicant_id', $applicant_id)->update([
+            'status_pengajian'=> $new_status
+        ]);
+        return Redirect()->route('table_pelajar');
     }
 
     public function destroy($id)
@@ -524,7 +535,7 @@ class AdminController extends Controller
         return view('Admin.studentViewer', ['user_profile' => $user_profile, 'budget' => $total_budget, 'paid' => $paid, 'balance' => $balance_budget, 'tuntut' => $claim_doc, 'noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count, 'status' => $status]);
     }
 
-    public function profile_AMSAN($user_name, $user_data) {
+    public function profile_AMSAN($user_name, $current_user) {
         //dd($user_name);
         $id_user = Auth::User()->id;
         $status = User::where('id', $id_user)->pluck('status');
@@ -539,7 +550,7 @@ class AdminController extends Controller
         $noti_count = $claim_count + $applicant_count;
 
         $user_current = DB::table('applicants')
-        ->where('user_id', '=', $user_data)
+        ->where('user_id', '=', $current_user)
         ->join('users', 'users.id', 'applicants.user_id')
         ->join('info__pengajians', 'users.id', 'info__pengajians.applicant_id' );
 
