@@ -36,7 +36,8 @@
                   <tbody>
                     @foreach($abroad_ft as $key => $udata)
                     <tr>
-                      <td><a href="/ahliAMSAN/{{ $udata -> user_id }}">{{ $udata -> nama }}</a></td>
+                      <!-- href="/{{ $udata -> nama }}/{{ $udata -> user_id }}" -->
+                      <td><a href="{{ route('AMLSAN', [$udata->nama, $udata->user_id]) }}">{{ $udata -> nama }}</a></td>
                       <td>{{ $udata -> nokp }}</td>
                       <td>{{ $udata -> jabatan }}</td>
                       <td>{{ $udata -> skim }}{{ $udata -> Gred }}</td>

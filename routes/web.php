@@ -98,7 +98,7 @@ Route::get('/profile_edit', function() {
 Route::post('/destroy/{id}', 'AdminController@destroy_pemohon');
 
 Route::group(['middleware' => 'AdminMiddleware'], function() {
-	Route::get('/boards', 'AdminController@filtered_view');
+	Route::get('/boards', 'AdminController@filtered_view')->name('board');
 	Route::get('/Settings', 'AdminController@Admin_settings')->name('setting');
 	Route::post('/save_setting', 'AdminController@store_settings');
 	Route::get('/protoadmin', 'AdminController@stats_protoype');
@@ -106,13 +106,13 @@ Route::group(['middleware' => 'AdminMiddleware'], function() {
 	Route::get('/datatable_tuntutan', 'AdminController@viewTuntutan')->name('table_tuntutan');
 	Route::get('/datatable_pemohon', 'AdminController@dataPemohon')->name('table_pemohon');
 	Route::get('/datatable_pelajar', 'AdminController@dataPelajar')->name('table_pelajar');
+	Route::get('/{data_app}', 'AdminController@profile_view')->name('profile_viewer');
 	Route::get('/payment_rec/{id}', 'AdminController@payment_record');
 	Route::post('/update_pyrec/{id}/{pid}', 'AdminController@update_payment');
 	Route::get('/{ticket}/{info}/{data}', 'AdminController@payment_claim');
-	Route::get('/approve', 'AdminController@approve_pelajar');
+	Route::get('/approve/{student_id}', 'AdminController@approve_pelajar');
 	Route::get('/update_cost', 'AdminController@add_elaun');
-	Route::get('/{user_data}', 'AdminController@profile_view')->name('profile_viewer');
-	Route::get('/ahliAMSAN/{user_data}', 'AdminController@profile_AMSAN')->name('profile_AMSANs');
+	Route::get('/{user_name}/{user_data}', 'AdminController@profile_AMSAN')->name('AMLSAN');
 });
 
 Route::get('/test', 'ChartDataController@getthejumlah');
