@@ -15,9 +15,16 @@ use App\User;
 use App\applicant;
 use App\upDocuments;
 use App\Dokumen_result;
+use GuzzleHttp\Client;
+use App\Mail\Mailtrap;
 use App\tanggungan_pelajar;
+use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+
+
+Route::get('/send-email', 'HomeController@mail');  
 
 Route::get('/chart', function () { 
     return view('testChart2');
@@ -89,7 +96,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/profile_edit', function() {
     return view('User.profile_edit');
-    
+ 
+
 
 //Route::get('/export_excel/excel', 'ExportExcelController@excel')->name('export_excel.excel');
 

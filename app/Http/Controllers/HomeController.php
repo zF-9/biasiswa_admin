@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use DB;
+use App\Mail\Mailtrap;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
 
 class HomeController extends Controller
 {
@@ -26,5 +29,12 @@ class HomeController extends Controller
     {
         return view('home'); //originally:home
     }
+
+    public function mail()
+    {
+        $name = 'Mr. Whoever you are';
+        Mail::to('kewlzewl.kz@gmail.com')->send(new Mailtrap($name)); 
+        return 'A message has been sent to Mailtrap!';
+    }    
 
 }

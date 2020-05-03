@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use PDF;
 use DB;
+use PDF;
 use Redirect;
 use Storage;
 use App\User;
@@ -559,39 +559,10 @@ class AdminController extends Controller
         $cost_1 = $user_current->pluck('budget');
         $cost_2 = $user_current->pluck('cost_pengajian');
         $total_cost = $cost_1[0] + $cost_2[0];
+        //dd($cost_2[0]);
 
         $endYear = $user_current->pluck('EndStudy');
         $startYear = $user_current->pluck('startStudy');
-        //dd($user_profile->user_id);
-        //($startYear[0], $endYear[0]);
-        //dd($total_cost);
-        /*$claim_doc = DB::table('applicants')
-        ->where('user_id', '=', $user_data)
-        ->join('dokumen_results', 'dokumen_results.document_id', 'applicants.user_id')
-        ->get();
-
-        $total_budget = DB::table('applicants')
-        ->where('user_id', '=', $user_data)
-        ->sum('budget');
-
-        $total_paid = DB::table('applicants')
-        ->where('user_id', '=', $user_data)
-        ->join('payment_records', 'payment_records.payment_id', 'applicants.user_id')
-        ->sum('amount');
-
-        $total_claimed = DB::table('applicants')
-        ->where('user_id', '=', $user_data)
-        ->join('dokumen_results', 'dokumen_results.document_id', 'applicants.user_id')
-        ->sum('tuntutan');       
-
-        $paid = $total_claimed + $total_paid;
-        $balance_budget = $total_budget - $paid;*/
-
-        //$date = Carbon::now();
-        //dd($date->toRfc850String());
-
-        //$time_input = strtotime($user_current->pluck('EndStudy'));  
-        //$date_input = getDate($time_input);  
 
         return view('Admin.profileAMSAN', ['user_profile' => $user_profile, 'noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count, 'status' => $status, 'total_cost' => $total_cost, 'startY' => $startYear[0], 'endY' => $endYear[0]]);
     }
