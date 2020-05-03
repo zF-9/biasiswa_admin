@@ -38,9 +38,12 @@ class AdminController extends Controller
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->count();
 
-        $data_pemohon = DB::table('applicants')->count();
+       // $data_pemohon = DB::table('applicants')->count();
 
         $all_applicant = DB::table('applicants')->where('isApproved', '=', '0')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')->get();
+
+        $all_applicantss = DB::table('applicants')
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')->get();
 
         $data_applicant = $all_applicant->count();
@@ -125,6 +128,44 @@ class AdminController extends Controller
         $payment = DB::table('payment_records')->get(['date_pymnt', 'amount']);
 
         //student: study mode
+        $FT_degrees = DB::table('applicants')->where('isApproved', '=', '1')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
+        ->where('mod_pengajian', '=', 'Full Time')
+        ->where('AppliedKursus', '=', 'Sarjana Muda')
+        ->count();
+
+        $PT_degrees = DB::table('applicants')->where('isApproved', '=', '1')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
+        ->where('mod_pengajian', '=', 'Part Time')
+        ->where('AppliedKursus', '=', 'Sarjana Muda')
+        ->count();
+
+        $FT_mstrs = DB::table('applicants')->where('isApproved', '=', '1')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
+        ->where('mod_pengajian', '=', 'Full Time')
+        ->where('AppliedKursus', '=', 'Sarjana')
+        ->count();
+
+        $PT_mstrs = DB::table('applicants')->where('isApproved', '=', '1')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
+        ->where('mod_pengajian', '=', 'Part Time')
+        ->where('AppliedKursus', '=', 'Sarjana')
+        ->count();
+
+        $FT_phds = DB::table('applicants')->where('isApproved', '=', '1')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
+        ->where('mod_pengajian', '=', 'Full Time')
+        ->where('AppliedKursus', '=', 'Doktor Falsafah')
+        ->count();
+
+        $PT_phds = DB::table('applicants')->where('isApproved', '=', '1')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
+        ->where('mod_pengajian', '=', 'Part Time')
+        ->where('AppliedKursus', '=', 'Doktor Falsafah')
+        ->count();
+
+        //student: study mode
+        //pemohon: study mode
         $FT_degree = info_Pengajian::where('mod_pengajian', '=', 'Full Time')
         ->join('applicants', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->where('AppliedKursus', '=', 'Sarjana Muda')
@@ -149,12 +190,29 @@ class AdminController extends Controller
         ->join('applicants', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->where('AppliedKursus', '=', 'Doktor Falsafah')
         ->count();
-        //student: study mode
+        //pemohon : mod pengajian
 
         //local-oversea student
         $local_state = info_Pengajian::where('tmpt_study', '=', 'Dalam Negeri Sabah')->count();
         $local_country = info_Pengajian::where('tmpt_study', '=', 'Luar Negeri Sabah')->count();
         $oversea = info_Pengajian::where('tmpt_study', '=', 'Luar Negara')->count();
+
+        $state_p = DB::table('applicants')->where('isApproved', '=', '1')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
+        ->where('tmpt_study', '=', 'Dalam Negeri Sabah')
+        ->count();
+      
+        $country_p  = DB::table('applicants')->where('isApproved', '=', '1')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
+        ->where('tmpt_study', '=', 'Luar Negeri Sabah')
+        ->count();
+       $oversea_p = DB::table('applicants')->where('isApproved', '=', '1')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
+        ->where('tmpt_study', '=', 'Luar Negara')
+        ->count();
+
+   
+     
         //local-oversea student
 
         $rank = DB::table('applicants')->select('jabatan', DB::raw('count(*) as total'))->groupBy('jabatan')->get();
@@ -234,10 +292,24 @@ class AdminController extends Controller
         ->select('Gred', DB::raw('count(*) as jumlah'))
         ->groupBy('Gred')->get()->sortBy('jumlah')->reverse()->values()->all());
 
+        $gred_degp = collect(DB::table('applicants')->where('isApproved', '=', '1')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
+        ->where('AppliedKursus', '=', 'Sarjana Muda')
+        ->select('Gred', DB::raw('count(*) as jumlah'))
+        ->groupBy('Gred')->get()->sortBy('jumlah')->reverse()->values()->all());
+
+        
+
         $deg_total = $gred_deg->sum('jumlah');
 
         //Master by gred
         $gred_mstr = collect(DB::table('applicants')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
+        ->where('AppliedKursus', '=', 'Sarjana')
+        ->select('Gred', DB::raw('count(*) as jumlah'))
+        ->groupBy('Gred')->get()->sortBy('jumlah')->reverse()->values()->all());
+
+        $gred_mstrp = collect(DB::table('applicants')->where('isApproved', '=', '1')
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->where('AppliedKursus', '=', 'Sarjana')
         ->select('Gred', DB::raw('count(*) as jumlah'))
@@ -250,12 +322,25 @@ class AdminController extends Controller
         ->select('Gred', DB::raw('count(*) as jumlah'))
         ->groupBy('Gred')->get()->sortBy('jumlah')->reverse()->values()->all());
 
-        //taraf pelantikan 
+        $gred_phdp = collect(DB::table('applicants')->where('isApproved', '=', '1')
+        ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
+        ->where('AppliedKursus', '=', 'Doktor Falsafah')
+        ->select('Gred', DB::raw('count(*) as jumlah'))
+        ->groupBy('Gred')->get()->sortBy('jumlah')->reverse()->values()->all());
+
+        //taraf pelantikan (student)
         $stdnt_tetap = $all_student->where('TarafLantik', '=', 'Tetap')->count();
         $stdnt_percubaan = $all_student->where('TarafLantik', '=', 'Percubaan')->count();        
         $stdnt_Sementara = $all_student->where('TarafLantik', '=', 'Sementara')->count();
         $stdnt_Kontrak = $all_student->where('TarafLantik', '=', 'Kontrak')->count();
 
+        //taraf pelantikan (pemohon)
+        $stdnt_tetaps = $all_applicantss->where('TarafLantik', '=', 'Tetap')->count();
+        $stdnt_percubaans = $all_applicantss->where('TarafLantik', '=', 'Percubaan')->count();        
+        $stdnt_Sementaras = $all_applicantss->where('TarafLantik', '=', 'Sementara')->count();
+        $stdnt_Kontraks = $all_applicantss->where('TarafLantik', '=', 'Kontrak')->count();
+
+    
         //notification tuntutan 
         $all_claim = DB::table('dokumen_results')->join('users', 'users.id', 'dokumen_results.document_id')->where('pay_status', '=', '0')->get();
         $claim_count = $all_claim->count();
@@ -267,7 +352,7 @@ class AdminController extends Controller
         $stdnt_below_41 = $all_student->where('Gred', '>=', '41')->count();
         
         $appcnt_above_41 = $all_applicant->where('Gred', '<=', '41')->count();  
-        $appcnt_below_41 = $all_applicant->where('Gred', '>=', '41')->count(); 
+        $appcnt_below_41 = $all_applicant->where('Gred', '>', '41')->count(); 
 
         //test api fetching 
 
@@ -280,7 +365,7 @@ class AdminController extends Controller
 
         //dd($API_data);
 
-        return view('Admin.admin_db', ['data_pemohon' => $data_pemohon, 'data_student' => $data_student, 'data_applicant' => $data_applicant,'degree' => $deg_ap, 'degreeapp' => $deg_p, 'master' => $mstr_ap, 'masterapp' => $mstr_p, 'phd' => $phd_ap, 'phdapp' => $phd_p, 'pembayaran' => $payment, 'Jan' => $Jan, 'Feb' => $Feb, 'Mar' => $Mar, 'Apr' => $Apr, 'May' => $May, 'Jun'=> $Jun, 'Jul' => $Jul, 'Aug' => $Aug, 'Sep' => $Sep, 'Oct' => $Oct, 'Nov' => $Nov, 'Dis' => $Dis, 'FT_degree' => $FT_degree, 'PT_degree' => $PT_degree, 'FT_mstr' => $FT_mstr, 'PT_mstr' => $PT_mstr, 'FT_phd' => $FT_phd, 'PT_phd' => $PT_phd, 'payment' => $monthly, 'state' => $local_state, 'country' => $local_country, 'oversea' => $oversea, 'total_1' => $total_1, 'total_2' => $total_2, 'total_3' => $total_3, 'total_4' => $total_4, 'total_5' => $total_5, 'agensi_1' => $agensi_1, 'agensi_2' => $agensi_2, 'agensi_3' => $agensi_3, 'agensi_4' => $agensi_4, 'agensi_5' => $agensi_5, 'no_1' => $no_1, 'no_2' => $no_2, 'no_3' => $no_3, 'no_4' => $no_4, 'no_5' => $no_5, 'gred_d' => $gred_deg, 'tetap' => $stdnt_tetap, 'percubaan' => $stdnt_percubaan, 'sementara' => $stdnt_Sementara, 'kontrak' => $stdnt_Kontrak, 'g_deg' => $gred_deg, 'deg_total' => $deg_total,'g_mstr' => $gred_mstr, 'g_phd' => $gred_phd, 'noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count, 's_a_41' => $stdnt_above_41, 's_b_41' => $stdnt_below_41, 'a_a_41' => $appcnt_above_41, 'a_b_41' => $appcnt_below_41, 'agensi_1_pel' => $agensi_1_pel, 'agensi_2_pel' => $agensi_2_pel, 'agensi_3_pel' => $agensi_3_pel, 'agensi_4_pel' => $agensi_4_pel, 'agensi_5_pel' => $agensi_5_pel, 'total_1_pel' => $total_1_pel, 'total_2_pel' => $total_2_pel, 'total_3_pel' => $total_3_pel, 'total_4_pel' => $total_4_pel, 'total_5_pel' => $total_5_pel, 'no_1_pel' => $no_1_pel, 'no_2_pel' => $no_2_pel, 'no_3_pel' => $no_3_pel, 'no_4_pel' => $no_4_pel, 'no_5_pel' => $no_5_pel, 'status' => $status]);
+       return view('Admin.admin_db', ['data_pemohon' => $data_pemohon, 'data_student' => $data_student, 'data_applicant' => $data_applicant,'degree' => $deg_ap, 'degreeapp' => $deg_p, 'master' => $mstr_ap, 'masterapp' => $mstr_p, 'phd' => $phd_ap, 'phdapp' => $phd_p, 'pembayaran' => $payment, 'Jan' => $Jan, 'Feb' => $Feb, 'Mar' => $Mar, 'Apr' => $Apr, 'May' => $May, 'Jun'=> $Jun, 'Jul' => $Jul, 'Aug' => $Aug, 'Sep' => $Sep, 'Oct' => $Oct, 'Nov' => $Nov, 'Dis' => $Dis, 'FT_degree' => $FT_degree, 'FT_degrees' => $FT_degrees, 'PT_degree' => $PT_degree, 'PT_degrees' => $PT_degrees, 'FT_mstr' => $FT_mstr, 'FT_mstrs' => $FT_mstrs, 'PT_mstr' => $PT_mstr, 'PT_mstrs' => $PT_mstrs, 'FT_phd' => $FT_phd, 'FT_phds' => $FT_phds, 'PT_phd' => $PT_phd, 'PT_phds' => $PT_phds, 'payment' => $monthly, 'state' => $local_state, 'states' => $state_p, 'country' => $local_country, 'countrys' => $country_p, 'overseas' => $oversea_p, 'oversea' => $oversea, 'total_1' => $total_1, 'total_2' => $total_2, 'total_3' => $total_3, 'total_4' => $total_4, 'total_5' => $total_5, 'agensi_1' => $agensi_1, 'agensi_2' => $agensi_2, 'agensi_3' => $agensi_3, 'agensi_4' => $agensi_4, 'agensi_5' => $agensi_5, 'no_1' => $no_1, 'no_2' => $no_2, 'no_3' => $no_3, 'no_4' => $no_4, 'no_5' => $no_5, 'gred_d' => $gred_deg, 'tetap' => $stdnt_tetap, 'tetaps' => $stdnt_tetaps, 'percubaan' => $stdnt_percubaan, 'percubaans' => $stdnt_percubaans, 'sementara' => $stdnt_Sementara, 'sementaras' => $stdnt_Sementaras, 'kontrak' => $stdnt_Kontrak, 'kontraks' => $stdnt_Kontraks, 'g_deg' => $gred_deg, 'g_degp' => $gred_degp, 'deg_total' => $deg_total,'g_mstr' => $gred_mstr,'g_mstrp' => $gred_mstrp, 'g_phd' => $gred_phd, 'g_phdp' => $gred_phdp, 'noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count, 's_a_41' => $stdnt_above_41, 's_b_41' => $stdnt_below_41, 'a_a_41' => $appcnt_above_41, 'a_b_41' => $appcnt_below_41, 'agensi_1_pel' => $agensi_1_pel, 'agensi_2_pel' => $agensi_2_pel, 'agensi_3_pel' => $agensi_3_pel, 'agensi_4_pel' => $agensi_4_pel, 'agensi_5_pel' => $agensi_5_pel, 'total_1_pel' => $total_1_pel, 'total_2_pel' => $total_2_pel, 'total_3_pel' => $total_3_pel, 'total_4_pel' => $total_4_pel, 'total_5_pel' => $total_5_pel, 'no_1_pel' => $no_1_pel, 'no_2_pel' => $no_2_pel, 'no_3_pel' => $no_3_pel, 'no_4_pel' => $no_4_pel, 'no_5_pel' => $no_5_pel, 'status' => $status]);
     } 
 
     public function dataPemohon() {

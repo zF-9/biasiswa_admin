@@ -9,9 +9,18 @@
   var parttime_mstr = '{{ $PT_mstr }}';
   var fulltime_phd = '{{ $FT_phd }}';
   var parttime_phd = '{{ $PT_phd }}';
+  var fulltime_degrees = '{{ $FT_degrees }}';
+  var parttime_degrees = '{{ $PT_degrees }}';
+  var fulltime_mstrs = '{{ $FT_mstrs }}';
+  var parttime_mstrs = '{{ $PT_mstrs }}';
+  var fulltime_phds = '{{ $FT_phds }}';
+  var parttime_phds = '{{ $PT_phds }}';
   var degree = '{{ $degreeapp->count() }}';
   var master = '{{ $masterapp->count() }}';
   var phd = '{{ $phdapp->count() }}';
+  var degrees = '{{ $degree->count() }}';
+  var masters = '{{ $master->count() }}';
+  var phds = '{{ $phd->count() }}';
   var Jan = '{{ $Jan }}';
   var Feb = '{{ $Feb }}';
   var Mar = '{{ $Mar }}';
@@ -24,6 +33,9 @@
   var Oct = '{{ $Oct }}';
   var Nov = '{{ $Nov }}';
   var Dis = '{{ $Dis }}';
+  var states = '{{ $states }}';
+  var countrys = '{{ $countrys }}';
+  var overseas = '{{ $overseas }}';
   var state = '{{ $state }}';
   var country = '{{ $country }}';
   var oversea = '{{ $oversea }}';
@@ -31,6 +43,10 @@
   var percubaan = '{{ $percubaan }}';
   var sementara = '{{ $sementara }}';
   var kontrak = '{{ $kontrak }}';
+  var tetaps = '{{ $tetaps }}';
+  var percubaans = '{{ $percubaans }}';
+  var sementaras = '{{ $sementaras }}';
+  var kontraks = '{{ $kontraks }}';
   var s_41a = '{{ $s_a_41 }}';
   var s_41b = '{{ $s_b_41 }}';
   var a_41a = '{{ $a_a_41 }}';
@@ -75,7 +91,7 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Jumlah Pembiayaan</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Jumlah Pembayaran Pelajar</h6>
                   <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -228,69 +244,97 @@
             </div>
         </div>
 
-            <div class="row">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 mb-4">
 
+              <!-- Bar Chart -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Jumlah Pelajar: Kursus</h6>
+                </div>
+                <div class="card-body">
+                  <div class="chart-bar">
+                    <canvas id="KursusBarChart"></canvas>
+                  </div>
+                  <hr>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-6 col-lg-6 mb-4">
+              <!-- Bar Chart -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Jumlah Pelajar Dalam & Luar Negara</h6>
+                </div>
+                <div class="card-body">
+                  <div class="chart-bar">
+                    <canvas id="BarChart-plcestdys"></canvas>
+                  </div>
+                  <hr>
+                </div>
+              </div>  
+          </div>
+          </div>
+
+          <div class="row">
             <!-- Illustrations -->
               <div class="col-lg-12 card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Jumlah Pelajar Mengikut Gred</h6>
+                 <h6 class="m-0 font-weight-bold text-primary" >Jumlah Pelajar Mengikut Mod Pengajian</h6>
                 </div>
                 <div class="card-body">
                   <div class="text-center">
-
-                  </div>
-                  <div class="row">
-
-                  <!-- Project Card Example -->
-                  <div class="col-lg-4 mb-4">
-                    <div class="card shadow mb-4">
-                      <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Pelajar Sarjana Muda</h6>
+                    <div class="row">
+                      <div class="col-lg-4 mb-4">
+                      <!-- Bar Chart -->
+                      <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                          <h6 class="m-0 font-weight-bold text-primary">Pelajar Sarjana Muda</h6>
+                        </div>
+                        <div class="card-body">
+                          <div class="chart-bar">
+                            <canvas id="BarChart-mod-degrees"></canvas>
+                          </div>
+                          <hr>
+                        </div>
                       </div>
-                      @foreach($g_deg as $key => $graded)
-                      <div class="card-body">
-                        <h4 class="small font-weight-bold">Gred: {{ $graded->Gred }}<span class="float-right">{{ $graded->jumlah }}</span></h4>           
+                    </div>
+                      <div class="col-lg-4 mb-4">
+                      <!-- Bar Chart -->
+                      <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                          <h6 class="m-0 font-weight-bold text-primary">Pelajar Sarjana</h6>
+                        </div>
+                        <div class="card-body">
+                          <div class="chart-bar">
+                            <canvas id="BarChart-mod-masters"></canvas>
+                          </div>
+                          <hr>
+                        </div>
                       </div>
-                      @endforeach
-                      <hr>
+                    </div>
+                      <div class="col-lg-4 mb-4">
+                      <!-- Bar Chart -->
+                      <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                          <h6 class="m-0 font-weight-bold text-primary">Pelajar Doktor Falsafah</h6>
+                        </div>
+                        <div class="card-body">
+                          <div class="chart-bar">
+                            <canvas id="BarChart-mod-phds"></canvas>
+                          </div>
+                          <hr>
+                        </div>
+                      </div>
                     </div>
                   </div>
-
-                    <!-- Project Card Example -->
-                  <div class="col-lg-4 mb-4">
-                    <div class="card shadow mb-4">
-                      <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Pelajar Sarjana</h6>
-                      </div>
-                      @foreach($g_mstr as $key => $graded)
-                      <div class="card-body">
-                        <h4 class="small font-weight-bold">Gred: {{ $graded->Gred }}<span class="float-right">{{ $graded->jumlah }}</span></h4>     
-                      </div>
-                      @endforeach
-                      <hr>
-                    </div>
-                  </div>
-
-                  <div class="col-lg-4 mb-4">
-                    <div class="card shadow mb-4">
-                      <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Pelajar Doktor Falsafah</h6>
-                      </div>
-                      @foreach($g_phd as $key => $graded)
-                      <div class="card-body">
-                        <h4 class="small font-weight-bold">Gred: {{ $graded->Gred }}<span class="float-right">{{ $graded->jumlah }}</span></h4>             
-                      </div>
-                      @endforeach
-                      <hr>
-                    </div>
-                  </div>
-
-              </div>
-
-
-              </div>
+                </div>
+                </div>
               </div>
         </div>
+
+            
 
          <!-- Project Card Example -->
          <div class="card shadow mb-4">
@@ -358,110 +402,96 @@
                 </div>
               </div>
               
-          <div class="row full-width">
+         <!-- <div class="row full-width">
             <div class="col-xl-12 col-lg-12 full-width">
               <div class="card shadow mb-4">
                 <div style="padding-top: 12px; margin: auto;" id="caleandar">
                 </div>
               </div>
             </div>
+          </div>-->
+
+
+
+          <div class="row">
+
+<!-- Illustrations -->
+  <div class="col-lg-12 card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Jumlah Pelajar Mengikut Gred</h6>
+    </div>
+    <div class="card-body">
+      <div class="text-center">
+
+      </div>
+      <div class="row">
+
+      <!-- Project Card Example -->
+      <div class="col-lg-4 mb-4">
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Pelajar Sarjana Muda</h6>
           </div>
-
-
-
-        <div class="row">
-            <!-- Illustrations -->
-              <div class="col-lg-12 card shadow mb-4">
-                <div class="card-header py-3">
-                 <h6 class="m-0 font-weight-bold text-primary" >Jumlah Pelajar Mengikut Mod Pengajian</h6>
-                </div>
-                <div class="card-body">
-                  <div class="text-center">
-                    <div class="row">
-                      <div class="col-lg-4 mb-4">
-                      <!-- Bar Chart -->
-                      <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                          <h6 class="m-0 font-weight-bold text-primary">Pelajar Sarjana Muda</h6>
-                        </div>
-                        <div class="card-body">
-                          <div class="chart-bar">
-                            <canvas id="BarChart-mod-degree"></canvas>
-                          </div>
-                          <hr>
-                        </div>
-                      </div>
-                    </div>
-                      <div class="col-lg-4 mb-4">
-                      <!-- Bar Chart -->
-                      <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                          <h6 class="m-0 font-weight-bold text-primary">Pelajar Sarjana</h6>
-                        </div>
-                        <div class="card-body">
-                          <div class="chart-bar">
-                            <canvas id="BarChart-mod-master"></canvas>
-                          </div>
-                          <hr>
-                        </div>
-                      </div>
-                    </div>
-                      <div class="col-lg-4 mb-4">
-                      <!-- Bar Chart -->
-                      <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                          <h6 class="m-0 font-weight-bold text-primary">Pelajar Doktor Falsafah</h6>
-                        </div>
-                        <div class="card-body">
-                          <div class="chart-bar">
-                            <canvas id="BarChart-mod-phd"></canvas>
-                          </div>
-                          <hr>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </div>
-              </div>
+          @foreach($g_degp as $key => $graded)
+          <div class="card-body">
+            <h4 class="small font-weight-bold">Gred: {{ $graded->Gred }}<span class="float-right">{{ $graded->jumlah }} Pelajar</span></h4>           
+          </div>
+          @endforeach
+          <hr>
         </div>
+      </div>
+
+        <!-- Project Card Example -->
+      <div class="col-lg-4 mb-4">
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Pelajar Sarjana</h6>
+          </div>
+          @foreach($g_mstrp as $key => $graded)
+          <div class="card-body">
+            <h4 class="small font-weight-bold">Gred: {{ $graded->Gred }}<span class="float-right">{{ $graded->jumlah }} Pelajar</span></h4>     
+          </div>
+          @endforeach
+          <hr>
+        </div>
+      </div>
+
+      <div class="col-lg-4 mb-4">
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Pelajar Doktor Falsafah</h6>
+          </div>
+          @foreach($g_phdp as $key => $graded)
+          <div class="card-body">
+            <h4 class="small font-weight-bold">Gred: {{ $graded->Gred }}<span class="float-right">{{ $graded->jumlah }} Pelajar</span></h4>             
+          </div>
+          @endforeach
+          <hr>
+        </div>
+      </div>
+
+  </div>
 
 
-        <div class="row">
-            <div class="col-xl-6 col-lg-6 mb-4">
+  </div>
+  </div>
+</div>
 
-              <!-- Bar Chart -->
-              <div class="card shadow mb-4">
+        <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Jumlah Pelajar: Kursus</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Jumlah Pelajar Mengikut Taraf Pelantikan</h6>
                 </div>
                 <div class="card-body">
                   <div class="chart-bar">
-                    <canvas id="KursusBarChart"></canvas>
-                  </div>
-                  <hr>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-xl-6 col-lg-6 mb-4">
-              <!-- Bar Chart -->
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Jumlah Pelajar Dalam & Luar Negara</h6>
-                </div>
-                <div class="card-body">
-                  <div class="chart-bar">
-                    <canvas id="BarChart-plcestdy"></canvas>
+                    <canvas id="BarChart-tlantik"></canvas>
                   </div>
                   <hr>
                 </div>
               </div>  
-          </div>
-          </div>
+        </div>
         
 
-        </div>
+        
 
           <!-- Content Row -->
           <div id="profile1" role="tabpanel" aria-labelledby="profile-tab" class="tab-pane fade px-4 py-5">
@@ -562,23 +592,100 @@
             </div>
 
             </div>
+            <div class="row">
+            <div class="col-xl-6 col-lg-6 mb-4">
 
-
-
-
-
-        <!-- Content Row -->
-        <div class="row">
-
-            <!-- Illustrations -->
-            <div class="col-lg-12 card shadow mb-4">
-
+              <!-- Bar Chart -->
+              <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Statistik Agensi/Gred</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Jumlah Pemohon Mengikut Kursus</h6>
                 </div>
+                <div class="card-body">
+                  <div class="chart-bar">
+                    <canvas id="KursusBarCharts"></canvas>
+                  </div>
+                  <hr>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-6 col-lg-6 mb-4">
+              <!-- Bar Chart -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Jumlah Pemohon Dalam & Luar Negara</h6>
+                </div>
+                <div class="card-body">
+                  <div class="chart-bar">
+                    <canvas id="BarChart-plcestdy"></canvas>
+                  </div>
+                  <hr>
+                </div>
+              </div>  
+          </div>
+          </div>
+
+          <div class="row">
+            <!-- Illustrations -->
+              <div class="col-lg-12 card shadow mb-4">
+                <div class="card-header py-3">
+                 <h6 class="m-0 font-weight-bold text-primary" >Jumlah Pelajar Mengikut Mod Pengajian</h6>
+                </div>
+                <div class="card-body">
+                  <div class="text-center">
+                    <div class="row">
+                      <div class="col-lg-4 mb-4">
+                      <!-- Bar Chart -->
+                      <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                          <h6 class="m-0 font-weight-bold text-primary">Pelajar Sarjana Muda</h6>
+                        </div>
+                        <div class="card-body">
+                          <div class="chart-bar">
+                            <canvas id="BarChart-mod-degree"></canvas>
+                          </div>
+                          <hr>
+                        </div>
+                      </div>
+                    </div>
+                      <div class="col-lg-4 mb-4">
+                      <!-- Bar Chart -->
+                      <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                          <h6 class="m-0 font-weight-bold text-primary">Pelajar Sarjana</h6>
+                        </div>
+                        <div class="card-body">
+                          <div class="chart-bar">
+                            <canvas id="BarChart-mod-master"></canvas>
+                          </div>
+                          <hr>
+                        </div>
+                      </div>
+                    </div>
+                      <div class="col-lg-4 mb-4">
+                      <!-- Bar Chart -->
+                      <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                          <h6 class="m-0 font-weight-bold text-primary">Pelajar Doktor Falsafah</h6>
+                        </div>
+                        <div class="card-body">
+                          <div class="chart-bar">
+                            <canvas id="BarChart-mod-phd"></canvas>
+                          </div>
+                          <hr>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </div>
+              </div>
+        </div>
+
+    
             <div class="row">
             <!-- Content Column -->
-            <div class="col-lg-4 mb-4">
+            <div class="col-lg-12 mb-4">
 
               <!-- Project Card Example -->
               <div class="card shadow mb-4">
@@ -645,104 +752,93 @@
 
                 </div>
               </div>
-            </div> <!-- row end -->
+            </div> 
 
-
-            <div class="col-lg-4 mb-4">
-              <!-- Pie Chart -->
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Pemohon</h6>
-                  <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                  </div>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <div class="chart-pie pt-4 pb-2">
-                    <canvas id="PieChart_applicant"></canvas>
-
-                  </div>
-                  
-                  <div class="mt-4 text-center small">
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-primary"></i> Gred 41 Dan Keatas
-                    </span>
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-success"></i> Gred 41 Kebawah
-                    </span>
-                  </div>
-                 
-                </div>
-
-              </div>
-            </div>
-
-
-          </div>
-      
-          </div>
-          
-
-          </div>
         </div> <!-- row closed -->
+
+        <div class="row">
+
+<!-- Illustrations -->
+  <div class="col-lg-12 card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Jumlah Pemohon Mengikut Gred</h6>
+    </div>
+    <div class="card-body">
+      <div class="text-center">
+
+      </div>
+      <div class="row">
+
+      <!-- Project Card Example -->
+      <div class="col-lg-4 mb-4">
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Pemohon Sarjana Muda</h6>
+          </div>
+          @foreach($g_deg as $key => $graded)
+          <div class="card-body">
+            <h4 class="small font-weight-bold">Gred: {{ $graded->Gred }}<span class="float-right">{{ $graded->jumlah }} Pemohon</span></h4>           
+          </div>
+          @endforeach
+          <hr>
+        </div>
+      </div>
+
+        <!-- Project Card Example -->
+      <div class="col-lg-4 mb-4">
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Pemohon Sarjana</h6>
+          </div>
+          @foreach($g_mstr as $key => $graded)
+          <div class="card-body">
+            <h4 class="small font-weight-bold">Gred: {{ $graded->Gred }}<span class="float-right">{{ $graded->jumlah }} Pemohon</span></h4>     
+          </div>
+          @endforeach
+          <hr>
+        </div>
+      </div>
+
+      <div class="col-lg-4 mb-4">
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Pemohon Doktor Falsafah</h6>
+          </div>
+          @foreach($g_phd as $key => $graded)
+          <div class="card-body">
+            <h4 class="small font-weight-bold">Gred: {{ $graded->Gred }}<span class="float-right">{{ $graded->jumlah }} Pemohon</span></h4>             
+          </div>
+          @endforeach
+          <hr>
+        </div>
+      </div>
+
+  </div>
+
+
+  </div>
+  </div>
         </div>
 
 
             <div class="row">
 
             <!-- Pie Chart -->
-            <div class="col-lg-4 mb-4">
+            <div class="col-lg-12 mb-4">
               <!-- Bar Chart -->
-              <div class="card shadow mb-4">
+                      <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Status Permohonan Biasiswa</h6>
-                  <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                      <div class="dropdown-header">Dropdown Header:</div>
-                      <a class="dropdown-item" onclick="myChartTT()">PNG</a>
-                      <a class="dropdown-item" href="#">JPG</a>
-                    </div>
-                  </div>
+                  <h6 class="m-0 font-weight-bold text-primary">Jumlah Pemohon Mengikut Taraf Pelantikan</h6>
                 </div>
-                <!-- Card Body -->
                 <div class="card-body">
-                  <div class="chart-pie pt-4 pb-2">
-                    <canvas id="PieChart_TT"></canvas>
-                    <script type="text/javascript">
-                      function myChartTT(){
-                       const canvas = document.getElementById('PieChart_TT');
-                       console.log(canvas);
-                       image = canvas.toDataURL("image/png");
-                       var link = document.createElement('a');
-                       link.download = "JumlahPemohon.png";
-                       link.href = image;
-                       link.click();
-                      };
-                    </script>
+                  <div class="chart-bar">
+                    <canvas id="BarChart-tlantiks"></canvas>
                   </div>
-                  
-                  <div class="mt-4 text-center small">
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-primary"></i> Terima
-                    </span>
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-success"></i> Diproses
-                    </span>
-                  </div>
-                 
+                  <hr>
                 </div>
+              </div>  
+        
 
-              </div>
             </div>
 
 
@@ -750,17 +846,7 @@
 
             <div class="col-xl-8 col-lg-8 mb-4">
               <!-- Bar Chart -->
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Jumlah Permohonan: Taraf Pelantikan</h6>
-                </div>
-                <div class="card-body">
-                  <div class="chart-bar">
-                    <canvas id="BarChart-tlantik"></canvas>
-                  </div>
-                  <hr>
-                </div>
-              </div>  
+            
           </div>
         
           </div>

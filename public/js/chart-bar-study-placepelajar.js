@@ -28,17 +28,17 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 }
 
 // Bar Chart Example
-var ctx = document.getElementById("myBarChart");
-var myBarChart = new Chart(ctx, {
+var ctx = document.getElementById("BarChart-plcestdys");
+var BarChart_mod = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ["January", "February", "March", "April", "May", "June"],
+    labels: ["Dalam Negeri", "Luar Negeri", "Luar Negara"],
     datasets: [{
       label: "Jumlah",
       backgroundColor: "#1cc88a",
       hoverBackgroundColor: "#e74a3b",
       borderColor: "#4e73df",
-      data: [12, 3, 23, 48, 9, 14],
+      data: [states, countrys, overseas],
     }],
   },
   options: {

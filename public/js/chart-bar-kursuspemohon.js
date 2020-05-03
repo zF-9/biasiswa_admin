@@ -28,17 +28,17 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 }
 
 // Bar Chart Example
-var ctx = document.getElementById("myBarChart");
+var ctx = document.getElementById("KursusBarCharts");
 var myBarChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ["January", "February", "March", "April", "May", "June"],
+    labels: ["Sarjana Muda", "Sarjana", "Doktor Falsafah"],
     datasets: [{
       label: "Jumlah",
-      backgroundColor: "#1cc88a",
-      hoverBackgroundColor: "#e74a3b",
+      backgroundColor: "#4e73df",
+      hoverBackgroundColor: "#2e59d9",
       borderColor: "#4e73df",
-      data: [12, 3, 23, 48, 9, 14],
+      data: [degrees, masters, phds],
     }],
   },
   options: {
@@ -54,7 +54,7 @@ var myBarChart = new Chart(ctx, {
     scales: {
       xAxes: [{
         time: {
-          unit: 'month'
+          unit: 'months'
         },
         gridLines: {
           display: false,

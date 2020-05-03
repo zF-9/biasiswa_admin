@@ -34,7 +34,7 @@ var BarChart_mod = new Chart(ctx, {
   data: {
     labels: ["Dalam Negeri", "Luar Negeri", "Luar Negara"],
     datasets: [{
-      label: "Total",
+      label: "Jumlah",
       backgroundColor: "#1cc88a",
       hoverBackgroundColor: "#e74a3b",
       borderColor: "#4e73df",
