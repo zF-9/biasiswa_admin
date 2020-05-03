@@ -28,7 +28,7 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 }
 
 // Bar Chart Example
-var ctx = document.getElementById("BarChart-mod-degree");
+var ctx = document.getElementById("BarChart-mod-degrees");
 var BarChart_mod = new Chart(ctx, {
   type: 'bar',
   data: {
@@ -38,7 +38,7 @@ var BarChart_mod = new Chart(ctx, {
       backgroundColor: "#36b9cc", 
       hoverBackgroundColor: "#1cc88a",
       borderColor: "#4e73df",
-      data: [fulltime_degree, parttime_degree],
+      data: [fulltime_degrees, parttime_degrees],
     }],
   },
   options: {
@@ -112,7 +112,7 @@ var BarChart_mod = new Chart(ctx, {
 
 
 // Bar Chart Example
-var ctx = document.getElementById("BarChart-mod-master");
+var ctx = document.getElementById("BarChart-mod-masters");
 var BarChart_mod = new Chart(ctx, {
   type: 'bar',
   data: {
@@ -122,7 +122,7 @@ var BarChart_mod = new Chart(ctx, {
       backgroundColor: "#36b9cc", 
       hoverBackgroundColor: "#1cc88a",
       borderColor: "#4e73df",
-      data: [fulltime_mstr, parttime_mstr],
+      data: [fulltime_mstrs, parttime_mstrs],
     }],
   },
   options: {
@@ -195,7 +195,7 @@ var BarChart_mod = new Chart(ctx, {
 });
 
 // Bar Chart Example
-var ctx = document.getElementById("BarChart-mod-phd");
+var ctx = document.getElementById("BarChart-mod-phds");
 var BarChart_mod = new Chart(ctx, {
   type: 'bar',
   data: {
@@ -205,7 +205,7 @@ var BarChart_mod = new Chart(ctx, {
       backgroundColor: "#36b9cc", 
       hoverBackgroundColor: "#1cc88a",
       borderColor: "#4e73df",
-      data: [fulltime_phd, parttime_phd],
+      data: [fulltime_phds, parttime_phds],
     }],
   },
   options: {

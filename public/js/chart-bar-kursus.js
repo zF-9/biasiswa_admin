@@ -32,9 +32,9 @@ var ctx = document.getElementById("KursusBarChart");
 var myBarChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ["Degree", "master", "PhD"],
+    labels: ["Sarjana Muda", "Sarjana", "Doktor Falsafah"],
     datasets: [{
-      label: "Total",
+      label: "Jumlah",
       backgroundColor: "#4e73df",
       hoverBackgroundColor: "#2e59d9",
       borderColor: "#4e73df",

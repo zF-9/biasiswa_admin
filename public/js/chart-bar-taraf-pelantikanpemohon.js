@@ -28,17 +28,17 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 }
 
 // Bar Chart Example
-var ctx = document.getElementById("myBarChart");
-var myBarChart = new Chart(ctx, {
+var ctx = document.getElementById("BarChart-tlantiks");
+var BarChart_mod = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ["January", "February", "March", "April", "May", "June"],
+    labels: ["Tetap", "Percubaan", "Sementara", "Kontrak"],
     datasets: [{
       label: "Jumlah",
-      backgroundColor: "#1cc88a",
-      hoverBackgroundColor: "#e74a3b",
+      backgroundColor: "#e74a3b",
+      hoverBackgroundColor: "#dde336",
       borderColor: "#4e73df",
-      data: [12, 3, 23, 48, 9, 14],
+      data: [tetaps, percubaans, sementaras, kontraks],
     }],
   },
   options: {
