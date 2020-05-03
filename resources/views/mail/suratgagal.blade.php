@@ -40,34 +40,34 @@
 
         <div class="divContents">
 	<p>
-Tahniah, dimaklumkan bahawa permohonan tuan/puan untuk tajaan Biasiswa Pegawai Kerajaan Negeri Sabah untuk pengajian berikut adalah <b style="color:blue">BERJAYA</b>;
+Dukacita dimaklumkan bahawa permohonan tuan/puan untuk tajaan Biasiswa Pegawai Kerajaan Negeri Sabah untuk pengajian berikut adalah <b style="color:red">TIDAK BERJAYA</b>;
 
 	</p>
 
-<table style="width:50%">
+<table style="width:100%">
   <tr>
-    <td><b>Nama :</b></td>
-    <td>   Contoh    </td> 
+    <td><b>Nama </b></td>
+    <td>   {{$name}}    </td> 
 
   </tr>
   <tr>
-    <td><b>Nama Pusat Pengajian :</b></td>
-    <td>  Contoh     </td>
+    <td><b>Nama Pusat Pengajian </b></td>
+    <td>  {{$Uni_name}}    </td>
 
   </tr>
   <tr>
-    <td><b>Kursus Pengajian :</b></td>
-    <td>  Contoh     </td>
+    <td><b>Kursus Pengajian </b></td>
+    <td>  {{$course}}     </td>
 
   </tr>
   <tr>
-    <td><b>Mod Pengajian :</b></td>
-    <td>  Contoh    </td>
+    <td><b>Mod Pengajian </b></td>
+    <td>  {{$mod_pengajian}}    </td>
 
   </tr>
   <tr>
-    <td><b>Tempoh Tawaran :</b></td>
-    <td>  Contoh    </td>
+    <td><b>Tempoh Tawaran </b></td>
+    <td>   {{$sYear}} Sehingga {{$eYear}}  </td>
 
   </tr>
 </table>
@@ -75,25 +75,16 @@ Tahniah, dimaklumkan bahawa permohonan tuan/puan untuk tajaan Biasiswa Pegawai K
 
 
 
-	    <p>
-Surat Tawaran Tajaan Biasiswa akan dikeluarkan bersama dokumen berikut:
-
-	    </p>
 
 	    <p>
-     i.    Surat Setuju Terima Tawaran Biasiswa Pegawai Kerajaan Negeri Sabah; dan
-	    </p>
- 
-	    <p>	
-    ii.     Borang Perjanjian Biasiswa Pegawai Kerajaan Negeri Sabah kerana melanjutkan pengajian ini disertakan.
+Rayuan untuk permohonan Tajaan Biasiswa Pegawai Kerajaan Negeri Sabah boleh dilakukan dengan membuat permohonan bertulis kepada Ketua Pengarah Perkhidmatan Awam Negeri Sabah.
+
 	    </p>
 
             <p>
-Sila lengkapkan dan kembalikan dokumen-dokumen tersebut kepada Jabatan Perkhidmatan Awam Negeri Sabah dalam tempoh empat belas (14) hari dari tarikh surat tawaran dikeluarkan atau tawaran ini akan terbatal.
+Untuk maklumat lanjut, sila hubungi Bahagian Biasiswa dan Latihan dalam Perkhidmatan di talian 088-368600/088-368651/088-368721/088-368717.
             </p>
 
-            <p>
-Untuk maklumat lanjut, sila hubungi Bahagian Biasiswa dan Latihan dalam Perkhidmatan di talian 088-368600/088-368651/088-368721/088-368717
         </div>
 
         <div class="divSelamat">

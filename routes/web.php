@@ -23,8 +23,14 @@ use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
-
+//test email
 Route::get('/send-email', 'HomeController@mail');  
+
+Route::get('sendbasicemail','MailController@basic_email');
+Route::get('sendhtmlemail/{data}','MailController@succeed_email')->name('email-lulus');
+Route::get('sendemail/{data}','MailController@failed_email')->name('email-gagal');
+Route::get('sendattachmentemail','MailController@attachment_email');
+//test email
 
 Route::get('/chart', function () { 
     return view('testChart2');
@@ -119,6 +125,7 @@ Route::group(['middleware' => 'AdminMiddleware'], function() {
 	Route::get('/status_update/{data}', 'AdminController@update_status');
 	Route::get('/{ticket}/{info}/{data}', 'AdminController@payment_claim');
 	Route::get('/approve/{student_id}', 'AdminController@approve_pelajar');
+	Route::get('/disapprove/{student_id}', 'AdminController@disapprove_pelajar');
 	Route::get('/update_cost', 'AdminController@add_elaun');
 	//Route::get('/{user_name}/{user_data}', 'AdminController@profile_AMSAN')->name('AMLSAN');
 	//Route::get('/{data_app}', 'AdminController@profile_view')->name('profile_viewer');

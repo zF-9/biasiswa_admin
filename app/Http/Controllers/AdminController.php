@@ -544,18 +544,29 @@ class AdminController extends Controller
     }
 
     public function approve_pelajar($student_id) {
-        dd($student_id);
-        //$pelajar = request('student');
-        applicant::where('user_id', '=', $student_id)->update([
+
+        /*applicant::where('user_id', '=', $student_id)->update([
             'isApproved'=>true
-            //'budget' => $value
         ]);
 
         User::where('id', '=', $student_id)->update([
             'status'=>'student'
+        ]);*/
+
+        return Redirect::Route('email-lulus', array($student_id));
+    }
+
+    public function disapprove_pelajar($student_id) {
+        
+        /*applicant::where('user_id', '=', $student_id)->update([
+            'isApproved'=>false
         ]);
 
-        return Redirect()->route('board');   //add route yg ngam
+        User::where('id', '=', $student_id)->update([
+            'status'=>'applicant'
+        ]);*/
+
+        return Redirect::Route('email-gagal', array($student_id));
     }
 
     public function update_status($applicant_id) {

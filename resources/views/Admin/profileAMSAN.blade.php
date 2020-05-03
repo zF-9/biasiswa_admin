@@ -87,7 +87,7 @@
                     <form enctype="multipart/form-data" action="/approve/{{ $user_profile -> user_id }}">
                       <button id="apply_btn" type="submit" class="btn btn-success mt-4" style="margin-right: 3px">Lulus</button>
                     </form>
-                    <form enctype="multipart/form-data" action="/">
+                    <form enctype="multipart/form-data" action="/approve/{{ $user_profile -> user_id }}"">
                       <button id="apply_btn" type="submit" class="btn btn-danger mt-4" style="margin-right: 3px">Gagal</button>
                     </form>
                     <form enctype="multipart/form-data" action="/">

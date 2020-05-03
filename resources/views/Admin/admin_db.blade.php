@@ -72,6 +72,18 @@
             <h1 class="h3 mb-0 text-gray-800">Halaman Utama</h1>
             <a href="/export" class="btn btn-success d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Muat Turun Laporan</a>
           </div>
+
+          @if($errors->any())
+          <div class="col-lg-6 mb-4">
+            <div class="card bg-info text-white shadow">
+              <div class="card-body">
+                Perhatian
+                <div class="text-white-50 small">{{$errors->first()}}</div>
+               </div>
+              </div>
+          </div>    
+          @endif
+
           <ul id="myTab1" role="tablist" class="nav nav-tabs nav-pills with-arrow flex-column flex-sm-row text-center">
                   <li class="nav-item flex-sm-fill">
                     <a id="home1-tab" data-toggle="tab" href="#home1" role="tab" aria-controls="home1" aria-selected="true" class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0 border active">Pelajar</a>
