@@ -174,6 +174,9 @@
           startYear: 2012,
           endYear: 2048
         });
+
+        document.getElementById("yCount").innerHTML = total_y;
+        document.getElementByClassName("user_pic").src = imgURL;
       });
     </script>
 

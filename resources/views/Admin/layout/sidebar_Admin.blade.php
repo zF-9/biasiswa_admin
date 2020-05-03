@@ -7,7 +7,7 @@
           <!--<i class="fas fa-laugh-wink"></i>-->
         </div>
         <!--<div class="sidebar-brand-text mx-3">E-Biasiswa <sup>2</sup></div>-->
-         <img src="storage/img/pic.png" alt="Trulli" width="80" height="50">
+         <img src="{{url('storage/img/pic.png')}}" alt="Trulli" width="80" height="50"> <!-- "storage/img/pic.png" -->
       </a>
 
       <!-- Divider -->
