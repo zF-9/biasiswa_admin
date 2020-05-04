@@ -52,7 +52,7 @@ class ApplicantController extends Controller
 
         $applicant->save();
 
-        return Redirect()->route('user-dashboard');
+        return Redirect()->back();
     }
 
     public function upload() {

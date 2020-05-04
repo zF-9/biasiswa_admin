@@ -545,13 +545,16 @@ class AdminController extends Controller
 
     public function approve_pelajar($student_id) {
 
-        /*applicant::where('user_id', '=', $student_id)->update([
-            'isApproved'=>true
+
+        /*User::where('id', '=', $student_id)->update([
+            'status'=>'student'
         ]);
 
-        User::where('id', '=', $student_id)->update([
-            'status'=>'student'
+        applicant::where('user_id', '=', $student_id)->update([
+            'isApproved'=>true
         ]);*/
+
+   
 
         return Redirect::Route('email-lulus', array($student_id));
     }
@@ -749,10 +752,10 @@ class AdminController extends Controller
         $applicant_count = $all_applicant->count();
         $noti_count = $claim_count + $applicant_count;
 
-        $abroad_ft = $all_applicant->where('tmpt_study', '=', 'Luar Negara')->where('mod_pengajian', "Full Time");
-        $abroad_pt = $all_applicant->where('tmpt_study', '=', 'Luar Negara')->where('mod_pengajian', "Part Time");
-        $local_ft = $all_applicant->where('tmpt_study', '=', 'Dalam Negeri Sabah')->where('mod_pengajian', "Full Time");
-        $local_pt = $all_applicant->where('tmpt_study', '=', 'Luar Negeri Sabah')->where('mod_pengajian', "Part Time");
+        $abroad_ft = $all_applicant->where('tmpt_study', '=', 'Luar Negara')->where('mod_pengajian', "Sepenuh Masa");
+        $abroad_pt = $all_applicant->where('tmpt_study', '=', 'Luar Negara')->where('mod_pengajian', "Separuh Masa");
+        $local_ft = $all_applicant->where('tmpt_study', '=', 'Dalam Negeri Sabah')->where('mod_pengajian', "Sepenuh Masa");
+        $local_pt = $all_applicant->where('tmpt_study', '=', 'Luar Negeri Sabah')->where('mod_pengajian', "Separuh Masa");
  
         //$local_all = $local_s->merge($local_c);
 

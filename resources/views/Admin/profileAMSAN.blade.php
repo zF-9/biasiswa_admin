@@ -35,7 +35,7 @@
                         <center> <div class="card-profile-image">
                                  <a href="">
                                   
-                                  <!--"storage/profilePic/{{ $user_profile -> avatar }}" -->
+                                <!-- <img src="storage/profilePic/{{ $user_profile -> avatar }}" class="rounded-circle"> -->
                                  <img class="user_pic" class="rounded-circle">
                                  </a>
                                  </div></center>
@@ -87,7 +87,7 @@
                     <form enctype="multipart/form-data" action="/approve/{{ $user_profile -> user_id }}">
                       <button id="apply_btn" type="submit" class="btn btn-success mt-4" style="margin-right: 3px">Lulus</button>
                     </form>
-                    <form enctype="multipart/form-data" action="/approve/{{ $user_profile -> user_id }}"">
+                    <form enctype="multipart/form-data" action="/disapprove/{{ $user_profile -> user_id }}"">
                       <button id="apply_btn" type="submit" class="btn btn-danger mt-4" style="margin-right: 3px">Gagal</button>
                     </form>
                     <form enctype="multipart/form-data" action="/">
