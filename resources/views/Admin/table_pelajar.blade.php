@@ -54,7 +54,7 @@
                      @foreach($data_student as $key => $user_data)
                     <tr>
                       <td>{{ $user_data -> id }}</td>
-                      <td><a href="{{ route('profile_viewer', [$user_data -> id ]) }}">{{ $user_data -> nama }}</a></td>
+                      <td><a href="{{ route('profile_viewer', [$user_data -> user_id ]) }}">{{ $user_data -> nama }}</a></td>
                       <!-- "/{{$user_data -> user_id}}" -->
                       <td>{{ $user_data -> email }}</td>
                       <td>{{ $user_data -> nokp }}</td>
@@ -76,7 +76,7 @@
                             </form>    
  
 
-                              <a class="dropdown-item" href="/approve/{{ $user_data -> user_id }}">{{ __('Hantar Email') }}</a>
+                              <a class="dropdown-item" href="/sendhtmlemail/{{ $user_data -> user_id }}">{{ __('Hantar Email') }}</a>
            
 
 

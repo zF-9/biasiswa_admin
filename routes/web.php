@@ -25,10 +25,7 @@ use Illuminate\Support\Facades\Mail;
 
 //test email
 Route::get('/send-email', 'HomeController@mail');  
-
 Route::get('sendbasicemail','MailController@basic_email');
-Route::get('sendhtmlemail/{data}','MailController@succeed_email')->name('email-lulus');
-Route::get('sendemail/{data}','MailController@failed_email')->name('email-gagal');
 Route::get('sendattachmentemail','MailController@attachment_email');
 //test email
 
@@ -120,6 +117,8 @@ Route::group(['middleware' => 'AdminMiddleware'], function() {
 	Route::get('/datatable_tuntutan', 'AdminController@viewTuntutan')->name('table_tuntutan');
 	Route::get('/datatable_pemohon', 'AdminController@dataPemohon')->name('table_pemohon');
 	Route::get('/datatable_pelajar', 'AdminController@dataPelajar')->name('table_pelajar');
+	Route::get('sendhtmlemail/{data}','MailController@succeed_email')->name('email-lulus');
+	Route::get('sendemail/{data}','MailController@failed_email')->name('email-gagal');
 	Route::get('/payment_rec/{id}', 'AdminController@payment_record');
 	Route::post('/update_pyrec/{id}/{pid}', 'AdminController@update_payment');
 	Route::get('/status_update/{data}', 'AdminController@update_status');
