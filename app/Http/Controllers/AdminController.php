@@ -130,63 +130,63 @@ class AdminController extends Controller
         //student: study mode
         $FT_degrees = DB::table('applicants')->where('isApproved', '=', '1')
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
-        ->where('mod_pengajian', '=', 'Full Time')
+        ->where('mod_pengajian', '=', 'Sepenuh Masa')
         ->where('AppliedKursus', '=', 'Sarjana Muda')
         ->count();
 
         $PT_degrees = DB::table('applicants')->where('isApproved', '=', '1')
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
-        ->where('mod_pengajian', '=', 'Part Time')
+        ->where('mod_pengajian', '=', 'Separuh Masa')
         ->where('AppliedKursus', '=', 'Sarjana Muda')
         ->count();
 
         $FT_mstrs = DB::table('applicants')->where('isApproved', '=', '1')
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
-        ->where('mod_pengajian', '=', 'Full Time')
+        ->where('mod_pengajian', '=', 'Sepenuh Masa')
         ->where('AppliedKursus', '=', 'Sarjana')
         ->count();
 
         $PT_mstrs = DB::table('applicants')->where('isApproved', '=', '1')
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
-        ->where('mod_pengajian', '=', 'Part Time')
+        ->where('mod_pengajian', '=', 'Separuh Masa')
         ->where('AppliedKursus', '=', 'Sarjana')
         ->count();
 
         $FT_phds = DB::table('applicants')->where('isApproved', '=', '1')
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
-        ->where('mod_pengajian', '=', 'Full Time')
+        ->where('mod_pengajian', '=', 'Sepenuh Masa')
         ->where('AppliedKursus', '=', 'Doktor Falsafah')
         ->count();
 
         $PT_phds = DB::table('applicants')->where('isApproved', '=', '1')
         ->join('info__pengajians', 'info__pengajians.applicant_id', 'applicants.user_id')
-        ->where('mod_pengajian', '=', 'Part Time')
+        ->where('mod_pengajian', '=', 'Separuh Masa')
         ->where('AppliedKursus', '=', 'Doktor Falsafah')
         ->count();
 
         //student: study mode
         //pemohon: study mode
-        $FT_degree = info_Pengajian::where('mod_pengajian', '=', 'Full Time')
+        $FT_degree = info_Pengajian::where('mod_pengajian', '=', 'Sepenuh Masa')
         ->join('applicants', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->where('AppliedKursus', '=', 'Sarjana Muda')
         ->count();
-        $PT_degree = info_pengajian::where('mod_pengajian', '=', 'Part Time')
+        $PT_degree = info_pengajian::where('mod_pengajian', '=', 'Separuh Masa')
         ->join('applicants', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->where('AppliedKursus', '=', 'Sarjana Muda')
         ->count();
-        $FT_mstr = info_Pengajian::where('mod_pengajian', '=', 'Full Time')
+        $FT_mstr = info_Pengajian::where('mod_pengajian', '=', 'Sepenuh Masa')
         ->join('applicants', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->where('AppliedKursus', '=', 'Sarjana')
         ->count();
-        $PT_mstr = info_pengajian::where('mod_pengajian', '=', 'Part Time')
+        $PT_mstr = info_pengajian::where('mod_pengajian', '=', 'Separuh Masa')
         ->join('applicants', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->where('AppliedKursus', '=', 'Sarjana')
         ->count();
-        $FT_phd = info_Pengajian::where('mod_pengajian', '=', 'Full Time')
+        $FT_phd = info_Pengajian::where('mod_pengajian', '=', 'Sepenuh Masa')
         ->join('applicants', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->where('AppliedKursus', '=', 'Doktor Falsafah')
         ->count();
-        $PT_phd = info_pengajian::where('mod_pengajian', '=', 'Part Time')
+        $PT_phd = info_pengajian::where('mod_pengajian', '=', 'Separuh Masa')
         ->join('applicants', 'info__pengajians.applicant_id', 'applicants.user_id')
         ->where('AppliedKursus', '=', 'Doktor Falsafah')
         ->count();
@@ -531,14 +531,12 @@ class AdminController extends Controller
         $value = request('budget');
 
         applicant::where('nama', '=', $pelajar)->update([
-            //'isApproved'=>true,
             'budget' => $value
         ]);
 
         User::where('name', $pelajar)->update([
             'status'=>'student'
         ]);
-        //dd([$pelajar, $value]);
         
         return Redirect()->route('table_pelajar');     
     }
@@ -546,17 +544,18 @@ class AdminController extends Controller
     public function approve_pelajar($student_id) {
 
 
-        /*User::where('id', '=', $student_id)->update([
+        User::where('id', '=', $student_id)->update([
             'status'=>'student'
         ]);
 
         applicant::where('user_id', '=', $student_id)->update([
             'isApproved'=>true
-        ]);*/
+        ]);
 
    
 
-        return Redirect::Route('email-lulus', array($student_id));
+        //return Redirect::Route('email-lulus', array($student_id));
+        return Redirect::Route('board')->withErrors(__('Permohonan berjaya diluluskan'));
     }
 
     public function disapprove_pelajar($student_id) {
@@ -569,7 +568,8 @@ class AdminController extends Controller
             'status'=>'applicant'
         ]);*/
 
-        return Redirect::Route('email-gagal', array($student_id));
+        //return Redirect::Route('email-gagal', array($student_id));
+        return Redirect::Route('board')->withErrors(__('Permohonan berjaya diluluskan'));
     }
 
     public function update_status($applicant_id) {
@@ -754,13 +754,21 @@ class AdminController extends Controller
 
         $abroad_ft = $all_applicant->where('tmpt_study', '=', 'Luar Negara')->where('mod_pengajian', "Sepenuh Masa");
         $abroad_pt = $all_applicant->where('tmpt_study', '=', 'Luar Negara')->where('mod_pengajian', "Separuh Masa");
-        $local_ft = $all_applicant->where('tmpt_study', '=', 'Dalam Negeri Sabah')->where('mod_pengajian', "Sepenuh Masa");
-        $local_pt = $all_applicant->where('tmpt_study', '=', 'Luar Negeri Sabah')->where('mod_pengajian', "Separuh Masa");
+
+        $local_ft_s = $all_applicant->where('tmpt_study', '=', 'Dalam Negeri Sabah')->where('mod_pengajian', "Sepenuh Masa");
+        $local_ft_ns = $all_applicant->where('tmpt_study', '=', 'Luar Negeri Sabah')->where('mod_pengajian', "Sepenuh Masa");
+
+        $local_ft = $local_ft_s->merge($local_ft_ns);
+
+        $local_pt_s = $all_applicant->where('tmpt_study', '=', 'Dalam Negeri Sabah')->where('mod_pengajian', "Separuh Masa");        
+        $local_pt_ns = $all_applicant->where('tmpt_study', '=', 'Luar Negeri Sabah')->where('mod_pengajian', "Separuh Masa");
+
+        $local_pt = $local_pt_s->merge($local_pt_ns);
  
         //$local_all = $local_s->merge($local_c);
 
-        //$full_time = $all_applicant->where('mod_pengajian', '=', 'Full Time');
-        //$part_time = $all_applicant->where('mod_pengajian', '=', 'Part Time');
+        //$full_time = $all_applicant->where('mod_pengajian', '=', 'Sepenuh Masa');
+        //$part_time = $all_applicant->where('mod_pengajian', '=', 'Separuh Masa');
 
 
         return view('Admin.ahlimesyuarat', ['noti_claim' => $all_claim, 'noti_pemohon' => $all_applicant, 'noti_count' => $noti_count, 'index' => $toggler, 'abroad_ft' => $abroad_ft, 'abroad_pt' => $abroad_pt, 'local_ft' => $local_ft, 'local_pt' => $local_pt, 'status' => $status]);

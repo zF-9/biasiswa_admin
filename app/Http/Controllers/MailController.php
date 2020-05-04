@@ -39,8 +39,7 @@ class MailController extends Controller {
          $message->from('bpknsav2@gmail.com','Biasiswa Admin');
       });
 
-      //echo "HTML Email Sent. Check your inbox.";
-      return Redirect::Route('board')->withErrors(__('Email telah berjaya dihantar'));
+      return Redirect::Route('table_pelajar')->withErrors(__('Email telah berjaya dihantar'));
 
    }
 
@@ -71,8 +70,7 @@ class MailController extends Controller {
          $message->from('bpknsav2@gmail.com','Biasiswa Admin');
       });
 
-      //echo "HTML Email Sent. Check your inbox.";
-      return Redirect::Route('board')->withErrors(__('Email telah berjaya dihantar'));
+      return Redirect::Route('table_pelajar')->withErrors(__('Email telah berjaya dihantar'));
    }
 
    public function attachment_email() {

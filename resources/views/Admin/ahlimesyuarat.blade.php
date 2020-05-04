@@ -5,6 +5,17 @@
 @section('content') 
         <div class="card-body">          
 
+              @if($errors->any())
+              <div class="col-lg-6 mb-4">
+                <div class="card bg-danger text-white shadow">
+                  <div class="card-body">
+                    Perhatian
+                    <div class="text-white-50 small">{{$errors->first()}}</div>
+                   </div>
+                  </div>
+              </div>    
+              @endif
+
              <div class="col-xl-12 order-xl-2 p-5 bg-white rounded shadow mb-5">
 
                 <!-- Breadcrumbs -->
