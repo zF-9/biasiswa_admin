@@ -133,4 +133,11 @@ return [
 
     'log_channel' => env('MAIL_LOG_CHANNEL'),
 
+    'driver' => env('MAIL_DRIVER', 'smtp'),
+    'host' => env('MAIL_HOST', 'smtp.googlemail.com'),
+    'port' => env('MAIL_PORT', 465),
+    'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
+    'username' => env('MAIL_USERNAME', 'bpknsav2@gmail.com'),
+    'password' => env('MAIL_PASSWORD', 'bpkns123admin'),
+
 ];
