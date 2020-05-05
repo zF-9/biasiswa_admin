@@ -128,35 +128,55 @@ class UserController extends Controller
         $paid = $total_claimed + $total_paid;
         $balance_budget = $total_budget - $paid;
 
+
         $record = payment_record::where('payment_id', '=', $id)->first();
-        $jan = $record->where('bulan', '=', '0')->sum('amount');
-        $feb = $record->where('bulan', '=', '1')->sum('amount');
-        $mar = $record->where('bulan', '=', '2')->sum('amount');
-        $apr = $record->where('bulan', '=', '3')->sum('amount');
-        $may = $record->where('bulan', '=', '4')->sum('amount');
-        $jun = $record->where('bulan', '=', '5')->sum('amount');
-        $jul = $record->where('bulan', '=', '6')->sum('amount');
-        $aug = $record->where('bulan', '=', '7')->sum('amount');
-        $sep = $record->where('bulan', '=', '8')->sum('amount');
-        $oct = $record->where('bulan', '=', '9')->sum('amount');
-        $nov = $record->where('bulan', '=', '10')->sum('amount');
-        $dec = $record->where('bulan', '=', '11')->sum('amount');
 
-        //dd($record);
-        //dd($jan, $feb, $mar, $apr, $may, $jun, $jul, $aug, $sep, $oct, $nov, $dec);
+        if ($record == null) {
+            $jan = 0;
+            $feb = 0;
+            $mar = 0;
+            $apr = 0;
+            $may = 0;
+            $jun = 0;
+            $jul = 0;
+            $aug = 0;
+            $sep = 0;
+            $oct = 0;
+            $nov = 0;
+            $dec = 0;
 
-
-        //utk user profile pny area graph payment record
-
-        if($user_profile == null){
-            return view('User.dashboard_user', ['user_profile' => $user_profile, 'user_noti' => $user_noti, 'budget' => $total_budget, 'paid' => $paid, 'balance' => $balance_budget, 'tuntut' => $claim_doc, 'status' => $status])->withErrors(__('Pemohon perlu mengisi borang maklumat pegawai'));
-        }
-    
-        else {
             return view('User.Profile_full', ['user_profile' => $user_profile, 'user_noti' => $user_noti, 'budget' => $total_budget, 'paid' => $paid, 'balance' => $balance_budget, 'tuntut' => $claim_doc, 'status' => $status, 'jan' => $jan, 'feb' => $feb, 'mar' => $mar, 'apr' => $apr,
-                'may' => $may, 'jun' => $jun, 'jul' => $jul, 'aug' => $aug, 'sep' => $sep, 'oct' => $oct,
-                'nov' => $nov, 'dec' => $dec]);          
-        }        
+                        'may' => $may, 'jun' => $jun, 'jul' => $jul, 'aug' => $aug, 'sep' => $sep, 'oct' => $oct,
+                        'nov' => $nov, 'dec' => $dec]);  
+        }
+
+        else {
+            if($user_profile == null){
+                return view('User.dashboard_user', ['user_profile' => $user_profile, 'user_noti' => $user_noti, 'budget' => $total_budget, 'paid' => $paid, 'balance' => $balance_budget, 'tuntut' => $claim_doc, 'status' => $status])->withErrors(__('Pemohon perlu mengisi borang maklumat pegawai'));
+            }
+            
+            else {
+                    
+                $jan = $record->where('bulan', '=', '0')->sum('amount');
+                $feb = $record->where('bulan', '=', '1')->sum('amount');
+                $mar = $record->where('bulan', '=', '2')->sum('amount');
+                $apr = $record->where('bulan', '=', '3')->sum('amount');
+                $may = $record->where('bulan', '=', '4')->sum('amount');
+                $jun = $record->where('bulan', '=', '5')->sum('amount');
+                $jul = $record->where('bulan', '=', '6')->sum('amount');
+                $aug = $record->where('bulan', '=', '7')->sum('amount');
+                $sep = $record->where('bulan', '=', '8')->sum('amount');
+                $oct = $record->where('bulan', '=', '9')->sum('amount');
+                $nov = $record->where('bulan', '=', '10')->sum('amount');
+                $dec = $record->where('bulan', '=', '11')->sum('amount');
+
+            return view('User.Profile_full', ['user_profile' => $user_profile, 'user_noti' => $user_noti, 'budget' => $total_budget, 'paid' => $paid, 'balance' => $balance_budget, 'tuntut' => $claim_doc, 'status' => $status, 'jan' => $jan, 'feb' => $feb, 'mar' => $mar, 'apr' => $apr,
+                        'may' => $may, 'jun' => $jun, 'jul' => $jul, 'aug' => $aug, 'sep' => $sep, 'oct' => $oct,
+                        'nov' => $nov, 'dec' => $dec]);          
+            }     
+        }
+
+   
     }
 
     public function payment_history() {
