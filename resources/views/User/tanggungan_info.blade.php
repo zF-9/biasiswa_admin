@@ -26,7 +26,7 @@
                   <div class="col-lg-12 col-sm-12 col-md-12" id="div_id">
                     <div class="form-group">
 
-                      <form class="user" method="post" action="/" enctype="multipart/form-data" autocomplete="off">
+                      <form class="user" method="post" action="/rec_tanggung" enctype="multipart/form-data" autocomplete="off">
                         {{ csrf_field() }}
 
                         <div class="card-body">
@@ -35,14 +35,14 @@
                               <div class="form-group col-lg-8">
                                 <div class="form-group">
                                 <label>Nama</label>
-                                <input name="" type="text" class="form-control form-control-user" id="" placeholder="">
+                                <input name="nama" type="text" class="form-control form-control-user" id="" placeholder="">
                                 </div>
                               </div>              
 
                               <div class="form-group col-lg-8">
                                 <div class="form-group">
                                 <label>Hubungan</label>
-                                <input name="" type="text" class="form-control form-control-user" id="" placeholder="">
+                                <input name="hubungan" type="text" class="form-control form-control-user" id="" placeholder="">
                                 </div>
                               </div>  
 
@@ -56,7 +56,7 @@
                               <div class="form-group col-lg-6">
                                 <div class="form-group">
                                 <label>Tarikh Lahir</label>
-                                <input name="" type="text" class="form-control form-control-user date" id="InputMulaStudy" maxlength="10" placeholder="">
+                                <input name="datelahir" type="text" class="form-control form-control-user date" id="InputMulaStudy" maxlength="10" placeholder="">
                                 </div> 
                               </div> 
 

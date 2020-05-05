@@ -19,6 +19,8 @@ class ApplicantController extends Controller
 
     public function store() 
     {
+        $id = Auth::User()->id;
+
         $applicant = new applicant; 
 
         $alamat_1 = request('alamat_1');
@@ -52,7 +54,45 @@ class ApplicantController extends Controller
 
         $applicant->save();
 
-        return Redirect()->back();
+        //return Redirect()->back();
+        $user_noti = payment_record::where('payment_id', '=', $id)->get();
+        $status = User::where('id', $id)->pluck('status');
+
+        $rekod_pegawai = applicant::where('user_id', $id)->first();
+        //dd($rekod_pegawai);
+        $rekod_pengajian = info_Pengajian::where('applicant_id', $id)->first();
+
+        if($rekod_pegawai != null && $rekod_pengajian != null) {
+            //dd("Pengawai and Pengajian data exists");
+            //pass step yg ke-3
+            $breadcrumbs = "2";
+        }
+        elseif($rekod_pegawai != null && $rekod_pengajian == null){
+            //dd("rekod pegawai exists");
+            //pass step yg ke-2
+            $breadcrumbs = "1";
+        }
+        elseif($rekod_pegawai == null && $rekod_pengajian != null){
+            //dd("rekod pengajian exists");
+            //pass step yg 
+            $breadcrumbs = "9";
+        }
+        else {
+            //dd("Pengawai and Pengajian data does not exists");
+            //step default: initial stage
+            $breadcrumbs = "0";
+        }
+
+        $mar_stat = applicant::where('user_id', $id)->pluck('tarafkahwin');
+        $marital_status = $mar_stat[0];
+
+        if($marital_status == "Berkahwin") {
+            return view('User.borang_proto', ['user_noti' => $user_noti, 'status' => $status, 'steps' => $breadcrumbs, 'rekod_pegawai' => $rekod_pegawai]);         
+        }
+        else {
+            return view('User.borang_proto2', ['user_noti' => $user_noti, 'status' => $status, 'steps' => $breadcrumbs, 'rekod_pegawai' => $rekod_pegawai]);
+        }          
+
     }
 
     public function upload() {
@@ -65,6 +105,8 @@ class ApplicantController extends Controller
         $applicant_data->mod_pengajian = request('study_mod');
         $applicant_data->cost_pengajian = request('cost_pengajian');
         $applicant_data->tmpt_study = request('tmpt_study');
+
+        $applicant_data->status_pengajian = "pemohon";
 
         $uni_1 = request('Uni_name');
         $uni_2 = request('Uni_named');
@@ -152,7 +194,25 @@ class ApplicantController extends Controller
         $tanggungan_data_3->save();
         $tanggungan_data_4->save();*/
 
-      return Redirect()->route('user-dashboard');
+        //return Redirect()->route('user-dashboard');
+        return Redirect()->back();
+    }
+
+    public function tanggungan_rec() {
+
+        $tanggungan_data = new tanggungan_pelajar;
+
+        $tanggungan_data->tanggung_nama = request('nama');
+        $tanggungan_data->tanggung_hubungan = request('hubungan');
+        $tanggungan_data->tanggung_nokp = request('nokp');
+        $tanggungan_data->tanggung_umur = request('datelahir');
+        $tanggungan_data->student_id = auth()->user()->id;   
+
+        $tanggungan_data->save();
+
+        //return Redirect()->route('user-dashboard');
+        return Redirect()->back();
+
     }
 
     public function apply()

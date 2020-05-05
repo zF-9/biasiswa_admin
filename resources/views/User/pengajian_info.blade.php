@@ -77,8 +77,8 @@
                             <label>Mod Pengajian</label>
                               <select name="study_mod" class="form-group form-control-user" id="stdy" placeholder="Pilih la yang mana satu" onchange="study_m0de()">
                                 <option></option>
-                                <option id="ftime" value="Full Time">Sepenuh Masa</option>
-                                <option value="Part Time">Separuh Masa</option>
+                                <option id="ftime" value="Sepenuh Masa">Sepenuh Masa</option>
+                                <option value="Separuh Masa">Separuh Masa</option>
                               </select>
                           </div>
                         </div>
@@ -188,7 +188,7 @@
     document.getElementById("stdy").disabled = false;
     var y = document.getElementById("stdy").value; 
 
-    if(y == "Full Time") {
+    if(y == "Sepenuh Masa") {
       document.getElementById("option_u_form").style.display = "none";
       document.getElementById("option_u_form").disabled = true;
       document.getElementById("nama_u_form").style.display = "block";

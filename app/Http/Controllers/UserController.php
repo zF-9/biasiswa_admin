@@ -188,6 +188,9 @@ class UserController extends Controller
         $avg_marks = applicant::where('user_id', '=', $id)
         ->sum(DB::raw('Tahun1LPPT + Tahun2LPPT + Tahun3LPPT'));*/
 
+
+        //dd($marital_status);
+
         $rekod_pegawai = applicant::where('user_id', $id)->first();
         //dd($rekod_pegawai);
         $rekod_pengajian = info_Pengajian::where('applicant_id', $id)->first();
@@ -215,7 +218,12 @@ class UserController extends Controller
 
         $user_noti = payment_record::where('payment_id', '=', $id)->get();   
 
-        return view('User.borang_proto', ['user_noti' => $user_noti, 'status' => $status, 'steps' => $breadcrumbs, 'rekod_pegawai' => $rekod_pegawai]);                   
+        //if($marital_status == "Berkahwin") {
+            return view('User.borang_proto', ['user_noti' => $user_noti, 'status' => $status, 'steps' => $breadcrumbs, 'rekod_pegawai' => $rekod_pegawai]);         
+        /*}
+        else {
+            return view('User.borang_proto2', ['user_noti' => $user_noti, 'status' => $status, 'steps' => $breadcrumbs, 'rekod_pegawai' => $rekod_pegawai]);
+        } */                  
     }
 
     public function mn_dokumen(Request $request) {

@@ -89,6 +89,7 @@ Route::get('/upload_docs', 'UserController@upload_docs')->name('list_docs');
 
 Route::get('/upload_pic', 'UserController@UploadPic');
 Route::post('/updateAvatar', 'UserController@update_avatar');
+Route::post('/rec_tanggung', 'ApplicantController@tanggungan_rec');
 
 //Route::post('/updateBudget/{req}', 'AdminController@update_budget');
 Route::get('/prototype', 'UserController@proto');
