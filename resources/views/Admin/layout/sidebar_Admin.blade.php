@@ -114,14 +114,14 @@
         </div>
       </li>
 
-      <!-- Divider -->
+      <!-- Divider 
       <hr class="sidebar-divider d-none d-md-block">
 
       <li class="nav-item">
         <a class="nav-link" href="/Settings">
         <i class="fas fa-fw fa-cog"></i>
           <span>Settings</span></a>
-      </li>
+      </li>-->
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
